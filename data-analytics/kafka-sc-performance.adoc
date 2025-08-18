@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-sc-performance.html 
+keywords: data graphs, kafka throughput, s3 tiering traffic, aff a900, resource utilization 
+summary: Wir haben Tiered-Storage-Tests mit entweder fünf oder acht Broker-Knoten während einer Produce-Consume-Workload mit dem einen AFF A900 HA-Paar NetApp -Storage-Controller durchgeführt.  Unseren Tests zufolge skalierten die Zeit bis zur Fertigstellung und die Leistungsergebnisse mit der Anzahl der Brokerknoten, bis die Ressourcenauslastung von AFF A900 hundert Prozent erreichte.  Für die Einrichtung des ONTAP Speichercontrollers war mindestens ein HA-Paar erforderlich. 
+---
+= Leistungstests mit dem Produce-Consume-Workload-Generator
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wir haben Tiered-Storage-Tests mit entweder fünf oder acht Broker-Knoten während einer Produce-Consume-Workload mit dem einen AFF A900 HA-Paar NetApp -Storage-Controller durchgeführt.  Unseren Tests zufolge skalierten die Zeit bis zur Fertigstellung und die Leistungsergebnisse mit der Anzahl der Brokerknoten, bis die Ressourcenauslastung von AFF A900 hundert Prozent erreichte.  Für die Einrichtung des ONTAP Speichercontrollers war mindestens ein HA-Paar erforderlich.
+
+Die Leistung für den S3-Abrufvorgang stieg linear basierend auf der Anzahl der Confluent-Broker-Knoten.  Der ONTAP Speichercontroller unterstützt bis zu 12 HA-Paare in einer einzigen Bereitstellung.
+
+Das folgende Diagramm zeigt den kombinierten S3-Tiering-Verkehr mit fünf oder acht Broker-Knoten.  Wir haben die Leistung des einzelnen HA-Paares des AFF A900 maximiert.
+
+image:kafka-sc-009.png["Dieses Datendiagramm zeigt den kombinierten S3-Tiering-Verkehr mit fünf oder acht Broker-Knoten."]
+
+Das folgende Diagramm zeigt den Kafka-Durchsatz von ungefähr 31,74 GBps.
+
+image:kafka-sc-010.png["Dieses Datendiagramm zeigt einen Kafka-Durchsatz von ungefähr 31,74 GBps."]
+
+Wir haben auch einen ähnlichen Durchsatz im ONTAP Speichercontroller beobachtet `perfstat` Bericht.
+
+....
+object_store_server:wle-mendocino-07-08:get_data:34080805907b/ s
+object_store_server:wle-mendocino-07-08:put_data:484236974b/ s
+....

@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-nfs-additional-info.html 
+keywords:  
+summary:  
+---
+= Wo Sie weitere Informationen finden
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* Was ist Apache Kafka?
++
+https://www.confluent.io/what-is-apache-kafka/["https://www.confluent.io/what-is-apache-kafka/"^]
+
+* Was ist eine dumme Umbenennung?
++
+https://linux-nfs.org/wiki/index.php/Server-side_silly_rename["https://linux-nfs.org/wiki/index.php/Server-side_silly_rename"^]
+
+* ONATP wird für Streaming-Anwendungen gelesen.
++
+https://www.netapp.com/blog/ontap-ready-for-streaming-applications/["https://www.netapp.com/blog/ontap-ready-for-streaming-applications/"^]
+
+* NetApp Produktdokumentation
++
+https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]
+
+* Was ist NFS?
++
+https://en.wikipedia.org/wiki/Network_File_System["https://en.wikipedia.org/wiki/Network_File_System"^]
+
+* Was ist eine Kafka-Partitionsneuzuweisung?
++
+https://docs.cloudera.com/runtime/7.2.10/kafka-managing/topics/kafka-manage-cli-reassign-overview.html["https://docs.cloudera.com/runtime/7.2.10/kafka-managing/topics/kafka-manage-cli-reassign-overview.html"^]
+
+* Was ist der OpenMessaging-Benchmark?
++
+https://openmessaging.cloud/["https://openmessaging.cloud/"^]
+
+* Wie migriert man einen Kafka-Broker?
++
+https://medium.com/@sanchitbansal26/how-to-migrate-kafka-cluster-with-no-downtime-58c216129058["https://medium.com/@sanchitbansal26/how-to-migrate-kafka-cluster-with-no-downtime-58c216129058"^]
+
+* Wie überwachen Sie den Kafka-Broker mit Prometheus?
++
+https://www.confluent.io/blog/monitor-kafka-clusters-with-prometheus-grafana-and-confluent/[]
+
+* Verwaltete Plattform für Apache Kafka
++
+https://www.instaclustr.com/platform/managed-apache-kafka/[]
+
+* Unterstützung für Apache Kafka
++
+https://www.instaclustr.com/support-solutions/kafka-support/[]
+
+* Beratungsleistungen für Apache Kafka
++
+https://www.instaclustr.com/services/consulting/[]
+
+

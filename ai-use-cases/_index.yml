@@ -1,0 +1,37 @@
+---
+indexpage:
+  title: NetApp KI-Anwendungsfälle und -Anwendungen
+  summary: Entdecken Sie reale KI-Implementierungen mit NetApp -Lösungen, von Enterprise-RAG-Systemen
+    und Edge-Inferencing bis hin zu verantwortungsvollen KI-Praktiken und Datenmigrationsstrategien.  Diese
+    Anwendungsfälle zeigen, wie NetApp KI-Anwendungen in unterschiedlichen Umgebungen
+    ermöglicht und gleichzeitig Sicherheit, Leistung und Skalierbarkeit gewährleistet.
+  lead: Entdecken Sie reale KI-Implementierungen mit NetApp -Lösungen, von Enterprise-RAG-Systemen
+    und Edge-Inferencing bis hin zu verantwortungsvollen KI-Praktiken und Datenmigrationsstrategien.  Diese
+    Anwendungsfälle zeigen, wie NetApp es Unternehmen ermöglicht, KI-Anwendungen in
+    unterschiedlichen Umgebungen einzusetzen und dabei Sicherheit, Leistung und Skalierbarkeit
+    zu gewährleisten.
+  tiles:
+  - title: Enterprise-KI-Anwendungen und Anwendungsfälle
+    links:
+    - title: NetApp AIPod Mini für Enterprise RAG
+      url: "../infra/ai-minipod.html"
+    - title: Generative KI und NetApp -Wert
+      url: "../gen-ai/ai-wp-genai.html"
+    - title: Edge-KI-Inferenz mit NetApp und Lenovo
+      url: "../infra/ai-lenovo-edge-intro.html"
+    - title: Migration von Big Data Analytics zur KI
+      url: "../data-analytics/bda-ai-introduction.html"
+  - title: Verantwortungsvolle KI
+    links:
+    - title: Verantwortungsvolle KI mit Protopia-Bildtransformation
+      url: "../software/ai-conf-protopia-overview.html"
+    - title: Lösungsbereiche
+      url: "../software/ai-conf-protopia-usecases.html"
+    - title: Technologieübersicht
+      url: "../software/ai-conf-protopia-tech.html"
+  - title: KI-Speicher- und Infrastrukturlösungen
+    links:
+    - title: Entwerfen Sie Quantum StorNext mit Systemen der E-Serie
+      url: "../infra/ai-eseries-nva1150-design.html"
+    - title: Setzen Sie Quantum StorNext mit E-Series-Systemen ein
+      url: "../infra/ai-eseries-nva1150-deploy.html"

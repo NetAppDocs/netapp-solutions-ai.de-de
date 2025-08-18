@@ -1,0 +1,78 @@
+---
+indexpage:
+  title: NetApp MLOps- und Datenmanagementlösungen
+  summary: Optimieren Sie Ihre KI/ML-Workflows mit den umfassenden MLOps- und Datenmanagementlösungen
+    von NetApp.  Von Open-Source-Plattformen bis hin zu Tools auf Unternehmensebene
+    ermöglichen unsere Lösungen eine effiziente Modellentwicklung, Bereitstellung
+    und Skalierung in Hybrid-Cloud-Umgebungen und gewährleisten gleichzeitig Datenkonsistenz
+    und Leistung.
+  lead: Optimieren Sie Ihre KI/ML-Workflows mit den umfassenden MLOps- und Datenmanagementlösungen
+    von NetApp.  Von Open-Source-Plattformen bis hin zu Tools auf Unternehmensebene
+    ermöglichen unsere Lösungen eine effiziente Modellentwicklung, Bereitstellung
+    und Skalierung in Hybrid-Cloud-Umgebungen und gewährleisten gleichzeitig Datenkonsistenz
+    und Leistung.
+  tiles:
+  - title: Open-Source-MLOps-Plattformen
+    links:
+    - title: Open Source MLOps mit NetApp
+      url: "../software/ai-osmlops-intro.html"
+    - title: NetApp Trident -Konfiguration für AIPod
+      url: "../software/ai-osmlops-trident-backend.html"
+    - title: Bereitstellung und Integration von Apache Airflow
+      url: "../software/ai-osmlops-airflow-deploy.html"
+    - title: JupyterHub-Bereitstellung und Datenvorgänge
+      url: "../software/ai-osmlops-jhub-deploy.html"
+    - title: MLflow-Bereitstellung und Rückverfolgbarkeit
+      url: "../software/ai-osmlops-mlflow-deploy.html"
+  - title: Erweiterte MLOps-Workflows
+    links:
+    - title: Kubeflow-Bereitstellung und Notebooks
+      url: "../software/ai-osmlops-kubeflow-deploy.html"
+    - title: Trainieren Sie Bilderkennungsmodelle mit Kubeflow
+      url: "../software/ai-osmlops-kubeflow-train.html"
+    - title: Ausführung von KI-Workloads auf einem einzelnen Knoten
+      url: "../software/ai-osmlops-train-singlenode.html"
+    - title: Verteilte KI-Workload-Ausführung
+      url: "../software/ai-osmlops-train-distributed.html"
+    - title: Datenaufnahme mit SnapMirror
+      url: "../software/ai-osmlops-jhub-ingest.html"
+  - title: Enterprise-MLOps-Lösungen
+    links:
+    - title: Hybrid MLOps mit Domino Data Lab
+      url: "../software/ai-hybrid-ddlnexus-intro.html"
+    - title: Umgebungsübergreifender Datenzugriff mit Domino
+      url: "../software/ai-hybrid-ddlnexus-data.html"
+    - title: NVIDIA AI Enterprise mit NetApp und VMware
+      url: "../software/ai-nvaie-vmw-intro.html"
+    - title: NVIDIA NGC-Softwareintegration
+      url: "../software/ai-nvaie-vmw-ngcsetup.html"
+  - title: Cloud MLOps und AWS-Integration
+    links:
+    - title: Amazon FSx für ONTAP MLOps
+      url: "../cloud/ai-mlops-fsxn-intro.html"
+    - title: Integrieren Sie FSx ONTAP als privates S3 in SageMaker
+      url: "../cloud/ai-mlops-fsxn-s3.html"
+    - title: FSx ONTAP für SageMaker-Modelltraining
+      url: "../cloud/ai-mlops-fsxn-sagemaker.html"
+    - title: Erstellen Sie eine vereinfachte MLOps-Pipeline mit FSx
+      url: "../cloud/ai-mlops-fsxn-cictcd.html"
+  - title: Vektordatenbanken und KI-Anwendungen
+    links:
+    - title: Vector Datenbanklösung mit NetApp
+      url: "../vector-db/ai-vdb-solution-with-netapp.html"
+    - title: Milvus-Cluster-Setup mit Kubernetes
+      url: "../vector-db/ai-vdb-milvus-setup.html"
+    - title: Vector-Datenbankschutz mit SnapCenter
+      url: "../vector-db/ai-vdb-dp-snapcenter.html"
+    - title: Leistungsvalidierung der Vektordatenbank
+      url: "../vector-db/ai-vdb-perf-validation.html"
+    - title: Anwendungsfälle für Vektordatenbanken
+      url: "../vector-db/ai-vdb-usecases.html"
+  - title: Datenverwaltungstools und -speicherung
+    links:
+    - title: NetApp DataOps Toolkit
+      url: "../software/dataops-toolkit.html"
+    - title: StorageGRID -Datensee für autonomes Fahren
+      url: "../infra/ai-storagegrid-datalake-adas.html"
+    - title: Notfallwiederherstellung mit SnapMirror
+      url: "../vector-db/ai-vdb-dr-snapmirror.html"

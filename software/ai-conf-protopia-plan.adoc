@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: software/ai-conf-protopia-plan.html 
+keywords: validation scenarios, obfuscation, batch inferencing job 
+summary: Dieser Abschnitt bietet einen Überblick über die drei in dieser Lösung validierten Szenarien. 
+---
+= Test- und Validierungsplan
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für diesen Lösungsentwurf wurden die folgenden drei Szenarien validiert:
+
+* Eine Inferenzaufgabe mit und ohne Protopia-Verschleierung innerhalb eines JupyterLab-Arbeitsbereichs, der mithilfe des NetApp DataOps Toolkit für Kubernetes orchestriert wurde.
+* Ein Batch-Inferenzjob mit und ohne Protopia-Verschleierung auf Kubernetes mit einem Datenvolumen, das mithilfe des NetApp DataOps Toolkit für Kubernetes orchestriert wurde.
+* Eine Inferenzaufgabe unter Verwendung einer NVIDIA Triton Inference Server-Instanz, die mithilfe des NetApp DataOps Toolkit für Kubernetes orchestriert wurde.  Wir haben die Protopia-Verschleierung auf das Bild angewendet, bevor wir die Triton-Inferenz-API aufgerufen haben, um die allgemeine Anforderung zu simulieren, dass alle über das Netzwerk übertragenen Daten verschleiert werden müssen.  Dieser Workflow ist auf Anwendungsfälle anwendbar, in denen Daten innerhalb einer vertrauenswürdigen Zone erfasst werden, aber zur Inferenzierung außerhalb dieser vertrauenswürdigen Zone weitergeleitet werden müssen.  Ohne die Verschleierung durch Protopia ist es nicht möglich, diese Art von Workflow zu implementieren, ohne dass vertrauliche Daten die vertrauenswürdige Zone verlassen.
+

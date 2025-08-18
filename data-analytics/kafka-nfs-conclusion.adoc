@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-nfs-conclusion.html 
+keywords: conclusion 
+summary: Die NetApp -Lösung für das Silly-Rename-Problem bietet eine einfache, kostengünstige und zentral verwaltete Speicherform für Workloads, die zuvor mit NFS nicht kompatibel waren. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die NetApp -Lösung für das Silly-Rename-Problem bietet eine einfache, kostengünstige und zentral verwaltete Speicherform für Workloads, die zuvor mit NFS nicht kompatibel waren.
+
+Dieses neue Paradigma ermöglicht es Kunden, besser verwaltbare Kafka-Cluster zu erstellen, die sich zum Zweck der Notfallwiederherstellung und des Datenschutzes einfacher migrieren und spiegeln lassen.  Wir haben außerdem festgestellt, dass NFS zusätzliche Vorteile bietet, wie etwa eine geringere CPU-Auslastung und eine schnellere Wiederherstellungszeit, eine deutlich verbesserte Speichereffizienz und eine bessere Leistung durch NetApp ONTAP.

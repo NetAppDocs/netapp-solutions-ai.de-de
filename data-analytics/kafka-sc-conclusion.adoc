@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-sc-conclusion.html 
+keywords: conclusion, where to find additional information 
+summary: Dieser Verifizierungstest erreichte einen Tiering-Durchsatz von 31,74 GBps auf Confluent mit einem NetApp ONTAP Speichercontroller. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Verifizierungstest erreichte einen Tiering-Durchsatz von 31,74 GBps auf Confluent mit NetApp ONTAP Storage Controller.
+
+
+
+== Wo Sie weitere Informationen finden
+
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* Was ist Confluent?
++
+https://www.confluent.io/apache-kafka-vs-confluent/["https://www.confluent.io/apache-kafka-vs-confluent/"^]
+
+* S3-Sink-Parameterdetails
++
+https://docs.confluent.io/kafka-connect-s3-sink/current/configuration_options.html["https://docs.confluent.io/kafka-connect-s3-sink/current/configuration_options.html#s3-configuration-options"^]
+
+* Apache Kafka
++
+https://en.wikipedia.org/wiki/Apache_Kafka["https://en.wikipedia.org/wiki/Apache_Kafka"^]
+
+* S3 in ONTAP – Best Practices
++
+https://www.netapp.com/pdf.html?item=/media/17219-tr4814.pdf["https://www.netapp.com/pdf.html?item=/media/17219-tr4814.pdf"^]
+
+* S3-Objektspeicherverwaltung
++
+https://docs.netapp.com/us-en/ontap/s3-config/s3-support-concept.html["https://docs.netapp.com/us-en/ontap/s3-config/s3-support-concept.html"^]
+
+* NetApp Produktdokumentation
++
+https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]
+
+

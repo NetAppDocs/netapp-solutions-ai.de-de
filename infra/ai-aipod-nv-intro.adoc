@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-aipod-nv-intro.html 
+keywords: NetApp AI, AI, Artificial Intelligence, ML, Machine Learning, NVIDIA, NVIDIA AI Enterprise, NVIDIA BasePOD, NVIDIA DGX 
+summary: NetApp AIPod mit NVIDIA DGX-Systemen ist eine unternehmensreife Referenzarchitektur basierend auf NVIDIA BasePOD für Deep Learning und künstliche Intelligenz unter Verwendung von NetApp ONTAP AFF -Speichersystemen und NVIDIA Netzwerk- und DGX-Systemen. 
+---
+= NVA-1173 NetApp AIPod mit NVIDIA DGX-Systemen – Einführung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+image:poweredbynvidia.png["200,200,Fehler: Fehlendes Grafikbild"]
+
+[role="lead"]
+NetApp Solution Engineering
+
+
+
+== Zusammenfassung
+
+Der NetApp® AIPod mit NVIDIA DGX®-Systemen und NetApp Cloud-verbundenen Speichersystemen vereinfacht die Infrastrukturbereitstellung für Workloads im Bereich maschinelles Lernen (ML) und künstliche Intelligenz (KI), indem er Designkomplexität und Rätselraten eliminiert.  AIPod mit NVIDIA DGX-Systemen baut auf dem NVIDIA DGX BasePOD™-Design auf, um eine außergewöhnliche Rechenleistung für Workloads der nächsten Generation zu liefern, und fügt NetApp AFF Speichersysteme hinzu, die es Kunden ermöglichen, klein anzufangen und unterbrechungsfrei zu wachsen, während sie gleichzeitig Daten vom Rand über den Kern bis zur Cloud und zurück intelligent verwalten.  NetApp AIPod ist Teil des größeren Portfolios an NetApp KI-Lösungen, wie in der folgenden Abbildung dargestellt.
+
+_NetApp AI-Lösungsportfolio_
+
+image:aipod-nv-portfolio.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Dieses Dokument beschreibt die Hauptkomponenten der AIPod -Referenzarchitektur, Informationen zur Systemkonnektivität und -konfiguration, Ergebnisse der Validierungstests und Leitlinien zur Größenbestimmung der Lösung.  Dieses Dokument richtet sich an Lösungsingenieure von NetApp und Partnern sowie an strategische Entscheidungsträger bei Kunden, die an der Bereitstellung einer Hochleistungsinfrastruktur für ML/DL- und Analyse-Workloads interessiert sind.

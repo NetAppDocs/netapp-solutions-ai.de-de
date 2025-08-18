@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: software/ai-conf-protopia-accuracy.html 
+keywords: faceboxes, alpha value, accuracy, comparison 
+summary: Für diese Validierung haben wir mithilfe einer Reihe von Rohbildern eine Inferenz für einen Anwendungsfall zur Bilderkennung durchgeführt.  Anschließend haben wir dieselbe Inferenzaufgabe mit demselben Satz von Bildern durchgeführt, wobei wir vor der Inferenz die Protopia-Verschleierung hinzugefügt haben.  Wir haben die Aufgabe mit unterschiedlichen ALPHA-Werten für die Protopia-Verschleierungskomponente wiederholt. 
+---
+= Vergleich der Inferenzgenauigkeit
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für diese Validierung haben wir mithilfe einer Reihe von Rohbildern eine Inferenz für einen Anwendungsfall zur Bilderkennung durchgeführt.  Anschließend haben wir dieselbe Inferenzaufgabe mit demselben Satz von Bildern durchgeführt, wobei wir vor der Inferenz die Protopia-Verschleierung hinzugefügt haben.  Wir haben die Aufgabe mit unterschiedlichen ALPHA-Werten für die Protopia-Verschleierungskomponente wiederholt.  Im Kontext der Protopia-Verschleierung stellt der ALPHA-Wert den Grad der angewendeten Verschleierung dar, wobei ein höherer ALPHA-Wert einen höheren Grad der Verschleierung darstellt.  Anschließend haben wir die Inferenzgenauigkeit dieser verschiedenen Läufe verglichen.
+
+Die folgenden beiden Tabellen liefern Details zu unserem Anwendungsfall und skizzieren die Ergebnisse.
+
+Protopia arbeitet direkt mit Kunden zusammen, um den geeigneten ALPHA-Wert für einen bestimmten Anwendungsfall zu bestimmen.
+
+|===
+| Komponente | Details 
+
+
+| Modell | FaceBoxen (PyTorch) – 
+
+
+| Datensatz | FDDB-Datensatz 
+|===
+|===
+| Protopia-Verschleierung | ALPHA | Genauigkeit 
+
+
+| Nein | k. A. | 0,9337148153739079 
+
+
+| Ja | 0,05 | 0,9028766627325002 
+
+
+| Ja | 0,1 | 0,9024301009661478 
+
+
+| Ja | 0,2 | 0,9081836283186224 
+
+
+| Ja | 0,4 | 0,9073066107482036 
+
+
+| Ja | 0,6 | 0,8847816568680239 
+
+
+| Ja | 0,8 | 0,8841195749171925 
+
+
+| Ja | 0,9 | 0,8455427675252052 
+
+
+| Ja | 0,95 | 0,8455427675252052 
+|===

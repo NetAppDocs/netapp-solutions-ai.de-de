@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: vector-db/ai-vdb-solution-with-netapp.html 
+keywords: vector database, milvus, usecases 
+summary: Dies ist eine abstrakte Seite für die Vektordatenbanklösung mit Netapp. 
+---
+= Vector Datenbanklösung mit NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam und Rodrigo Nascimento, NetApp
+
+[role="lead"]
+Dieses Dokument bietet eine umfassende Untersuchung der Bereitstellung und Verwaltung von Vektordatenbanken wie Milvus und pgvecto, einer Open-Source-PostgreSQL-Erweiterung, unter Verwendung der Speicherlösungen von NetApp.  Es beschreibt detailliert die Infrastrukturrichtlinien für die Verwendung von NetApp ONTAP und StorageGRID Objektspeicher und validiert die Anwendung der Milvus-Datenbank in AWS FSx ONTAP.  Das Dokument erläutert die Datei-Objekt-Dualität von NetApp und ihren Nutzen für Vektordatenbanken und Anwendungen, die Vektoreinbettungen unterstützen.  Es betont die Fähigkeiten von SnapCenter, dem Enterprise-Management-Produkt von NetApp, das Sicherungs- und Wiederherstellungsfunktionen für Vektordatenbanken bietet und so die Datenintegrität und -verfügbarkeit sicherstellt.  Das Dokument befasst sich eingehender mit der Hybrid-Cloud-Lösung von NetApp und erörtert ihre Rolle bei der Datenreplikation und -sicherung in lokalen und Cloud-Umgebungen.  Es enthält Einblicke in die Leistungsvalidierung von Vektordatenbanken auf NetApp ONTAP und schließt mit zwei praktischen Anwendungsfällen zur generativen KI: RAG mit LLM und NetApps internem ChatAI.  Dieses Dokument dient als umfassender Leitfaden zur Nutzung der Speicherlösungen von NetApp für die Verwaltung von Vektordatenbanken.
+
+Der Schwerpunkt der Referenzarchitektur liegt auf Folgendem:
+
+. link:ai-vdb-intro.html["Einführung"]
+. link:ai-vdb-overview.html["Lösungsübersicht"]
+. link:ai-vdb-landscape.html["Vektordatenbank"]
+. link:ai-vdb-tech.html["Technologieanforderungen"]
+. link:ai-vdb-deploy.html["Bereitstellungsverfahren"]
+. link:ai-vdb-verification.html["Übersicht zur Lösungsüberprüfung"]
++
+** link:ai-vdb-milvus-setup.html["Milvus-Cluster-Setup mit Kubernetes vor Ort"]
+** link:vector-database-milvus-with-Amazon-FSx ONTAP-for- NetApp- ONTAP.html[Milvus mit Amazon FSx ONTAP für NetApp ONTAP – Datei- und Objektdualität]
+** link:ai-vdb-dp-snapcenter.html["Vector-Datenbankschutz mit NetApp SnapCenter."]
+** link:ai-vdb-dr-snapmirror.html["Disaster Recovery mit NetApp SnapMirror"]
+** link:ai-vdb-perf-validation.html["Leistungsvalidierung"]
+
+
+. link:ai-vdb-instaclustr-pgvector.html["Vektordatenbank mit Instaclustr unter Verwendung von PostgreSQL: pgvector"]
+. link:ai-vdb-usecases.html["Anwendungsfälle für Vektordatenbanken"]
+. link:ai-vdb-conclusion.html["Abschluss"]
+. link:ai-vdb-values.html["Anhang A: values.yaml"]
+. link:ai-vdb-dataprep.html["Anhang B: prepare_data_netapp_new.py"]
+. link:ai-vdb-verifydata.html["Anhang C: verify_data_netapp.py"]
+. link:ai-vdb-docker-compose.html["Anhang D: docker-compose.yml"]
+

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-perf.html 
+keywords: performance, tests, scalability 
+summary: Wir haben die Tiered-Storage-Tests mit drei bis vier Knoten für Produktions- und Verbraucher-Workloads mit dem NetApp StorageGRID Setup durchgeführt. 
+---
+= Leistungstests mit Skalierbarkeit
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wir haben die Tiered-Storage-Tests mit drei bis vier Knoten für Producer- und Consumer-Workloads mit dem NetApp StorageGRID Setup durchgeführt.  Unseren Tests zufolge waren die Zeit bis zur Fertigstellung und die Leistungsergebnisse direkt proportional zur Anzahl der StorageGRID Knoten.  Für die Einrichtung von StorageGRID waren mindestens drei Knoten erforderlich.
+
+* Die Zeit zum Abschließen des Produktions- und Verbrauchervorgangs verringerte sich linear, wenn die Anzahl der Speicherknoten zunahm.
+
+
+image:confluent-kafka-009.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+* Die Leistung für den S3-Abrufvorgang stieg linear basierend auf der Anzahl der StorageGRID Knoten.  StorageGRID unterstützt bis zu 200 StorgeGRID-Knoten.
+
+
+image:confluent-kafka-010.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]

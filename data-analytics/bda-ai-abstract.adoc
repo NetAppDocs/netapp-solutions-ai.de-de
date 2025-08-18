@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/bda-ai-abstract.html 
+keywords:  
+summary:  
+---
+= Abstrakt
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Dokument wird beschrieben, wie Daten aus Big-Data-Analyse- und High-Performance-Computing-Systemen (HPC) verschoben werden, damit sie in Workflows der künstlichen Intelligenz (KI) verwendet werden können.  AI verarbeitet NFS-Daten normalerweise über NFS-Exporte.  Möglicherweise befinden sich Ihre KI-Daten jedoch auf einer Big-Data-Analyse- und High-Performance-Computing-Plattform (HPC).  Dies könnte das Hadoop Distributed File System (HDFS), ein Binary Large Object (Blob), S3-Speicher oder das General Parallel File System (GPFS) von IBM sein.  In diesem Dokument beschreiben wir, wie Sie Daten von einer Big-Data-Analyseplattform und GPFS mithilfe von Hadoop-nativen Befehlen, dem NetApp In-Place Analytics Module (NIPAM) und NetApp XCP nach NFS verschieben.  In diesem Dokument werden auch die geschäftlichen Vorteile der Datenverschiebung von Big Data und HPC zu KI erörtert.

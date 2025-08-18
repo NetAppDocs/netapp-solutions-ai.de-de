@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: vector-db/ai-vdb-verification.html 
+keywords: Solution Overview vector database 
+summary: Übersicht zur Lösungsüberprüfung – Vector-Datenbanklösung für NetApp 
+---
+= Lösungsübersicht
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wir haben eine umfassende Lösungsvalidierung mit Schwerpunkt auf fünf Schlüsselbereichen durchgeführt, deren Einzelheiten im Folgenden aufgeführt sind.  Jeder Abschnitt befasst sich eingehend mit den Herausforderungen, vor denen die Kunden stehen, den von NetApp bereitgestellten Lösungen und den daraus resultierenden Vorteilen für den Kunden.
+
+. link:ai-vdb-milvus-setup.html["Milvus-Cluster-Setup mit Kubernetes vor Ort"]Kunden stehen vor der Herausforderung, Speicher und Rechenleistung unabhängig zu skalieren und die Infrastruktur und Daten effektiv zu verwalten.  In diesem Abschnitt beschreiben wir detailliert den Prozess der Installation eines Milvus-Clusters auf Kubernetes unter Verwendung eines NetApp -Speichercontrollers sowohl für Clusterdaten als auch für Kundendaten.
+. link:vector-database-milvus-with-Amazon-FSx ONTAP-for- NetApp- ONTAP.html[Milvus mit Amazon FSx ONTAP für NetApp ONTAP – Datei- und Objektdualität] In diesem Abschnitt erfahren Sie, warum wir die Vektordatenbank in der Cloud bereitstellen müssen, sowie die Schritte zur Bereitstellung der Vektordatenbank (Milvus Standalone) in Amazon FSx ONTAP für NetApp ONTAP innerhalb von Docker-Containern.
+. link:ai-vdb-dp-snapcenter.html["Vector-Datenbankschutz mit NetApp SnapCenter."]In diesem Abschnitt gehen wir näher darauf ein, wie SnapCenter die in ONTAP gespeicherten Vektordatenbankdaten und Milvus-Daten schützt.  Für dieses Beispiel haben wir einen NAS-Bucket (milvusdbvol1) verwendet, der aus einem NFS- ONTAP Volume (vol1) für Kundendaten abgeleitet wurde, und ein separates NFS-Volume (vectordbpv) für Milvus-Cluster-Konfigurationsdaten.
+. link:ai-vdb-dr-snapmirror.html["Disaster Recovery mit NetApp SnapMirror"]In diesem Abschnitt besprechen wir die Bedeutung der Notfallwiederherstellung (DR) für die Vektordatenbank und wie das NetApp-Notfallwiederherstellungsprodukt SnapMirror eine DR-Lösung für die Vektordatenbank bereitstellt.
+. link:ai-vdb-perf-validation.html["Leistungsvalidierung"]In diesem Abschnitt möchten wir uns eingehend mit der Leistungsvalidierung von Vektordatenbanken wie Milvus und pgvecto.rs befassen und uns dabei auf ihre Speicherleistungsmerkmale wie E/A-Profil und Verhalten des NetApp-Speichercontrollers zur Unterstützung von RAG- und Inferenz-Workloads innerhalb des LLM-Lebenszyklus konzentrieren.  Wir werden alle Leistungsunterschiede bewerten und identifizieren, wenn diese Datenbanken mit der ONTAP Speicherlösung kombiniert werden.  Unsere Analyse basiert auf wichtigen Leistungsindikatoren, beispielsweise der Anzahl der pro Sekunde verarbeiteten Abfragen (QPS).
+

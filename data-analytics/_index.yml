@@ -1,0 +1,64 @@
+---
+indexpage:
+  title: Moderne Datenanalyselösungen von NetApp
+  summary: Die modernen Datenanalyselösungen von NetApp umfassen eine Reihe strategischer
+    und technologischer Funktionen, die die Leistungsfähigkeit von NetApp Storage
+    im gesamten KI-Bereich demonstrieren.
+  lead: Transformieren Sie Ihre Datenanalyse-Infrastruktur mit den bewährten Lösungen
+    von NetApp für Big Data-Workloads, darunter Apache Spark, Hadoop, Kafka und moderne
+    Data Lake-Architekturen, die vom Edge bis zur Cloud skalierbar sind.
+  tiles:
+  - title: Apache Kafka-Lösungen
+    links:
+    - title: Apache Kafka-Workloads mit NetApp NFS-Speicher
+      url: kafka-nfs-introduction.html
+    - title: Confluent Kafka mit NetApp ONTAP -Speichercontrollern
+      url: kafka-ontap-overview.html
+    - title: Best Practices für Confluent Kafka
+      url: confluent-kafka-introduction.html
+    - title: Kafka-Leistungsvalidierung mit AWS
+      url: kafka-nfs-perf-aws-fsxn.html
+    - title: Warum NetApp NFS für Kafka-Workloads?
+      url: kafka-nfs-why-netapp.html
+  - title: Apache Spark- und Hadoop-Lösungen
+    links:
+    - title: NetApp Storage-Lösungen für Apache Spark
+      url: apache-spark-solution-overview.html
+    - title: Bereitstellen von Apache Spark-Workloads mit NetApp -Speicher
+      url: nva-1157-deploy.html
+    - title: NetApp Hybrid Cloud-Datenlösungen für Spark und Hadoop
+      url: hdcs-sh-solution-overview.html
+    - title: Anwendungsfälle und Architekturen
+      url: spark-ai-use-cases.html
+    - title: Apache Spark-Testergebnisse
+      url: apache-spark-testing-results.html
+  - title: Cloud-Datenmanagement und KI
+    links:
+    - title: Cloud-Datenmanagement mit NetApp File-Object Duality und AWS SageMaker
+      url: cdm-fod-solution-overview.html
+    - title: 'Big Data Analytics: Daten zur künstlichen Intelligenz'
+      url: bda-ai-introduction.html
+    - title: Amazon FSx for NetApp ONTAP für MLOps
+      url: "../cloud/ai-mlops-fsxn-intro.html"
+    - title: Apache Spark Hybrid Cloud-Lösung
+      url: spark-hybrid-cloud.html
+  - title: Moderne Data Lake- und Analyseplattformen
+    links:
+    - title: Die hybride Iceberg-Lakehouse-Lösung der nächsten Generation von NetApp
+        und Dremio
+      url: dremio-lakehouse-introduction.html
+    - title: NetApp StorageGRID mit Splunk SmartStore
+      url: stgr-splunkss-introduction.html
+    - title: NetApp E-Series E5700 und Splunk Enterprise
+      url: tr-4623.html
+  - title: Zusätzliche Ressourcen
+    links:
+    - title: Unterschiedliche Lösungen für unterschiedliche Analysestrategien
+      url: sb-4154.html
+    - title: 'Blog: Apache Spark spielt im NetApp Data Analytics Playground'
+      url: https://www.netapp.com/blog/apache-spark-data-analytics/
+    - title: 'Blog: Verwenden Sie XCP für die Datenmigration von einem Data Lake und
+        HPC zu ONTAP NFS'
+      url: https://www.netapp.com/blog/data-migration-xcp/
+    - title: 'NetApp TV: Playlist zur Big Data-Analyse'
+      url: https://youtube.com/playlist?list=PLdXI3bZJEw7l8oFkYC_umsBaBX3hqK3Oq

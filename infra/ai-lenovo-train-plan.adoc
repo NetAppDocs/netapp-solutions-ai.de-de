@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-train-plan.html 
+keywords: test plan, validation, image recognition training, processes 
+summary: Bei dieser Validierung haben wir ein Bilderkennungstraining gemäß MLPerf v2.0 durchgeführt.  Insbesondere haben wir das ResNet v2.0-Modell mit dem ImageNet-Datensatz trainiert.  Die wichtigste Messgröße ist die Zeit, die benötigt wird, um die gewünschte Genauigkeit zu erreichen.  Wir geben auch die Trainingsbandbreite in Bildern pro Sekunde an, um die Skalierungseffizienz besser beurteilen zu können. 
+---
+= Testplan
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei dieser Validierung haben wir ein Bilderkennungstraining gemäß MLPerf v2.0 durchgeführt.  Insbesondere haben wir das ResNet v2.0-Modell mit dem ImageNet-Datensatz trainiert, bis wir eine Genauigkeit von 76,1 % erreichten.  Die wichtigste Messgröße ist die Zeit, die benötigt wird, um die gewünschte Genauigkeit zu erreichen.  Wir geben auch die Trainingsbandbreite in Bildern pro Sekunde an, um die Skalierungseffizienz besser beurteilen zu können.
+
+Der primäre Testfall bewertete mehrere unabhängige Trainingsprozesse (einer pro Knoten), die gleichzeitig ausgeführt wurden.  Dies simuliert den Hauptanwendungsfall, ein gemeinsam genutztes System, das von mehreren Datenwissenschaftlern verwendet wird.  Im zweiten Testfall wurde die Scale-Out-Effizienz bewertet.

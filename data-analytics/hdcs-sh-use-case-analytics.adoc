@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/hdcs-sh-use-case-analytics.html 
+keywords: analytics platform, nfs, hadoop, jbod, monte carlo 
+summary: In diesem Szenario wurde die Analyseplattform einer großen Finanzdienstleistungs- und Investmentbank mithilfe der NetApp NFS-Speicherlösung modernisiert, um eine deutliche Verbesserung bei der Analyse von Anlagerisiken und Derivaten für ihre Vermögensverwaltungs- und quantitative Geschäftseinheit zu erreichen. 
+---
+= Anwendungsfall 5: Beschleunigen analytischer Workloads
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Szenario wurde die Analyseplattform einer großen Finanzdienstleistungs- und Investmentbank mithilfe der NetApp NFS-Speicherlösung modernisiert, um eine deutliche Verbesserung bei der Analyse von Anlagerisiken und Derivaten für ihre Vermögensverwaltungs- und quantitative Geschäftseinheit zu erreichen.
+
+
+
+== Szenario
+
+In der bestehenden Umgebung des Kunden nutzte die für die Analyseplattform verwendete Hadoop-Infrastruktur den internen Speicher der Hadoop-Server.  Aufgrund der proprietären Natur der JBOD-Umgebung konnten viele interne Kunden innerhalb der Organisation ihr quantitatives Monte-Carlo-Modell nicht nutzen, eine Simulation, die auf wiederkehrenden Stichproben von Echtzeitdaten basiert.  Die unzureichende Fähigkeit, die Auswirkungen der Unsicherheit bei Marktbewegungen zu verstehen, wirkte sich nachteilig auf die Geschäftseinheit für quantitatives Asset Management aus.
+
+
+
+== Anforderungen und Herausforderungen
+
+Die quantitative Geschäftseinheit der Bank wollte eine effiziente Prognosemethode, um genaue und zeitnahe Vorhersagen zu erzielen.  Um dies zu erreichen, erkannte das Team die Notwendigkeit, die Infrastruktur zu modernisieren, die bestehende E/A-Wartezeit zu reduzieren und die Leistung der Analyseanwendungen wie Hadoop und Spark zu verbessern, um Investitionsmodelle effizient zu simulieren, potenzielle Gewinne zu messen und Risiken zu analysieren.
+
+
+
+== Lösung
+
+Der Kunde hatte JBOD für seine bestehende Spark-Lösung.  NetApp ONTAP, NetApp StorageGRID und MinIO Gateway to NFS wurden dann genutzt, um die E/A-Wartezeit für die quantitative Finanzgruppe der Bank zu reduzieren, die Simulationen und Analysen von Investitionsmodellen durchführt, um potenzielle Gewinne und Risiken zu bewerten.  Dieses Bild zeigt die Spark-Lösung mit NetApp -Speicher.
+
+image:hdcs-sh-013.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Wie in der Abbildung oben gezeigt, wurden AFF A800 und A700-Systeme sowie StorageGRID bereitgestellt, um über NFS- und S3-Protokolle in einem Hadoop-Cluster mit sechs Knoten mit Spark sowie YARN- und Hive-Metadatendiensten für Datenanalysevorgänge auf Parquet-Dateien zuzugreifen.
+
+Eine Direct-Attached-Storage-Lösung (DAS) in der alten Umgebung des Kunden hatte den Nachteil, dass Rechenleistung und Speicher unabhängig voneinander skaliert werden mussten.  Mit der NetApp ONTAP -Lösung für Spark konnte die Geschäftseinheit für Finanzanalysen der Bank Speicher und Rechenleistung entkoppeln und Infrastrukturressourcen bei Bedarf nahtlos und effektiver bereitstellen.
+
+Durch die Verwendung von ONTAP mit NFS wurden die CPUs des Compute-Servers für Spark SQL-Jobs fast vollständig genutzt und die E/A-Wartezeit um fast 70 % reduziert, was zu einer besseren Rechenleistung und Leistungssteigerung für Spark-Workloads führte.  Durch die anschließende Erhöhung der CPU-Auslastung konnte der Kunde auch GPUs wie GPUDirect für eine weitere Modernisierung der Plattform nutzen.  Darüber hinaus bietet StorageGRID eine kostengünstige Speicheroption für Spark-Workloads und MinIO Gateway bietet sicheren Zugriff auf NFS-Daten über das S3-Protokoll.  Für Daten in der Cloud empfiehlt NetApp Cloud Volumes ONTAP, Azure NetApp Files und Google Cloud NetApp Volumes.

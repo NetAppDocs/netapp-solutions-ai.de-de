@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: software/ai-conf-protopia-conclusion.html 
+keywords: conclusion, ai inferencing, 
+summary: 'Daten existieren in drei Zuständen: im Ruhezustand, während der Übertragung und in der Berechnung.  Ein wichtiger Teil jedes KI-Inferenzdienstes sollte der Schutz der Daten vor Bedrohungen während des gesamten Prozesses sein.  Der Schutz der Daten während der Inferenz ist von entscheidender Bedeutung, da durch den Prozess private Informationen sowohl über externe Kunden als auch über das Unternehmen, das den Inferenzdienst bereitstellt, preisgegeben werden können.' 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Daten existieren in drei Zuständen: im Ruhezustand, während der Übertragung und in der Berechnung.  Ein wichtiger Teil jedes KI-Inferenzdienstes sollte der Schutz der Daten vor Bedrohungen während des gesamten Prozesses sein.  Der Schutz der Daten während der Inferenz ist von entscheidender Bedeutung, da durch den Prozess private Informationen sowohl über externe Kunden als auch über das Unternehmen, das den Inferenzdienst bereitstellt, preisgegeben werden können.  Protopia AI ist eine unaufdringliche reine Softwarelösung für vertrauliche KI-Inferenz auf dem heutigen Markt.  Mit Protopia erhält die KI nur die transformierten Informationen in den Datensätzen, die für die Ausführung der vorliegenden KI/ML-Aufgabe wesentlich sind, und nichts weiter.  Diese stochastische Transformation ist keine Form der Maskierung und basiert auf der mathematischen Änderung der Datendarstellung durch die Verwendung kuratierten Rauschens.
+
+NetApp Storage-Systeme mit ONTAP -Funktionen bieten die gleiche oder eine bessere Leistung als lokaler SSD-Speicher und bieten in Kombination mit dem NetApp DataOps Toolkit die folgenden Vorteile für Datenwissenschaftler, Dateningenieure, KI/ML-Entwickler und IT-Entscheidungsträger in Unternehmen oder Großunternehmen:
+
+* Müheloses Teilen von Daten zwischen KI-Systemen, Analysen und anderen wichtigen Geschäftssystemen.  Diese gemeinsame Datennutzung reduziert den Infrastrukturaufwand, verbessert die Leistung und rationalisiert die Datenverwaltung im gesamten Unternehmen.
+* Unabhängig skalierbare Rechenleistung und Speicherung zur Minimierung der Kosten und Verbesserung der Ressourcennutzung.
+* Optimierte Entwicklungs- und Bereitstellungs-Workflows durch integrierte Snapshot-Kopien und -Klone für sofortige und platzsparende Benutzerarbeitsbereiche, integrierte Versionskontrolle und automatisierte Bereitstellung.
+* Unternehmensweiter Datenschutz und Datenverwaltung für Notfallwiederherstellung, Geschäftskontinuität und gesetzliche Anforderungen.
+* Vereinfachter Aufruf von Datenverwaltungsvorgängen; Erstellen Sie schnell Snapshot-Kopien von Data Scientist-Arbeitsbereichen zur Sicherung und Rückverfolgbarkeit vom NetApp DataOps Toolkit in Jupyter-Notebooks.
+
+
+Die Lösung von NetApp und Protopia bietet eine flexible, skalierbare Architektur, die sich ideal für KI-Inferenzbereitstellungen auf Unternehmensebene eignet.  Es ermöglicht Datenschutz und bietet Schutz für vertrauliche Informationen, wobei vertrauliche KI-Inferenzanforderungen mit verantwortungsvollen KI-Praktiken sowohl in lokalen als auch in hybriden Cloud-Bereitstellungen erfüllt werden können.

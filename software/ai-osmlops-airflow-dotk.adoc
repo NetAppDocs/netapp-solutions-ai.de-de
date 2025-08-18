@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: software/ai-osmlops-airflow-dotk.html 
+keywords: Apache Airflow 
+summary: Open Source MLOps mit NetApp – Verwenden Sie das NetApp DataOps Toolkit mit Airflow 
+---
+= Verwenden Sie das NetApp DataOps Toolkit mit Airflow
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der https://github.com/NetApp/netapp-dataops-toolkit/tree/main/netapp_dataops_k8s["NetApp DataOps Toolkit für Kubernetes"] kann in Verbindung mit Airflow verwendet werden.  Durch die Verwendung des NetApp DataOps Toolkit mit Airflow können Sie NetApp Datenverwaltungsvorgänge, wie das Erstellen von Snapshots und Klonen, in automatisierte Workflows integrieren, die von Airflow orchestriert werden.
+
+Weitere Informationen finden Sie im https://github.com/NetApp/netapp-dataops-toolkit/tree/main/netapp_dataops_k8s/Examples/Airflow["Beispiele für Luftströme"] Weitere Informationen zur Verwendung des Toolkits mit Airflow finden Sie im Abschnitt „NetApp DataOps Toolkit GitHub-Repository“.

@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-aipod-nv-sw.html 
+keywords: NetApp AI, AI, Artificial Intelligence, ML, Machine Learning, NVIDIA, NVIDIA AI Enterprise, NVIDIA BasePOD, NVIDIA DGX 
+summary: NetApp AIPod mit NVIDIA DGX-Systemen – Softwarekomponenten 
+---
+= NVA-1173 NetApp AIPod mit NVIDIA DGX-Systemen – Softwarekomponenten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt konzentriert sich auf die Softwarekomponenten des NetApp AIPod mit NVIDIA DGX-Systemen.
+
+
+
+== NVIDIA -Software
+
+
+
+=== NVIDIA Basisbefehl
+
+NVIDIA Base Command™ treibt jeden DGX BasePOD an und ermöglicht es Unternehmen, das Beste der NVIDIA -Softwareinnovation zu nutzen.  Unternehmen können das volle Potenzial ihrer Investition mit einer bewährten Plattform ausschöpfen, die Orchestrierung und Clusterverwaltung auf Unternehmensniveau, Bibliotheken zur Beschleunigung der Rechen-, Speicher- und Netzwerkinfrastruktur sowie ein für KI-Workloads optimiertes Betriebssystem (OS) umfasst.
+
+_NVIDIA BaseCommand-Lösung_
+
+image:aipod-nv-basecommand-new.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+=== NVIDIA GPU Cloud (NGC)
+
+NVIDIA NGC bietet Software, die den Anforderungen von Datenwissenschaftlern, Entwicklern und Forschern mit unterschiedlichem KI-Fachwissen gerecht wird.  Auf NGC gehostete Software wird auf einen aggregierten Satz gängiger Schwachstellen und Gefährdungen (CVEs), Kryptografie und privater Schlüssel geprüft.  Es ist für die Skalierung auf mehrere GPUs und in vielen Fällen auf mehrere Knoten getestet und konzipiert, um sicherzustellen, dass Benutzer ihre Investition in DGX-Systeme maximieren.
+
+_NVIDIA GPU Cloud_
+
+image:aipod-nv-ngc.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+=== NVIDIA AI Enterprise
+
+NVIDIA AI Enterprise ist die End-to-End-Softwareplattform, die generative KI für jedes Unternehmen erreichbar macht und die schnellste und effizienteste Laufzeit für generative KI-Basismodelle bietet, die für die Ausführung auf der NVIDIA DGX-Plattform optimiert sind.  Mit produktionsreifer Sicherheit, Stabilität und Verwaltbarkeit rationalisiert es die Entwicklung generativer KI-Lösungen.  NVIDIA AI Enterprise ist in DGX BasePOD enthalten, damit Unternehmensentwickler auf vortrainierte Modelle, optimierte Frameworks, Microservices, beschleunigte Bibliotheken und Unternehmenssupport zugreifen können.
+
+
+
+== NetApp Software
+
+
+
+=== NetApp ONTAP
+
+ONTAP 9, die neueste Generation der Speicherverwaltungssoftware von NetApp, ermöglicht Unternehmen die Modernisierung ihrer Infrastruktur und den Übergang zu einem Cloud-fähigen Rechenzentrum.  Durch die Nutzung branchenführender Datenverwaltungsfunktionen ermöglicht ONTAP die Verwaltung und den Schutz von Daten mit einem einzigen Satz von Tools, unabhängig davon, wo sich diese Daten befinden.  Sie können Daten auch frei dorthin verschieben, wo sie benötigt werden: an den Rand, in den Kern oder in die Cloud.  ONTAP 9 umfasst zahlreiche Funktionen, die die Datenverwaltung vereinfachen, kritische Daten beschleunigen und schützen und Infrastrukturfunktionen der nächsten Generation in Hybrid-Cloud-Architekturen ermöglichen.
+
+
+
+==== Beschleunigen und schützen Sie Daten
+
+ONTAP bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese Funktionen auf folgende Weise:
+
+* Leistung und geringere Latenz.  ONTAP bietet den höchstmöglichen Durchsatz bei der geringstmöglichen Latenz, einschließlich Unterstützung für NVIDIA GPUDirect Storage (GDS) mit NFS über RDMA, parallelem NFS (pNFS) und NFS-Sitzungs-Trunking.
+* Datenschutz.  ONTAP bietet integrierte Datenschutzfunktionen und die branchenweit stärkste Anti-Ransomware-Garantie mit gemeinsamer Verwaltung über alle Plattformen hinweg.
+* NetApp Volume Encryption (NVE).  ONTAP bietet native Verschlüsselung auf Volume-Ebene mit Unterstützung für integriertes und externes Schlüsselmanagement.
+* Mandantenfähigkeit der Speicherung und Multifaktor-Authentifizierung.  ONTAP ermöglicht die gemeinsame Nutzung von Infrastrukturressourcen mit höchster Sicherheit.
+
+
+
+
+==== Vereinfachen Sie die Datenverwaltung
+
+Das Datenmanagement ist für den IT-Betrieb in Unternehmen und für Datenwissenschaftler von entscheidender Bedeutung, damit für KI-Anwendungen und das Training von KI/ML-Datensätzen die richtigen Ressourcen verwendet werden.  Die folgenden zusätzlichen Informationen zu NetApp -Technologien fallen nicht in den Geltungsbereich dieser Validierung, können jedoch je nach Bereitstellung relevant sein.
+
+Die ONTAP Datenmanagementsoftware umfasst die folgenden Funktionen zur Optimierung und Vereinfachung von Abläufen und zur Senkung Ihrer Gesamtbetriebskosten:
+
+* Snapshots und Klone ermöglichen Zusammenarbeit, paralleles Experimentieren und verbesserte Datenverwaltung für ML/DL-Workflows.
+* SnapMirror ermöglicht eine nahtlose Datenbewegung in Hybrid-Cloud- und Multi-Site-Umgebungen und stellt Daten bereit, wo und wann sie benötigt werden.
+* Inline-Datenkomprimierung und erweiterte Deduplizierung.  Durch die Datenkomprimierung wird der verschwendete Speicherplatz in Speicherblöcken reduziert und durch die Deduplizierung wird die effektive Kapazität erheblich erhöht.  Dies gilt für lokal gespeicherte Daten und für in der Cloud gespeicherte Daten.
+* Minimale, maximale und adaptive Dienstqualität (AQoS).  Durch granulare Quality of Service (QoS)-Kontrollen wird die Aufrechterhaltung des Leistungsniveaus kritischer Anwendungen in Umgebungen mit hoher gemeinsamer Nutzung unterstützt.
+* NetApp FlexGroups ermöglichen die Verteilung von Daten auf alle Knoten im Speichercluster und bieten enorme Kapazität und höhere Leistung für extrem große Datensätze.
+* NetApp FabricPool.  Bietet automatisches Tiering von Cold Data für öffentliche und private Cloud-Speicheroptionen, einschließlich Amazon Web Services (AWS), Azure und der NetApp StorageGRID -Speicherlösung.  Weitere Informationen zu FabricPool finden Sie unter https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf["TR-4598: Best Practices für FabricPool"^] .
+* NetApp FlexCache.  Bietet Remote-Volume-Caching-Funktionen, die die Dateiverteilung vereinfachen, die WAN-Latenz reduzieren und die WAN-Bandbreitenkosten senken.  FlexCache ermöglicht die verteilte Produktentwicklung über mehrere Standorte hinweg sowie einen beschleunigten Zugriff auf Unternehmensdatensätze von entfernten Standorten aus.
+
+
+
+
+==== Zukunftssichere Infrastruktur
+
+ONTAP unterstützt Sie mit den folgenden Funktionen bei der Erfüllung anspruchsvoller und sich ständig ändernder Geschäftsanforderungen:
+
+* Nahtlose Skalierung und unterbrechungsfreier Betrieb.  ONTAP unterstützt die Online-Kapazitätserweiterung bestehender Controller und Scale-Out-Cluster.  Kunden können ohne kostspielige Datenmigrationen oder Ausfälle auf die neuesten Technologien wie NVMe und 32 GB FC upgraden.
+* Cloud-Verbindung.  ONTAP ist die Speicherverwaltungssoftware mit der stärksten Cloud-Anbindung und bietet Optionen für softwaredefinierten Speicher (ONTAP Select) und Cloud-native Instanzen (Google Cloud NetApp Volumes) in allen öffentlichen Clouds.
+* Integration mit neuen Anwendungen.  ONTAP bietet Datendienste der Enterprise-Klasse für Plattformen und Anwendungen der nächsten Generation, wie etwa autonome Fahrzeuge, Smart Cities und Industrie 4.0, und nutzt dabei dieselbe Infrastruktur, die auch bestehende Unternehmens-Apps unterstützt.
+
+
+
+
+=== NetApp DataOps Toolkit
+
+Das NetApp DataOps Toolkit ist ein Python-basiertes Tool, das die Verwaltung von Entwicklungs-/Schulungsarbeitsbereichen und Inferenzservern vereinfacht, die durch leistungsstarken, skalierbaren NetApp -Speicher unterstützt werden.  Das DataOps Toolkit kann als eigenständiges Dienstprogramm betrieben werden und ist in Kubernetes-Umgebungen, in denen NetApp Trident zur Automatisierung von Speichervorgängen genutzt wird, noch effektiver.  Zu den wichtigsten Funktionen gehören:
+
+* Stellen Sie schnell neue JupyterLab-Arbeitsbereiche mit hoher Kapazität bereit, die durch leistungsstarken, skalierbaren NetApp Speicher unterstützt werden.
+* Stellen Sie schnell neue NVIDIA Triton Inference Server-Instanzen bereit, die durch NetApp -Speicher der Enterprise-Klasse unterstützt werden.
+* Nahezu sofortiges Klonen von JupyterLab-Arbeitsbereichen mit hoher Kapazität, um Experimente oder schnelle Iterationen zu ermöglichen.
+* Nahezu sofortige Snapshots von JupyterLab-Arbeitsbereichen mit hoher Kapazität für Backups und/oder Rückverfolgbarkeit/Baselining.
+* Nahezu sofortige Bereitstellung, Klonen und Snapshots von Datenvolumes mit hoher Kapazität und hoher Leistung.
+
+
+
+
+=== NetApp Trident
+
+Trident ist ein vollständig unterstützter Open-Source-Speicherorchestrator für Container und Kubernetes-Distributionen, einschließlich Anthos. Trident funktioniert mit dem gesamten NetApp -Speicherportfolio, einschließlich NetApp ONTAP, und unterstützt auch NFS-, NVMe/TCP- und iSCSI-Verbindungen. Trident beschleunigt den DevOps-Workflow, indem es Endbenutzern ermöglicht, Speicher von ihren NetApp -Speichersystemen bereitzustellen und zu verwalten, ohne dass ein Speicheradministrator eingreifen muss.

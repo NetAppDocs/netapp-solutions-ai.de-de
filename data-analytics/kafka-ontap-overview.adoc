@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-ontap-overview.html 
+keywords: tr4941, 4941, introduction 
+summary: Dieses Dokument beschreibt Leistungsbenchmarks für die Confluent-Plattform auf NetApp ONTAP unter Verwendung eines Tiered Storage-Benchmarking-Kits. 
+---
+= TR-4941: Konfluent mit NetApp ONTAP -Speichercontrollern
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, Joe Scott, NetApp Rankesh Kumar, Confluent
+
+[role="lead"]
+Um die Confluent-Plattform skalierbarer und elastischer zu machen, muss sie in der Lage sein, Arbeitslasten sehr schnell zu skalieren und auszugleichen.  Durch die Reduzierung dieses Betriebsaufwands wird die Speicherung großer Datenmengen in Confluent durch mehrstufige Speicherung handhabbar.
+
+Die Grundidee besteht darin, die Datenspeicherung von der Datenverarbeitung zu trennen, wodurch eine unabhängige Skalierung beider Bereiche wesentlich einfacher wird.
+
+Die mit branchenführenden Innovationen ausgestattete NetApp ONTAP Datenverwaltungssoftware bietet Confluent viele Vorteile, egal wo sich die Daten befinden.
+
+Dieses Dokument beschreibt Leistungsbenchmarks für die Confluent-Plattform auf NetApp ONTAP unter Verwendung eines Tiered Storage-Benchmarking-Kits.

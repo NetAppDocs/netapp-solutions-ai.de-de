@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/bda-ai-data-mover.html 
+keywords: data mover, ai, hadoop, nipam, nfs, azure, 
+summary: Die Data Mover-Lösung für KI basiert auf den Anforderungen der Kunden, Hadoop-Daten aus KI-Operationen zu verarbeiten.  NetApp verschiebt Daten mithilfe von NIPAM von HDFS nach NFS.  In einem Anwendungsfall musste der Kunde Daten vor Ort in NFS verschieben und ein anderer Kunde musste Daten vom Windows Azure Storage Blob in Google Cloud NetApp Volumes verschieben, um die Daten von den GPU-Cloud-Instanzen in der Cloud zu verarbeiten. 
+---
+= Data Mover-Lösung für KI
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Data Mover-Lösung für KI basiert auf den Anforderungen der Kunden, Hadoop-Daten aus KI-Operationen zu verarbeiten.  NetApp verschiebt Daten mithilfe von NIPAM von HDFS nach NFS.  In einem Anwendungsfall musste der Kunde Daten vor Ort in NFS verschieben und ein anderer Kunde musste Daten vom Windows Azure Storage Blob in Google Cloud NetApp Volumes verschieben, um die Daten von den GPU-Cloud-Instanzen in der Cloud zu verarbeiten.
+
+Das folgende Diagramm veranschaulicht die Details der Data Mover-Lösung.
+
+image:bda-ai-004.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Zum Erstellen der Data Mover-Lösung sind folgende Schritte erforderlich:
+
+. ONTAP SAN stellt HDFS bereit und NAS stellt das NFS-Volume über NIPAM für den Produktions-Data-Lake-Cluster bereit.
+. Die Daten des Kunden liegen in HDFS und NFS.  Bei den NFS-Daten kann es sich um Produktionsdaten aus anderen Anwendungen handeln, die für Big Data-Analysen und KI-Operationen verwendet werden.
+. Die NetApp FlexClone -Technologie erstellt einen Klon des Produktions-NFS-Volumes und stellt ihn dem KI-Cluster vor Ort bereit.
+. Daten aus einem HDFS SAN LUN werden mit NIPAM in ein NFS-Volume kopiert und die `hadoop distcp` Befehl.  NIPAM nutzt die Bandbreite mehrerer Netzwerkschnittstellen zur Datenübertragung.  Dieser Vorgang verkürzt die Datenkopierzeit, sodass mehr Daten übertragen werden können.
+. Beide NFS-Volumes werden dem AI-Cluster für AI-Operationen bereitgestellt.
+. Um lokale NFS-Daten mit GPUs in der Cloud zu verarbeiten, werden die NFS-Volumes mit der NetApp SnapMirror -Technologie auf NetApp Private Storage (NPS) gespiegelt und bei Cloud-Service-Providern für GPUs bereitgestellt.
+. Der Kunde möchte Daten in EC2/EMR-, HDInsight- oder DataProc-Diensten in GPUs von Cloud-Dienstanbietern verarbeiten.  Der Hadoop Data Mover verschiebt die Daten von Hadoop-Diensten in die Google Cloud NetApp Volumes mit NIPAM und dem `hadoop distcp` Befehl.
+. Die Google Cloud NetApp Volumes Daten werden der KI über das NFS-Protokoll bereitgestellt. Über die KI verarbeitete Daten können zusätzlich zum NVIDIA Cluster über NIPAM, SnapMirror und NPS an einen lokalen Standort für Big Data-Analysen gesendet werden.
+
+
+In diesem Szenario verfügt der Kunde über eine große Anzahl von Dateidaten im NAS-System an einem Remote-Standort, die für die KI-Verarbeitung auf dem NetApp Speichercontroller vor Ort benötigt werden.  In diesem Szenario ist es besser, das XCP-Migrationstool zu verwenden, um die Daten schneller zu migrieren.
+
+Der Kunde mit Hybridanwendungsfall kann BlueXP Copy and Sync verwenden, um lokale Daten von NFS-, CIFS- und S3-Daten in die Cloud und umgekehrt zu migrieren, um sie für die KI-Verarbeitung mithilfe von GPUs wie denen in einem NVIDIA Cluster zu verwenden.  Für die NFS-Datenmigration zu NetApp ONTAP NFS werden sowohl BlueXP Copy and Sync als auch das XCP Migration Tool verwendet.

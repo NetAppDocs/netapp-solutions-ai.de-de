@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/nva-1157-deploy.html 
+keywords:  
+summary:  
+---
+= NVA-1157-DEPLOY: Apache Spark-Workload mit NetApp Speicherlösung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+[role="lead"]
+NVA-1157-DEPLOY beschreibt die Leistungs- und Funktionsvalidierung von Apache Spark SQL auf NetApp NFS AFF Speichersystemen.  Es werden Konfiguration, Architektur und Leistungstests anhand verschiedener Szenarien überprüft und Empfehlungen zur Verwendung von Spark mit der NetApp ONTAP Datenverwaltungssoftware gegeben.  Es umfasst auch Testergebnisse, die auf nur einer Reihe von Festplatten (JBOD) im Vergleich zum NetApp AFF A800 Speichercontroller basieren.
+
+link:https://www.netapp.com/pdf.html?item=/media/26877-nva-1157-deploy.pdf["NVA-1157-DEPLOY: Apache Spark-Workload mit NetApp Speicherlösung"^]

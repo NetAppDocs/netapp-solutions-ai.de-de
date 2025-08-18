@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-results.html 
+keywords: test, results, aff, offline, single-stream, ef 
+summary: 'Um die Leistung der vorgeschlagenen Architektur zu bewerten, wurden zahlreiche Tests durchgeführt.  Es gibt sechs verschiedene Workloads (Bildklassifizierung, Objekterkennung [klein], Objekterkennung [groß], medizinische Bildgebung, Sprache-zu-Text und natürliche Sprachverarbeitung [NLP]), die Sie in drei verschiedenen Szenarien ausführen können – offline, Single-Stream und Multistream.' 
+---
+= Testergebnisse
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um die Leistung der vorgeschlagenen Architektur zu bewerten, wurden zahlreiche Tests durchgeführt.
+
+Es gibt sechs verschiedene Workloads (Bildklassifizierung, Objekterkennung [klein], Objekterkennung [groß], medizinische Bildgebung, Sprache-zu-Text und natürliche Sprachverarbeitung [NLP]), die Sie in drei verschiedenen Szenarien ausführen können: offline, Einzelstream und Multistream.
+
+
+NOTE: Das letzte Szenario wird nur für die Bildklassifizierung und Objekterkennung implementiert.
+
+Daraus ergeben sich 15 mögliche Workloads, die alle unter drei verschiedenen Setups getestet wurden:
+
+* Einzelserver/lokaler Speicher
+* Einzelserver/Netzwerkspeicher
+* Multiserver-/Netzwerkspeicher
+
+
+Die Ergebnisse werden in den folgenden Abschnitten beschrieben.
+
+
+
+== KI-Inferenz im Offline-Szenario für AFF
+
+In diesem Szenario standen dem Server alle Daten zur Verfügung und es wurde die Zeit gemessen, die für die Verarbeitung aller Proben benötigt wurde.  Als Ergebnisse der Tests geben wir Bandbreiten in Samples pro Sekunde an.  Wenn mehr als ein Rechenserver verwendet wurde, geben wir die Gesamtbandbreite aller Server an.  Die Ergebnisse für alle drei Anwendungsfälle sind in der folgenden Abbildung dargestellt.  Für den Fall mit zwei Servern melden wir die kombinierte Bandbreite beider Server.
+
+image:ai-edge-012.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Ergebnisse zeigen, dass sich der Netzwerkspeicher nicht negativ auf die Leistung auswirkt – die Änderung ist minimal und bei einigen Aufgaben wird keine Änderung festgestellt.  Beim Hinzufügen des zweiten Servers verdoppelt sich die Gesamtbandbreite entweder genau oder die Änderung beträgt im schlimmsten Fall weniger als 1 %.
+
+
+
+== KI-Inferenz in einem Single-Stream-Szenario für AFF
+
+Dieser Benchmark misst die Latenz.  Für den Fall mehrerer Rechenserver geben wir die durchschnittliche Latenz an.  Die Ergebnisse für die Aufgabenreihe sind in der folgenden Abbildung dargestellt.  Für den Fall mit zwei Servern geben wir die durchschnittliche Latenz beider Server an.
+
+image:ai-edge-013.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Ergebnisse zeigen erneut, dass der Netzwerkspeicher zur Bewältigung der Aufgaben ausreicht.  Der Unterschied zwischen lokalem und Netzwerkspeicher ist im Fall eines Servers minimal oder nicht vorhanden.  Wenn zwei Server denselben Speicher verwenden, bleibt die Latenz auf beiden Servern gleich oder ändert sich nur geringfügig.
+
+
+
+== KI-Inferenz im Multistream-Szenario für AFF
+
+In diesem Fall ist das Ergebnis die Anzahl der Streams, die das System verarbeiten kann, während die QoS-Einschränkung eingehalten wird.  Das Ergebnis ist also immer eine Ganzzahl.  Bei mehr als einem Server geben wir die Gesamtzahl der Streams aller Server an.  Dieses Szenario wird nicht von allen Workloads unterstützt, wir haben jedoch die entsprechenden Workloads ausgeführt. Die Ergebnisse unserer Tests sind in der folgenden Abbildung zusammengefasst.  Im Fall mit zwei Servern melden wir die kombinierte Anzahl der Streams von beiden Servern.
+
+image:ai-edge-014.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Ergebnisse zeigen eine perfekte Leistung des Setups – lokaler und Netzwerkspeicher liefern die gleichen Ergebnisse und durch Hinzufügen des zweiten Servers verdoppelt sich die Anzahl der Streams, die das vorgeschlagene Setup verarbeiten kann.
+
+
+
+== Testergebnisse für EF
+
+Um die Leistung der vorgeschlagenen Architektur zu bewerten, wurden zahlreiche Tests durchgeführt.  Es gibt sechs verschiedene Workloads (Bildklassifizierung, Objekterkennung [klein], Objekterkennung [groß], medizinische Bildgebung, Sprache-zu-Text und natürliche Sprachverarbeitung [NLP]), die in zwei verschiedenen Szenarien ausgeführt wurden: offline und Einzelstream.  Die Ergebnisse werden in den folgenden Abschnitten beschrieben.
+
+
+
+=== KI-Inferenz im Offline-Szenario für EF
+
+In diesem Szenario standen dem Server alle Daten zur Verfügung und es wurde die Zeit gemessen, die für die Verarbeitung aller Proben benötigt wurde.  Als Ergebnisse der Tests geben wir Bandbreiten in Samples pro Sekunde an.  Bei Läufen mit einem einzelnen Knoten geben wir den Durchschnitt beider Server an, während wir bei Läufen mit zwei Servern die Gesamtbandbreite aller Server angeben.  Die Ergebnisse für Anwendungsfälle sind in der folgenden Abbildung dargestellt.
+
+image:ai-edge-015.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Ergebnisse zeigen, dass sich der Netzwerkspeicher nicht negativ auf die Leistung auswirkt – die Änderung ist minimal und bei einigen Aufgaben wird keine Änderung festgestellt.  Beim Hinzufügen des zweiten Servers verdoppelt sich die Gesamtbandbreite entweder genau oder die Änderung beträgt im schlimmsten Fall weniger als 1 %.
+
+
+
+=== KI-Inferenz in einem Single-Stream-Szenario für EF
+
+Dieser Benchmark misst die Latenz.  Für alle Fälle geben wir die durchschnittliche Latenz aller an den Läufen beteiligten Server an.  Die Ergebnisse für die Aufgabenreihe werden angegeben.
+
+image:ai-edge-016.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Ergebnisse zeigen erneut, dass der Netzwerkspeicher zur Bewältigung der Aufgaben ausreicht.  Der Unterschied zwischen dem lokalen und dem Netzwerkspeicher ist im Fall eines Servers minimal oder nicht vorhanden.  Wenn zwei Server denselben Speicher verwenden, bleibt die Latenz auf beiden Servern gleich oder ändert sich nur geringfügig.

@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: vector-db/ai-vdb-intro.html 
+keywords: vector database 
+summary: Einführung in die Vektordatenbanklösung für NetApp 
+---
+= Einführung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt bietet eine Einführung in die Vektordatenbanklösung für NetApp.
+
+
+
+== Einführung
+
+Vektordatenbanken bewältigen effektiv die Herausforderungen, die für die Bewältigung der Komplexität der semantischen Suche in Large Language Models (LLMs) und generativer künstlicher Intelligenz (KI) entwickelt wurden.  Im Gegensatz zu herkömmlichen Datenverwaltungssystemen können Vektordatenbanken verschiedene Datentypen verarbeiten und durchsuchen, darunter Bilder, Videos, Text, Audio und andere Formen unstrukturierter Daten, indem sie den Inhalt der Daten selbst und nicht Beschriftungen oder Tags verwenden.
+
+Die Einschränkungen relationaler Datenbankmanagementsysteme (RDBMS) sind gut dokumentiert, insbesondere ihre Probleme mit hochdimensionalen Datendarstellungen und unstrukturierten Daten, die in KI-Anwendungen üblich sind.  RDBMS erfordern häufig einen zeitaufwändigen und fehleranfälligen Prozess zur Vereinfachung der Daten in besser handhabbare Strukturen, was zu Verzögerungen und Ineffizienzen bei der Suche führt.  Vektordatenbanken sind jedoch darauf ausgelegt, diese Probleme zu umgehen. Sie bieten eine effizientere und genauere Lösung für die Verwaltung und Suche in komplexen und hochdimensionalen Daten und erleichtern so die Weiterentwicklung von KI-Anwendungen.
+
+Dieses Dokument dient als umfassender Leitfaden für Kunden, die derzeit Vektordatenbanken verwenden oder dies planen. Es beschreibt die Best Practices für die Verwendung von Vektordatenbanken auf Plattformen wie NetApp ONTAP, NetApp StorageGRID, Amazon FSx ONTAP für NetApp ONTAP und SnapCenter.  Die hier bereitgestellten Inhalte decken eine Reihe von Themen ab:
+
+* Infrastrukturrichtlinien für Vektordatenbanken wie Milvus, bereitgestellt von NetApp Storage über NetApp ONTAP und StorageGRID Objektspeicher.
+* Validierung der Milvus-Datenbank in AWS FSx ONTAP durch Datei- und Objektspeicher.
+* Befasst sich eingehend mit der Datei-Objekt-Dualität von NetApp und demonstriert deren Nutzen für Daten in Vektordatenbanken sowie anderen Anwendungen.
+* So bietet SnapCenter, das Data Protection Management-Produkt von NetApp, Sicherungs- und Wiederherstellungsfunktionen für Vektordatenbankdaten.
+* So bietet die Hybrid Cloud von NetApp Datenreplikation und -schutz in lokalen und Cloud-Umgebungen.
+* Bietet Einblicke in die Leistungsvalidierung von Vektordatenbanken wie Milvus und pgvector auf NetApp ONTAP.
+* Zwei konkrete Anwendungsfälle: Retrieval Augmented Generation (RAG) mit Large Language Models (LLM) und ChatAI des NetApp IT-Teams, die praktische Beispiele für die beschriebenen Konzepte und Praktiken bieten.
+

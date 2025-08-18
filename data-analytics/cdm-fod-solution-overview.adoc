@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/cdm-fod-solution-overview.html 
+keywords: tr4967, 4967, introduction, overview 
+summary: Datenwissenschaftler und -ingenieure müssen häufig auf im NFS-Format gespeicherte Daten zugreifen. Der direkte Zugriff auf diese Daten über das S3-Protokoll in AWS SageMaker kann jedoch eine Herausforderung darstellen, da AWS nur den Zugriff auf S3-Buckets unterstützt.  NetApp ONTAP bietet jedoch eine Lösung, indem es den Dual-Protokoll-Zugriff für NFS und S3 ermöglicht.  Mit dieser Lösung können Datenwissenschaftler und Ingenieure über S3-Buckets von NetApp Cloud Volumes ONTAP auf NFS-Daten von AWS SageMaker-Notebooks zugreifen.  Dieser Ansatz ermöglicht den einfachen Zugriff und die gemeinsame Nutzung derselben Daten sowohl von NFS als auch von S3, ohne dass zusätzliche Software erforderlich ist. 
+---
+= TR-4967: Cloud-Datenverwaltung mit NetApp File-Object Duality und AWS SageMaker
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+[role="lead"]
+Datenwissenschaftler und -ingenieure müssen häufig auf im NFS-Format gespeicherte Daten zugreifen. Der direkte Zugriff auf diese Daten über das S3-Protokoll in AWS SageMaker kann jedoch eine Herausforderung darstellen, da AWS nur den Zugriff auf S3-Buckets unterstützt.  NetApp ONTAP bietet jedoch eine Lösung, indem es den Dual-Protokoll-Zugriff für NFS und S3 ermöglicht.  Mit dieser Lösung können Datenwissenschaftler und Ingenieure über S3-Buckets von NetApp Cloud Volumes ONTAP auf NFS-Daten von AWS SageMaker-Notebooks zugreifen.  Dieser Ansatz ermöglicht den einfachen Zugriff und die gemeinsame Nutzung derselben Daten sowohl von NFS als auch von S3, ohne dass zusätzliche Software erforderlich ist.

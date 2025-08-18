@@ -1,0 +1,74 @@
+---
+indexpage:
+  title: NetApp Lösungen für künstliche Intelligenz
+  summary: NetApp bietet umfassende KI-Lösungen, die Datenmanagement auf Unternehmensniveau,
+    validierte Referenzarchitekturen und strategische Partnerschaften kombinieren,
+    um Ihre KI-Initiativen zu beschleunigen und kritische Geschäftsergebnisse zu unterstützen.  Von
+    der Infrastrukturbereitstellung bis zur MLOps-Automatisierung lassen sich unsere
+    Lösungen nahtlos über Edge-, Rechenzentrums- und Hybrid-Cloud-Umgebungen skalieren.
+  lead: NetApp bietet umfassende KI-Lösungen, die Datenmanagement auf Unternehmensniveau,
+    validierte Referenzarchitekturen und strategische Partnerschaften kombinieren,
+    um Ihre KI-Initiativen zu beschleunigen und kritische Geschäftsergebnisse zu unterstützen.  Von
+    der Infrastrukturbereitstellung bis zur MLOps-Automatisierung lassen sich unsere
+    Lösungen nahtlos über Edge-, Rechenzentrums- und Hybrid-Cloud-Umgebungen skalieren.
+  tiles:
+  - title: Erste Schritte
+    links:
+    - title: Was ist neu
+      url: "/whats-new.html"
+    - title: Blogs
+      url: "/blogs.html"
+    - title: Videos und Demos
+      url: "/videos/ai-ml-videos.html"
+  - title: KI-Infrastruktur und konvergente Systeme
+    links:
+    - title: NetApp AIPod mit NVIDIA DGX-Systemen
+      url: "/infra/ai-aipod-nv-intro.html"
+    - title: NVIDIA DGX SuperPOD mit EF-Serie
+      url: "/infra/ai-eseries-superpod.html"
+    - title: NetApp AIPod mit Lenovo für NVIDIA OVX
+      url: "/infra/ai-aipod-lenovo-nva1172.html"
+    - title: BeeGFS-Paralleldateisystem mit E-Serie
+      url: "/infra/ai-eseries-beegfs.html"
+  - title: KI-Anwendungsfälle und -Anwendungen
+    links:
+    - title: AIPod Mini für RAG-Inferenz
+      url: "/infra/ai-minipod.html"
+    - title: KI-Inferenzierung am Edge
+      url: "/infra/ai-lenovo-edge-intro.html"
+    - title: Vector-Datenbanklösungen
+      url: "/vector-db/ai-vdb-solution-with-netapp.html"
+    - title: Arbeitsbelastung beim autonomen Fahren
+      url: "/infra/ai-storagegrid-datalake-adas.html"
+    - title: Quantum StorNext mit E-Serie
+      url: "/infra/ai-eseries-nva1150-design.html"
+  - title: MLOps und Datenmanagement
+    links:
+    - title: Open Source MLOps mit NetApp
+      url: "/software/ai-osmlops-intro.html"
+    - title: Hybride Multicloud-MLOps mit Domino Data Lab
+      url: "/software/ai-hybrid-ddlnexus-intro.html"
+    - title: FSx ONTAP für MLOps
+      url: "/cloud/ai-mlops-fsxn-intro.html"
+    - title: NetApp DataOps Toolkit
+      url: "/software/dataops-toolkit.html"
+  - title: Big Data und Hybrid Cloud-KI-Lösungen
+    links:
+    - title: Hybride Cloud-Datenlösungen
+      url: "/data-analytics/hdcs-sh-solution-overview.html"
+    - title: Apache Spark-Lösungen
+      url: "/data-analytics/apache-spark-solution-overview.html"
+    - title: Confluent Kafka mit NetApp ONTAP -Speicher
+      url: "/data-analytics/kafka-ontap-overview.html"
+    - title: NetApp StorageGRID mit Splunk SmartStore
+      url: "/data-analytics/stgr-splunkss-introduction.html"
+    - title: Dremio Lakehouse mit NetApp Speicher
+      url: "/data-analytics/dremio-lakehouse-introduction.html"
+  - title: Lösungsanfragen und Feedback
+    links:
+    - title: Automatisierung anfordern
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Automation]%0d%0a%0d%0aSolution%20Name:%20%0d%0aRequest%20Title:%20%0d%0aDescription:%0d%0aSuggestions:&title=Request%20Automation%20-%20%3Crequest_title%3E
+    - title: Schlagen Sie eine neue Lösung vor
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Request%20Solution]%0d%0a%0d%0aSolution%20Use%20Case:%20%0d%0aSolution%20Description:%20%0d%0aAdditional%20Comments:&title=Request%20Solution%20-%20%3Csolution%3E
+    - title: Geben Sie Feedback zur Lösung
+      url: https://github.com/NetAppDocs/netapp-solutions/issues/new?body=[Solution%20Feedback]%0d%0a%0d%0aSolution%20Name:%20%0d%0aSolution%20Feedback:%20%0d%0aAdditional%20Comments:&title=Solution%20Feedback%20-%20%3Csolution%3E

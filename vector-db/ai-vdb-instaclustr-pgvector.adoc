@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: vector-db/ai-vdb-instaclustr-pgvector.html 
+keywords: vector database 
+summary: instaclustr mit pgvector – Vektordatenbanklösung für NetApp 
+---
+= Vektordatenbank mit Instaclustr unter Verwendung von PostgreSQL: pgvector
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die Einzelheiten der Integration des Instaclustr-Produkts mit PostgreSQL über die Pgvector-Funktionalität in der Vektordatenbanklösung für NetApp erläutert.
+
+
+
+== Vektordatenbank mit Instaclustr unter Verwendung von PostgreSQL: pgvector
+
+In diesem Abschnitt gehen wir näher auf die Einzelheiten der Integration des Instaclustr-Produkts mit PostgreSQL auf der Grundlage der PgVector-Funktionalität ein.  Wir haben ein Beispiel für „So verbessern Sie die Genauigkeit und Leistung Ihres LLM mit PGVector und PostgreSQL: Einführung in Einbettungen und die Rolle von PGVector“.  Bitte überprüfen Sie dielink:https://www.instaclustr.com/blog/how-to-improve-your-llm-accuracy-and-performance-with-pgvector-and-postgresql-introduction-to-embeddings-and-the-role-of-pgvector/["Blog"] um weitere Informationen zu erhalten.

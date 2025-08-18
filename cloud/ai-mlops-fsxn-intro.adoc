@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: cloud/ai-mlops-fsxn-intro.html 
+keywords: FSx ONTAP, FSx ONTAP, AWS S3, SageMaker, MLOps, NetApp ONTAP 
+summary: Dies ist die Einführungsseite zum Abschnitt FSx ONTAP MLOps. 
+---
+= Amazon FSx for NetApp ONTAP (FSx ONTAP) für MLOps
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt befasst sich mit der praktischen Anwendung der Entwicklung von KI-Infrastrukturen und bietet eine umfassende Anleitung zum Erstellen einer MLOps-Pipeline mit FSx ONTAP.  Es umfasst drei umfassende Beispiele und führt Sie durch die Erfüllung Ihrer MLOps-Anforderungen mithilfe dieser leistungsstarken Datenverwaltungsplattform.
+
+Diese Artikel konzentrieren sich auf:
+
+. link:ai-mlops-fsxn-s3.html["Teil 1 – Integration von Amazon FSx for NetApp ONTAP (FSx ONTAP) als privater S3-Bucket in AWS SageMaker"]
+. link:ai-mlops-fsxn-sagemaker.html["Teil 2 – Nutzung von Amazon FSx for NetApp ONTAP (FSx ONTAP) als Datenquelle für das Modelltraining in SageMaker"]
+. link:ai-mlops-fsxn-cictcd.html["Teil 3 – Erstellen einer vereinfachten MLOps-Pipeline (CI/CT/CD)"]
+
+
+Am Ende dieses Abschnitts haben Sie ein solides Verständnis dafür erlangt, wie Sie FSx ONTAP zur Optimierung von MLOps-Prozessen verwenden können.

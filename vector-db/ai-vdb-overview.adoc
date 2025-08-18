@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: vector-db/ai-vdb-overview.html 
+keywords: Solution Overview vector database 
+summary: Lösungsübersicht zur Vector-Datenbanklösung für NetApp 
+---
+= Lösungsübersicht
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt bietet einen Überblick über die NetApp Vector-Datenbanklösung.
+
+
+
+== Lösungsübersicht
+
+Diese Lösung demonstriert die besonderen Vorteile und Fähigkeiten, die NetApp mitbringt, um die Herausforderungen zu bewältigen, vor denen Kunden von Vektordatenbanken stehen.  Durch die Nutzung von NetApp ONTAP, StorageGRID, den Cloud-Lösungen von NetApp und SnapCenter können Kunden ihren Geschäftsbetrieb erheblich aufwerten.  Diese Tools lösen nicht nur bestehende Probleme, sondern steigern auch die Effizienz und Produktivität und tragen so zum allgemeinen Unternehmenswachstum bei.
+
+
+
+=== Warum NetApp?
+
+* Die Angebote von NetApp, wie ONTAP und StorageGRID, ermöglichen die Trennung von Speicher und Rechenleistung und ermöglichen so eine optimale Ressourcennutzung basierend auf spezifischen Anforderungen.  Diese Flexibilität ermöglicht es Kunden, ihren Speicher mithilfe von NetApp Speicherlösungen unabhängig zu skalieren.
+* Durch die Nutzung der Speichercontroller von NetApp können Kunden mithilfe der Protokolle NFS und S3 effizient Daten an ihre Vektordatenbank übermitteln.  Diese Protokolle erleichtern die Speicherung von Kundendaten und verwalten den Vektordatenbankindex, sodass nicht mehr mehrere Kopien der Daten benötigt werden, auf die über Datei- und Objektmethoden zugegriffen wird.
+* NetApp ONTAP bietet native Unterstützung für NAS- und Objektspeicher bei führenden Cloud-Service-Anbietern wie AWS, Azure und Google Cloud.  Diese umfassende Kompatibilität gewährleistet eine nahtlose Integration und ermöglicht Kundendatenmobilität, globale Zugänglichkeit, Notfallwiederherstellung, dynamische Skalierbarkeit und hohe Leistung.
+* Dank der robusten Datenverwaltungsfunktionen von NetApp können Kunden sicher sein, dass ihre Daten gut vor potenziellen Risiken und Bedrohungen geschützt sind.  NetApp legt größten Wert auf Datensicherheit und bietet seinen Kunden die Gewissheit, dass ihre wertvollen Informationen sicher und intakt sind.
+

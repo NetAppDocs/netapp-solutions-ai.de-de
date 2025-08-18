@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-train-conclusion.html 
+keywords: acknowledgements, additional information 
+summary: Diese Lösung von NetApp und Lenovo ist eine flexible Scale-Out-Architektur, die sich ideal für den Einstieg in die KI mittlerer Unternehmensebene eignet.  NetApp -Speicher bietet die gleiche oder eine bessere Leistung als lokaler SSD-Speicher und bietet Datenwissenschaftlern, Dateningenieuren und IT-Entscheidungsträgern die folgenden Vorteile. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei der hier validierten Lösung von NetApp und Lenovo handelt es sich um eine flexible Scale-Out-Architektur, die sich ideal für den Einstieg in die KI mittlerer Unternehmensebene eignet.
+
+NetApp Storage bietet die gleiche oder eine bessere Leistung als lokaler SSD-Speicher und bietet Datenwissenschaftlern, Dateningenieuren und IT-Entscheidungsträgern die folgenden Vorteile:
+
+* Müheloses Teilen von Daten zwischen KI-Systemen, Analysen und anderen wichtigen Geschäftssystemen.  Diese gemeinsame Datennutzung reduziert den Infrastrukturaufwand, verbessert die Leistung und rationalisiert die Datenverwaltung im gesamten Unternehmen.
+* Unabhängig skalierbare Rechenleistung und Speicherung zur Minimierung der Kosten und Verbesserung der Ressourcennutzung.
+* Optimierte Entwicklungs- und Bereitstellungs-Workflows durch integrierte Snapshots und Klone für sofortige und platzsparende Benutzerarbeitsbereiche, integrierte Versionskontrolle und automatisierte Bereitstellung.
+* Unternehmensweiter Datenschutz für Notfallwiederherstellung und Geschäftskontinuität.
+
+
+
+
+== Danksagung
+
+* Karthikeyan Nagalingam, technischer Marketingingenieur, NetApp
+* Jarrett Upton, Administrator, AI Lab Systems, Lenovo
+
+
+
+
+== Wo Sie weitere Informationen finden
+
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* Produktseite zu NetApp All Flash Arrays
++
+https://www.netapp.com/us/products/storage-systems/all-flash-array/aff-a-series.aspx["https://www.netapp.com/us/products/storage-systems/all-flash-array/aff-a-series.aspx"^]
+
+* NetApp AFF A400 Seite
++
+https://docs.netapp.com/us-en/ontap-systems/a400/index.html["https://docs.netapp.com/us-en/ontap-systems/a400/index.html"]
+
+* Produktseite der NetApp ONTAP Datenmanagementsoftware
++
+http://www.netapp.com/us/products/data-management-software/ontap.aspx["http://www.netapp.com/us/products/data-management-software/ontap.aspx"^]
+
+* MLPerf
++
+https://mlperf.org/["https://mlperf.org"^]
+
+* TensorFlow-Benchmark
++
+https://github.com/tensorflow/benchmarks["https://github.com/tensorflow/benchmarks"^]
+
+* NVIDIA SMI (nvidia-smi)
++
+https://developer.nvidia.com/nvidia-system-management-interface["https://developer.nvidia.com/nvidia-system-management-interface"]
+
+

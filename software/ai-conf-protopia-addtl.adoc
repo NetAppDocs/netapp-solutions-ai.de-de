@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: software/ai-conf-protopia-addtl.html 
+keywords:  
+summary:  
+---
+= Wo Sie weitere Informationen und Danksagungen finden
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* NetApp ONTAP Datenverwaltungssoftware – ONTAP Informationsbibliothek
++
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62286["http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62286"^]
+
+* Persistenter NetApp -Speicher für Container – NetApp Trident
++
+https://netapp.io/persistent-storage-provisioner-for-kubernetes/["https://netapp.io/persistent-storage-provisioner-for-kubernetes/"^]
+
+* NetApp DataOps Toolkit
++
+https://github.com/NetApp/netapp-dataops-toolkit["https://github.com/NetApp/netapp-dataops-toolkit"^]
+
+* Persistenter NetApp -Speicher für Container – NetApp Trident
++
+https://netapp.io/persistent-storage-provisioner-for-kubernetes/["https://netapp.io/persistent-storage-provisioner-for-kubernetes/"^]
+
+* Protopia AI – Vertrauliche Schlussfolgerung
++
+https://protopia.ai/blog/protopia-ai-takes-on-the-missing-link-in-ai-privacy-confidential-inference/["https://protopia.ai/blog/protopia-ai-takes-on-the-missing-link-in-ai-privacy-confidential-inference/"^]
+
+* NetApp BlueXP Kopieren und Synchronisieren
++
+https://docs.netapp.com/us-en/occm/concept_cloud_sync.html#how-cloud-sync-works["https://docs.netapp.com/us-en/occm/concept_cloud_sync.html#how-cloud-sync-works"^]
+
+* NVIDIA Triton Inference Server
++
+https://developer.nvidia.com/nvidia-triton-inference-server["https://developer.nvidia.com/nvidia-triton-inference-server"^]
+
+* NVIDIA Triton Inference Server-Dokumentation
++
+https://docs.nvidia.com/deeplearning/triton-inference-server/index.html["https://docs.nvidia.com/deeplearning/triton-inference-server/index.html"^]
+
+* FaceBoxen in PyTorch
++
+https://github.com/zisianw/FaceBoxes.PyTorch["https://github.com/zisianw/FaceBoxes.PyTorch"^]
+
+
+
+
+
+== Danksagung
+
+* Mark Cates, Principal Product Manager, NetApp
+* Sufian Ahmad, technischer Marketingingenieur, NetApp
+* Hadi Esmaeilzadeh, Chief Technology Officer und Professor, Protopia AI
+

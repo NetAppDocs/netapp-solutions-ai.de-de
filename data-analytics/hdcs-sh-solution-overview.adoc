@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/hdcs-sh-solution-overview.html 
+keywords: tr-4657, tr4657, 4657, hybrid cloud, spark, hadoop, aff, fas 
+summary: Dieses Dokument beschreibt Hybrid-Cloud-Datenlösungen mit NetApp AFF und FAS Speichersystemen, NetApp Cloud Volumes ONTAP, NetApp Connected Storage und NetApp FlexClone -Technologie für Spark und Hadoop.  Diese Lösungsarchitekturen ermöglichen es Kunden, eine geeignete Datenschutzlösung für ihre Umgebung auszuwählen.  NetApp hat diese Lösungen auf der Grundlage der Interaktion mit Kunden und ihren geschäftlichen Anwendungsfällen entwickelt. 
+---
+= TR-4657: NetApp Hybrid Cloud-Datenlösungen – Spark und Hadoop basierend auf Kundenanwendungsfällen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam und Sathish Thyagarajan, NetApp
+
+[role="lead"]
+Dieses Dokument beschreibt Hybrid-Cloud-Datenlösungen mit NetApp AFF und FAS Speichersystemen, NetApp Cloud Volumes ONTAP, NetApp Connected Storage und NetApp FlexClone -Technologie für Spark und Hadoop.  Diese Lösungsarchitekturen ermöglichen es Kunden, eine geeignete Datenschutzlösung für ihre Umgebung auszuwählen.  NetApp hat diese Lösungen auf der Grundlage der Interaktion mit Kunden und ihren geschäftlichen Anwendungsfällen entwickelt.  Dieses Dokument enthält die folgenden detaillierten Informationen:
+
+* Warum wir Datenschutz für Spark- und Hadoop-Umgebungen und Kundenherausforderungen benötigen.
+* Das Data Fabric basiert auf NetApp Vision und seinen Bausteinen und Services.
+* Wie diese Bausteine zum Entwerfen flexibler Datenschutz-Workflows verwendet werden können.
+* Die Vor- und Nachteile mehrerer Architekturen basierend auf realen Anwendungsfällen von Kunden.  Jeder Anwendungsfall stellt die folgenden Komponenten bereit:
++
+** Kundenszenarien
+** Anforderungen und Herausforderungen
+** Lösungen
+** Zusammenfassung der Lösungen
+
+
+
+
+
+
+== Warum Hadoop-Datenschutz?
+
+In einer Hadoop- und Spark-Umgebung müssen die folgenden Aspekte berücksichtigt werden:
+
+* *Software- oder menschliches Versagen.*  Menschliche Fehler bei Software-Updates während der Durchführung von Hadoop-Datenoperationen können zu fehlerhaftem Verhalten führen, das unerwartete Ergebnisse des Auftrags zur Folge haben kann.  In einem solchen Fall müssen wir die Daten schützen, um Fehler oder unangemessene Ergebnisse zu vermeiden.  Beispielsweise kann aufgrund eines schlecht ausgeführten Software-Updates einer Anwendung zur Verkehrssignalanalyse eine neue Funktion die im Klartext vorliegenden Verkehrssignaldaten nicht richtig analysieren.  Die Software analysiert weiterhin JSON und andere Nicht-Text-Dateiformate, was dazu führt, dass das Echtzeit-Verkehrskontrollanalysesystem Vorhersageergebnisse erzeugt, bei denen Datenpunkte fehlen.  Diese Situation kann zu fehlerhaften Ausgaben führen, die zu Unfällen an der Ampel führen können.  Der Datenschutz kann dieses Problem lösen, indem er die Möglichkeit bietet, schnell zur vorherigen funktionierenden Anwendungsversion zurückzukehren.
+* *Größe und Maßstab.*  Aufgrund der ständig zunehmenden Anzahl von Datenquellen und Datenvolumina wächst der Umfang der Analysedaten täglich.  Soziale Medien, mobile Apps, Datenanalysen und Cloud-Computing-Plattformen sind die wichtigsten Datenquellen im aktuellen Big-Data-Markt, der sehr schnell wächst. Daher müssen die Daten geschützt werden, um einen genauen Datenbetrieb zu gewährleisten.
+* *Hadoops nativer Datenschutz.*  Hadoop verfügt über einen nativen Befehl zum Schutz der Daten, dieser Befehl gewährleistet jedoch keine Datenkonsistenz während der Sicherung.  Es unterstützt nur die Sicherung auf Verzeichnisebene.  Die von Hadoop erstellten Snapshots sind schreibgeschützt und können nicht zur direkten Wiederverwendung der Sicherungsdaten verwendet werden.
+
+
+
+
+== Datenschutzherausforderungen für Hadoop- und Spark-Kunden
+
+Eine häufige Herausforderung für Hadoop- und Spark-Kunden besteht darin, die Sicherungszeit zu verkürzen und die Zuverlässigkeit der Sicherung zu erhöhen, ohne die Leistung des Produktionsclusters während der Datensicherung negativ zu beeinflussen.
+
+Kunden müssen außerdem die Ausfallzeiten im Hinblick auf Recovery Point Objective (RPO) und Recovery Time Objective (RTO) minimieren und ihre lokalen und Cloud-basierten Disaster-Recovery-Sites für optimale Geschäftskontinuität kontrollieren.  Diese Kontrolle wird in der Regel durch den Einsatz von Managementtools auf Unternehmensebene erreicht.
+
+Die Hadoop- und Spark-Umgebungen sind kompliziert, da nicht nur das Datenvolumen riesig ist und wächst, sondern auch die Geschwindigkeit, mit der diese Daten eintreffen, zunimmt.  Dieses Szenario erschwert die schnelle Erstellung effizienter und aktueller DevTest- und QA-Umgebungen aus den Quelldaten.  NetApp ist sich dieser Herausforderungen bewusst und bietet die in diesem Dokument vorgestellten Lösungen an.

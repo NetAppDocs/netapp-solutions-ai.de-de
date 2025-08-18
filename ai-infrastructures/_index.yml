@@ -1,0 +1,36 @@
+---
+indexpage:
+  title: NetApp KI-Infrastruktur und konvergente Systeme
+  summary: Stellen Sie mit den validierten Referenzarchitekturen und konvergenten
+    Systemen von NetApp eine unternehmensreife KI-Infrastruktur bereit.  Von NetApp
+    AIPod Lösungen bis hin zu Hochleistungsspeicherplattformen bieten unsere Designs
+    die Leistung, Skalierbarkeit und Zuverlässigkeit, die für anspruchsvolle KI/ML-Workloads
+    erforderlich sind.
+  lead: Stellen Sie mit den validierten Referenzarchitekturen und konvergenten Systemen
+    von NetApp eine unternehmensreife KI-Infrastruktur bereit.  Von NetApp AIPod Lösungen
+    bis hin zu Hochleistungsspeicherplattformen bieten unsere Designs die Leistung,
+    Skalierbarkeit und Zuverlässigkeit, die für anspruchsvolle KI/ML-Workloads erforderlich
+    sind.
+  tiles:
+  - title: NetApp AIPod Referenzarchitekturen
+    links:
+    - title: NetApp AIPod mit NVIDIA DGX-Systemen
+      url: "../infra/ai-aipod-nv-intro.html"
+    - title: NetApp AIPod mit Lenovo für NVIDIA OVX
+      url: "../infra/ai-aipod-lenovo-nva1172.html"
+    - title: AIPod -Architektur
+      url: "../infra/ai-aipod-nv-architecture.html"
+    - title: Details zur AIPod -Bereitstellung
+      url: "../infra/ai-aipod-nv-deploy.html"
+    - title: AIPod Validierungs- und Größenleitfaden
+      url: "../infra/ai-aipod-nv-validation.html"
+  - title: Hochleistungsspeicher für KI-Workloads
+    links:
+    - title: NVIDIA DGX SuperPOD mit Speicher der EF-Serie
+      url: "../infra/ai-eseries-superpod.html"
+    - title: BeeGFS-Paralleldateisystem mit E-Serie
+      url: "../infra/ai-eseries-beegfs.html"
+    - title: IBM Spectrum Scale mit E-Series-Speicher
+      url: "../infra/ai-eseries-spectrumscale.html"
+    - title: NetApp ONTAP mit Lenovo ThinkSystem
+      url: "../infra/ai-lenovo-train-intro.html"

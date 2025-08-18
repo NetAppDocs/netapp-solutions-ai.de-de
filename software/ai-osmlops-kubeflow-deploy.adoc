@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: software/ai-osmlops-kubeflow-deploy.html 
+keywords: Kubeflow, Prerequisites, Kubernetes, cluster 
+summary: Open Source MLOps mit NetApp – Kubeflow-Bereitstellung 
+---
+= Kubeflow-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die Aufgaben beschrieben, die Sie ausführen müssen, um Kubeflow in Ihrem Kubernetes-Cluster bereitzustellen.
+
+
+
+== Voraussetzungen
+
+Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
+
+. Sie verfügen bereits über einen funktionierenden Kubernetes-Cluster und führen eine Version von Kubernetes aus, die von der Kubeflow-Version unterstützt wird, die Sie bereitstellen möchten.  Eine Liste der unterstützten Kubernetes-Versionen finden Sie in den Abhängigkeiten für Ihre Kubeflow-Version imlink:https://www.kubeflow.org/docs/releases/["offizielle Kubeflow-Dokumentation"^] .
+. Sie haben NetApp Trident bereits in Ihrem Kubernetes-Cluster installiert und konfiguriert.  Weitere Einzelheiten zu Trident finden Sie imlink:https://docs.netapp.com/us-en/trident/index.html["Trident -Dokumentation"] .
+
+
+
+
+== Standardmäßige Kubernetes-Speicherklasse festlegen
+
+Bevor Sie Kubeflow bereitstellen, empfehlen wir, eine Standard-StorageClass in Ihrem Kubernetes-Cluster festzulegen.  Der Kubeflow-Bereitstellungsprozess versucht möglicherweise, neue persistente Volumes mithilfe der Standard-StorageClass bereitzustellen.  Wenn keine StorageClass als Standard-StorageClass festgelegt ist, kann die Bereitstellung fehlschlagen.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, führen Sie die folgende Aufgabe vom Bereitstellungs-Jump-Host aus.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
+
+. Legen Sie eine Ihrer vorhandenen StorageClasses als Standard-StorageClass fest.  Die folgenden Beispielbefehle zeigen die Bezeichnung einer StorageClass namens `ontap-ai-flexvols-retain` als Standard-Speicherklasse.
+
+
+
+NOTE: Der `ontap-nas-flexgroup` Der Typ Trident Backend hat eine ziemlich große Mindest-PVC-Größe.  Standardmäßig versucht Kubeflow, PVCs bereitzustellen, die nur wenige GB groß sind.  Daher sollten Sie keine StorageClass festlegen, die die `ontap-nas-flexgroup` Backend-Typ als Standard-StorageClass für die Zwecke der Kubeflow-Bereitstellung.
+
+....
+$ kubectl get sc
+NAME                                PROVISIONER             AGE
+ontap-ai-flexgroups-retain          csi.trident.netapp.io   25h
+ontap-ai-flexgroups-retain-iface1   csi.trident.netapp.io   25h
+ontap-ai-flexgroups-retain-iface2   csi.trident.netapp.io   25h
+ontap-ai-flexvols-retain            csi.trident.netapp.io   3s
+$ kubectl patch storageclass ontap-ai-flexvols-retain -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+storageclass.storage.k8s.io/ontap-ai-flexvols-retain patched
+$ kubectl get sc
+NAME                                 PROVISIONER             AGE
+ontap-ai-flexgroups-retain           csi.trident.netapp.io   25h
+ontap-ai-flexgroups-retain-iface1    csi.trident.netapp.io   25h
+ontap-ai-flexgroups-retain-iface2    csi.trident.netapp.io   25h
+ontap-ai-flexvols-retain (default)   csi.trident.netapp.io   54s
+....
+
+
+== Kubeflow-Bereitstellungsoptionen
+
+Es gibt viele verschiedene Optionen für die Bereitstellung von Kubeflow.  Weitere Informationen finden Sie imlink:https://www.kubeflow.org/docs/started/installing-kubeflow/["offizielle Kubeflow-Dokumentation"] Klicken Sie auf „Weiter“, um eine Liste der Bereitstellungsoptionen anzuzeigen, und wählen Sie die Option aus, die Ihren Anforderungen am besten entspricht.
+
+
+NOTE: Zu Validierungszwecken haben wir Kubeflow 1.7 bereitgestellt mitlink:https://www.deploykf.org["deployKF"] 0.1.1.

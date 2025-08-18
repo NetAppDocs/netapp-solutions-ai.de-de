@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/hdcs-sh-data-fabric.html 
+keywords: architecture, data fabric, use cases, nfs, big data 
+summary: 'Das von NetApp unterstützte Datengewebe vereinfacht und integriert das Datenmanagement in Cloud- und lokalen Umgebungen, um die digitale Transformation zu beschleunigen.  Das von NetApp unterstützte Data Fabric bietet konsistente und integrierte Datenverwaltungsdienste und -anwendungen (Bausteine) für Datentransparenz und -einblicke, Datenzugriff und -kontrolle sowie Datenschutz und -sicherheit.' 
+---
+= Data Fabric powered by NetApp für Big Data-Architektur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das von NetApp unterstützte Datengewebe vereinfacht und integriert das Datenmanagement in Cloud- und lokalen Umgebungen, um die digitale Transformation zu beschleunigen.
+
+Die von NetApp betriebene Datenstruktur bietet konsistente und integrierte Datenverwaltungsdienste und -anwendungen (Bausteine) für Datentransparenz und -einblicke, Datenzugriff und -kontrolle sowie Datenschutz und -sicherheit, wie in der folgenden Abbildung dargestellt.
+
+image:hdcs-sh-001.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+== Bewährte Anwendungsfälle für Data Fabric-Kunden
+
+Das von NetApp unterstützte Data Fabric bietet Kunden die folgenden neun bewährten Anwendungsfälle:
+
+* Beschleunigen Sie Analyse-Workloads
+* Beschleunigen Sie die DevOps-Transformation
+* Erstellen Sie eine Cloud-Hosting-Infrastruktur
+* Integrieren Sie Cloud-Datendienste
+* Schützen und sichern Sie Daten
+* Optimieren Sie unstrukturierte Daten
+* Steigern Sie die Effizienz Ihres Rechenzentrums
+* Liefern Sie Dateneinblicke und Kontrolle
+* Vereinfachen und automatisieren
+
+
+Dieses Dokument behandelt zwei der neun Anwendungsfälle (zusammen mit ihren Lösungen):
+
+* Beschleunigen Sie Analyse-Workloads
+* Schützen und sichern Sie Daten
+
+
+
+
+=== NetApp NFS-Direktzugriff
+
+Mit NetApp NFS können Kunden Big Data-Analysejobs auf ihren vorhandenen oder neuen NFSv3- oder NFSv4-Daten ausführen, ohne die Daten zu verschieben oder zu kopieren.  Es verhindert mehrere Kopien der Daten und macht die Synchronisierung der Daten mit einer Quelle überflüssig.  Im Finanzsektor beispielsweise muss die Bewegung von Daten von einem Ort zu einem anderen gesetzlichen Verpflichtungen genügen, was keine leichte Aufgabe ist.  In diesem Szenario analysiert der NetApp NFS-Direktzugriff die Finanzdaten von ihrem ursprünglichen Speicherort.  Ein weiterer wichtiger Vorteil besteht darin, dass die Verwendung des NetApp NFS-Direktzugriffs den Schutz von Hadoop-Daten durch die Verwendung nativer Hadoop-Befehle vereinfacht und Datenschutz-Workflows ermöglicht, die das umfangreiche Datenmanagement-Portfolio von NetApp nutzen.
+
+image:hdcs-sh-002.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Der NetApp NFS-Direktzugriff bietet zwei Arten von Bereitstellungsoptionen für Hadoop/Spark-Cluster:
+
+* Standardmäßig verwenden die Hadoop/Spark-Cluster das Hadoop Distributed File System (HDFS) zur Datenspeicherung und als Standarddateisystem.  Der NetApp NFS-Direktzugriff kann das Standard-HDFS durch NFS-Speicher als Standarddateisystem ersetzen und ermöglicht so direkte Analysevorgänge auf NFS-Daten.
+* In einer anderen Bereitstellungsoption unterstützt der NetApp NFS-Direktzugriff die Konfiguration von NFS als zusätzlichen Speicher zusammen mit HDFS in einem einzelnen Hadoop/Spark-Cluster.  In diesem Fall kann der Kunde Daten über NFS-Exporte freigeben und zusammen mit HDFS-Daten vom selben Cluster aus darauf zugreifen.
+
+
+Zu den wichtigsten Vorteilen der Verwendung des NetApp NFS-Direktzugriffs gehören:
+
+* Analysiert die Daten von ihrem aktuellen Standort aus, wodurch die zeit- und leistungsintensive Aufgabe des Verschiebens von Analysedaten in eine Hadoop-Infrastruktur wie HDFS vermieden wird.
+* Reduziert die Anzahl der Replikate von drei auf eins.
+* Ermöglicht Benutzern, Rechenleistung und Speicher zu entkoppeln, um sie unabhängig voneinander zu skalieren.
+* Bietet Unternehmensdatenschutz durch Nutzung der umfassenden Datenverwaltungsfunktionen von ONTAP.
+* Ist mit der Hortonworks-Datenplattform zertifiziert.
+* Ermöglicht die Bereitstellung hybrider Datenanalysen.
+* Reduziert die Sicherungszeit durch Nutzung der dynamischen Multithread-Funktion.
+
+
+
+
+=== Bausteine für Big Data
+
+Das von NetApp betriebene Datengewebe integriert Datenverwaltungsdienste und Anwendungen (Bausteine) für Datenzugriff, -kontrolle, -schutz und -sicherheit, wie in der folgenden Abbildung dargestellt.
+
+image:hdcs-sh-003.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Zu den Bausteinen in der obigen Abbildung gehören:
+
+* * NetApp NFS-Direktzugriff.*  Bietet den neuesten Hadoop- und Spark-Clustern direkten Zugriff auf NetApp NFS-Volumes ohne zusätzliche Software- oder Treiberanforderungen.
+* * NetApp Cloud Volumes ONTAP und Google Cloud NetApp Volumes.*  Softwaredefinierter verbundener Speicher basierend auf ONTAP , der in Amazon Web Services (AWS) oder Azure NetApp Files (ANF) in Microsoft Azure-Clouddiensten ausgeführt wird.
+* * NetApp SnapMirror -Technologie*.  Bietet Datenschutzfunktionen zwischen lokalen und ONTAP Cloud- oder NPS-Instanzen.
+* *Cloud-Dienstanbieter.*  Zu diesen Anbietern gehören AWS, Microsoft Azure, Google Cloud und IBM Cloud.
+* *PaaS.*  Cloudbasierte Analysedienste wie Amazon Elastic MapReduce (EMR) und Databricks in AWS sowie Microsoft Azure HDInsight und Azure Databricks.
+

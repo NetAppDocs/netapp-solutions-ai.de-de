@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-summary.html 
+keywords:  
+summary:  
+---
+= Zusammenfassung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mehrere neue Anwendungsszenarien, wie beispielsweise fortschrittliche Fahrerassistenzsysteme (ADAS), Industrie 4.0, Smart Cities und das Internet der Dinge (IoT), erfordern die Verarbeitung kontinuierlicher Datenströme mit einer Latenz von nahezu null.  Dieses Dokument beschreibt eine Rechen- und Speicherarchitektur zur Bereitstellung von GPU-basierter künstlicher Intelligenz (KI)-Inferenz auf NetApp -Speichercontrollern und Lenovo ThinkSystem-Servern in einer Edge-Umgebung, die diese Anforderungen erfüllt.  Dieses Dokument enthält außerdem Leistungsdaten für den branchenüblichen MLPerf-Inferenz-Benchmark, der verschiedene Inferenzaufgaben auf Edge-Servern mit NVIDIA T4-GPUs bewertet.  Wir untersuchen die Leistung von Offline-, Single-Stream- und Multistream-Inferenzszenarien und zeigen, dass die Architektur mit einem kostengünstigen gemeinsam genutzten Netzwerkspeichersystem hochleistungsfähig ist und einen zentralen Punkt für die Daten- und Modellverwaltung für mehrere Edge-Server bietet.

@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-sc-solution.html 
+keywords: solution architecture, confluent platform, linux, Fujitsu primergy, intel xenon 
+summary: Dieser Abschnitt behandelt die Hardware und Software, die zur Leistungsüberprüfung bei der Bereitstellung der Confluent Platform mit NetApp ONTAP für mehrstufigen Speicher verwendet wird.  Die folgende Tabelle behandelt die Lösungsarchitektur und die Basiskomponenten. 
+---
+= Lösung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Confluent und der NetApp AFF A900 Speichercontroller mit ONTAP Unterstützung sind verteilte Systeme, die für Datenströme konzipiert sind.  Beide sind horizontal skalierbar, fehlertolerant und bieten eine hervorragende Leistung unter Last.  Sie ergänzen sich beim verteilten Datenstreaming und der Streamverarbeitung mit geringeren Speicherkosten und Datenreduktionstechnologien, die den Datenbedarf minimieren.  Der AFF A900 Speichercontroller bietet eine hervorragende Leistung und ermöglicht gleichzeitig die Entkopplung von Rechen- und Datenspeicherressourcen.  Dies vereinfacht die Systemadministration und ermöglicht eine unabhängige Skalierung der Ressourcen.
+
+image:kafka-sc-003.png["Bild, das die Lösungsübersicht zeigt."]
+
+
+
+== Details zur Lösungsarchitektur
+
+Dieser Abschnitt behandelt die Hardware und Software, die zur Leistungsüberprüfung bei der Bereitstellung der Confluent Platform mit NetApp ONTAP für mehrstufigen Speicher verwendet wird.  Die folgende Tabelle behandelt die Lösungsarchitektur und die Basiskomponenten.
+
+|===
+| Plattformkomponente | Umgebungskonfiguration 
+
+
+| Confluent Platform Version 6.2  a| 
+* 3 x Tierpfleger
+* 8 x Broker-Server
+* 5 x Werkzeugserver
+* 1 x Grafana
+* 1 x Kontrollzentrum
+
+
+
+
+| Betriebssystem auf allen Knoten | Linux (Ubuntu 18.04) 
+
+
+| NetApp ONTAP für Warm Buckets  a| 
+* 1 x AFF A900 Hochverfügbarkeitspaar (HA)
+* 4 x 24 x 800 SSDs
+* S3-Protokoll
+* 100GbE
+
+
+
+
+| 15 Fujitsu PRIMERGY RX2540 Server  a| 
+* 2 CPUs; insgesamt 16 physische Kerne
+* Intel Xeon
+* 256 GB physischer Speicher
+* 100GbE Dual-Port
+
+
+|===

@@ -1,0 +1,142 @@
+---
+sidebar: sidebar 
+permalink: software/ai-osmlops-airflow-deploy.html 
+keywords: AI, control plane, apache, airflow 
+summary: Open Source MLOps mit NetApp – Apache Airflow-Bereitstellung 
+---
+= Apache Airflow-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die Aufgaben beschrieben, die Sie ausführen müssen, um Airflow in Ihrem Kubernetes-Cluster bereitzustellen.
+
+
+NOTE: Es ist möglich, Airflow auf anderen Plattformen als Kubernetes bereitzustellen.  Die Bereitstellung von Airflow auf anderen Plattformen als Kubernetes liegt außerhalb des Umfangs dieser Lösung.
+
+
+
+== Voraussetzungen
+
+Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
+
+. Sie verfügen bereits über einen funktionierenden Kubernetes-Cluster.
+. Sie haben NetApp Trident bereits in Ihrem Kubernetes-Cluster installiert und konfiguriert.  Weitere Einzelheiten zu Trident finden Sie imlink:https://docs.netapp.com/us-en/trident/index.html["Trident -Dokumentation"] .
+
+
+
+
+== Helm installieren
+
+Airflow wird mit Helm bereitgestellt, einem beliebten Paketmanager für Kubernetes.  Bevor Sie Airflow bereitstellen, müssen Sie Helm auf dem Bereitstellungs-Jump-Host installieren.  Um Helm auf dem Bereitstellungs-Jump-Host zu installieren, folgen Sie den https://helm.sh/docs/intro/install/["Installationsanweisungen"^] in der offiziellen Helm-Dokumentation.
+
+
+
+== Standardmäßige Kubernetes-Speicherklasse festlegen
+
+Bevor Sie Airflow bereitstellen, müssen Sie eine Standard-StorageClass in Ihrem Kubernetes-Cluster festlegen.  Der Airflow-Bereitstellungsprozess versucht, neue persistente Volumes mithilfe der Standard-StorageClass bereitzustellen.  Wenn keine StorageClass als Standard-StorageClass festgelegt ist, schlägt die Bereitstellung fehl.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, folgen Sie den Anweisungen imlink:ai-osmlops-kubeflow-deploy.html["Kubeflow-Bereitstellung"] Abschnitt.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
+
+
+
+== Verwenden Sie Helm, um Airflow bereitzustellen
+
+Um Airflow mithilfe von Helm in Ihrem Kubernetes-Cluster bereitzustellen, führen Sie die folgenden Aufgaben vom Bereitstellungs-Jump-Host aus:
+
+. Stellen Sie Airflow mit Helm bereit, indem Sie den Anweisungen folgen https://artifacthub.io/packages/helm/airflow-helm/airflow["Bereitstellungsanweisungen"^] für das offizielle Airflow-Diagramm im Artifact Hub.  Die folgenden Beispielbefehle zeigen die Bereitstellung von Airflow mit Helm.  Ändern, Hinzufügen und/oder Entfernen von Werten in der `custom- values.yaml` Datei nach Bedarf, abhängig von Ihrer Umgebung und der gewünschten Konfiguration.
++
+....
+$ cat << EOF > custom-values.yaml
+###################################
+# Airflow - Common Configs
+###################################
+airflow:
+  ## the airflow executor type to use
+  ##
+  executor: "CeleryExecutor"
+  ## environment variables for the web/scheduler/worker Pods (for airflow configs)
+  ##
+  #
+###################################
+# Airflow - WebUI Configs
+###################################
+web:
+  ## configs for the Service of the web Pods
+  ##
+  service:
+    type: NodePort
+###################################
+# Airflow - Logs Configs
+###################################
+logs:
+  persistence:
+    enabled: true
+###################################
+# Airflow - DAGs Configs
+###################################
+dags:
+  ## configs for the DAG git repository & sync container
+  ##
+  gitSync:
+    enabled: true
+    ## url of the git repository
+    ##
+    repo: "git@github.com:mboglesby/airflow-dev.git"
+    ## the branch/tag/sha1 which we clone
+    ##
+    branch: master
+    revision: HEAD
+    ## the name of a pre-created secret containing files for ~/.ssh/
+    ##
+    ## NOTE:
+    ## - this is ONLY RELEVANT for SSH git repos
+    ## - the secret commonly includes files: id_rsa, id_rsa.pub, known_hosts
+    ## - known_hosts is NOT NEEDED if `git.sshKeyscan` is true
+    ##
+    sshSecret: "airflow-ssh-git-secret"
+    ## the name of the private key file in your `git.secret`
+    ##
+    ## NOTE:
+    ## - this is ONLY RELEVANT for PRIVATE SSH git repos
+    ##
+    sshSecretKey: id_rsa
+    ## the git sync interval in seconds
+    ##
+    syncWait: 60
+EOF
+$ helm install airflow airflow-stable/airflow -n airflow --version 8.0.8 --values ./custom-values.yaml
+...
+Congratulations. You have just deployed Apache Airflow!
+1. Get the Airflow Service URL by running these commands:
+   export NODE_PORT=$(kubectl get --namespace airflow -o jsonpath="{.spec.ports[0].nodePort}" services airflow-web)
+   export NODE_IP=$(kubectl get nodes --namespace airflow -o jsonpath="{.items[0].status.addresses[0].address}")
+   echo http://$NODE_IP:$NODE_PORT/
+2. Open Airflow in your web browser
+....
+. Bestätigen Sie, dass alle Airflow-Pods betriebsbereit sind.  Es kann einige Minuten dauern, bis alle Pods gestartet sind.
++
+....
+$ kubectl -n airflow get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+airflow-flower-b5656d44f-h8qjk      1/1     Running   0          2h
+airflow-postgresql-0                1/1     Running   0          2h
+airflow-redis-master-0              1/1     Running   0          2h
+airflow-scheduler-9d95fcdf9-clf4b   2/2     Running   2          2h
+airflow-web-59c94db9c5-z7rg4        1/1     Running   0          2h
+airflow-worker-0                    2/2     Running   2          2h
+....
+. Rufen Sie die URL des Airflow-Webdienstes ab, indem Sie den Anweisungen folgen, die auf der Konsole angezeigt wurden, als Sie Airflow in Schritt 1 mit Helm bereitgestellt haben.
++
+....
+$ export NODE_PORT=$(kubectl get --namespace airflow -o jsonpath="{.spec.ports[0].nodePort}" services airflow-web)
+$ export NODE_IP=$(kubectl get nodes --namespace airflow -o jsonpath="{.items[0].status.addresses[0].address}")
+$ echo http://$NODE_IP:$NODE_PORT/
+....
+. Bestätigen Sie, dass Sie auf den Airflow-Webdienst zugreifen können.
+
+
+image:aicp-010.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]

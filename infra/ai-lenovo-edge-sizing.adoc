@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-sizing.html 
+keywords: architecture, sizing, computer server, shared storage 
+summary: Sie können das für die Validierung verwendete Setup an andere Anwendungsfälle anpassen. 
+---
+= Größenoptionen für die Architektur
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das für die Validierung verwendete Setup an andere Anwendungsfälle anpassen.
+
+
+
+== Rechenserver
+
+Wir haben eine Intel Xeon D-2123IT-CPU verwendet, die niedrigste in SE350 unterstützte CPU-Stufe mit vier physischen Kernen und 60 W TDP.  Der Server unterstützt zwar keinen CPU-Austausch, kann aber mit einer leistungsstärkeren CPU bestellt werden.  Die am besten unterstützte CPU ist Intel Xeon D-2183IT mit 16 Kernen, 100 W und 2,20 GHz.  Dadurch wird die Rechenleistung der CPU erheblich gesteigert.  Während die CPU bei der Ausführung der Inferenz-Workloads selbst keinen Engpass darstellte, hilft sie bei der Datenverarbeitung und anderen Aufgaben im Zusammenhang mit der Inferenz.  Derzeit ist NVIDIA T4 die einzige GPU, die für Edge-Anwendungsfälle verfügbar ist. Daher besteht derzeit keine Möglichkeit, die GPU zu aktualisieren oder herunterzustufen.
+
+
+
+== Gemeinsam genutzter Speicher
+
+Für die Tests und Validierungen wurde für dieses Dokument das NetApp AFF C190 System verwendet, das eine maximale Speicherkapazität von 50,5 TB, einen Durchsatz von 4,4 GBps für sequenzielle Lesevorgänge und 230.000 IOPS für kleine zufällige Lesevorgänge aufweist und sich als gut geeignet für Edge-Inferenz-Workloads erwiesen hat.
+
+Wenn Sie jedoch mehr Speicherkapazität oder schnellere Netzwerkgeschwindigkeiten benötigen, sollten Sie die Speichersysteme NetApp AFF A220 oder NetApp AFF A250 verwenden.  Darüber hinaus wurde für die Validierung dieser Lösung auch das NetApp EF280-System mit einer maximalen Kapazität von 1,5 PB und einer Bandbreite von 10 GBps verwendet.  Wenn Sie mehr Speicherkapazität mit höherer Bandbreite bevorzugen, https://www.netapp.com/pdf.html?item=/media/19339-DS-4082.pdf&v=2021691654["NetApp EF300"^] verwendet werden.

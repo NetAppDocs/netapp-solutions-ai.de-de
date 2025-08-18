@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-train-arch.html 
+keywords: adjustments 
+summary: Das für die Validierung verwendete Setup kann an andere Anwendungsfälle angepasst werden. 
+---
+= Architekturanpassungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das für diese Validierung verwendete Setup kann an andere Anwendungsfälle angepasst werden.
+
+
+
+== CPU-Anpassungen
+
+Für diese Validierung haben wir, wie von Lenovo empfohlen, einen Skylake Intel Xeon Platinum 8360Y-Prozessor verwendet.  Wir gehen davon aus, dass die entsprechende Cascade Lake-CPU, ein Intel Xeon Gold 6330-Prozessor, eine ähnliche Leistung liefern würde, da diese Arbeitslast nicht CPU-gebunden ist.
+
+
+
+== Erhöhung der Speicherkapazität
+
+Basierend auf Ihrem Speicherkapazitätsbedarf können Sie den gemeinsam genutzten Speicher (NFS-Volume) bei Bedarf erhöhen, vorausgesetzt, Sie verfügen über die zusätzlichen Festplatten-Shelves und Controller-Modelle.  Sie können dies über die CLI oder als Administratorbenutzer über die NetApp Weboberfläche des Speichercontrollers tun.

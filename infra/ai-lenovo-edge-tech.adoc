@@ -1,0 +1,225 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-tech.html 
+keywords: tech, technology, overview, aff, a220, a250, ef280, ef300, 
+summary: In diesem Abschnitt werden die technologischen Grundlagen dieser KI-Lösung beschrieben. 
+---
+= Technologieübersicht
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die technologischen Grundlagen dieser KI-Lösung beschrieben.
+
+
+
+== NetApp AFF -Systeme
+
+Hochmoderne NetApp AFF Speichersysteme ermöglichen die Bereitstellung von KI-Inferenz am Edge, um die Speicheranforderungen von Unternehmen mit branchenführender Leistung, überragender Flexibilität, Cloud-Integration und erstklassigem Datenmanagement zu erfüllen.  NetApp AFF -Systeme wurden speziell für Flash entwickelt und helfen bei der Beschleunigung, Verwaltung und dem Schutz geschäftskritischer Daten.
+
+* NetApp AFF Speichersysteme der Einstiegsklasse basieren auf FAS2750 -Hardware und SSD-Flash-Medien
+* Zwei Controller in HA-Konfiguration
+
+
+image:ai-edge-005.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+NetApp AFF C190 Speichersysteme der Einstiegsklasse unterstützen die folgenden Funktionen:
+
+* Eine maximale Laufwerksanzahl von 24 x 960 GB SSDs
+* Zwei mögliche Konfigurationen:
++
+** Ethernet (10 GbE): 4 x 10GBASE-T (RJ-45)-Ports
+** Unified (16 Gb FC oder 10 GbE): 4x Unified Target Adapter 2 (UTA2)-Ports
+
+
+* Maximal 50,5 TB effektive Kapazität
++
+
+NOTE: Für NAS-Workloads unterstützt ein einzelnes AFF C190 System der Einstiegsklasse einen Durchsatz von 4,4 GBps für sequenzielle Lesevorgänge und 230.000 IOPS für kleine zufällige Lesevorgänge bei Latenzen von 1 ms oder weniger.
+
+
+
+
+
+== NetApp AFF A220
+
+NetApp bietet auch andere Speichersysteme der Einstiegsklasse an, die eine höhere Leistung und Skalierbarkeit für größere Bereitstellungen bieten.  Für NAS-Workloads unterstützt ein einzelnes AFF A220 System der Einstiegsklasse:
+
+* Durchsatz von 6,2 GBps für sequenzielle Lesevorgänge
+* 375.000 IOPS für kleine zufällige Lesevorgänge bei Latenzen von 1 ms oder weniger
+* Maximale Laufwerksanzahl von 144 x 960 GB, 3,8 TB oder 7,6 TB SSDs
+* AFF A220 lässt sich auf über 1 PB effektive Kapazität skalieren
+
+
+
+
+== NetApp AFF A250
+
+* Die maximale effektive Kapazität beträgt 35 PB mit maximaler Skalierung von 2–24 Knoten (12 HA-Paare).
+* Bietet ≥ 45 % Leistungssteigerung gegenüber AFF A220
+* 440.000 IOPS zufällige Lesevorgänge bei 1 ms
+* Basierend auf der neuesten NetApp ONTAP -Version: ONTAP 9.8
+* Nutzt zwei 25-Gb-Ethernet-Anschlüsse für HA und Cluster-Verbindungen
+
+
+
+
+== NetApp E-Serie EF-Systeme
+
+Die EF-Serie ist eine Familie von All-Flash-SAN-Speicher-Arrays der Einstiegs- und Mittelklasse, die den Zugriff auf Ihre Daten beschleunigen und Ihnen mithilfe der NetApp SANtricity -Software dabei helfen können, schneller einen Nutzen daraus zu ziehen.  Diese Systeme bieten sowohl SAS- als auch NVMe-Flash-Speicher und bieten Ihnen erschwingliche bis extreme IOPS, Reaktionszeiten unter 100 Mikrosekunden und eine Bandbreite von bis zu 44 GBps – und sind damit ideal für gemischte Workloads und anspruchsvolle Anwendungen wie KI-Inferenz und High-Performance Computing (HPC).
+
+Die folgende Abbildung zeigt das NetApp EF280-Speichersystem.
+
+image:ai-edge-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+== NetApp EF280
+
+* 32 Gb/16 Gb FC, 25 Gb/10 Gb iSCSI und 12 Gb SAS-Unterstützung
+* Die maximale effektive Kapazität beträgt 96 Laufwerke mit insgesamt 1,5 PB
+* Durchsatz von 10 GBps (sequentielles Lesen)
+* 300.000 IOPs (zufällige Lesevorgänge)
+* Das NetApp EF280 ist das kostengünstigste All-Flash-Array (AFA) im NetApp Portfolio
+
+
+
+
+== NetApp EF300
+
+* 24x NVMe-SSD-Laufwerke für eine Gesamtkapazität von 367 TB
+* Erweiterungsmöglichkeiten auf insgesamt 240x NL-SAS HDDs, 96x SAS SSDs oder eine Kombination
+* 100 GB NVMe/IB, NVMe/RoCE, iSER/IB und SRP/IB
+* 32 GB NVME/FC, FCP
+* 25 GB iSCSI
+* 20 GB/s (sequentielles Lesen)
+* 670.000 IOPs (zufällige Lesevorgänge)
+
+
+
+NOTE: Weitere Informationen finden Sie im https://www.netapp.com/pdf.html?item=/media/19339-DS-4082.pdf["NetApp EF-Serie – Datenblatt zu den All-Flash-Arrays der NetApp EF-Serie EF600, F300, EF570 und EF280"^] .
+
+
+
+== NetApp ONTAP 9
+
+ONTAP 9.8.1, die neueste Generation der Speicherverwaltungssoftware von NetApp, ermöglicht Unternehmen die Modernisierung ihrer Infrastruktur und den Übergang zu einem Cloud-fähigen Rechenzentrum.  Durch die Nutzung branchenführender Datenverwaltungsfunktionen ermöglicht ONTAP die Verwaltung und den Schutz von Daten mit einem einzigen Satz von Tools, unabhängig davon, wo sich diese Daten befinden.  Sie können Daten auch frei dorthin verschieben, wo sie benötigt werden: an den Rand, in den Kern oder in die Cloud.  ONTAP 9.8.1 umfasst zahlreiche Funktionen, die das Datenmanagement vereinfachen, kritische Daten beschleunigen und schützen und Infrastrukturfunktionen der nächsten Generation in Hybrid-Cloud-Architekturen ermöglichen.
+
+
+
+=== Vereinfachen Sie die Datenverwaltung
+
+Das Datenmanagement ist für den IT-Betrieb in Unternehmen von entscheidender Bedeutung, damit für Anwendungen und Datensätze die richtigen Ressourcen verwendet werden.  ONTAP umfasst die folgenden Funktionen zur Rationalisierung und Vereinfachung des Betriebs und zur Senkung der Gesamtbetriebskosten:
+
+* *Inline-Datenkomprimierung und erweiterte Deduplizierung.*  Durch die Datenkomprimierung wird der verschwendete Speicherplatz in Speicherblöcken reduziert und durch die Deduplizierung wird die effektive Kapazität erheblich erhöht.  Dies gilt für lokal gespeicherte Daten und für in der Cloud gespeicherte Daten.
+* *Minimale, maximale und adaptive Dienstqualität (AQoS).*  Durch granulare Quality of Service (QoS)-Kontrollen wird die Aufrechterhaltung des Leistungsniveaus kritischer Anwendungen in Umgebungen mit hoher gemeinsamer Nutzung unterstützt.
+* * NetApp FabricPool.*  Diese Funktion ermöglicht die automatische Einstufung kalter Daten in öffentliche und private Cloud-Speicheroptionen, einschließlich der Speicherlösung Amazon Web Services (AWS), Azure und NetApp StorageGRID .  Weitere Informationen zu FabricPool finden Sie unterlink:https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf["TR-4598"^] .
+
+
+
+
+=== Beschleunigen und schützen Sie Daten
+
+ONTAP 9 bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese Funktionen auf folgende Weise:
+
+* *Leistung und geringere Latenz.*  ONTAP bietet den höchstmöglichen Durchsatz bei der geringstmöglichen Latenz.
+* *Datenschutz.*  ONTAP bietet integrierte Datenschutzfunktionen mit gemeinsamer Verwaltung auf allen Plattformen.
+* * NetApp Volume Encryption (NVE).*  ONTAP bietet native Verschlüsselung auf Volume-Ebene mit Unterstützung für integriertes und externes Schlüsselmanagement.
+* *Mandantenfähigkeit und Multifaktor-Authentifizierung.*  ONTAP ermöglicht die gemeinsame Nutzung von Infrastrukturressourcen mit höchster Sicherheit.
+
+
+
+
+=== Zukunftssichere Infrastruktur
+
+ONTAP 9 unterstützt Sie mit den folgenden Funktionen dabei, anspruchsvolle und sich ständig ändernde Geschäftsanforderungen zu erfüllen:
+
+* *Nahtlose Skalierung und unterbrechungsfreier Betrieb.*  ONTAP unterstützt die unterbrechungsfreie Kapazitätserweiterung bestehender Controller und Scale-Out-Cluster.  Kunden können ohne kostspielige Datenmigrationen oder Ausfälle auf die neuesten Technologien wie NVMe und 32 GB FC upgraden.
+* *Cloud-Verbindung.*  ONTAP ist die Speicherverwaltungssoftware mit der stärksten Cloud-Anbindung und bietet Optionen für softwaredefinierten Speicher (ONTAP Select) und Cloud-native Instanzen (Google Cloud NetApp Volumes) in allen öffentlichen Clouds.
+* *Integration mit neuen Anwendungen.*  ONTAP bietet Datendienste der Enterprise-Klasse für Plattformen und Anwendungen der nächsten Generation, wie etwa autonome Fahrzeuge, Smart Cities und Industrie 4.0, und nutzt dabei dieselbe Infrastruktur, die auch bestehende Unternehmens-Apps unterstützt.
+
+
+
+
+== NetApp SANtricity
+
+NetApp SANtricity wurde entwickelt, um branchenführende Leistung, Zuverlässigkeit und Einfachheit für Hybrid-Flash-Arrays der E-Serie und All-Flash-Arrays der EF-Serie bereitzustellen.  Erreichen Sie maximale Leistung und Auslastung Ihrer Hybrid-Flash- und All-Flash-Arrays der E-Serie und der EF-Serie für Anwendungen mit hoher Arbeitslast, einschließlich Datenanalyse, Videoüberwachung sowie Sicherung und Wiederherstellung.  Mit SANtricity können Konfigurationsoptimierungen, Wartungsarbeiten, Kapazitätserweiterungen und andere Aufgaben durchgeführt werden, während der Speicher online bleibt.  SANtricity bietet außerdem hervorragenden Datenschutz, proaktive Überwachung und zertifizierte Sicherheit – alles zugänglich über die benutzerfreundliche, integrierte System Manager-Schnittstelle.  Weitere Informationen finden Sie im https://www.netapp.com/pdf.html?item=/media/7676-ds-3891.pdf["Datenblatt zur NetApp E-Series SANtricity Software"^] .
+
+
+
+=== Leistungsoptimiert
+
+Die leistungsoptimierte SANtricity -Software liefert Daten – mit hohen IOPs, hohem Durchsatz und geringer Latenz – an alle Ihre Datenanalyse-, Videoüberwachungs- und Backup-Apps.  Beschleunigen Sie die Leistung für Anwendungen mit hohem IOPS, geringer Latenz und hoher Bandbreite und hohem Durchsatz.
+
+
+
+=== Maximieren Sie die Betriebszeit
+
+Erledigen Sie alle Ihre Verwaltungsaufgaben, während der Speicher online bleibt.  Optimieren Sie Konfigurationen, führen Sie Wartungsarbeiten durch oder erweitern Sie die Kapazität, ohne den E/A-Betrieb zu unterbrechen.  Erreichen Sie erstklassige Zuverlässigkeit mit automatisierten Funktionen, Online-Konfiguration, modernster Dynamic Disk Pools (DPP)-Technologie und mehr.
+
+
+
+=== Ruhe dich aus
+
+Die SANtricity -Software bietet überlegenen Datenschutz, proaktive Überwachung und zertifizierte Sicherheit – alles über die benutzerfreundliche, integrierte System Manager-Schnittstelle.  Vereinfachen Sie die Speicherverwaltungsaufgaben.  Gewinnen Sie die Flexibilität, die Sie für die erweiterte Optimierung aller Speichersysteme der E-Serie benötigen.  Verwalten Sie Ihr NetApp E-Series-System – jederzeit und überall.  Unsere integrierte, webbasierte Schnittstelle optimiert Ihren Verwaltungsworkflow.
+
+
+
+== NetApp Trident
+
+https://netapp.io/persistent-storage-provisioner-for-kubernetes/["Trident"^]von NetApp ist ein Open-Source-Orchestrator für dynamischen Speicher für Docker und Kubernetes, der die Erstellung, Verwaltung und Nutzung von persistentem Speicher vereinfacht.  Trident, eine native Kubernetes-Anwendung, läuft direkt in einem Kubernetes-Cluster.  Trident ermöglicht Kunden die nahtlose Bereitstellung von DL-Container-Images auf NetApp Speicher und bietet eine unternehmenstaugliche Erfahrung für die Bereitstellung von KI-Containern.  Kubernetes-Benutzer (wie etwa ML-Entwickler und Datenwissenschaftler) können Orchestrierung und Klonen erstellen, verwalten und automatisieren, um die erweiterten Datenverwaltungsfunktionen von NetApp auf Basis der NetApp -Technologie zu nutzen.
+
+
+
+== NetApp BlueXP Kopieren und Synchronisieren
+
+https://docs.netapp.com/us-en/occm/concept_cloud_sync.html["BlueXP Kopieren und Synchronisieren"^]ist ein NetApp -Dienst für die schnelle und sichere Datensynchronisierung.  Unabhängig davon, ob Sie Dateien zwischen lokalen NFS- oder SMB-Dateifreigaben, NetApp StorageGRID, NetApp ONTAP S3, Google Cloud NetApp Volumes, Azure NetApp Files, Amazon Simple Storage Service (Amazon S3), Amazon Elastic File System (Amazon EFS), Azure Blob, Google Cloud Storage oder IBM Cloud Object Storage übertragen müssen, verschiebt BlueXP Copy and Sync die Dateien schnell und sicher dorthin, wo Sie sie benötigen.  Nachdem Ihre Daten übertragen wurden, stehen sie sowohl auf der Quelle als auch auf dem Ziel vollständig zur Verwendung zur Verfügung.  BlueXP Copy and Sync synchronisiert die Daten kontinuierlich basierend auf Ihrem vordefinierten Zeitplan und verschiebt nur die Deltas, sodass der Zeit- und Kostenaufwand für die Datenreplikation minimiert wird.  BlueXP Copy and Sync ist ein Software-as-a-Service-Tool (SaaS), das extrem einfach einzurichten und zu verwenden ist.  Datenübertragungen, die durch BlueXP Copy and Sync ausgelöst werden, werden von Datenbrokern durchgeführt.  Sie können BlueXP Copy and Sync-Datenbroker in AWS, Azure, Google Cloud Platform oder vor Ort bereitstellen.
+
+
+
+=== Lenovo ThinkSystem-Server
+
+Lenovo ThinkSystem-Server verfügen über innovative Hardware, Software und Services, die die Herausforderungen der Kunden von heute lösen und einen evolutionären, zweckmäßigen und modularen Designansatz bieten, um die Herausforderungen von morgen zu bewältigen.  Diese Server nutzen branchenführende Technologien nach Industriestandard in Verbindung mit differenzierten Innovationen von Lenovo, um die größtmögliche Flexibilität bei x86-Servern zu bieten.
+
+Zu den wichtigsten Vorteilen der Bereitstellung von Lenovo ThinkSystem-Servern gehören:
+
+* Hochgradig skalierbare, modulare Designs, die mit Ihrem Unternehmen wachsen
+* Branchenführende Ausfallsicherheit, um Stunden kostspieliger ungeplanter Ausfallzeiten zu vermeiden
+* Schnelle Flash-Technologien für geringere Latenzen, schnellere Reaktionszeiten und intelligenteres Datenmanagement in Echtzeit
+
+
+Im KI-Bereich verfolgt Lenovo einen praktischen Ansatz, um Unternehmen dabei zu helfen, die Vorteile von ML und KI für ihre Arbeitslasten zu verstehen und zu nutzen.  Lenovo-Kunden können die KI-Angebote von Lenovo in den Lenovo AI Innovation Centers erkunden und bewerten, um den Wert für ihren speziellen Anwendungsfall vollständig zu verstehen.  Um die Time-to-Value zu verbessern, bietet dieser kundenorientierte Ansatz den Kunden einen Proof of Concept für einsatzbereite und für KI optimierte Lösungsentwicklungsplattformen.
+
+
+
+=== Lenovo ThinkSystem SE350 Edge-Server
+
+Edge Computing ermöglicht die Analyse von Daten von IoT-Geräten am Rand des Netzwerks, bevor sie an das Rechenzentrum oder die Cloud gesendet werden.  Das Lenovo ThinkSystem SE350, wie in der Abbildung unten dargestellt, ist für die einzigartigen Anforderungen der Bereitstellung am Rand konzipiert, wobei der Schwerpunkt auf Flexibilität, Konnektivität, Sicherheit und Fernverwaltung in einem kompakten, robusten und umgebungsbeständigen Formfaktor liegt.
+
+Der SE350 ist mit dem Intel Xeon D-Prozessor ausgestattet und bietet die Flexibilität, die Beschleunigung für Edge-KI-Workloads zu unterstützen. Er wurde speziell für die Herausforderungen von Serverbereitstellungen in einer Vielzahl von Umgebungen außerhalb des Rechenzentrums entwickelt.
+
+image:ai-edge-008.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+image:ai-edge-009.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+==== MLPerf
+
+MLPerf ist die branchenführende Benchmark-Suite zur Bewertung der KI-Leistung.  Es deckt viele Bereiche der angewandten KI ab, darunter Bildklassifizierung, Objekterkennung, medizinische Bildgebung und Verarbeitung natürlicher Sprache (NLP).  Bei dieser Validierung haben wir Inference v0.7-Workloads verwendet, die zum Zeitpunkt der Fertigstellung dieser Validierung die neueste Iteration von MLPerf Inference darstellt.  Der https://mlcommons.org/en/news/mlperf-inference-v07/["MLPerf-Inferenz v0.7"^] Die Suite umfasst vier neue Benchmarks für Rechenzentren und Edge-Systeme:
+
+* *BERT.*  Bidirektionale Encoder-Darstellung von Transformatoren (BERT), optimiert für die Beantwortung von Fragen mithilfe des SQuAD-Datensatzes.
+* *DLRM.*  Das Deep Learning Recommendation Model (DLRM) ist ein Personalisierungs- und Empfehlungsmodell, das darauf trainiert ist, die Klickrate (CTR) zu optimieren.
+* *3D U-Net.*  Die 3D-U-Net-Architektur wird anhand des Brain Tumor Segmentation (BraTS)-Datensatzes trainiert.
+* *RNN-T.* Recurrent Neural Network Transducer (RNN-T) ist ein Modell zur automatischen Spracherkennung (ASR), das mit einer Teilmenge von LibriSpeech trainiert wird.  Die Ergebnisse und der Code von MLPerf Inference sind öffentlich verfügbar und werden unter der Apache-Lizenz veröffentlicht.  MLPerf Inference verfügt über eine Edge-Abteilung, die die folgenden Szenarien unterstützt:
+* *Einzelner Stream.*  Dieses Szenario ahmt Systeme nach, bei denen die Reaktionsfähigkeit ein kritischer Faktor ist, wie etwa Offline-KI-Abfragen, die auf Smartphones durchgeführt werden.  Dabei werden einzelne Anfragen an das System gesendet und die Antwortzeiten erfasst.  Als Ergebnis wird die Latenz des 90. Perzentils aller Antworten gemeldet.
+* *Multistream.*  Dieser Benchmark gilt für Systeme, die Eingaben von mehreren Sensoren verarbeiten.  Während des Tests werden in einem festen Zeitintervall Abfragen gesendet.  Es wird eine QoS-Einschränkung (maximal zulässige Latenz) auferlegt.  Der Test meldet die Anzahl der Streams, die das System verarbeiten kann, während die QoS-Einschränkung eingehalten wird.
+* *Offline.*  Dies ist das einfachste Szenario für Stapelverarbeitungsanwendungen und die Messgröße ist der Durchsatz in Samples pro Sekunde.  Alle Daten stehen dem System zur Verfügung und der Benchmark misst die Zeit, die für die Verarbeitung aller Proben benötigt wird.
+
+
+Lenovo hat MLPerf-Inferenzwerte für SE350 mit T4 veröffentlicht, den in diesem Dokument verwendeten Server.  Die Ergebnisse finden Sie unter https://mlperf.org/inference-results-0-7/["https://mlperf.org/inference-results-0-7/"] im Abschnitt „Edge, Closed Division“ im Eintrag Nr. 0.7-145.

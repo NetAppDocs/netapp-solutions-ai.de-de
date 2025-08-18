@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-train-results.html 
+keywords: test results, data, 
+summary: In diesem Abschnitt werden die Testergebnisse dieser Lösung zusammengefasst. 
+---
+= Testergebnisse
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die folgende Tabelle fasst die Ergebnisse aller für diese Lösung durchgeführten Tests zusammen.
+
+|===
+| Testbeschreibung | Zusammenfassung der Ergebnisse 
+
+
+| Bilderkennungstraining: mehrere gleichzeitige Jobs | Hocheffiziente Leistung.  Alle Jobs liefen mit voller Geschwindigkeit, auch wenn der Cluster voll ausgelastet war.  Die NetApp -Speichersysteme lieferten eine Trainingsleistung, die mit lokalem SSD-Speicher vergleichbar war, und ermöglichten gleichzeitig einen einfachen Datenaustausch zwischen Servern. 
+
+
+| Bilderkennungstraining: Skalieren | Hocheffizient für bis zu vier Knoten.  Zu diesem Zeitpunkt war die Skalierung zwar weniger effizient, aber immer noch machbar.  Die Verwendung eines schnelleren Computernetzwerks verbessert die Skalierbarkeit.  Das NetApp -Speichersystem lieferte eine Trainingsleistung, die mit lokalem SSD-Speicher vergleichbar war, und ermöglichte gleichzeitig die einfache gemeinsame Nutzung von Daten zwischen Servern. 
+|===

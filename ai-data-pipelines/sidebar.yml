@@ -1,0 +1,155 @@
+---
+section: ai-data-pipelines
+title: MLOps und Datenmanagement
+url: "/ai-data-pipelines/index.html"
+entries:
+- title: Open Source MLOps mit NetApp
+  pdf-filename: Open Source MLOps mit NetApp
+  entries:
+  - title: Einführung
+    url: "/software/ai-osmlops-intro.html"
+  - title: Technologieübersicht
+    url: "/software/ai-osmlops-concepts.html"
+  - title: Architektur
+    url: "/software/ai-osmlops-architecture.html"
+  - title: NetApp Trident -Konfiguration
+    entries:
+    - title: Trident -Backends für AIPod Bereitstellungen
+      url: "/software/ai-osmlops-trident-backend.html"
+    - title: Kubernetes StorageClasses für AIPod Bereitstellungen
+      url: "/software/ai-osmlops-trident-sc.html"
+  - title: Apache Airflow
+    entries:
+    - title: Apache Airflow-Bereitstellung
+      url: "/software/ai-osmlops-airflow-deploy.html"
+    - title: Verwenden Sie das NetApp DataOps Toolkit mit Airflow
+      url: "/software/ai-osmlops-airflow-dotk.html"
+  - title: JupyterHub
+    entries:
+    - title: JupyterHub-Bereitstellung
+      url: "/software/ai-osmlops-jhub-deploy.html"
+    - title: Verwenden Sie das NetApp DataOps Toolkit mit JupyterHub
+      url: "/software/ai-osmlops-jhub-dotk.html"
+    - title: Datenaufnahme mit NetApp SnapMirror
+      url: "/software/ai-osmlops-jhub-ingest.html"
+  - title: MLflow
+    entries:
+    - title: MLflow-Bereitstellung
+      url: "/software/ai-osmlops-mlflow-deploy.html"
+    - title: Rückverfolgbarkeit vom Datensatz zum Modell mit NetApp und MLflow
+      url: "/software/ai-osmlops-mlflow-trace.html"
+  - title: Kubeflow
+    entries:
+    - title: Kubeflow-Bereitstellung
+      url: "/software/ai-osmlops-kubeflow-deploy.html"
+    - title: Bereitstellen des Jupyter Notebook-Arbeitsbereichs
+      url: "/software/ai-osmlops-kubeflow-notebook.html"
+    - title: Verwenden Sie das NetApp DataOps Toolkit mit Kubeflow
+      url: "/software/ai-osmlops-kubeflow-dotk.html"
+    - title: Trainieren eines Bilderkennungsmodells – Beispiel-Workflow
+      url: "/software/ai-osmlops-kubeflow-train.html"
+  - title: Beispiele für Trident -Operationen
+    url: "/software/ai-osmlops-trident-ops.html"
+  - title: Beispiele für Hochleistungsjobs für AIPod Bereitstellungen
+    entries:
+    - title: Ausführen einer KI-Workload auf einem einzelnen Knoten
+      url: "/software/ai-osmlops-train-singlenode.html"
+    - title: Ausführen einer synchronen verteilten KI-Workload
+      url: "/software/ai-osmlops-train-distributed.html"
+- title: Hybrid MLOps mit Domino Data Lab und NetApp
+  pdf-filename: Hybrid Multicloud MLOps mit Domino Data Lab und NetApp
+  entries:
+  - title: Einführung
+    url: "/software/ai-hybrid-ddlnexus-intro.html"
+  - title: Technologieübersicht
+    url: "/software/ai-hybrid-ddlnexus-tech.html"
+  - title: Architektur
+    url: "/software/ai-hybrid-ddlnexus-arch.html"
+  - title: Ersteinrichtung
+    url: "/software/ai-hybrid-ddlnexus-setup.html"
+  - title: Bereitstellen vorhandener NetApp -Volumes für Domino
+    url: "/software/ai-hybrid-ddlnexus-vols.html"
+  - title: Greifen Sie in verschiedenen Umgebungen auf dieselben Daten zu
+    url: "/software/ai-hybrid-ddlnexus-data.html"
+  - title: Weitere Informationen
+    url: "/software/ai-hybrid-ddlnexus-addtl.html"
+- title: NVIDIA AI Enterprise mit NetApp und VMware
+  pdf-filename: NVIDIA AI Enterprise mit NetApp und VMware
+  entries:
+  - title: Einführung
+    url: "/software/ai-nvaie-vmw-intro.html"
+  - title: Technologieübersicht
+    url: "/software/ai-nvaie-vmw-tech.html"
+  - title: Architektur
+    url: "/software/ai-nvaie-vmw-arch.html"
+  - title: Ersteinrichtung
+    url: "/software/ai-nvaie-vmw-setup.html"
+  - title: Verwenden Sie die NVIDIA NGC-Software
+    entries:
+    - title: Aufstellen
+      url: "/software/ai-nvaie-vmw-ngcsetup.html"
+    - title: Anwendungsfallbeispiel – TensorFlow-Trainingsjob
+      url: "/software/ai-nvaie-vmw-tensorflow.html"
+  - title: Weitere Informationen
+    url: "/software/ai-nvaie-vmw-addtl.html"
+- title: FSx ONTAP für MLOps
+  pdf-filename: Amazon FSx for NetApp ONTAP (FSx ONTAP) für MLOps
+  entries:
+  - title: Überblick
+    url: "/cloud/ai-mlops-fsxn-intro.html"
+  - title: Teil 1 – Integrieren Sie Amazon FSx for NetApp ONTAP als privaten S3-Bucket
+      in AWS SageMaker
+    url: "/cloud/ai-mlops-fsxn-s3.html"
+  - title: Teil 2 – Nutzen Sie Amazon FSx for NetApp ONTAP als Datenquelle für das
+      Modelltraining in SageMaker
+    url: "/cloud/ai-mlops-fsxn-sagemaker.html"
+  - title: Teil 3 – Erstellen einer vereinfachten MLOps-Pipeline
+    url: "/cloud/ai-mlops-fsxn-cictcd.html"
+- title: StorageGRID -Datensee für autonomes Fahren
+  pdf-filename: NetApp StorageGRID Data Lake für Workloads im Bereich autonomes Fahren
+  url: "/infra/ai-storagegrid-datalake-adas.html"
+- title: NetApp DataOps Toolkit
+  url: "/software/dataops-toolkit.html"
+- title: Vector Datenbanklösung mit NetApp
+  pdf-filename: Vector Datenbanklösung mit NetApp
+  entries:
+  - title: Überblick
+    url: "/vector-db/ai-vdb-solution-with-netapp.html"
+  - title: Einführung
+    url: "/vector-db/ai-vdb-intro.html"
+  - title: Lösungsübersicht
+    url: "/vector-db/ai-vdb-overview.html"
+  - title: Vektordatenbank
+    url: "/vector-db/ai-vdb-landscape.html"
+  - title: Technologieanforderung
+    url: "/vector-db/ai-vdb-tech.html"
+  - title: Bereitstellungsverfahren
+    url: "/vector-db/ai-vdb-deploy.html"
+  - title: Lösungsüberprüfung
+    entries:
+    - title: Überblick
+      url: "/vector-db/ai-vdb-verification.html"
+    - title: Milvus-Cluster-Setup mit Kubernetes vor Ort
+      url: "/vector-db/ai-vdb-milvus-setup.html"
+    - title: Milvus mit Amazon FSx ONTAP für NetApp ONTAP – Datei- und Objektdualität
+      url: "/vector-db/ai-vdb-milvus-fsxn.html"
+    - title: Vektordatenbankschutz mit SnapCenter
+      url: "/vector-db/ai-vdb-dp-snapcenter.html"
+    - title: Notfallwiederherstellung mit SnapMirror
+      url: "/vector-db/ai-vdb-dr-snapmirror.html"
+    - title: Leistungsvalidierung
+      url: "/vector-db/ai-vdb-perf-validation.html"
+  - title: 'Vektordatenbank mit Instaclustr unter Verwendung von PostGreSQL: pgvector'
+    url: "/vector-db/ai-vdb-instaclustr-pgvector.html"
+  - title: Anwendungsfälle für Vektordatenbanken
+    url: "/vector-db/ai-vdb-usecases.html"
+  - title: Abschluss
+    url: "/vector-db/ai-vdb-conclusion.html"
+  - title: 'Anhang A: values.yaml'
+    url: "/vector-db/ai-vdb-values.html"
+  - title: 'Anhang B: prepare_data_netapp_new_py'
+    url: "/vector-db/ai-vdb-dataprep.html"
+  - title: 'Anhang C: verify_data_netapp.py'
+    url: "/vector-db/ai-vdb-verifydata.html"
+  - title: 'Anhang D: docker_compose.yml'
+    url: "/vector-db/ai-vdb-docker-compose.html"

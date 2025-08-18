@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-aipod-nv-validation.html 
+keywords: NetApp AI, AI, Artificial Intelligence, ML, Machine Learning, NVIDIA, NVIDIA AI Enterprise, NVIDIA BasePOD, NVIDIA DGX 
+summary: NetApp AIPod mit NVIDIA DGX-Systemen – Leitfaden zur Lösungsvalidierung und Größenbestimmung 
+---
+= NVA-1173 NetApp AIPod mit NVIDIA DGX-Systemen – Leitfaden zur Lösungsvalidierung und Größenbestimmung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt konzentriert sich auf die Lösungsvalidierung und Größenrichtlinien für den NetApp AIPod mit NVIDIA DGX-Systemen.
+
+
+
+== Lösungsvalidierung
+
+Die Speicherkonfiguration in dieser Lösung wurde mithilfe einer Reihe synthetischer Workloads unter Verwendung des Open-Source-Tools FIO validiert.  Diese Tests umfassen Lese- und Schreib-E/A-Muster, die die Speicherarbeitslast simulieren sollen, die von DGX-Systemen generiert wird, die Deep-Learning-Trainingsjobs ausführen.  Die Speicherkonfiguration wurde mithilfe eines Clusters aus 2-Sockel-CPU-Servern validiert, auf denen die FIO-Workloads gleichzeitig ausgeführt wurden, um einen Cluster aus DGX-Systemen zu simulieren.  Jeder Client wurde mit der gleichen Netzwerkkonfiguration wie zuvor beschrieben konfiguriert, wobei die folgenden Details hinzugefügt wurden.
+
+Für diese Validierung wurden die folgenden Mount-Optionen verwendet:
+
+[cols="30%, 70%"]
+|===
+
+
+| vers=4.1 | ermöglicht pNFS für den parallelen Zugriff auf mehrere Speicherknoten 
+
+
+| proto=rdma | setzt das Übertragungsprotokoll auf RDMA statt auf das Standard-TCP 
+
+
+| Port=20049 | Geben Sie den richtigen Port für den RDMA-NFS-Dienst an 
+
+
+| max_connect=16 | ermöglicht NFS-Sitzungsbündelung zur Aggregation der Speicherportbandbreite 
+
+
+| schreiben=eifrig | verbessert die Schreibleistung gepufferter Schreibvorgänge 
+
+
+| rsize=262144,wsize=262144 | setzt die I/O-Transfergröße auf 256k 
+|===
+Darüber hinaus wurden die Clients mit einem NFS-max_session_slots-Wert von 1024 konfiguriert.  Da die Lösung mit NFS über RDMA getestet wurde, wurden die Ports der Speichernetzwerke mit einer aktiven/passiven Verbindung konfiguriert.  Für diese Validierung wurden folgende Bindungsparameter verwendet:
+
+[cols="30%, 70%"]
+|===
+
+
+| Modus=aktive Sicherung | setzt die Bindung in den Aktiv/Passiv-Modus 
+
+
+| primary=<Schnittstellenname> | Primäre Schnittstellen für alle Clients wurden auf die Switches verteilt 
+
+
+| mii-monitor-interval=100 | gibt Überwachungsintervall von 100ms an 
+
+
+| Failover-Mac-Richtlinie = aktiv | gibt an, dass die MAC-Adresse des aktiven Links die MAC der Verbindung ist.  Dies ist für den ordnungsgemäßen Betrieb von RDMA über die verbundene Schnittstelle erforderlich. 
+|===
+Das Speichersystem wurde wie beschrieben mit zwei A900 HA-Paaren (4 Controller) mit zwei NS224-Festplattenregalen mit 24 1,9 TB NVMe-Festplatten konfiguriert, die an jedes HA-Paar angeschlossen waren.  Wie im Abschnitt zur Architektur erwähnt, wurde die Speicherkapazität aller Controller mithilfe eines FlexGroup Volumes kombiniert und die Daten aller Clients auf alle Controller im Cluster verteilt.
+
+
+
+== Leitfaden zur Größenbestimmung von Speichersystemen
+
+NetApp hat die DGX BasePOD-Zertifizierung erfolgreich abgeschlossen und die beiden getesteten A90 HA-Paare können problemlos einen Cluster aus sechzehn DGX H100-Systemen unterstützen.  Für größere Bereitstellungen mit höheren Anforderungen an die Speicherleistung können dem NetApp ONTAP -Cluster zusätzliche AFF -Systeme hinzugefügt werden, bis zu 12 HA-Paare (24 Knoten) in einem einzigen Cluster.  Mithilfe der in dieser Lösung beschriebenen FlexGroup -Technologie kann ein Cluster mit 24 Knoten über 79 PB und bis zu 552 GBps Durchsatz in einem einzigen Namespace bereitstellen.  Andere NetApp Speichersysteme wie AFF A400, A250 und C800 bieten Optionen mit geringerer Leistung und/oder höherer Kapazität für kleinere Bereitstellungen zu niedrigeren Kosten.  Da ONTAP 9 Cluster mit gemischten Modellen unterstützt, können Kunden mit einem kleineren anfänglichen Footprint beginnen und dem Cluster weitere oder größere Speichersysteme hinzufügen, wenn die Kapazitäts- und Leistungsanforderungen steigen.  Die folgende Tabelle zeigt eine grobe Schätzung der Anzahl der von jedem AFF Modell unterstützten A100- und H100-GPUs.
+
+_Leitfaden zur Größenbestimmung von NetApp-Speichersystemen_
+
+image:aipod-nv-a90-sizing.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]

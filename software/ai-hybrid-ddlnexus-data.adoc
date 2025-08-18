@@ -1,0 +1,128 @@
+---
+sidebar: sidebar 
+permalink: software/ai-hybrid-ddlnexus-data.html 
+keywords: NetApp AI, AI, Artificial Intelligence, ML, Machine Learning, NVIDIA, Hybrid, Hybrid Cloud, Hybrid Multicloud, Cloud, AWS, Amazon, Amazon Web Services, FSx ONTAP, FSx, NetApp ONTAP, FlexCache, SnapMirror, BlueXP 
+summary: Hybrid Multicloud MLOps mit Domino Data Lab und NetApp – Zugriff auf dieselben Daten in verschiedenen Umgebungen 
+---
+= Greifen Sie in verschiedenen Umgebungen auf dieselben Daten zu
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müssen, um in verschiedenen Computerumgebungen auf dieselben Daten zuzugreifen.  In der Domino MLOps-Plattform werden Rechenumgebungen als „Datenebenen“ bezeichnet.  Befolgen Sie die in diesem Abschnitt beschriebenen Aufgaben, wenn sich Ihre Daten auf einem NetApp -Volume in einer Datenebene befinden, Sie aber in einer anderen Datenebene darauf zugreifen müssen.  Diese Art von Szenario wird oft als „Bursting“ oder, wenn die Zielumgebung die Cloud ist, als „Cloud Bursting“ bezeichnet.  Diese Funktion wird häufig benötigt, wenn es um eingeschränkte oder überbelegte Rechenressourcen geht.  Wenn Ihr lokaler Computercluster beispielsweise überbucht ist, möchten Sie möglicherweise Workloads in die Cloud verschieben, wo sie sofort gestartet werden können.
+
+Für den Zugriff auf ein NetApp -Volume, das sich in einer anderen Datenebene befindet, gibt es zwei empfohlene Optionen.  Diese Optionen werden in den folgenden Unterabschnitten beschrieben.  Wählen Sie je nach Ihren spezifischen Anforderungen eine dieser Optionen.  Die Vor- und Nachteile der beiden Optionen werden in der folgenden Tabelle beschrieben.
+
+|===
+| Option | Vorteile | Nachteile 
+
+
+| Option 1 – Cache | - Einfacherer Arbeitsablauf - Möglichkeit, eine Teilmenge der Daten je nach Bedarf zwischenzuspeichern - Möglichkeit, Daten zurück in die Quelle zu schreiben - Keine Remote-Kopie zu verwalten | - Erhöhte Latenz beim ersten Datenzugriff, da der Cache hydratisiert wird. 
+
+
+| Option 2 – Spiegel | - Vollständige Kopie des Quellvolumes - Keine erhöhte Latenz durch Cache-Hydration (nach Abschluss des Spiegelvorgangs) | - Vor dem Zugriff auf die Daten muss auf den Abschluss des Spiegelvorgangs gewartet werden. - Eine Remote-Kopie muss verwaltet werden. - Keine Möglichkeit, in die Quelle zurückzuschreiben. 
+|===
+
+
+== Option 1 – Erstellen Sie einen Cache eines Volumes, das sich in einer anderen Datenebene befindet
+
+Mitlink:https://docs.netapp.com/us-en/ontap/flexcache/accelerate-data-access-concept.html["NetApp FlexCache -Technologie"] können Sie einen Cache eines NetApp -Volumes erstellen, das sich in einer anderen Datenebene befindet.  Wenn Sie beispielsweise ein NetApp Volume in Ihrer lokalen Datenebene haben und auf dieses Volume in Ihrer AWS-Datenebene zugreifen müssen, können Sie einen Cache des Volumes in AWS erstellen.  In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müssen, um einen Cache für ein NetApp -Volume zu erstellen, das sich in einer anderen Datenebene befindet.
+
+
+
+=== Erstellen Sie ein FlexCache -Volume in der Zielumgebung
+
+
+NOTE: Wenn die Zielumgebung Ihr lokales Rechenzentrum ist, erstellen Sie das FlexCache Volume auf Ihrem lokalen ONTAP System.  Wenn die Zielumgebung AWS ist, erstellen Sie das FlexCache Volume auf Ihrer Amazon FSx ONTAP Instance.
+
+Zuerst müssen Sie in der Zielumgebung ein FlexCache -Volume erstellen.
+
+Wir empfehlen die Verwendung von BlueXP zum Erstellen des FlexCache -Volumes.  Um ein FlexCache Volume mit BlueXP zu erstellen, folgen Sie den Anweisungen imlink:https://docs.netapp.com/us-en/bluexp-volume-caching/["BlueXP volume caching Dokumentation"] .
+
+Wenn Sie BlueXP nicht verwenden möchten, können Sie zum Erstellen des FlexCache Volumes ONTAP System Manager oder die ONTAP CLI verwenden.  Um ein FlexCache Volume mit System Manager zu erstellen, befolgen Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_nas_flexcache.html["ONTAP-Dokumentation"] .  Informationen zum Erstellen eines FlexCache Volumes mit der ONTAP CLI finden Sie in den Anweisungen imlink:https://docs.netapp.com/us-en/ontap/flexcache/index.html["ONTAP-Dokumentation"] .
+
+Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+
+
+NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
+
+
+
+=== FlexCache -Volume für Domino verfügbar machen
+
+Als Nächstes müssen Sie das FlexCache Volume der Domino MLOps-Plattform zugänglich machen.  Um das FlexCache -Volume für Domino verfügbar zu machen, folgen Sie den Anweisungen im Unterabschnitt „Existierende NFS-Volumes verfügbar machen, die nicht von Trident bereitgestellt wurden“ deslink:ai-hybrid-ddlnexus-vols.html["Abschnitt „Vorhandene NetApp -Volumes für Domino verfügbar machen“"] dieser Lösung.
+
+Jetzt können Sie das FlexCache -Volume mounten, wenn Sie Jobs und Arbeitsbereiche in der Zieldatenebene starten, wie in den folgenden Screenshots gezeigt.
+
+
+
+==== Vor dem Erstellen des FlexCache -Volumes
+
+image:ddlnexus-004.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+==== Nach der Bereitstellung des FlexCache -Volumes für Domino
+
+image:ddlnexus-005.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+== Option 2 – Replizieren eines Volumes, das sich in einer anderen Datenebene befindet
+
+Mitlink:https://www.netapp.com/cyber-resilience/data-protection/data-backup-recovery/snapmirror-data-replication/["NetApp SnapMirror Datenreplikationstechnologie"] können Sie eine Kopie eines NetApp -Volumes erstellen, das sich in einer anderen Datenebene befindet.  Wenn Sie beispielsweise ein NetApp Volume in Ihrer lokalen Datenebene haben und auf dieses Volume in Ihrer AWS-Datenebene zugreifen müssen, können Sie eine Kopie des Volumes in AWS erstellen.  In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müssen, um eine Kopie eines NetApp -Volumes zu erstellen, das sich in einer anderen Datenebene befindet.
+
+
+
+=== SnapMirror -Beziehung erstellen
+
+Zuerst müssen Sie eine SnapMirror -Beziehung zwischen Ihrem Quellvolume und einem neuen Zielvolume in der Zielumgebung erstellen.  Beachten Sie, dass das Zielvolume im Rahmen des Prozesses zum Erstellen der SnapMirror -Beziehung erstellt wird.
+
+Wir empfehlen die Verwendung von BlueXP zum Erstellen der SnapMirror -Beziehung.  Um eine SnapMirror -Beziehung mit BlueXP zu erstellen, folgen Sie den Anweisungen in derlink:https://docs.netapp.com/us-en/bluexp-replication/["BlueXP replication"] .
+
+Wenn Sie BlueXP nicht verwenden möchten, können Sie die SnapMirror -Beziehung mit dem ONTAP System Manager oder der ONTAP CLI erstellen.  Um eine SnapMirror -Beziehung mit System Manager zu erstellen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_dp_configure_mirror.html["ONTAP-Dokumentation"] .  Um eine SnapMirror -Beziehung mit der ONTAP CLI zu erstellen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-replication-workflow-concept.html["ONTAP-Dokumentation"] .
+
+Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+
+
+NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
+
+
+
+=== SnapMirror Beziehung unterbrechen
+
+Als Nächstes müssen Sie die SnapMirror -Beziehung aufheben, um das Zielvolume für den Datenzugriff zu aktivieren.  Warten Sie, bis die erste Replikation abgeschlossen ist, bevor Sie diesen Schritt ausführen.
+
+
+NOTE: Sie können feststellen, ob die Replikation abgeschlossen ist, indem Sie den Spiegelstatus in BlueXP, ONTAP System Manager oder der ONTAP CLI überprüfen.  Wenn die Replikation abgeschlossen ist, lautet der Spiegelstatus „snapmirrored“.
+
+Wir empfehlen die Verwendung von BlueXP , um die SnapMirror -Beziehung zu unterbrechen.  Um eine SnapMirror -Beziehung mit BlueXP zu beenden, folgen Sie den Anweisungen in derlink:https://docs.netapp.com/us-en/bluexp-replication/task-managing-replication.html["BlueXP replication"] .
+
+Wenn Sie BlueXP nicht verwenden möchten, können Sie die SnapMirror -Beziehung mit dem ONTAP System Manager oder der ONTAP CLI aufheben.  Um eine SnapMirror -Beziehung mit System Manager zu beenden, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_dp_serve_data_from_destination.html["ONTAP-Dokumentation"] .  Um eine SnapMirror -Beziehung mit der ONTAP CLI zu unterbrechen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/data-protection/make-destination-volume-writeable-task.html["ONTAP-Dokumentation"] .
+
+Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+
+
+
+=== Zielvolume für Domino verfügbar machen
+
+Als Nächstes müssen Sie das Zielvolume der Domino MLOps-Plattform zugänglich machen.  Um das Zielvolume für Domino freizugeben, folgen Sie den Anweisungen im Unterabschnitt „Existierende NFS-Volumes freigeben, die nicht von Trident bereitgestellt wurden“ deslink:ai-hybrid-ddlnexus-vols.html["Abschnitt „Vorhandene NetApp -Volumes für Domino verfügbar machen“"] dieser Lösung.
+
+Jetzt können Sie das Zielvolume mounten, wenn Sie Jobs und Arbeitsbereiche in der Zieldatenebene starten, wie in den folgenden Screenshots gezeigt.
+
+
+
+==== Vor dem Erstellen einer SnapMirror Beziehung
+
+image:ddlnexus-004.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+==== Nach der Freigabe des Zielvolumes für Domino
+
+image:ddlnexus-005.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]

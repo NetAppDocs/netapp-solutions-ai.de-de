@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/bda-ai-customer-challenges.html 
+keywords: customer, challenge, data lake, repository, syncing, moving data 
+summary: Auf dieser Seite werden die Herausforderungen erörtert, denen sich ein Kunde möglicherweise gegenübersieht, wenn er versucht, für KI-Operationen auf Daten aus Big-Data-Analysen zuzugreifen. 
+---
+= Kundenherausforderungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Kunden stehen möglicherweise vor den folgenden Herausforderungen, wenn sie versuchen, für KI-Operationen auf Daten aus Big-Data-Analysen zuzugreifen:
+
+* Kundendaten befinden sich in einem Data Lake-Repository.  Der Datensee kann verschiedene Arten von Daten enthalten, z. B. strukturierte, unstrukturierte, halbstrukturierte, Protokoll- und Machine-to-Machine-Daten.  Alle diese Datentypen müssen in KI-Systemen verarbeitet werden.
+* AI ist nicht mit Hadoop-Dateisystemen kompatibel.  Eine typische KI-Architektur kann nicht direkt auf HDFS- und HCFS-Daten zugreifen, die in ein für KI verständliches Dateisystem (NFS) verschoben werden müssen.
+* Das Verschieben von Data Lake-Daten in die KI erfordert in der Regel spezielle Prozesse.  Die Datenmenge im Datensee kann sehr groß sein.  Ein Kunde muss über eine effiziente, durchsatzstarke und kostengünstige Möglichkeit verfügen, Daten in KI-Systeme zu übertragen.
+* Daten werden synchronisiert.  Wenn ein Kunde Daten zwischen der Big-Data-Plattform und KI synchronisieren möchte, können die durch KI verarbeiteten Daten manchmal zusammen mit Big Data für die analytische Verarbeitung verwendet werden.
+

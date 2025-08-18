@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: software/ai-hybrid-ddlnexus-addtl.html 
+keywords: NetApp AI, AI, Artificial Intelligence, ML, Machine Learning, NVIDIA, Hybrid, Hybrid Cloud, Hybrid Multicloud, Cloud, AWS, Amazon, Amazon Web Services, FSx ONTAP, FSx, NetApp ONTAP, FlexCache, SnapMirror, BlueXP 
+summary: Hybrid Multicloud MLOps mit Domino Data Lab und NetApp – Wo Sie weitere Informationen finden 
+---
+= Wo Sie weitere Informationen finden
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* Domino Data Lab
++
+link:https://domino.ai["https://domino.ai"]
+
+* Domino Nexus
++
+link:https://domino.ai/platform/nexus["https://domino.ai/platform/nexus"]
+
+* NetApp BlueXP
++
+link:https://bluexp.netapp.com["https://bluexp.netapp.com"]
+
+* NetApp ONTAP Datenmanagementsoftware
++
+link:https://www.netapp.com/data-management/ontap-data-management-software/["https://www.netapp.com/data-management/ontap-data-management-software/"]
+
+* NetApp KI-Lösungen
++
+link:https://www.netapp.com/artificial-intelligence/["https://www.netapp.com/artificial-intelligence/"]
+
+
+
+
+
+== Danksagung
+
+* Josh Mineroff, Direktor von SA für Tech Alliances, Domino Data Lab
+* Nicholas Jablonski, Field CTO, Domino Data Lab
+* Prabu Arjunan, Lösungsarchitekt, NetApp
+* Brian Young, Global Alliance Director, Technology Alliance Partners, NetApp
+

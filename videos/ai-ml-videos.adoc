@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: videos/ai-ml-videos.html 
+keywords: video, demonstration, deployment 
+summary:  
+---
+= Sehen Sie sich Videos zu KI-Lösungen mit NetApp an
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Entdecken Sie, wie NetApp KI- und Machine-Learning-Initiativen unterstützt.  Diese kuratierten Video-Playlists präsentieren NetApp KI-Lösungen und MLOps-Workflows und heben Bereitstellungsstrategien, Automatisierung und Datenmanagement für erweiterte Analysen hervor.
+
+.NetApp AI -Lösungen
+Umfassende Video-Playlist zu KI-Infrastruktur, konvergenten Systemen und KI-Bereitstellungen in Unternehmen.link:https://www.youtube.com/playlist?list=PLdXI3bZJEw7nSrRhuolRPYqvSlGLuTOAO["Sehen Sie sich die Playlist mit den NetApp KI-Lösungen an"^]
+
+.Maschinelles Lernen (MLOps)
+Videoserie zu MLOps-Workflows, Datenpipelines und betrieblichen Best Practices.link:https://www.youtube.com/playlist?list=PLdXI3bZJEw7n1sWK-QGq4QMI1VBJS-ZZW["Sehen Sie sich die MLOps-Playlist an"^]

@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/apache-spark-conclusion.html 
+keywords: conclusion 
+summary: Dieser Abschnitt fasst dieses Dokument zu den NetApp -Speicherlösungen für Apache Spark zusammen. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Dokument besprechen wir die Apache Spark-Architektur, Anwendungsfälle von Kunden und das NetApp -Speicherportfolio im Zusammenhang mit Big Data, moderner Analytik sowie KI, ML und DL.  In unseren Leistungsvalidierungstests auf Basis branchenüblicher Benchmarking-Tools und der Kundennachfrage zeigten die NetApp Spark-Lösungen eine höhere Leistung als native Hadoop-Systeme.  Eine Kombination aus den in diesem Bericht vorgestellten Anwendungsfällen und Leistungsergebnissen von Kunden kann Ihnen bei der Auswahl einer geeigneten Spark-Lösung für Ihre Bereitstellung helfen.

@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: blogs.html 
+summary: Lesen Sie KI/ML-Blogs, die Branchentrends, Innovationen und Auswirkungen auf die Praxis hervorheben, sowie Entwicklerressourcen, Community-Einblicke und praktische Tools für die Arbeit mit NetApp KI-Lösungen. 
+keywords: netapp, solutions, blogs 
+---
+= Lesen Sie KI-Lösungsblogs von NetApp Experten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lesen Sie die KI/ML-Blogs, die Branchentrends, Innovationen und Auswirkungen auf die Praxis hervorheben, sowie Entwicklerressourcen, Community-Einblicke und praktische Tools für die Arbeit mit NetApp KI-Lösungen.
+
+.KI-Trends und Brancheneinblicke
+Erkunden Sie Branchentrends, Innovationen und die Auswirkungen der KI in der Praxis in verschiedenen Sektoren. link:++https://www.netapp.com/blog/#t=Blogs&sort=%40publish_date_mktg%20descending&layout=card&f:@facet_language_mktg=["Englisch"] &f:@facet_soultion_mktg=[KI,Analytik,künstliche Intelligenz]++[Lesen Sie KI-Blogs auf NetApp^]
+
+.Entwicklerressourcen und Community
+Technische Einblicke, praktische Tools und Community-gesteuerte Inhalte für KI/ML-Praktiker.link:https://netapp.io/category/ai-ml/["Lesen Sie KI-Blogs im Pub"^]

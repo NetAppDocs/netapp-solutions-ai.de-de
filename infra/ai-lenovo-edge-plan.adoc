@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-plan.html 
+keywords: test, plan, mlperf, inference, benchmarks 
+summary: Dieses Dokument folgt dem Code und den Regeln von MLPerf Inference v0.7 und MLPerf Inference v1.1.  Wir haben Benchmarks ausgeführt, die für die Inferenz am Rand konzipiert sind, wie in den Tabellen in diesem Abschnitt definiert. 
+---
+= Testplan
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieses Dokument folgt MLPerf Inference v0.7 https://github.com/mlperf/inference_results_v0.7/tree/master/closed/Lenovo["Code"^] , MLPerf-Inferenz v1.1 https://github.com/mlcommons/inference_results_v1.1/tree/main/closed/Lenovo["Code"^] , Und https://github.com/mlcommons/inference_policies/blob/master/inference_rules.adoc["Regeln"^] .  Wir haben MLPerf-Benchmarks ausgeführt, die für die Inferenz am Rand entwickelt wurden, wie in der folgenden Tabelle definiert.
+
+|===
+| Bereich | Aufgabe | Modell | Datensatz | QSL-Größe | Qualität | Multistream-Latenzbeschränkung 
+
+
+| Vision | Bildklassifizierung | Resnet50v1.5 | ImageNet (224 x 224) | 1024 | 99 % von FP32 | 50 ms 
+
+
+| Vision | Objekterkennung (groß) | SSD-ResNet34 | COCO (1200x1200) | 64 | 99 % von FP32 | 66 ms 
+
+
+| Vision | Objekterkennung (klein) | SSD – MobileNetsv1 | COCO (300x300) | 256 | 99 % von FP32 | 50 ms 
+
+
+| Vision | Medizinische Bildsegmentierung | 3D UNET | BraTS 2019 (224x224x160) | 16 | 99 % und 99,9 % von FP32 | n/a 
+
+
+| Rede | Sprache-zu-Text | RNNT | Librispeech dev-clean | 2513 | 99 % von FP32 | n/a 
+
+
+| Sprache | Sprachverarbeitung | BERT | SQuAD v1.1 | 10833 | 99 % von FP32 | n/a 
+|===
+Die folgende Tabelle zeigt Edge-Benchmark-Szenarien.
+
+|===
+| Bereich | Aufgabe | Szenarien 
+
+
+| Vision | Bildklassifizierung | Einzelstream, Offline, Multistream 
+
+
+| Vision | Objekterkennung (groß) | Einzelstream, Offline, Multistream 
+
+
+| Vision | Objekterkennung (klein) | Einzelstream, Offline, Multistream 
+
+
+| Vision | Medizinische Bildsegmentierung | Einzelner Stream, offline 
+
+
+| Rede | Sprache-zu-Text | Einzelner Stream, offline 
+
+
+| Sprache | Sprachverarbeitung | Einzelner Stream, offline 
+|===
+Wir haben diese Benchmarks mit der bei dieser Validierung entwickelten Netzwerkspeicherarchitektur durchgeführt und die Ergebnisse mit denen aus lokalen Läufen auf den Edge-Servern verglichen, die zuvor an MLPerf übermittelt wurden.  Der Vergleich soll ermitteln, welchen Einfluss der gemeinsam genutzte Speicher auf die Inferenzleistung hat.

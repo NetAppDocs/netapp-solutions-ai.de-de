@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-certification.html 
+keywords: certification, setup, configuration, benchmark 
+summary: Wir haben die Zertifizierung mit Confluent Platform mit Kafka für Tiered Storage in NetApp StorageGRID durchgeführt. 
+---
+= Konfluente Überprüfung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wir haben die Überprüfung mit Confluent Platform 6.2 Tiered Storage in NetApp StorageGRID durchgeführt.  Die Teams von NetApp und Confluent arbeiteten gemeinsam an dieser Verifizierung und führten die für die Verifizierung erforderlichen Testfälle aus.
+
+
+
+== Einrichtung der Confluent-Plattform
+
+Zur Überprüfung haben wir das folgende Setup verwendet.
+
+Zur Überprüfung verwendeten wir drei Zookeeper, fünf Broker, fünf Testskript-Ausführungsserver, benannte Tool-Server mit 256 GB RAM und 16 CPUs.  Für den NetApp -Speicher haben wir StorageGRID mit einem SG1000-Load Balancer mit vier SGF6024 verwendet.  Die Speicher und Broker wurden über 100GbE-Verbindungen verbunden.
+
+Die folgende Abbildung zeigt die Netzwerktopologie der für die Confluent-Verifizierung verwendeten Konfiguration.
+
+image:confluent-kafka-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+Die Tool-Server fungieren als Anwendungsclients, die Anfragen an Confluent-Knoten senden.
+
+
+
+== Confluent-Tiered-Storage-Konfiguration
+
+Die mehrstufige Speicherkonfiguration erfordert die folgenden Parameter in Kafka:
+
+....
+Confluent.tier.archiver.num.threads=16
+confluent.tier.fetcher.num.threads=32
+confluent.tier.enable=true
+confluent.tier.feature=true
+confluent.tier.backend=S3
+confluent.tier.s3.bucket=kafkasgdbucket1-2
+confluent.tier.s3.region=us-west-2
+confluent.tier.s3.cred.file.path=/data/kafka/.ssh/credentials
+confluent.tier.s3.aws.endpoint.override=http://kafkasgd.rtpppe.netapp.com:10444/
+confluent.tier.s3.force.path.style.access=true
+....
+Zur Überprüfung haben wir StorageGRID mit dem HTTP-Protokoll verwendet, aber auch HTTPS funktioniert.  Der Zugriffsschlüssel und der geheime Schlüssel werden in der Datei mit dem angegebenen Namen gespeichert. `confluent.tier.s3.cred.file.path` Parameter.
+
+
+
+== NetApp Objektspeicher – StorageGRID
+
+Zur Überprüfung haben wir die Single-Site-Konfiguration in StorageGRID konfiguriert.
+
+image:confluent-kafka-008.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]
+
+
+
+== Verifizierungstests
+
+Zur Verifizierung haben wir die folgenden fünf Testfälle durchgeführt.  Diese Tests werden auf dem Trogdor-Framework ausgeführt.  Bei den ersten beiden handelte es sich um Funktionstests und bei den restlichen drei um Leistungstests.
+
+
+
+=== Korrektheitstest des Objektspeichers
+
+Dieser Test ermittelt, ob alle grundlegenden Vorgänge (z. B. Get/Put/Delete) der Objektspeicher-API entsprechend den Anforderungen des mehrstufigen Speichers gut funktionieren.  Es handelt sich um einen grundlegenden Test, den jeder Objektspeicherdienst vor den folgenden Tests bestehen sollte.  Es handelt sich um einen Aussagetest, der entweder bestanden oder nicht bestanden wird.
+
+
+
+=== Korrektheitstest der Tiering-Funktionalität
+
+Dieser Test ermittelt mit einem Assertivtest, der entweder erfolgreich ist oder fehlschlägt, ob die End-to-End-Tiered-Storage-Funktionalität gut funktioniert.  Der Test erstellt ein Testthema, das standardmäßig mit aktiviertem Tiering und stark reduzierter Hotset-Größe konfiguriert ist.  Es erzeugt einen Ereignisstrom zum neu erstellten Testthema, wartet darauf, dass die Broker die Segmente im Objektspeicher archivieren, verbraucht dann den Ereignisstrom und überprüft, ob der verbrauchte Strom mit dem erzeugten Strom übereinstimmt.  Die Anzahl der an den Ereignisstrom gesendeten Nachrichten ist konfigurierbar, sodass der Benutzer je nach Testbedarf eine ausreichend große Arbeitslast generieren kann.  Die reduzierte Hotset-Größe stellt sicher, dass die Abrufe des Verbrauchers außerhalb des aktiven Segments nur aus dem Objektspeicher erfolgen. Dies hilft beim Testen der Richtigkeit des Objektspeichers für Lesevorgänge.  Wir haben diesen Test mit und ohne Fehlerinjektion im Objektspeicher durchgeführt.  Wir haben einen Knotenausfall simuliert, indem wir den Service Manager-Dienst in einem der Knoten in StorageGRID gestoppt und überprüft haben, ob die End-to-End-Funktionalität mit dem Objektspeicher funktioniert.
+
+
+
+=== Benchmark für den Tier-Abruf
+
+Dieser Test validierte die Leseleistung des mehrstufigen Objektspeichers und überprüfte die Range-Fetch-Leseanforderungen unter hoher Last von Segmenten, die durch den Benchmark generiert wurden.  In diesem Benchmark hat Confluent benutzerdefinierte Clients entwickelt, um die Tier-Fetch-Anfragen zu erfüllen.
+
+
+
+=== Benchmark für die Arbeitslast „Produzieren und Konsumieren“
+
+Dieser Test erzeugte durch die Archivierung von Segmenten indirekt eine Schreiblast im Objektspeicher.  Die Lesearbeitslast (gelesene Segmente) wurde aus dem Objektspeicher generiert, als Verbrauchergruppen die Segmente abgerufen haben.  Diese Arbeitslast wurde durch das Testskript generiert.  Dieser Test überprüfte die Leistung beim Lesen und Schreiben im Objektspeicher in parallelen Threads.  Wir haben mit und ohne Fehlerinjektion im Objektspeicher getestet, wie wir es für den Korrektheitstest der Tiering-Funktionalität getan haben.
+
+
+
+=== Benchmark für die Aufbewahrungsarbeitslast
+
+Dieser Test prüfte die Löschleistung eines Objektspeichers unter einer hohen Themenaufbewahrungslast.  Der Aufbewahrungsaufwand wurde mithilfe eines Testskripts generiert, das viele Nachrichten parallel zu einem Testthema produziert.  Das Testthema war die Konfiguration mit einer aggressiven größen- und zeitbasierten Aufbewahrungseinstellung, die dazu führte, dass der Ereignisstrom kontinuierlich aus dem Objektspeicher gelöscht wurde.  Anschließend wurden die Segmente archiviert.  Dies führte zu einer großen Anzahl von Löschungen im Objektspeicher durch den Broker und zur Erfassung der Leistung der Löschvorgänge im Objektspeicher.

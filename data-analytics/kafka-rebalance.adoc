@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/kafka-rebalance.html 
+keywords: rebalance, test, self balancing, brokers 
+summary: Dieser Test basiert auf der Funktion für selbstausgleichende Cluster, die den Neuausgleich basierend auf Änderungen der Clustertopologie oder ungleichmäßiger Last automatisiert. 
+---
+= Konfluente, selbstausgleichende Cluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie bereits einen Kafka-Cluster verwaltet haben, sind Sie wahrscheinlich mit den Herausforderungen vertraut, die mit der manuellen Neuzuweisung von Partitionen an verschiedene Broker einhergehen, um sicherzustellen, dass die Arbeitslast im gesamten Cluster ausgeglichen ist.  Für Organisationen mit großen Kafka-Bereitstellungen kann die Neuordnung großer Datenmengen entmutigend, mühsam und riskant sein, insbesondere wenn unternehmenskritische Anwendungen auf dem Cluster erstellt werden.  Allerdings ist der Prozess selbst bei den kleinsten Kafka-Anwendungsfällen zeitaufwändig und anfällig für menschliche Fehler.
+
+In unserem Labor haben wir die Funktion zum selbstausgleichenden Cluster von Confluent getestet, die den Neuausgleich basierend auf Änderungen der Clustertopologie oder ungleichmäßiger Last automatisiert.  Der Confluent-Neuausgleichstest hilft dabei, die Zeit zu messen, die zum Hinzufügen eines neuen Brokers benötigt wird, wenn ein Knotenausfall vorliegt oder der Skalierungsknoten einen Neuausgleich der Daten zwischen den Brokern erfordert.  In klassischen Kafka-Konfigurationen wächst die Menge der neu auszugleichenden Daten mit dem Wachstum des Clusters, bei mehrstufigem Speicher ist die Neuausgleichung jedoch auf eine kleine Datenmenge beschränkt.  Basierend auf unserer Validierung dauert die Neuausrichtung im mehrstufigen Speicher in einer klassischen Kafka-Architektur Sekunden oder Minuten und wächst linear mit dem Wachstum des Clusters.
+
+In selbstausgleichenden Clustern werden Partitionsneuausgleiche vollständig automatisiert, um den Durchsatz von Kafka zu optimieren, die Broker-Skalierung zu beschleunigen und den Betriebsaufwand für den Betrieb eines großen Clusters zu reduzieren.  Im stationären Zustand überwachen selbstausgleichende Cluster die Datenabweichung zwischen den Brokern und weisen Partitionen kontinuierlich neu zu, um die Clusterleistung zu optimieren.  Beim Hoch- oder Herunterskalieren der Plattform erkennen selbstausgleichende Cluster automatisch das Vorhandensein neuer Broker oder das Entfernen alter Broker und lösen eine anschließende Neuzuweisung der Partition aus.  Dadurch können Sie Broker einfach hinzufügen und außer Betrieb nehmen, wodurch Ihre Kafka-Cluster wesentlich elastischer werden.  Diese Vorteile ergeben sich ohne manuelle Eingriffe, komplexe Berechnungen oder das Risiko menschlicher Fehler, das bei Partitionsneuzuweisungen normalerweise auftritt.  Dadurch werden Datenneuausrichtungen in wesentlich kürzerer Zeit abgeschlossen und Sie können sich auf höherwertige Event-Streaming-Projekte konzentrieren, anstatt Ihre Cluster ständig überwachen zu müssen.

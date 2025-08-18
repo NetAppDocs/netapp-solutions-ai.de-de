@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-spectrumscale.html 
+keywords:  
+summary:  
+---
+= TR-4859: Bereitstellung von IBM Spectrum Scale mit NetApp E-Series-Speicher – Installation und Validierung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Chris Seirer, NetApp
+
+[role="lead"]
+TR-4859 beschreibt den Prozess der Bereitstellung einer vollständig parallelen Dateisystemlösung basierend auf dem Spectrum Scale-Software-Stack von IBM.  TR-4859 soll Einzelheiten zur Installation von Spectrum Scale, zur Validierung der Infrastruktur und zur Verwaltung der Konfiguration bereitstellen.
+
+link:https://www.netapp.com/pdf.html?item=/media/22029-tr-4859.pdf["TR-4859: Bereitstellung von IBM Spectrum Scale mit NetApp E-Series-Speicher – Installation und Validierung"^]

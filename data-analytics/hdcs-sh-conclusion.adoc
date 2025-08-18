@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/hdcs-sh-conclusion.html 
+keywords: conclusion, summary, data protection, hadoop, more information, Acknowledgements 
+summary: Dieser Abschnitt bietet eine Zusammenfassung der Anwendungsfälle und Lösungen von NetApp zur Erfüllung verschiedener Hadoop-Datenschutzanforderungen. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt bietet eine Zusammenfassung der Anwendungsfälle und Lösungen von NetApp zur Erfüllung verschiedener Hadoop-Datenschutzanforderungen.  Durch die Verwendung der von NetApp bereitgestellten Datenstruktur können Kunden:
+
+* Profitieren Sie von der Flexibilität, die richtigen Datenschutzlösungen auszuwählen, indem Sie die umfassenden Datenverwaltungsfunktionen von NetApp und die Integration mit nativen Hadoop-Workflows nutzen.
+* Reduzieren Sie die Zeit des Backup-Fensters Ihres Hadoop-Clusters um fast 70 %.
+* Beseitigen Sie alle Leistungseinbußen, die durch Hadoop-Cluster-Backups entstehen.
+* Bieten Sie Multicloud-Datenschutz und Datenzugriff von verschiedenen Cloud-Anbietern gleichzeitig auf eine einzige Quelle von Analysedaten.
+* Erstellen Sie mithilfe der FlexClone -Technologie schnelle und platzsparende Hadoop-Clusterkopien.
+
+
+
+
+== Wo Sie weitere Informationen finden
+
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* NetApp Big Data Analytics-Lösungen
++
+https://www.netapp.com/us/solutions/applications/big-data-analytics/index.aspx["https://www.netapp.com/us/solutions/applications/big-data-analytics/index.aspx"^]
+
+* Apache Spark Workload mit NetApp Storage
++
+https://www.netapp.com/pdf.html?item=/media/26877-nva-1157-deploy.pdf["https://www.netapp.com/pdf.html?item=/media/26877-nva-1157-deploy.pdf"^]
+
+* NetApp Storage-Lösungen für Apache Spark
++
+https://www.netapp.com/media/16864-tr-4570.pdf["https://www.netapp.com/media/16864-tr-4570.pdf"^]
+
+* Apache Hadoop auf Data Fabric, unterstützt von NetApp
++
+https://www.netapp.com/media/16877-tr-4529.pdf["https://www.netapp.com/media/16877-tr-4529.pdf"^]
+
+
+
+
+
+== Danksagung
+
+* Paul Burland, Vertriebsmitarbeiter, ANZ Victoria District Sales, NetApp
+* Hoseb Dermanilian, Business Development Manager, NetApp
+* Lee Dorrier, Direktor MPSG, NetApp
+* David Thiessen, Systemingenieur, ANZ Victoria District SE, NetApp
+
+
+
+
+== Versionsverlauf
+
+|===
+| Version | Datum | Dokumentversionsverlauf 
+
+
+| Version 1.0 | Januar 2018 | Erstveröffentlichung 
+
+
+| Version 2.0 | Oktober 2021 | Aktualisiert mit Anwendungsfall Nr. 5: Beschleunigen Sie die analytische Arbeitslast 
+
+
+| Version 3.0 | November 2023 | NIPAM-Details entfernt 
+|===

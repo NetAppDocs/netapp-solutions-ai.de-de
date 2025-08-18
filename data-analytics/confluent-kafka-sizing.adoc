@@ -1,0 +1,137 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/confluent-kafka-sizing.html 
+keywords: solution, architecture, details, hardware, software 
+summary: Dieser Abschnitt behandelt die für die Confluent-Zertifizierung verwendete Hardware und Software.  Diese Informationen gelten für die Kafka-Bereitstellung mit NetApp -Speicher. 
+---
+= Größen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Kafka-Dimensionierung kann mit vier Konfigurationsmodi durchgeführt werden: einfach, granular, umgekehrt und Partitionen.
+
+
+
+== Einfach
+
+Der einfache Modus eignet sich für Erstbenutzer von Apache Kafka oder Anwendungsfälle im Frühstadium.  Für diesen Modus geben Sie Anforderungen wie Durchsatz-MBps, Lese-Fanout, Aufbewahrung und den Prozentsatz der Ressourcennutzung an (60 % ist der Standard).  Sie geben auch die Umgebung ein, z. B. vor Ort (Bare-Metal, VMware, Kubernetes oder OpenStack) oder in der Cloud.  Basierend auf diesen Informationen liefert die Dimensionierung eines Kafka-Clusters die Anzahl der Server, die für den Broker, den Zookeeper, die Apache Kafka Connect Worker, das Schema-Register, einen REST-Proxy, ksqlDB und das Confluent-Kontrollzentrum erforderlich sind.
+
+Berücksichtigen Sie bei mehrstufigem Speicher den granularen Konfigurationsmodus zur Größenbestimmung eines Kafka-Clusters.  Der Granularmodus eignet sich für erfahrene Apache Kafka-Benutzer oder klar definierte Anwendungsfälle.  In diesem Abschnitt wird die Dimensionierung für Produzenten, Stream-Prozessoren und Konsumenten beschrieben.
+
+
+
+=== Produzenten
+
+Um die Produzenten für Apache Kafka zu beschreiben (z. B. einen nativen Client, einen REST-Proxy oder einen Kafka-Connector), geben Sie die folgenden Informationen an:
+
+* *Name.*  Funke.
+* *Produzententyp.*  Anwendung oder Dienst, Proxy (REST, MQTT, andere) und vorhandene Datenbank (RDBMS, NOSQL, andere).  Sie können auch „Ich weiß nicht“ auswählen.
+* *Durchschnittlicher Durchsatz.*  In Ereignissen pro Sekunde (z. B. 1.000.000).
+* *Spitzendurchsatz.*  In Ereignissen pro Sekunde (z. B. 4.000.000).
+* *Durchschnittliche Nachrichtengröße.*  In Bytes, unkomprimiert (max. 1 MB; beispielsweise 1000).
+* *Nachrichtenformat.*  Zu den Optionen gehören Avro, JSON, Protokollpuffer, Binär, Text, „Ich weiß nicht“ und andere.
+* *Replikationsfaktor.*  Optionen sind 1, 2, 3 (Confluent-Empfehlung), 4, 5 oder 6.
+* *Aufbewahrungszeit.*  Eines Tages (zum Beispiel).  Wie lange sollen Ihre Daten in Apache Kafka gespeichert werden?  Geben Sie -1 mit einer beliebigen Einheit für eine unendliche Zeit ein.  Der Rechner geht bei unbegrenzter Aufbewahrung von einer Aufbewahrungsdauer von 10 Jahren aus.
+* Aktivieren Sie das Kontrollkästchen „Tiered Storage aktivieren, um die Anzahl der Broker zu verringern und unbegrenzten Speicher zu ermöglichen?“
+* Wenn die mehrstufige Speicherung aktiviert ist, steuern die Aufbewahrungsfelder den Hotset der Daten, der lokal auf dem Broker gespeichert wird.  Die Felder für die Archivaufbewahrung steuern, wie lange Daten im Archivobjektspeicher gespeichert werden.
+* *Archivspeicherung.*  Ein Jahr (zum Beispiel).  Wie lange sollen Ihre Daten im Archivspeicher aufbewahrt werden?  Geben Sie -1 mit einer beliebigen Einheit für eine unendliche Dauer ein.  Der Rechner geht bei unbegrenzter Aufbewahrung von einer Aufbewahrungsdauer von 10 Jahren aus.
+* *Wachstumsmultiplikator.*  1 (zum Beispiel).  Wenn der Wert dieses Parameters auf dem aktuellen Durchsatz basiert, setzen Sie ihn auf 1.  Um die Größe auf Grundlage zusätzlichen Wachstums anzupassen, legen Sie diesen Parameter auf einen Wachstumsmultiplikator fest.
+* *Anzahl der Produzenteninstanzen.*  10 (zum Beispiel).  Wie viele Produzenteninstanzen werden ausgeführt?  Diese Eingabe ist erforderlich, um die CPU-Auslastung in die Größenberechnung einzubeziehen.  Ein leerer Wert zeigt an, dass die CPU-Auslastung nicht in die Berechnung einbezogen wird.
+
+
+Basierend auf dieser Beispieleingabe hat die Größenanpassung die folgenden Auswirkungen auf die Hersteller:
+
+* Durchschnittlicher Durchsatz in unkomprimierten Bytes: 1 GBps.  Spitzendurchsatz in unkomprimierten Bytes: 4 GB/s.  Durchschnittlicher Durchsatz in komprimierten Bytes: 400 MB/s.  Spitzendurchsatz in komprimierten Bytes: 1,6 GB/s.  Dies basiert auf einer Standardkomprimierungsrate von 60 % (Sie können diesen Wert ändern).
++
+** Gesamter On-Broker-Hotset-Speicher erforderlich: 31.104 TB, einschließlich Replikation, komprimiert.  Gesamter Off-Broker-Archivspeicherbedarf: 378.432 TB, komprimiert.  Verwendenlink:https://fusion.netapp.com["https://fusion.netapp.com"^] zur StorageGRID -Dimensionierung.
+
+
+
+
+Stream-Prozessoren müssen ihre Anwendungen oder Dienste beschreiben, die Daten von Apache Kafka verbrauchen und wieder in Apache Kafka produzieren.  In den meisten Fällen werden diese in ksqlDB oder Kafka Streams erstellt.
+
+* *Name.*  Spark-Streamer.
+* *Bearbeitungszeit.*  Wie lange braucht dieser Prozessor, um eine einzelne Nachricht zu verarbeiten?
++
+** 1 ms (einfache, zustandslose Transformation) [Beispiel], 10 ms (zustandsbehafteter In-Memory-Vorgang).
+** 100 ms (zustandsbehafteter Netzwerk- oder Festplattenvorgang), 1000 ms (REST-Aufruf eines Drittanbieters).
+** Ich habe diesen Parameter getestet und weiß genau, wie lange es dauert.
+
+
+* *Ausgabeaufbewahrung.*  1 Tag (Beispiel).  Ein Stream-Prozessor gibt seine Ausgabe an Apache Kafka zurück.  Wie lange sollen diese Ausgabedaten in Apache Kafka gespeichert werden?  Geben Sie -1 mit einer beliebigen Einheit für eine unendliche Dauer ein.
+* Aktivieren Sie das Kontrollkästchen „Tiered Storage aktivieren, um die Anzahl der Broker zu verringern und unbegrenzten Speicher zu ermöglichen?“
+* *Archivspeicherung.*  1 Jahr (zum Beispiel).  Wie lange sollen Ihre Daten im Archivspeicher aufbewahrt werden?  Geben Sie -1 mit einer beliebigen Einheit für eine unendliche Dauer ein.  Der Rechner geht bei unbegrenzter Aufbewahrung von einer Aufbewahrungsdauer von 10 Jahren aus.
+* *Prozentsatz der Ausgabeweiterleitung.*  100 (zum Beispiel).  Ein Stream-Prozessor gibt seine Ausgabe an Apache Kafka zurück.  Welcher Prozentsatz des eingehenden Durchsatzes wird zurück an Apache Kafka ausgegeben?  Wenn beispielsweise der eingehende Durchsatz 20 MBps beträgt und dieser Wert 10 ist, beträgt der Ausgangsdurchsatz 2 MBps.
+* Aus welchen Anwendungen wird dies gelesen?  Wählen Sie „Spark“, den Namen, der bei der herstellertypbasierten Größenbestimmung verwendet wird.  Basierend auf den obigen Eingaben können Sie die folgenden Auswirkungen der Größenanpassung auf Stream-Prozessor-Instanzen und Themenpartitionsschätzungen erwarten:
+* Diese Stream-Prozessor-Anwendung erfordert die folgende Anzahl von Instanzen.  Die eingehenden Themen erfordern wahrscheinlich auch diese Anzahl an Partitionen.  Wenden Sie sich an Confluent, um diesen Parameter zu bestätigen.
++
+** 1.000 für durchschnittlichen Durchsatz ohne Wachstumsmultiplikator
+** 4.000 für Spitzendurchsatz ohne Wachstumsmultiplikator
+** 1.000 für durchschnittlichen Durchsatz mit einem Wachstumsmultiplikator
+** 4.000 für Spitzendurchsatz mit Wachstumsmultiplikator
+
+
+
+
+
+
+=== Verbraucher
+
+Beschreiben Sie Ihre Anwendungen oder Dienste, die Daten von Apache Kafka nutzen und nicht wieder in Apache Kafka produzieren; beispielsweise ein nativer Client oder Kafka Connector.
+
+* *Name.*  Spark-Verbraucher.
+* *Bearbeitungszeit.*  Wie lange braucht dieser Verbraucher, um eine einzelne Nachricht zu verarbeiten?
++
+** 1 ms (z. B. eine einfache und zustandslose Aufgabe wie das Protokollieren)
+** 10 ms (schnelles Schreiben in einen Datenspeicher)
+** 100 ms (langsames Schreiben in einen Datenspeicher)
+** 1000 ms (REST-Aufruf eines Drittanbieters)
+** Ein anderer Benchmark-Prozess mit bekannter Dauer.
+
+
+* *Verbrauchertyp.*  Anwendung, Proxy oder Sink zu einem vorhandenen Datenspeicher (RDBMS, NoSQL, andere).
+* Aus welchen Anwendungen wird dies gelesen?  Verbinden Sie diesen Parameter mit der zuvor ermittelten Produzenten- und Streamgröße.
+
+
+Basierend auf den obigen Eingaben müssen Sie die Größe für Verbraucherinstanzen und Themenpartitionsschätzungen bestimmen.  Eine Consumer-Anwendung erfordert die folgende Anzahl von Instanzen.
+
+* 2.000 für durchschnittlichen Durchsatz, kein Wachstumsmultiplikator
+* 8.000 für Spitzendurchsatz, kein Wachstumsmultiplikator
+* 2.000 für durchschnittlichen Durchsatz, einschließlich Wachstumsmultiplikator
+* 8.000 für Spitzendurchsatz, einschließlich Wachstumsmultiplikator
+
+
+Die eingehenden Themen benötigen wahrscheinlich auch diese Anzahl von Partitionen.  Wenden Sie sich zur Bestätigung an Confluent.
+
+Zusätzlich zu den Anforderungen für Produzenten, Stream-Prozessoren und Konsumenten müssen Sie die folgenden zusätzlichen Anforderungen erfüllen:
+
+* *Zeit zum Wiederaufbau.*  Zum Beispiel 4 Stunden.  Wenn ein Apache Kafka-Broker-Host ausfällt, seine Daten verloren gehen und ein neuer Host bereitgestellt wird, um den ausgefallenen Host zu ersetzen, wie schnell muss sich dieser neue Host selbst wiederherstellen?  Lassen Sie diesen Parameter leer, wenn der Wert unbekannt ist.
+* *Ressourcennutzungsziel (Prozentsatz).*  Zum Beispiel 60.  Wie ausgelastet sollen Ihre Hosts bei durchschnittlichem Durchsatz sein?  Confluent empfiehlt eine Auslastung von 60 %, es sei denn, Sie verwenden selbstausgleichende Confluent-Cluster. In diesem Fall kann die Auslastung höher sein.
+
+
+
+
+=== Beschreiben Sie Ihre Umgebung
+
+* *In welcher Umgebung wird Ihr Cluster ausgeführt?*  Amazon Web Services, Microsoft Azure, Google Cloud Platform, Bare-Metal vor Ort, VMware vor Ort, OpenStack vor Ort oder Kubernates vor Ort?
+* *Hostdetails.*  Anzahl der Kerne: 48 (zum Beispiel), Netzwerkkartentyp (10GbE, 40GbE, 16GbE, 1GbE oder ein anderer Typ).
+* *Speichervolumes.*  Host: 12 (zum Beispiel).  Wie viele Festplatten oder SSDs werden pro Host unterstützt?  Confluent empfiehlt 12 Festplatten pro Host.
+* *Speicherkapazität/-volumen (in GB).*  1000 (zum Beispiel).  Wie viel Speicherplatz in Gigabyte kann ein einzelnes Volume speichern?  Confluent empfiehlt 1-TB-Festplatten.
+* *Speicherkonfiguration.*  Wie werden Speichervolumes konfiguriert?  Confluent empfiehlt RAID10, um alle Confluent-Funktionen zu nutzen.  JBOD, SAN, RAID 1, RAID 0, RAID 5 und andere Typen werden ebenfalls unterstützt.
+* *Durchsatz einzelner Datenträger (MBps).*  125 (zum Beispiel).  Wie schnell kann ein einzelnes Speichervolumen in Megabyte pro Sekunde lesen oder schreiben?  Confluent empfiehlt Standardfestplatten, die normalerweise einen Durchsatz von 125 MB/s haben.
+* *Speicherkapazität (GB).*  64 (zum Beispiel).
+
+
+Nachdem Sie Ihre Umgebungsvariablen ermittelt haben, wählen Sie „Size my Cluster“ (Größe meines Clusters festlegen).  Basierend auf den oben angegebenen Beispielparametern haben wir die folgende Dimensionierung für Confluent Kafka ermittelt:
+
+* *Apache Kafka.*  Anzahl der Makler: 22.  Ihr Cluster ist speichergebunden.  Erwägen Sie die Aktivierung von Tiered Storage, um die Anzahl Ihrer Hosts zu verringern und unbegrenzten Speicherplatz zu ermöglichen.
+* *Apache ZooKeeper.*  Anzahl: 5; Apache Kafka Connect Workers: Anzahl: 2; Schema Registry: Anzahl: 2; REST-Proxy: Anzahl: 2; ksqlDB: Anzahl: 2; Confluent Control Center: Anzahl: 1.
+
+
+Verwenden Sie den umgekehrten Modus für Plattformteams ohne einen Anwendungsfall im Sinn.  Verwenden Sie den Partitionsmodus, um zu berechnen, wie viele Partitionen ein einzelnes Thema benötigt.  Sehen https://eventsizer.io[] zur Größenbestimmung basierend auf den Reverse- und Partitionsmodi.

@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/bda-ai-business-benefits.html 
+keywords: business, benefits 
+summary: In diesem Abschnitt werden die geschäftlichen Vorteile dieser Lösung beschrieben. 
+---
+= Geschäftsvorteile
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Verlagerung von Daten aus der Big Data-Analyse in die KI bietet die folgenden Vorteile:
+
+* Die Möglichkeit, Daten aus verschiedenen Hadoop-Dateisystemen und GPFS in ein einheitliches NFS-Speichersystem zu extrahieren
+* Eine Hadoop-integrierte und automatisierte Möglichkeit zur Datenübertragung
+* Eine Reduzierung der Kosten für die Bibliotheksentwicklung zum Verschieben von Daten aus Hadoop-Dateisystemen
+* Maximale Leistung durch aggregierten Durchsatz mehrerer Netzwerkschnittstellen aus einer einzigen Datenquelle durch Verwendung von NIPAM
+* Geplante und On-Demand-Methoden zur Datenübertragung
+* Speichereffizienz und Enterprise-Management-Funktionen für einheitliche NFS-Daten durch den Einsatz der ONTAP Datenmanagementsoftware
+* Null Kosten für Datenbewegung mit der Hadoop-Methode zur Datenübertragung
+

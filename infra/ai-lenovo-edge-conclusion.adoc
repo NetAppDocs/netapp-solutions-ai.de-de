@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-lenovo-edge-conclusion.html 
+keywords: acknowledgements, additional information 
+summary: KI-gesteuerte Automatisierung und Edge Computing sind ein führender Ansatz, der Unternehmen dabei unterstützt, die digitale Transformation zu erreichen und die betriebliche Effizienz und Sicherheit zu maximieren.  Mit Edge Computing werden Daten viel schneller verarbeitet, da sie nicht zu und von einem Rechenzentrum transportiert werden müssen.  Dadurch werden die Kosten für das Hin- und Hersenden von Daten an Rechenzentren oder die Cloud verringert. 
+---
+= Abschluss
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+KI-gesteuerte Automatisierung und Edge Computing sind ein führender Ansatz, der Unternehmen dabei unterstützt, die digitale Transformation zu erreichen und die betriebliche Effizienz und Sicherheit zu maximieren.  Mit Edge Computing werden Daten viel schneller verarbeitet, da sie nicht zu und von einem Rechenzentrum transportiert werden müssen.  Dadurch werden die Kosten für das Hin- und Hersenden von Daten an Rechenzentren oder die Cloud verringert.  Eine geringere Latenz und eine höhere Geschwindigkeit können von Vorteil sein, wenn Unternehmen mithilfe von am Edge bereitgestellten KI-Inferenzmodellen Entscheidungen nahezu in Echtzeit treffen müssen.
+
+NetApp -Speichersysteme bieten die gleiche oder eine bessere Leistung als lokaler SSD-Speicher und bieten Datenwissenschaftlern, Dateningenieuren, KI-/ML-Entwicklern sowie Geschäfts- oder IT-Entscheidungsträgern die folgenden Vorteile:
+
+* Müheloses Teilen von Daten zwischen KI-Systemen, Analysen und anderen wichtigen Geschäftssystemen.  Diese gemeinsame Datennutzung reduziert den Infrastrukturaufwand, verbessert die Leistung und rationalisiert die Datenverwaltung im gesamten Unternehmen.
+* Unabhängig skalierbare Rechenleistung und Speicherung zur Minimierung der Kosten und Verbesserung der Ressourcennutzung.
+* Optimierte Entwicklungs- und Bereitstellungs-Workflows durch integrierte Snapshot-Kopien und -Klone für sofortige und platzsparende Benutzerarbeitsbereiche, integrierte Versionskontrolle und automatisierte Bereitstellung.
+* Unternehmensweiter Datenschutz für Notfallwiederherstellung und Geschäftskontinuität.  Bei der in diesem Dokument vorgestellten Lösung von NetApp und Lenovo handelt es sich um eine flexible, skalierbare Architektur, die sich ideal für KI-Inferenzbereitstellungen auf Unternehmensniveau am Edge eignet.
+
+
+
+
+== Danksagung
+
+* JJ  Falkanger, Senior Manager, HPC & AI Solutions, Lenovo
+* Dave Arnette, Technischer Marketingingenieur, NetApp
+* Joey Parnell, Tech Lead E-Series AI Solutions, NetApp
+* Cody Harryman, QA-Ingenieur, NetApp
+
+
+
+
+== Wo Sie weitere Informationen finden
+
+Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
+
+* Produktseite der NetApp AFF A-Series-Arrays
++
+https://www.netapp.com/data-storage/aff-a-series/["https://www.netapp.com/data-storage/aff-a-series/"^]
+
+* NetApp ONTAP -Datenverwaltungssoftware – ONTAP 9-Informationsbibliothek
++
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62286["http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62286"^]
+
+* TR-4727: Einführung in die NetApp EF-Serie
++
+https://www.netapp.com/pdf.html?item=/media/17179-tr4727pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17179-tr4727pdf.pdf"^]
+
+* Datenblatt zur NetApp E-Series SANtricity Software
++
+https://www.netapp.com/pdf.html?item=/media/19775-ds-3171-66862.pdf["https://www.netapp.com/pdf.html?item=/media/19775-ds-3171-66862.pdf"^]
+
+* Persistenter NetApp -Speicher für Container – NetApp Trident
++
+https://netapp.io/persistent-storage-provisioner-for-kubernetes/["https://netapp.io/persistent-storage-provisioner-for-kubernetes/"^]
+
+* MLPerf
++
+** https://mlcommons.org/en/["https://mlcommons.org/en/"^]
+** http://www.image-net.org/["http://www.image-net.org/"^]
+** https://mlcommons.org/en/news/mlperf-inference-v11/["https://mlcommons.org/en/news/mlperf-inference-v11/"^]
+
+
+* NetApp BlueXP Kopieren und Synchronisieren
++
+https://docs.netapp.com/us-en/occm/concept_cloud_sync.html#how-cloud-sync-works["https://docs.netapp.com/us-en/occm/concept_cloud_sync.html#how-cloud-sync-works"^]
+
+* TensorFlow-Benchmark
++
+https://github.com/tensorflow/benchmarks["https://github.com/tensorflow/benchmarks"^]
+
+* Lenovo ThinkSystem SE350 Edge-Server
++
+https://lenovopress.com/lp1168["https://lenovopress.com/lp1168"^]
+
+* Lenovo ThinkSystem DM5100F Unified Flash-Speicher-Array
++
+https://lenovopress.com/lp1365-thinksystem-dm5100f-unified-flash-storage-array["https://lenovopress.com/lp1365-thinksystem-dm5100f-unified-flash-storage-array"]
+
+

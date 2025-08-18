@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: software/ai-osmlops-jhub-deploy.html 
+keywords: AI, control plane, MLOps, JupyterHub 
+summary: Open Source MLOps mit NetApp – JupyterHub-Bereitstellung 
+---
+= JupyterHub-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesem Abschnitt werden die Aufgaben beschrieben, die Sie ausführen müssen, um JupyterHub in Ihrem Kubernetes-Cluster bereitzustellen.
+
+
+NOTE: Es ist möglich, JupyterHub auf anderen Plattformen als Kubernetes bereitzustellen.  Die Bereitstellung von JupyterHub auf anderen Plattformen als Kubernetes liegt außerhalb des Umfangs dieser Lösung.
+
+
+
+== Voraussetzungen
+
+Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
+
+. Sie verfügen bereits über einen funktionierenden Kubernetes-Cluster.
+. Sie haben NetApp Trident bereits in Ihrem Kubernetes-Cluster installiert und konfiguriert.  Weitere Einzelheiten zu Trident finden Sie imlink:https://docs.netapp.com/us-en/trident/index.html["Trident -Dokumentation"^] .
+
+
+
+
+== Helm installieren
+
+JupyterHub wird mit Helm bereitgestellt, einem beliebten Paketmanager für Kubernetes.  Bevor Sie JupyterHub bereitstellen, müssen Sie Helm auf Ihrem Kubernetes-Steuerknoten installieren.  Um Helm zu installieren, folgen Sie den https://helm.sh/docs/intro/install/["Installationsanweisungen"^] in der offiziellen Helm-Dokumentation.
+
+
+
+== Standardmäßige Kubernetes-Speicherklasse festlegen
+
+Bevor Sie JupyterHub bereitstellen, müssen Sie eine Standard-StorageClass in Ihrem Kubernetes-Cluster festlegen.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, folgen Sie den Anweisungen imlink:ai-osmlops-kubeflow-deploy.html["Kubeflow-Bereitstellung"] Abschnitt.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
+
+
+
+== JupyterHub bereitstellen
+
+Nachdem Sie die oben genannten Schritte abgeschlossen haben, können Sie JupyterHub nun bereitstellen.  Für die Bereitstellung von JupyterHub sind die folgenden Schritte erforderlich:
+
+
+
+=== JupyterHub-Bereitstellung konfigurieren
+
+Vor der Bereitstellung empfiehlt es sich, die JupyterHub-Bereitstellung für Ihre jeweilige Umgebung zu optimieren.  Sie können eine *config.yaml*-Datei erstellen und sie während der Bereitstellung mithilfe des Helm-Diagramms verwenden.
+
+Eine Beispieldatei *config.yaml* finden Sie unter https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/HEAD/jupyterhub/values.yaml[]
+
+
+NOTE: In dieser config.yaml-Datei können Sie den Parameter *(singleuser.storage.dynamic.storageClass)* für die NetApp Trident StorageClass festlegen.  Dies ist die Speicherklasse, die zum Bereitstellen der Volumes für einzelne Benutzerarbeitsbereiche verwendet wird.
+
+
+
+=== Hinzufügen freigegebener Volumes
+
+Wenn Sie ein gemeinsames Volume für alle JupyterHub-Benutzer verwenden möchten, können Sie Ihre *config.yaml* entsprechend anpassen.  Wenn Sie beispielsweise über einen freigegebenen PersistentVolumeClaim namens „jupyterhub-shared-volume“ verfügen, können Sie ihn in allen Benutzer-Pods wie folgt als /home/shared mounten:
+
+[source, shell]
+----
+singleuser:
+  storage:
+    extraVolumes:
+      - name: jupyterhub-shared
+        persistentVolumeClaim:
+          claimName: jupyterhub-shared-volume
+    extraVolumeMounts:
+      - name: jupyterhub-shared
+        mountPath: /home/shared
+----
+
+NOTE: Dies ist ein optionaler Schritt. Sie können diese Parameter an Ihre Bedürfnisse anpassen.
+
+
+
+=== JupyterHub mit Helm Chart bereitstellen
+
+Machen Sie Helm auf das JupyterHub Helm-Diagramm-Repository aufmerksam.
+
+[source, shell]
+----
+helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
+helm repo update
+----
+Dies sollte eine Ausgabe wie die folgende anzeigen:
+
+[source, shell]
+----
+Hang tight while we grab the latest from your chart repositories...
+...Skip local chart repository
+...Successfully got an update from the "stable" chart repository
+...Successfully got an update from the "jupyterhub" chart repository
+Update Complete. ⎈ Happy Helming!⎈
+----
+Installieren Sie nun das von Ihrer config.yaml konfigurierte Diagramm, indem Sie diesen Befehl aus dem Verzeichnis ausführen, das Ihre config.yaml enthält:
+
+[source, shell]
+----
+helm upgrade --cleanup-on-fail \
+  --install my-jupyterhub jupyterhub/jupyterhub \
+  --namespace my-namespace \
+  --create-namespace \
+  --values config.yaml
+----
+
+NOTE: In diesem Beispiel:
+
+<helm-release-name> ist auf my-jupyterhub eingestellt, was der Name Ihrer JupyterHub-Version sein wird.  <k8s-namespace> ist auf my-namespace eingestellt, also den Namespace, in dem Sie JupyterHub installieren möchten.  Das Flag --create-namespace wird verwendet, um den Namespace zu erstellen, falls er noch nicht vorhanden ist.  Das Flag --values gibt die Datei config.yaml an, die Ihre gewünschten Konfigurationsoptionen enthält.
+
+
+
+=== Bereitstellung prüfen
+
+Während Schritt 2 ausgeführt wird, können Sie sehen, wie die Pods mit dem folgenden Befehl erstellt werden:
+
+[source, shell]
+----
+kubectl get pod --namespace <k8s-namespace>
+----
+Warten Sie, bis der Hub und der Proxy-Pod in den Status „Laufen“ wechseln.
+
+[source, shell]
+----
+NAME                    READY     STATUS    RESTARTS   AGE
+hub-5d4ffd57cf-k68z8    1/1       Running   0          37s
+proxy-7cb9bc4cc-9bdlp   1/1       Running   0          37s
+----
+
+
+=== Zugriff auf JupyterHub
+
+Suchen Sie die IP, die wir für den Zugriff auf den JupyterHub verwenden können.  Führen Sie den folgenden Befehl aus, bis die EXTERNE IP des öffentlichen Proxy-Dienstes wie in der Beispielausgabe verfügbar ist.
+
+
+NOTE: Wir haben den NodePort-Dienst in unserer Datei config.yaml verwendet. Sie können ihn basierend auf Ihrem Setup (z. B. LoadBalancer) an Ihre Umgebung anpassen.
+
+[source, shell]
+----
+kubectl --namespace <k8s-namespace> get service proxy-public
+----
+[source, shell]
+----
+NAME           TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+proxy-public   NodePort   10.51.248.230   104.196.41.97   80:30000/TCP   1m
+----
+Um JupyterHub zu verwenden, geben Sie die externe IP für den Proxy-Public-Dienst in einen Browser ein.

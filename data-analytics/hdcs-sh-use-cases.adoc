@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/hdcs-sh-use-cases.html 
+keywords: summary, overview, backup, devtest, data protection 
+summary: 'Dieser Abschnitt bietet eine allgemeine Beschreibung der Anwendungsfälle zum Datenschutz, die den Schwerpunkt dieses Dokuments bilden.  Die verbleibenden Abschnitte enthalten weitere Details zu jedem Anwendungsfall, beispielsweise zum Kundenproblem (Szenario), zu Anforderungen und Herausforderungen sowie zu Lösungen.' 
+---
+= Übersicht über Anwendungsfälle für den Hadoop-Datenschutz
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt bietet eine allgemeine Beschreibung der Anwendungsfälle zum Datenschutz, die den Schwerpunkt dieses Dokuments bilden.  Die verbleibenden Abschnitte enthalten weitere Details zu jedem Anwendungsfall, beispielsweise zum Kundenproblem (Szenario), zu Anforderungen und Herausforderungen sowie zu Lösungen.
+
+
+
+== Anwendungsfall 1: Sichern von Hadoop-Daten
+
+In diesem Anwendungsfall konnte ein großes Finanzinstitut mithilfe des NetApp NFS-Volumes die lange Backup-Zeit von über 24 Stunden auf knapp ein paar Stunden reduzieren.
+
+
+
+== Anwendungsfall 2: Backup und Disaster Recovery von der Cloud in die lokale Umgebung
+
+Durch die Verwendung der von NetApp bereitgestellten Datenstruktur als Bausteine konnte ein großes Rundfunkunternehmen seine Anforderung erfüllen, Cloud-Daten in seinem Rechenzentrum vor Ort zu sichern, und zwar abhängig von den verschiedenen Datenübertragungsmodi, beispielsweise auf Abruf, sofort oder basierend auf der Hadoop/Spark-Clusterlast.
+
+
+
+== Anwendungsfall 3: DevTest für vorhandene Hadoop-Daten aktivieren
+
+Mithilfe von NetApp -Lösungen konnte ein Online-Musikvertrieb schnell mehrere platzsparende Hadoop-Cluster in verschiedenen Zweigstellen erstellen, um mithilfe geplanter Richtlinien Berichte zu erstellen und tägliche DevTest-Aufgaben auszuführen.
+
+
+
+== Anwendungsfall 4: Datenschutz und Multicloud-Konnektivität
+
+Ein großer Dienstanbieter nutzte das von NetApp betriebene Daten-Fabric, um seinen Kunden Multicloud-Analysen aus verschiedenen Cloud-Instanzen bereitzustellen.
+
+
+
+== Anwendungsfall 5: Beschleunigen analytischer Workloads
+
+Eine der größten Finanzdienstleistungs- und Investmentbanken nutzte die Network Attached Storage-Lösung von NetApp , um die I/O-Wartezeit zu reduzieren und ihre Plattform für quantitative Finanzanalysen zu beschleunigen.
