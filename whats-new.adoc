@@ -27,3 +27,11 @@ Die NetApp Solutions-Site ist jetzt dielink:https://docs.netapp.com/us-en/netapp
 * link:https://docs.netapp.com/us-en/netapp-solutions-sap/index.html["NetApp Lösungen für SAP"^]
 * link:https://docs.netapp.com/us-en/netapp-solutions-virtualization/index.html["NetApp Virtualisierungslösungen"^]
 
+
+
+
+== 3. Dezember 2025
+
+Neue Lösung:link:software/ai-hybrid-union.html["Implementieren Sie hybrides KI-Training mit Union.ai und NetApp FlexCache."]
+
+Nutzen Sie die Union.ai-Orchestrierung mit NetApp FlexCache , um KI-Trainingsworkloads auf Cloud-GPUs auszuführen und gleichzeitig sensible Daten lokal zu belassen.  FlexCache speichert nur die notwendigen Daten in der Cloud, um ein effizientes und sicheres hybrides Training zu gewährleisten.

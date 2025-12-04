@@ -56,6 +56,8 @@ indexpage:
       url: "/cloud/ai-mlops-fsxn-intro.html"
     - title: NetApp DataOps Toolkit
       url: "/software/dataops-toolkit.html"
+    - title: 'NetApp + Union.ai: Technischer Leitfaden für Hybrid-KI-Schulungen'
+      url: "/software/ai-hybrid-union.html"
   - title: Big Data und Hybrid Cloud-KI-Lösungen
     links:
     - title: Hybride Cloud-Datenlösungen

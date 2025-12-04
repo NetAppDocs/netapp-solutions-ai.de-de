@@ -73,6 +73,9 @@ entries:
     url: "/software/ai-hybrid-ddlnexus-data.html"
   - title: Weitere Informationen
     url: "/software/ai-hybrid-ddlnexus-addtl.html"
+- title: Hybrides KI-Training mit NetApp und Union.ai
+  pdf-filename: Hybrides KI-Training mit Union.ai
+  url: "/software/ai-hybrid-union.html"
 - title: NVIDIA AI Enterprise mit NetApp und VMware
   pdf-filename: NVIDIA AI Enterprise mit NetApp und VMware
   entries:
