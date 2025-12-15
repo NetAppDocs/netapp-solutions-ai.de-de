@@ -31,6 +31,8 @@ Dieses Dokument beschreibt die Best-Practice-Richtlinien für die Verwendung von
 
 Confluent hat sich zur Standard-Echtzeit-Streaming-Plattform für viele Anwendungen entwickelt, insbesondere für Big Data-, Analyse- und Streaming-Workloads.  Mit Tiered Storage können Benutzer in der Confluent-Plattform Rechenleistung und Speicher trennen.  Es macht die Datenspeicherung kostengünstiger, ermöglicht Ihnen die Speicherung nahezu unbegrenzter Datenmengen und die Skalierung von Arbeitslasten nach Bedarf nach oben (oder unten) und vereinfacht Verwaltungsaufgaben wie die Neuverteilung von Daten und Mandanten.  S3-kompatible Speichersysteme können alle diese Funktionen nutzen, um Daten mit allen Ereignissen an einem Ort zu demokratisieren, wodurch die Notwendigkeit einer komplexen Datentechnik entfällt.  Weitere Informationen dazu, warum Sie Tiered Storage für Kafka verwenden sollten, finden Sie unterlink:https://docs.confluent.io/platform/current/kafka/tiered-storage.html#netapp-object-storage["dieser Artikel von Confluent"^] .
 
+NetApp instaclustr unterstützt Kafka ab Version 3.8.1 auch mit Tiered Storage. Weitere Details finden Sie hier. link:https://www.instaclustr.com/support/documentation/kafka-add-ons/using-kafka-tiered-storage/["Instaclust nutzt Kafka-Tiered Storage"]
+
 
 
 == Warum NetApp StorageGRID für Tiered Storage?
