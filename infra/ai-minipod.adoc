@@ -18,13 +18,13 @@ Dieses Dokument stellt ein validiertes Referenzdesign von NetApp AIPod für Ente
 
 image:aipod-mini-001.png["Intel-Logo"]
 
-Sathish Thyagarajan, Michael Oglesby, NetApp
+Sathish Thyagarajan, Michael Oglesby, Arpita Mahajan, NetApp
 
 
 
 == Zusammenfassung
 
-Immer mehr Unternehmen nutzen Retrieval-Augmented Generation (RAG)-Anwendungen und große Sprachmodelle (LLMs), um Benutzereingaben zu interpretieren und Antworten zu generieren und so die Produktivität und den Geschäftswert zu steigern.  Diese Eingabeaufforderungen und Antworten können Text, Code, Bilder oder sogar therapeutische Proteinstrukturen umfassen, die aus der internen Wissensdatenbank, Datenseen, Code-Repositories und Dokument-Repositories einer Organisation abgerufen werden.  Dieses Dokument behandelt das Referenzdesign der NetApp AIPod Mini-Lösung, die aus NetApp AFF -Speicher und Servern mit Intel Xeon 6-Prozessoren besteht.  Es umfasst die Datenverwaltungssoftware NetApp ONTAP in Kombination mit Intel Advanced Matrix Extensions (Intel AMX) und die auf Open Platform for Enterprise AI (OPEA) basierende Software Intel AI for Enterprise Retrieval-augmented Generation (RAG).  Mit dem NetApp AIPod Mini für Enterprise RAG können Unternehmen ein öffentliches LLM zu einer privaten generativen KI-Inferenzlösung (GenAI) erweitern.  Die Lösung demonstriert effizientes und kostengünstiges RAG-Inferencing im Unternehmensmaßstab, das die Zuverlässigkeit verbessern und Ihnen eine bessere Kontrolle über Ihre geschützten Informationen bieten soll.
+Eine wachsende Zahl von Organisationen nutzt Retrieval-Augmented Generation (RAG)-Anwendungen und große Sprachmodelle (LLMs), um Benutzereingaben zu interpretieren und Antworten zu generieren, um die Produktivität und den Geschäftswert zu steigern. Diese Eingaben und Antworten können Text, Code, Bilder oder sogar therapeutische Proteinstrukturen umfassen, die aus der internen Wissensdatenbank, Data Lakes, Code-Repositories und Dokumentenrepositorys einer Organisation abgerufen werden. Dieses Papier behandelt das Referenzdesign der NetApp AIPod Mini Lösung, bestehend aus NetApp AFF Storage und Servern mit Intel Xeon 6 Prozessoren. Es beinhaltet NetApp ONTAP Datenmanagement-Software in Kombination mit Intel Advanced Matrix Extensions (Intel AMX) sowie Intel​ AI for Enterprise RAG Software, die auf der Open Platform for Enterprise AI (OPEA) basiert. Das NetApp AIPod Mini for enterprise RAG ermöglicht es Organisationen, ein öffentliches LLM in eine private Generative AI (GenAI) Inferenzlösung zu integrieren. Die Lösung demonstriert effiziente und kostengünstige RAG-Inferenz der Enterprise-Klasse im Unternehmensmaßstab, die darauf ausgelegt ist, die Zuverlässigkeit zu erhöhen und Ihnen eine bessere Kontrolle über Ihre firmeneigenen Informationen zu ermöglichen.
 
 
 
@@ -36,7 +36,7 @@ Server mit Intel Xeon 6-Prozessoren sind für die Verarbeitung anspruchsvoller K
 
 == Vorteile des Betriebs von RAG-Systemen mit NetApp
 
-Bei RAG-Anwendungen geht es um den Abruf von Wissen aus den Dokumentenspeichern von Unternehmen in verschiedenen Formaten wie PDF, Text, CSV, Excel oder Wissensgraphen.  Diese Daten werden normalerweise in Lösungen wie einem S3-Objektspeicher oder NFS vor Ort als Datenquelle gespeichert.  NetApp ist ein führender Anbieter von Technologien für Datenmanagement, Datenmobilität, Datenverwaltung und Datensicherheit im gesamten Ökosystem von Edge, Rechenzentrum und Cloud.  Das NetApp ONTAP Datenmanagement bietet Speicher der Enterprise-Klasse zur Unterstützung verschiedener Arten von KI-Workloads, einschließlich Batch- und Echtzeit-Inferenz, und bietet einige der folgenden Vorteile:
+RAG-Anwendungen umfassen den Abruf von Wissen aus den Dokumentenablagen von Unternehmen in verschiedenen Formaten wie PDF, Text, CSV oder Excel. Diese Daten werden üblicherweise in Lösungen wie einem S3-Objektspeicher oder NFS On-Premises als Quelle für Daten gespeichert. NetApp ist führend im Datenmanagement, in der Datenmobilität, der Data Governance und Datensicherheitstechnologien im gesamten Ökosystem von Edge, Rechenzentrum und Cloud. NetApp ONTAP Datenmanagement bietet Speicher der Enterprise-Klasse zur Unterstützung verschiedener Arten von KI-Workloads, einschließlich Batch- und Echtzeit-Inferenz, und bietet einige der folgenden Vorteile:
 
 * Geschwindigkeit und Skalierbarkeit.  Sie können große Datensätze mit hoher Geschwindigkeit für die Versionierung verarbeiten und dabei Leistung und Kapazität unabhängig voneinander skalieren.
 * Datenzugriff.  Durch die Multiprotokollunterstützung können Clientanwendungen Daten mithilfe der Dateifreigabeprotokolle S3, NFS und SMB lesen.  ONTAP S3 NAS-Buckets können den Datenzugriff in multimodalen LLM-Inferenzszenarien erleichtern.
@@ -59,7 +59,7 @@ Dieses Dokument richtet sich an KI-Entscheidungsträger, Dateningenieure, Untern
 
 
 
-==== Intel KI-Technologien
+==== Intel​ KI-Technologien
 
 Mit Xeon 6 als Host-CPU profitieren beschleunigte Systeme von hoher Single-Thread-Leistung, höherer Speicherbandbreite, verbesserter Zuverlässigkeit, Verfügbarkeit und Wartungsfreundlichkeit (RAS) und mehr E/A-Lanes.  Intel AMX beschleunigt die Inferenz für INT8 und BF16 und bietet Unterstützung für FP16-trainierte Modelle mit bis zu 2.048 Gleitkommaoperationen pro Zyklus pro Kern für INT8 und 1.024 Gleitkommaoperationen pro Zyklus pro Kern für BF16/FP16.  Für die Bereitstellung einer RAG-Lösung mit Xeon 6-Prozessoren werden im Allgemeinen mindestens 250 GB RAM und 500 GB Festplattenspeicher empfohlen.  Dies hängt jedoch stark von der Größe des LLM-Modells ab.  Weitere Informationen finden Sie im Intel https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2024-05/intel-xeon-6-product-brief.pdf["Xeon 6 Prozessor"^] Produktbeschreibung.
 
@@ -77,7 +77,7 @@ Abbildung 2 – NetApp AFF A-Series-System.image:aipod-mini-003.png["300.300"]
 | *Hardware* | *Menge* | *Kommentar* 
 
 
-| Intel Xeon 6-basierter Server | 2 | RAG-Inferenzknoten – mit Dual-Socket-Prozessoren der Intel Xeon 6900-Serie oder Intel Xeon 6700-Serie und 250 GB bis 3 TB RAM mit DDR5 (6400 MHz) oder MRDIMM (8800 MHz).  2HE-Server. 
+| Intel Xeon 6th Gen (Granite Rapids) | 2 | RAG-Inferenzknoten – mit Dual-Socket Intel Xeon 6900-Series (96 Core) oder Intel Xeon 6700-Series (64 Core) Prozessoren und 250GB bis 3TB RAM mit DDR5 (6400MHz) oder MRDIMM (8800MHz). 2U-Server. 
 
 
 | Control Plane Server mit Intel-Prozessor | 1 | Kubernetes-Steuerebene/1U-Server. 
@@ -89,6 +89,8 @@ Abbildung 2 – NetApp AFF A-Series-System.image:aipod-mini-003.png["300.300"]
 | NetApp AFF A20 (oder AFF A30; AFF A50) | 1 | Maximale Speicherkapazität: 9,3 PB.  Hinweis: Netzwerk: 10/25/100 GbE-Ports. 
 |===
 Zur Validierung dieses Referenzdesigns wurden Server mit Intel Xeon 6 Prozessoren von Supermicro (222HA-TN-OTO-37) und ein 100GbE Switch von Arista (7280R3A) verwendet.
+
+Abbildung 3 – AIPod Mini Implementierungsarchitektur image:aipod-mini-012.png["300.300"]
 
 
 
@@ -110,11 +112,11 @@ Weitere Einzelheiten finden Sie im https://opea-project.github.io/latest/index.h
 
 
 
-==== Intel AI für Enterprise-Inferenz mit OPEA
+==== Intel​ AI for Enterprise RAG powered by OPEA
 
-OPEA für Intel AI for Enterprise RAG vereinfacht die Umwandlung Ihrer Unternehmensdaten in umsetzbare Erkenntnisse.  Es basiert auf Intel Xeon-Prozessoren und integriert Komponenten von Branchenpartnern, um einen optimierten Ansatz für die Bereitstellung von Unternehmenslösungen zu bieten.  Es lässt sich nahtlos mit bewährten Orchestrierungsframeworks skalieren und bietet die Flexibilität und Auswahl, die Ihr Unternehmen benötigt.
+OPEA für Intel​ AI for Enterprise RAG vereinfacht die Umwandlung Ihrer Unternehmensdaten in handlungsrelevante Erkenntnisse. Angetrieben von Intel Xeon Prozessoren integriert es Komponenten von Industriepartnern, um einen optimierten Ansatz für die Bereitstellung von Unternehmenslösungen zu bieten. Es skaliert nahtlos mit bewährten Orchestrierungsframeworks und bietet die Flexibilität und Auswahl, die Ihr Unternehmen benötigt.
 
-Aufbauend auf der Grundlage von OPEA erweitert Intel AI for Enterprise RAG diese Basis um wichtige Funktionen, die Skalierbarkeit, Sicherheit und Benutzererfahrung verbessern.  Zu diesen Funktionen gehören Service-Mesh-Funktionen für die nahtlose Integration in moderne servicebasierte Architekturen, eine produktionsreife Validierung der Pipeline-Zuverlässigkeit und eine funktionsreiche Benutzeroberfläche für RAG als Service, die eine einfache Verwaltung und Überwachung von Arbeitsabläufen ermöglicht.  Darüber hinaus bieten Intel und der Partner-Support Zugriff auf ein breites Ökosystem von Lösungen, kombiniert mit integriertem Identity and Access Management (IAM) mit UI und Anwendungen für sichere und konforme Vorgänge.  Programmierbare Leitplanken bieten eine fein abgestufte Kontrolle über das Pipeline-Verhalten und ermöglichen benutzerdefinierte Sicherheits- und Compliance-Einstellungen.
+Aufbauend auf der Grundlage von OPEA erweitert Intel​ AI for Enterprise RAG diese Basis um wichtige Funktionen, die Skalierbarkeit, Sicherheit und Benutzererfahrung verbessern. Diese Funktionen umfassen Service-Mesh-Fähigkeiten für die nahtlose Integration mit modernen servicebasierten Architekturen, produktionsreife Validierung für die Zuverlässigkeit der Pipeline und eine funktionsreiche Benutzeroberfläche für RAG as a Service, die eine einfache Verwaltung und Überwachung von Workflows ermöglicht. Zusätzlich bieten Intel und Partner Support Zugang zu einem breiten Ökosystem von Lösungen, kombiniert mit integriertem Identity and Access Management (IAM) mit Benutzeroberfläche und Anwendungen für sichere und konforme Abläufe. Programmierbare Guardrails bieten eine feingranulare Kontrolle über das Pipeline-Verhalten und ermöglichen angepasste Sicherheits- und Compliance-Einstellungen.
 
 
 
@@ -132,19 +134,19 @@ Die NetApp Trident -Software ist ein Open-Source- und vollständig unterstützte
 | *Software* | *Version* | *Kommentar* 
 
 
-| OPEA für Intel AI für Enterprise RAG | 1.1.2 | Enterprise-RAG-Plattform basierend auf OPEA-Microservices 
+| OPEA - Intel​ AI für Enterprise RAG | 2,0 | Enterprise-RAG-Plattform basierend auf OPEA-Microservices 
 
 
-| Container Storage Interface (CSI-Treiber) | NetApp Trident 25.02 | Ermöglicht dynamische Bereitstellung, NetApp Snapshot-Kopien und Volumes. 
+| Container Storage Interface (CSI-Treiber) | NetApp Trident 25.10 | Ermöglicht dynamische Bereitstellung, NetApp Snapshot-Kopien und Volumes. 
 
 
-| Ubuntu | 22.04.5 | Betriebssystem auf einem Cluster mit zwei Knoten 
+| Ubuntu | 22.04.5 | Betriebssystem auf Zwei-Node-Cluster. 
 
 
-| Container-Orchestrierung | Kubernetes 1.31.4 | Umgebung zum Ausführen des RAG-Frameworks 
+| Container-Orchestrierung | Kubernetes 1.31.9 (Installiert durch Enterprise RAG infrastructure playbook) | Umgebung zum Ausführen des RAG-Frameworks 
 
 
-| ONTAP | ONTAP 9.16.1P4 | Speicherbetriebssystem auf AFF A20.  Es verfügt über Vscan und ARP. 
+| ONTAP | ONTAP 9.16.1P4 oder höher | Storage OS auf AFF A20. 
 |===
 
 
@@ -189,7 +191,7 @@ Um eine SVM mit ONTAP System Manager zu erstellen, navigieren Sie zu Speicher > 
 
 Der folgende Screenshot zeigt die Erstellung einer SVM mit ONTAP System Manager.  Ändern Sie die Details je nach Bedarf entsprechend Ihrer Umgebung.
 
-Abbildung 4 – SVM-Erstellung mit ONTAP System Manager.image:aipod-mini-005.png["600.600"] image:aipod-mini-006.png["600.600"]
+Abbildung 5 - SVM-Erstellung mit ONTAP System Manager. image:aipod-mini-005.png["600.600"] image:aipod-mini-006.png["600.600"]
 
 
 
@@ -197,11 +199,11 @@ Abbildung 4 – SVM-Erstellung mit ONTAP System Manager.image:aipod-mini-005.png
 
 Konfigurieren Sie die S3-Benutzer-/Gruppeneinstellungen für die SVM, die Sie im vorherigen Schritt erstellt haben.  Stellen Sie sicher, dass Sie einen Benutzer mit vollem Zugriff auf alle S3-API-Operationen für diese SVM haben.  Weitere Informationen finden Sie in der ONTAP S3-Dokumentation.
 
-Hinweis: Dieser Benutzer wird für den Datenaufnahmedienst der Intel AI for Enterprise RAG-Anwendung benötigt.  Wenn Sie Ihre SVM mit ONTAP System Manager erstellt haben, hat System Manager automatisch einen Benutzer mit dem Namen erstellt. `sm_s3_user` und eine Richtlinie namens `FullAccess` beim Erstellen Ihrer SVM, aber es wurden keine Berechtigungen zugewiesen `sm_s3_user` .
+Hinweis: Dieser Benutzer wird für den Datenaufnahmedienst der Intel​ AI for Enterprise RAG-Anwendung benötigt. Wenn Sie Ihre SVM mit ONTAP System Manager erstellt haben, hat System Manager beim Erstellen Ihrer SVM automatisch einen Benutzer namens `sm_s3_user` und eine Richtlinie namens `FullAccess` erstellt, aber es wurden keine Berechtigungen für `sm_s3_user` zugewiesen.
 
 Um die Berechtigungen für diesen Benutzer zu bearbeiten, navigieren Sie zu „Speicher“ > „Speicher-VMs“, klicken Sie auf den Namen der SVM, die Sie im vorherigen Schritt erstellt haben, klicken Sie auf „Einstellungen“ und dann auf das Stiftsymbol neben „S3“.  Geben `sm_s3_user` Vollzugriff auf alle S3-API-Operationen, erstellen Sie eine neue Gruppe, die verknüpft `sm_s3_user` mit dem `FullAccess` Richtlinie, wie im folgenden Screenshot dargestellt.
 
-Abbildung 5 – S3-Berechtigungen.
+Abbildung 6 - S3-Berechtigungen.
 
 image:aipod-mini-007.png["600.600"]
 
@@ -213,7 +215,7 @@ Erstellen Sie einen S3-Bucket innerhalb der SVM, die Sie zuvor erstellt haben.  
 
 Der folgende Screenshot zeigt die Erstellung eines S3-Buckets mit ONTAP System Manager.
 
-Abbildung 6 – Erstellen Sie einen S3-Bucket.image:aipod-mini-008.png["600.600"]
+Abbildung 7 - Erstellen eines S3-Buckets. image:aipod-mini-008.png["600.600"]
 
 
 
@@ -225,7 +227,7 @@ Um S3-Bucket-Berechtigungen mit ONTAP System Manager zu bearbeiten, navigieren S
 
 Der folgende Screenshot zeigt die erforderlichen Bucket-Berechtigungen im ONTAP System Manager.
 
-Abbildung 7 – S3-Bucket-Berechtigungen.image:aipod-mini-009.png["600.600"]
+Abbildung 8 - S3-Bucket-Berechtigungen. image:aipod-mini-009.png["600.600"]
 
 
 
@@ -237,7 +239,7 @@ Erstellen Sie mithilfe der ONTAP CLI eine Bucket-Cross-Origin-Resource-Sharing-R
 ----
 ontap::> bucket cors-rule create -vserver erag -bucket erag-data -allowed-origins *erag.com -allowed-methods GET,HEAD,PUT,DELETE,POST -allowed-headers *
 ----
-Diese Regel ermöglicht es der OPEA für die Intel AI for Enterprise RAG-Webanwendung, über einen Webbrowser mit dem Bucket zu interagieren.
+Diese Regel ermöglicht OPEA for Intel​ AI for Enterprise RAG-Webanwendung, mit dem Bucket von einem Webbrowser aus zu interagieren.
 
 
 
@@ -251,128 +253,17 @@ Stellen Sie Ihre Server bereit und installieren Sie Ubuntu 22.04 LTS auf jedem S
 ----
 
 
-==== Installieren Sie Kubernetes
+==== Enterprise RAG 2.0 bereitstellen
 
-Installieren Sie Kubernetes mit Kubespray auf Ihren Servern.  Weitere Informationen finden Sie im https://kubespray.io/["Kubespray-Dokumentation"^] für Details.
-
-
-
-==== Installieren Sie den Trident CSI-Treiber
-
-Installieren Sie den NetApp Trident CSI-Treiber in Ihrem Kubernetes-Cluster.  Weitere Informationen finden Sie im https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Trident -Installationsdokumentation"^] für Details.
+Den vollständigen, schrittweisen Bereitstellungsablauf entnehmen Sie bitte dem folgenden Dokument: xref:ai-aipod-mini-deployment-steps.html[NetApp AIPod Mini für ERAG - Bereitstellungsschritte] Alle Voraussetzungen, die Infrastrukturvorbereitung, die Konfigurationsparameter und die Bereitstellungsverfahren sind im oben genannten Implementierungs-Leitfaden dokumentiert.
 
 
 
-==== Erstellen Sie ein Trident -Backend
+==== Greifen Sie auf OPEA für Intel​ AI for Enterprise RAG UI zu
 
-Erstellen Sie ein Trident Backend für die SVM, die Sie zuvor erstellt haben.  Verwenden Sie beim Erstellen Ihres Backends die `ontap-nas` Treiber.  Weitere Informationen finden Sie im https://docs.netapp.com/us-en/trident/trident-use/ontap-nas.html["Trident -Backend-Dokumentation"^] für Details.
+Greifen Sie auf die OPEA für Intel​ AI for Enterprise RAG UI zu. Weitere Informationen finden Sie in der  https://github.com/opea-project/Enterprise-RAG/blob/release-2.0.0/deployment/README.md#interact-with-the-deployed-pipeline["Intel​ AI for Enterprise RAG-Bereitstellungsdokumentation"^].
 
-
-
-==== Erstellen einer Speicherklasse
-
-Erstellen Sie eine Kubernetes-Speicherklasse, die dem Trident Back-End entspricht, das Sie im vorherigen Schritt erstellt haben.  Weitere Informationen finden Sie in der Dokumentation zur Trident -Speicherklasse.
-
-
-
-==== OPEA für Intel AI für Enterprise RAG
-
-Installieren Sie OPEA für Intel AI for Enterprise RAG in Ihrem Kubernetes-Cluster.  Weitere Informationen finden Sie im https://github.com/opea-project/Enterprise-RAG/blob/release-1.2.0/deployment/README.md["Intel KI für Enterprise RAG-Bereitstellung"^] Einzelheiten finden Sie in der Dokumentation.  Beachten Sie unbedingt die erforderlichen Änderungen an der Konfigurationsdatei, die später in diesem Dokument beschrieben werden.  Sie müssen diese Änderungen vornehmen, bevor Sie das Installations-Playbook ausführen, damit die Intel AI for Enterprise RAG-Anwendung ordnungsgemäß mit Ihrem ONTAP Speichersystem funktioniert.
-
-
-
-=== Aktivieren Sie die Verwendung von ONTAP S3
-
-Bearbeiten Sie beim Installieren von OPEA für Intel AI for Enterprise RAG Ihre Hauptkonfigurationsdatei, um die Verwendung von ONTAP S3 als Quelldaten-Repository zu ermöglichen.
-
-Um die Verwendung von ONTAP S3 zu ermöglichen, legen Sie die folgenden Werte innerhalb der `edp` Abschnitt.
-
-Hinweis: Standardmäßig nimmt die Intel AI for Enterprise RAG-Anwendung Daten aus allen vorhandenen Buckets in Ihrem SVM auf.  Wenn Sie mehrere Buckets in Ihrem SVM haben, können Sie die `bucketNameRegexFilter` Feld, sodass Daten nur aus bestimmten Buckets aufgenommen werden.
-
-[source, cli]
-----
-edp:
-  enabled: true
-  namespace: edp
-  dpGuard:
-    enabled: false
-  storageType: s3compatible
-  s3compatible:
-    region: "us-east-1"
-    accessKeyId: "<your_access_key>"
-    secretAccessKey: "<your_secret_key>"
-    internalUrl: "https://<your_ONTAP_S3_interface>"
-    externalUrl: "https://<your_ONTAP_S3_interface>"
-    bucketNameRegexFilter: ".*"
-----
-
-
-=== Konfigurieren der Einstellungen für die geplante Synchronisierung
-
-Aktivieren Sie bei der Installation der OPEA für Intel AI for Enterprise RAG-Anwendung `scheduledSync` damit die Anwendung automatisch neue oder aktualisierte Dateien aus Ihren S3-Buckets aufnimmt.
-
-Wann `scheduledSync` aktiviert ist, überprüft die Anwendung Ihre Quell-S3-Buckets automatisch auf neue oder aktualisierte Dateien.  Alle neuen oder aktualisierten Dateien, die im Rahmen dieses Synchronisierungsprozesses gefunden werden, werden automatisch aufgenommen und der RAG-Wissensdatenbank hinzugefügt.  Die Anwendung überprüft Ihre Quell-Buckets basierend auf einem voreingestellten Zeitintervall.  Das Standardzeitintervall beträgt 60 Sekunden, was bedeutet, dass die Anwendung alle 60 Sekunden nach Änderungen sucht.  Möglicherweise möchten Sie dieses Intervall Ihren speziellen Anforderungen entsprechend ändern.
-
-So aktivieren Sie `scheduledSync` und legen Sie das Synchronisierungsintervall fest, legen Sie die folgenden Werte fest `deployment/components/edp/values.yaml:`
-
-[source, cli]
-----
-celery:
-  config:
-    scheduledSync:
-      enabled: true
-      syncPeriodSeconds: "60"
-----
-
-
-=== Ändern der Volume-Zugriffsmodi
-
-In `deployment/components/gmc/microservices-connector/helm/values.yaml` , für jedes Volumen in der `pvc` Liste, ändern Sie die `accessMode` Zu `ReadWriteMany` .
-
-[source, cli]
-----
-pvc:
-  modelLlm:
-    name: model-volume-llm
-    accessMode: ReadWriteMany
-    storage: 100Gi
-  modelEmbedding:
-    name: model-volume-embedding
-    accessMode: ReadWriteMany
-    storage: 20Gi
-  modelReranker:
-    name: model-volume-reranker
-    accessMode: ReadWriteMany
-    storage: 10Gi
-  vectorStore:
-    name: vector-store-data
-    accessMode: ReadWriteMany
-    storage: 20Gi
-----
-
-
-=== (Optional) Deaktivieren Sie die SSL-Zertifikatüberprüfung
-
-Wenn Sie beim Aktivieren des S3-Zugriffs für Ihre SVM ein selbstsigniertes Zertifikat verwendet haben, müssen Sie die SSL-Zertifikatsüberprüfung deaktivieren.  Wenn Sie ein Zertifikat verwendet haben, das von einer öffentlich vertrauenswürdigen Zertifizierungsstelle signiert ist, können Sie diesen Schritt überspringen.
-
-Um die SSL-Zertifikatsüberprüfung zu deaktivieren, legen Sie die folgenden Werte fest in `deployment/components/edp/values.yaml:`
-
-[source, cli]
-----
-edpExternalUrl: "https://s3.erag.com"
-edpExternalSecure: "true"
-edpExternalCertVerify: "false"
-edpInternalUrl: "edp-minio:9000"
-edpInternalSecure: "true"
-edpInternalCertVerify: "false"
-----
-
-
-==== Greifen Sie auf OPEA für Intel AI für Enterprise RAG UI zu
-
-Greifen Sie auf die OPEA für die Intel AI for Enterprise RAG-Benutzeroberfläche zu.  Weitere Informationen finden Sie im https://github.com/opea-project/Enterprise-RAG/blob/release-1.1.2/deployment/README.md#interact-with-chatqna["Intel AI for Enterprise RAG-Bereitstellungsdokumentation"^] für Details.
-
-Abbildung 8 – OPEA für Intel AI für Enterprise RAG-Benutzeroberfläche.image:aipod-mini-010.png["600.600"]
+Abbildung 9 – OPEA für Intel​ AI for Enterprise RAG UI. image:aipod-mini-013.png["600.600"]
 
 
 
@@ -380,23 +271,23 @@ Abbildung 8 – OPEA für Intel AI für Enterprise RAG-Benutzeroberfläche.image
 
 Sie können jetzt Dateien zur Einbeziehung in die RAG-basierte Abfrageerweiterung aufnehmen.  Es gibt mehrere Optionen zum Einlesen von Dateien.  Wählen Sie die passende Option für Ihre Anforderungen.
 
-Hinweis: Nachdem eine Datei aufgenommen wurde, sucht die OPEA für Intel AI for Enterprise RAG-Anwendung automatisch nach Aktualisierungen der Datei und nimmt die Aktualisierungen entsprechend auf.
+Hinweis: Nachdem eine Datei eingelesen wurde, überprüft die OPEA for Intel​ AI for Enterprise RAG application automatisch, ob Aktualisierungen für die Datei vorliegen, und liest die Aktualisierungen entsprechend ein.
 
-*Option 1: Direkt in Ihren S3-Bucket hochladen. Um viele Dateien auf einmal aufzunehmen, empfehlen wir, die Dateien mit dem S3-Client Ihrer Wahl in Ihren S3-Bucket (den Bucket, den Sie zuvor erstellt haben) hochzuladen.  Zu den beliebten S3-Clients gehören die AWS CLI, das Amazon SDK für Python (Boto3), s3cmd, S3 Browser, Cyberduck und Commander One.  Wenn es sich bei den Dateien um einen unterstützten Typ handelt, werden alle Dateien, die Sie in Ihren S3-Bucket hochladen, automatisch von der OPEA für die Intel AI for Enterprise RAG-Anwendung aufgenommen.
+*Option 1: Laden Sie die Dateien direkt in Ihren S3-Bucket hoch. Um viele Dateien gleichzeitig zu verarbeiten, empfehlen wir, die Dateien mit dem S3-Client Ihrer Wahl in Ihren zuvor erstellten S3-Bucket hochzuladen. Beliebte S3-Clients sind die AWS CLI, das Amazon SDK für Python (Boto3), s3cmd, S3 Browser, Cyberduck und Commander One. Wenn die Dateien einen unterstützten Typ haben, werden alle Dateien, die Sie in Ihren S3-Bucket hochladen, automatisch von der OPEA for Intel​ AI for Enterprise RAG-Anwendung übernommen.
 
-Hinweis: Zum Zeitpunkt der Erstellung dieses Dokuments werden die folgenden Dateitypen unterstützt: PDF, HTML, TXT, DOC, DOCX, PPT, PPTX, MD, XML, JSON, JSONL, YAML, XLS, XLSX, CSV, TIFF, JPG, JPEG, PNG und SVG.
+Hinweis: Zum Zeitpunkt der Erstellung dieses Dokuments werden die folgenden Dateitypen unterstützt: PDF, HTML, TXT, DOC, DOCX, ADOC, PPT, PPTX, MD, XML, JSON, JSONL, YAML, XLS, XLSX, CSV, TIFF, JPG, JPEG, PNG und SVG.
 
-Sie können die OPEA für die Intel AI for Enterprise RAG-Benutzeroberfläche verwenden, um zu bestätigen, dass Ihre Dateien ordnungsgemäß aufgenommen wurden.  Weitere Informationen finden Sie in der Intel AI for Enterprise RAG UI-Dokumentation.  Beachten Sie, dass es einige Zeit dauern kann, bis die Anwendung eine große Anzahl von Dateien aufgenommen hat.
+Sie können die OPEA für Intel​ AI for Enterprise RAG UI verwenden, um zu bestätigen, dass Ihre Dateien ordnungsgemäß ingestiert wurden. Details finden Sie in der Dokumentation zur Intel​ AI for Enterprise RAG UI. Beachten Sie, dass es einige Zeit dauern kann, bis die Anwendung eine große Anzahl von Dateien ingestiert hat.
 
-*Option 2: Hochladen über die Benutzeroberfläche. Wenn Sie nur eine kleine Anzahl von Dateien aufnehmen müssen, können Sie diese über die OPEA für Intel AI for Enterprise RAG-Benutzeroberfläche aufnehmen.  Weitere Informationen finden Sie in der Intel AI for Enterprise RAG UI-Dokumentation.
+*Option 2: Hochladen über die Benutzeroberfläche Wenn Sie nur wenige Dateien importieren müssen, können Sie diese mit der OPEA for Intel​ AI for Enterprise RAG UI importieren. Weitere Informationen finden Sie in der Dokumentation zur Intel​ AI for Enterprise RAG UI.
 
-Abbildung 9 – Benutzeroberfläche zur Datenaufnahme.image:aipod-mini-011.png["600.600"]
+Abbildung 10 - Benutzeroberfläche für die Datenerfassung. image:aipod-mini-011.png["600.600"]
 
 
 
 ==== Chat-Abfragen ausführen
 
-Sie können jetzt mit der OPEA für die Intel AI for Enterprise RAG-Anwendung „chatten“, indem Sie die enthaltene Chat-Benutzeroberfläche verwenden.  Bei der Beantwortung Ihrer Anfragen führt die Anwendung RAG mithilfe Ihrer aufgenommenen Dateien durch.  Dies bedeutet, dass die Anwendung automatisch nach relevanten Informationen in Ihren aufgenommenen Dateien sucht und diese Informationen bei der Beantwortung Ihrer Anfragen berücksichtigt.
+Sie können jetzt mit der OPEA for Intel​ AI for Enterprise RAG-Anwendung über die enthaltene Chat-Oberfläche „chatten“. Bei der Beantwortung Ihrer Anfragen führt die Anwendung RAG unter Verwendung Ihrer importierten Dateien durch. Das bedeutet, dass die Anwendung automatisch nach relevanten Informationen in Ihren importierten Dateien sucht und diese Informationen bei der Beantwortung Ihrer Anfragen einbezieht.
 
 
 
@@ -419,19 +310,19 @@ Im Rahmen unserer Validierungsbemühungen haben wir in Abstimmung mit Intel Leis
 
 | Gleichzeitige Benutzer | 32 | „Gleichzeitige Benutzer“ bezieht sich auf Eingabeaufforderungen, die gleichzeitig Abfragen übermitteln. 
 |===
-_Hinweis: Die oben aufgeführten Größenrichtlinien basieren auf Leistungsvalidierungen und Testergebnissen, die mit Intel Xeon 6-Prozessoren mit 96 Kernen gesammelt wurden.  Für Kunden mit ähnlichen Anforderungen an E/A-Token und Modellgröße empfehlen wir die Verwendung von Servern mit Xeon 6-Prozessoren mit 96 oder 128 Kernen._
+Hinweis: Die oben genannten Dimensionierungsempfehlungen basieren auf Leistungsvalidierungs- und Testergebnissen mit Intel Xeon 6 Prozessoren mit 96 Kernen. Für Kunden mit ähnlichen I/O-Tokens und Anforderungen an die Modellgröße empfehlen wir die Verwendung von Servern mit Xeon 6 Prozessoren mit 96 Kernen. Weitere Informationen zur Dimensionierung finden Sie unter link:https://community.intel.com/t5/Blogs/Tech-Innovation/Artificial-Intelligence-AI/Scaling-Intel-AI-for-Enterprise-RAG-Performance-64-Core-vs-96/post/1723234["Intel​ AI for Enterprise RAG-Dimensionierungsleitfaden"].
 
 
 
 == Abschluss
 
-Enterprise-RAG-Systeme und LLMs sind Technologien, die zusammenarbeiten, um Unternehmen dabei zu helfen, genaue und kontextbezogene Antworten zu geben.  Diese Antworten beinhalten die Informationsbeschaffung auf der Grundlage einer umfangreichen Sammlung privater und interner Unternehmensdaten.  Durch die Verwendung von RAG, APIs, Vektoreinbettungen und Hochleistungsspeichersystemen zum Abfragen von Dokumentenspeichern, die Unternehmensdaten enthalten, werden die Daten schneller und sicherer verarbeitet.  Der NetApp AIPod Mini kombiniert die intelligente Dateninfrastruktur von NetApp mit ONTAP Datenverwaltungsfunktionen und Intel Xeon 6-Prozessoren, Intel AI für Enterprise RAG und dem OPEA-Software-Stack, um die Bereitstellung leistungsstarker RAG-Anwendungen zu unterstützen und Unternehmen auf den Weg zur KI-Führung zu bringen.
+Enterprise-RAG-Systeme und LLMs sind Technologien, die zusammenarbeiten, um Unternehmen präzise und kontextbezogene Antworten zu ermöglichen. Diese Antworten basieren auf dem Abruf von Informationen aus einer umfangreichen Sammlung privater und interner Unternehmensdaten. Durch die Nutzung von RAG, APIs, Vektor-Embeddings und Hochleistungsspeichersystemen zur Abfrage von Dokumentenablagen mit Unternehmensdaten werden die Daten schneller und sicher verarbeitet. Der NetApp AIPod Mini kombiniert NetApps intelligente Dateninfrastruktur mit ONTAP-Datenmanagementfunktionen und Intel Xeon 6 Prozessoren, Intel​ AI for Enterprise RAG und dem OPEA Software-Stack, um die Bereitstellung leistungsstarker RAG-Anwendungen zu unterstützen und Unternehmen auf den Weg zur KI-Führungsrolle zu bringen.
 
 
 
 == Anerkennung
 
-Dieses Dokument ist das Werk von Sathish Thyagarajan und Michael Ogelsby, Mitgliedern des NetApp Solutions Engineering-Teams.  Die Autoren möchten sich außerdem beim Enterprise AI-Produktteam bei Intel – Ajay Mungara, Mikolaj Zyczynski, Igor Konopko, Ramakrishna Karamsetty, Michal Prostko, Shreejan Mistry und Ned Fiori – und den anderen Teammitgliedern bei NetApp– Lawrence Bunka, Bobby Oommen und Jeff Liborio – für ihre kontinuierliche Unterstützung und Hilfe während der Validierung dieser Lösung bedanken.
+Dieses Dokument wurde von Sathish Thyagarajan, Michael Oglesby und Arpita Mahajan, Mitgliedern des NetApp Solutions Engineering Teams, verfasst. Die Autoren möchten außerdem dem Enterprise AI Produktteam bei Intel—Ajay Mungara, Mikolaj Zyczynski, Igor Konopko, Ramakrishna Karamsetty, Michal Prostko, Anna Alberska, Maciej Cichocki, Shreejan Mistry, Nicholas Rago und Ned Fiori—sowie weiteren Teammitgliedern bei NetApp—Lawrence Bunka, Bobby Oommen und Jeff Liborio—für ihre kontinuierliche Unterstützung und Hilfe während des Validierungsprozesses der Lösung danken.
 
 
 
@@ -448,7 +339,7 @@ Für den App-Server:
 | 222HA-TN-OTO-37 | Hyper SuperServer SYS-222HA-TN /2U | 2 
 
 
-| P4X-GNR6980P-SRPL2-UCC | Intel Xeon 6980P 2P 128C 2G 504M 500W SGX512 | 4 
+| P4X-GNR6972P-SRPL2-UC | Intel​ Xeon​ 6972P Prozessor 96-Core 2,40GHz 480MB Cache (500W) | 4 
 
 
 | RAM | MEM-DR564MC-ER64(x16)64GB DDR5-6400 2RX4 (16Gb) ECC RDIMM | 32 
@@ -527,12 +418,30 @@ NetApp AFF -Speicher:
 |===
 
 
+== Checkliste zur Infrastrukturbereitschaft
+
+Weitere Einzelheiten finden Sie in der xref:ai-aipod-mini-infra-readiness.html[NetApp AIPod Mini - Infrastrukturbereitschaft].
+
+
+
 == Wo Sie weitere Informationen finden
 
 Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
 
-https://www.netapp.com/support-and-training/documentation/ONTAP%20S3%20configuration%20workflow/["NetApp Produktdokumentation"^]
+https://docs.netapp.com/["NetApp Produktdokumentation"^]
 
 link:https://github.com/opea-project/Enterprise-RAG/tree/main["OPEA-Projekt"]
 
-https://github.com/opea-project/Enterprise-RAG/tree/main/deployment/playbooks["Playbook zur OPEA Enterprise RAG-Bereitstellung"^]
+https://github.com/opea-project/Enterprise-RAG/tree/main/docs["Intel​ AI ERAG-Dokumentation"]
+
+https://github.com/opea-project/Enterprise-RAG/tree/main/deployment/playbooks["Playbook zur OPEA Enterprise RAG-Bereitstellung"^] == Versionsverlauf
+
+|===
+| *Version* | *Datum* | *Dokumentversionsverlauf* 
+
+
+| Version 1.0 | September 2025 | Erstveröffentlichung 
+
+
+| Version 2.0 | Feb 2026 | Aktualisiert mit OPEA-Intel​ AI for Enterprise RAG 2.0 
+|===
