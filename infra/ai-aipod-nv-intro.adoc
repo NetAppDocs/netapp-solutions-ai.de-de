@@ -20,6 +20,7 @@ NetApp Solution Engineering
 
 
 
+[[executive-summary]]
 == Zusammenfassung
 
 Der NetApp® AIPod mit NVIDIA DGX®-Systemen und NetApp Cloud-verbundenen Speichersystemen vereinfacht die Infrastrukturbereitstellung für Workloads im Bereich maschinelles Lernen (ML) und künstliche Intelligenz (KI), indem er Designkomplexität und Rätselraten eliminiert.  AIPod mit NVIDIA DGX-Systemen baut auf dem NVIDIA DGX BasePOD™-Design auf, um eine außergewöhnliche Rechenleistung für Workloads der nächsten Generation zu liefern, und fügt NetApp AFF Speichersysteme hinzu, die es Kunden ermöglichen, klein anzufangen und unterbrechungsfrei zu wachsen, während sie gleichzeitig Daten vom Rand über den Kern bis zur Cloud und zurück intelligent verwalten.  NetApp AIPod ist Teil des größeren Portfolios an NetApp KI-Lösungen, wie in der folgenden Abbildung dargestellt.

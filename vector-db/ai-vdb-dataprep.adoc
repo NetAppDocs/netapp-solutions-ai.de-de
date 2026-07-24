@@ -18,6 +18,7 @@ Dieser Abschnitt enthält ein Beispiel-Python-Skript zum Vorbereiten von Daten f
 
 
 
+[[appendix-b-preparedatanetappnew-py]]
 == Anhang B: prepare_data_netapp_new.py
 
 [source, python]

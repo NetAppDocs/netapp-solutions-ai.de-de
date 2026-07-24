@@ -18,6 +18,7 @@ In diesem Abschnitt werden die getesteten Konfigurationen, die Netzwerkinfrastru
 
 
 
+[[solution-architecture]]
 == Lösungsarchitektur
 
 Für diese Validierung haben wir die in der folgenden Tabelle aufgeführten Lösungskomponenten verwendet.
@@ -54,6 +55,7 @@ image:a400-thinksystem-007.png["Diese Grafik zeigt die Rechenschicht, ein Lenovo
 
 
 
+[[storage-controller]]
 == Speichercontroller
 
 In der folgenden Tabelle ist die Speicherkonfiguration aufgeführt.

@@ -29,12 +29,14 @@ Für den Zugriff auf ein NetApp -Volume, das sich in einer anderen Datenebene be
 |===
 
 
+[[option-1-create-a-cache-of-a-volume-that-resides-in-a-different-data-plane]]
 == Option 1 – Erstellen Sie einen Cache eines Volumes, das sich in einer anderen Datenebene befindet
 
 Mitlink:https://docs.netapp.com/us-en/ontap/flexcache/accelerate-data-access-concept.html["NetApp FlexCache -Technologie"] können Sie einen Cache eines NetApp -Volumes erstellen, das sich in einer anderen Datenebene befindet.  Wenn Sie beispielsweise ein NetApp Volume in Ihrer lokalen Datenebene haben und auf dieses Volume in Ihrer AWS-Datenebene zugreifen müssen, können Sie einen Cache des Volumes in AWS erstellen.  In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müssen, um einen Cache für ein NetApp -Volume zu erstellen, das sich in einer anderen Datenebene befindet.
 
 
 
+[[create-flexcache-volume-in-destination-environment]]
 === Erstellen Sie ein FlexCache -Volume in der Zielumgebung
 
 
@@ -53,6 +55,7 @@ NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
 
 
 
+[[expose-flexcache-volume-to-domino]]
 === FlexCache -Volume für Domino verfügbar machen
 
 Als Nächstes müssen Sie das FlexCache Volume der Domino MLOps-Plattform zugänglich machen.  Um das FlexCache -Volume für Domino verfügbar zu machen, folgen Sie den Anweisungen im Unterabschnitt „Existierende NFS-Volumes verfügbar machen, die nicht von Trident bereitgestellt wurden“ deslink:ai-hybrid-ddlnexus-vols.html["Abschnitt „Vorhandene NetApp -Volumes für Domino verfügbar machen“"] dieser Lösung.
@@ -73,12 +76,14 @@ image:ddlnexus-005.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder s
 
 
 
+[[option-2-replicate-a-volume-that-resides-in-a-different-data-plane]]
 == Option 2 – Replizieren eines Volumes, das sich in einer anderen Datenebene befindet
 
 Mitlink:https://www.netapp.com/cyber-resilience/data-protection/data-backup-recovery/snapmirror-data-replication/["NetApp SnapMirror Datenreplikationstechnologie"] können Sie eine Kopie eines NetApp -Volumes erstellen, das sich in einer anderen Datenebene befindet.  Wenn Sie beispielsweise ein NetApp Volume in Ihrer lokalen Datenebene haben und auf dieses Volume in Ihrer AWS-Datenebene zugreifen müssen, können Sie eine Kopie des Volumes in AWS erstellen.  In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müssen, um eine Kopie eines NetApp -Volumes zu erstellen, das sich in einer anderen Datenebene befindet.
 
 
 
+[[create-snapmirror-relationship]]
 === SnapMirror -Beziehung erstellen
 
 Zuerst müssen Sie eine SnapMirror -Beziehung zwischen Ihrem Quellvolume und einem neuen Zielvolume in der Zielumgebung erstellen.  Beachten Sie, dass das Zielvolume im Rahmen des Prozesses zum Erstellen der SnapMirror -Beziehung erstellt wird.
@@ -94,6 +99,7 @@ NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
 
 
 
+[[break-snapmirror-relationship]]
 === SnapMirror Beziehung unterbrechen
 
 Als Nächstes müssen Sie die SnapMirror -Beziehung aufheben, um das Zielvolume für den Datenzugriff zu aktivieren.  Warten Sie, bis die erste Replikation abgeschlossen ist, bevor Sie diesen Schritt ausführen.
@@ -109,6 +115,7 @@ Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://doc
 
 
 
+[[expose-destination-volume-to-domino]]
 === Zielvolume für Domino verfügbar machen
 
 Als Nächstes müssen Sie das Zielvolume der Domino MLOps-Plattform zugänglich machen.  Um das Zielvolume für Domino freizugeben, folgen Sie den Anweisungen im Unterabschnitt „Existierende NFS-Volumes freigeben, die nicht von Trident bereitgestellt wurden“ deslink:ai-hybrid-ddlnexus-vols.html["Abschnitt „Vorhandene NetApp -Volumes für Domino verfügbar machen“"] dieser Lösung.

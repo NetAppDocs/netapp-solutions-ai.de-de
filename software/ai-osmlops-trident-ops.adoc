@@ -18,6 +18,7 @@ Dieser Abschnitt enthält Beispiele für verschiedene Vorgänge, die Sie möglic
 
 
 
+[[import-an-existing-volume]]
 == Importieren eines vorhandenen Volumes
 
 Wenn auf Ihrem NetApp Speichersystem/Ihrer NetApp-Speicherplattform Volumes vorhanden sind, die Sie auf Containern innerhalb Ihres Kubernetes-Clusters mounten möchten, die aber nicht an PVCs im Cluster gebunden sind, müssen Sie diese Volumes importieren.  Sie können die Volume-Importfunktion von Trident verwenden, um diese Volumes zu importieren.
@@ -56,12 +57,14 @@ pb-fg-all-iface1     Bound    default-pb-fg-all-iface1-7d9f1     10995116277760 
 ....
 
 
+[[provision-a-new-volume]]
 == Bereitstellen eines neuen Volumes
 
 Sie können Trident verwenden, um ein neues Volume auf Ihrem NetApp Speichersystem oder Ihrer NetApp-Plattform bereitzustellen.
 
 
 
+[[provision-a-new-volume-using-kubectl]]
 === Bereitstellen eines neuen Volumes mit kubectl
 
 Die folgenden Beispielbefehle zeigen die Bereitstellung eines neuen FlexVol volume mit kubectl.
@@ -91,6 +94,7 @@ tensorflow-results                Bound     default-tensorflow-results-2fd60   1
 ....
 
 
+[[provision-a-new-volume-using-the-netapp-dataops-toolkit]]
 === Bereitstellen eines neuen Volumes mit dem NetApp DataOps Toolkit
 
 Sie können auch das NetApp DataOps Toolkit für Kubernetes verwenden, um ein neues Volume auf Ihrem NetApp -Speichersystem oder Ihrer NetApp-Plattform bereitzustellen.  Das NetApp DataOps Toolkit für Kubernetes nutzt Trident zur Bereitstellung von Volumes, vereinfacht den Prozess für den Benutzer jedoch. Weitere Informationen finden Sie imlink:https://github.com/NetApp/netapp-dataops-toolkit/blob/main/netapp_dataops_k8s/docs/volume_management.md["Dokumentation"] für Details.

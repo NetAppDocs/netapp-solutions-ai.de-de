@@ -20,6 +20,7 @@ image:kafka-sc-003.png["Bild, das die Lösungsübersicht zeigt."]
 
 
 
+[[solution-architecture-details]]
 == Details zur Lösungsarchitektur
 
 Dieser Abschnitt behandelt die Hardware und Software, die zur Leistungsüberprüfung bei der Bereitstellung der Confluent Platform mit NetApp ONTAP für mehrstufigen Speicher verwendet wird.  Die folgende Tabelle behandelt die Lösungsarchitektur und die Basiskomponenten.

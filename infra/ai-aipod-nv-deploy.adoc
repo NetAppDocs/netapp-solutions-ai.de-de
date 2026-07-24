@@ -85,6 +85,7 @@ Die folgende Tabelle zeigt die Softwareversionen für die verschiedenen Komponen
 |===
 
 
+[[storage-network-configuration]]
 == Speichernetzwerkkonfiguration
 
 In diesem Abschnitt werden die wichtigsten Details zur Konfiguration des Ethernet-Speichernetzwerks beschrieben.  Informationen zur Konfiguration des InfiniBand-Rechnernetzwerks finden Sie imlink:https://nvdam.widen.net/s/nfnjflmzlj/nvidia-dgx-basepod-reference-architecture["NVIDIA BasePOD-Dokumentation"] .  Weitere Einzelheiten zur Switch-Konfiguration finden Sie imlink:https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-59/["NVIDIA Cumulus Linux-Dokumentation"] .
@@ -183,6 +184,7 @@ Die grundlegenden Schritte zur Konfiguration der SN4600-Switches werden unten be
 
 
 
+[[storage-system-configuration]]
 == Speichersystemkonfiguration
 
 In diesem Abschnitt werden die wichtigsten Details zur Konfiguration des A90-Speichersystems für diese Lösung beschrieben.  Weitere Einzelheiten zur Konfiguration von ONTAP -Systemen finden Sie imlink:https://docs.netapp.com/us-en/ontap/index.html["ONTAP-Dokumentation"] .  Das folgende Diagramm zeigt die logische Konfiguration des Speichersystems.
@@ -305,6 +307,7 @@ Die grundlegenden Schritte zur Konfiguration des Speichersystems werden unten be
 
 
 
+[[dgx-h100-configuration-for-roce-storage-access]]
 === DGX H100-Konfiguration für RoCE-Speicherzugriff
 
 In diesem Abschnitt werden die wichtigsten Details zur Konfiguration der DGX H100-Systeme beschrieben.  Viele dieser Konfigurationselemente können in das auf den DGX-Systemen bereitgestellte Betriebssystem-Image aufgenommen oder beim Booten vom Base Command Manager implementiert werden.  Sie sind hier als Referenz aufgeführt. Weitere Informationen zum Konfigurieren von Knoten und Software-Images in BCM finden Sie imlink:https://docs.nvidia.com/base-command-manager/index.html#overview["BCM-Dokumentation"] .

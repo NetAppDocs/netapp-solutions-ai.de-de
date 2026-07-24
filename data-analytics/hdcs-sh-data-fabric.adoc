@@ -22,6 +22,7 @@ image:hdcs-sh-001.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder sc
 
 
 
+[[proven-data-fabric-customer-use-cases]]
 == Bewährte Anwendungsfälle für Data Fabric-Kunden
 
 Das von NetApp unterstützte Data Fabric bietet Kunden die folgenden neun bewährten Anwendungsfälle:
@@ -45,6 +46,7 @@ Dieses Dokument behandelt zwei der neun Anwendungsfälle (zusammen mit ihren Lö
 
 
 
+[[netapp-nfs-direct-access]]
 === NetApp NFS-Direktzugriff
 
 Mit NetApp NFS können Kunden Big Data-Analysejobs auf ihren vorhandenen oder neuen NFSv3- oder NFSv4-Daten ausführen, ohne die Daten zu verschieben oder zu kopieren.  Es verhindert mehrere Kopien der Daten und macht die Synchronisierung der Daten mit einer Quelle überflüssig.  Im Finanzsektor beispielsweise muss die Bewegung von Daten von einem Ort zu einem anderen gesetzlichen Verpflichtungen genügen, was keine leichte Aufgabe ist.  In diesem Szenario analysiert der NetApp NFS-Direktzugriff die Finanzdaten von ihrem ursprünglichen Speicherort.  Ein weiterer wichtiger Vorteil besteht darin, dass die Verwendung des NetApp NFS-Direktzugriffs den Schutz von Hadoop-Daten durch die Verwendung nativer Hadoop-Befehle vereinfacht und Datenschutz-Workflows ermöglicht, die das umfangreiche Datenmanagement-Portfolio von NetApp nutzen.
@@ -70,6 +72,7 @@ Zu den wichtigsten Vorteilen der Verwendung des NetApp NFS-Direktzugriffs gehör
 
 
 
+[[building-blocks-for-big-data]]
 === Bausteine für Big Data
 
 Das von NetApp betriebene Datengewebe integriert Datenverwaltungsdienste und Anwendungen (Bausteine) für Datenzugriff, -kontrolle, -schutz und -sicherheit, wie in der folgenden Abbildung dargestellt.

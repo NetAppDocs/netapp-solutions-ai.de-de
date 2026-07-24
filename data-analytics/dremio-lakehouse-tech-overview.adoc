@@ -18,6 +18,7 @@ Für die in diesem Dokument durchgeführten Validierungen wurden die unten besch
 
 
 
+[[hardware-requirements]]
 === Hardwareanforderungen
 
 |===
@@ -52,6 +53,7 @@ Für die in diesem Dokument durchgeführten Validierungen wurden die unten besch
 |===
 
 
+[[software-requirements]]
 === Softwareanforderungen
 
 |===

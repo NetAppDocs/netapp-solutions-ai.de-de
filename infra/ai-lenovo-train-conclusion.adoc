@@ -26,6 +26,7 @@ NetApp Storage bietet die gleiche oder eine bessere Leistung als lokaler SSD-Spe
 
 
 
+[[acknowledgments]]
 == Danksagung
 
 * Karthikeyan Nagalingam, technischer Marketingingenieur, NetApp
@@ -34,6 +35,7 @@ NetApp Storage bietet die gleiche oder eine bessere Leistung als lokaler SSD-Spe
 
 
 
+[[where-to-find-additional-information]]
 == Wo Sie weitere Informationen finden
 
 Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:

@@ -18,6 +18,7 @@ In diesem Abschnitt werden die Ergebnisse des Testverfahrens im Detail beschrieb
 
 
 
+[[image-recognition-training-using-resnet-in-ontap]]
 == Bilderkennungstraining mit ResNet in ONTAP
 
 Wir haben den ResNet50-Benchmark mit einem und zwei SR670 V2-Servern ausgeführt.  Bei diesem Test wurde der MXNet 22.04-py3 NGC-Container zum Ausführen des Trainings verwendet.
@@ -41,6 +42,7 @@ python train_imagenet.py --gpus 0,1,2,3,4,5,6,7 --batch-size 408 --kv-store horo
 
 
 
+[[data-read-speed-local-versus-network-storage]]
 == Datenlesegeschwindigkeit: Lokaler Speicher im Vergleich zum Netzwerkspeicher
 
 Die Lesegeschwindigkeit wurde getestet mit dem `dd` Befehl für eine der Dateien für den ImageNet-Datensatz.  Insbesondere haben wir die folgenden Befehle sowohl für lokale als auch für Netzwerkdaten ausgeführt:
@@ -53,6 +55,7 @@ Beide Werte sind ähnlich und zeigen, dass der Netzwerkspeicher Daten mit einer 
 
 
 
+[[shared-use-case-multiple-independent-simultaneous-jobs]]
 == Gemeinsamer Anwendungsfall: Mehrere, unabhängige, gleichzeitige Jobs
 
 Dieser Test simulierte den erwarteten Anwendungsfall für diese Lösung: KI-Training für mehrere Jobs und mehrere Benutzer.  Jeder Knoten führte sein eigenes Training durch und nutzte dabei den gemeinsam genutzten Netzwerkspeicher.  Die Ergebnisse sind in der folgenden Abbildung dargestellt. Sie zeigt, dass der Lösungsfall eine hervorragende Leistung lieferte, wobei alle Jobs im Wesentlichen mit der gleichen Geschwindigkeit wie die einzelnen Jobs ausgeführt wurden.  Der Gesamtdurchsatz skaliert linear mit der Anzahl der Knoten.

@@ -27,6 +27,7 @@ Dieses Dokument beschreibt die Best-Practice-Richtlinien für die Verwendung von
 
 
 
+[[why-confluent-tiered-storage]]
 == Warum Confluent Tiered Storage?
 
 Confluent hat sich zur Standard-Echtzeit-Streaming-Plattform für viele Anwendungen entwickelt, insbesondere für Big Data-, Analyse- und Streaming-Workloads.  Mit Tiered Storage können Benutzer in der Confluent-Plattform Rechenleistung und Speicher trennen.  Es macht die Datenspeicherung kostengünstiger, ermöglicht Ihnen die Speicherung nahezu unbegrenzter Datenmengen und die Skalierung von Arbeitslasten nach Bedarf nach oben (oder unten) und vereinfacht Verwaltungsaufgaben wie die Neuverteilung von Daten und Mandanten.  S3-kompatible Speichersysteme können alle diese Funktionen nutzen, um Daten mit allen Ereignissen an einem Ort zu demokratisieren, wodurch die Notwendigkeit einer komplexen Datentechnik entfällt.  Weitere Informationen dazu, warum Sie Tiered Storage für Kafka verwenden sollten, finden Sie unterlink:https://docs.confluent.io/platform/current/kafka/tiered-storage.html#netapp-object-storage["dieser Artikel von Confluent"^] .
@@ -35,6 +36,7 @@ NetApp instaclustr unterstützt Kafka ab Version 3.8.1 auch mit Tiered Storage. 
 
 
 
+[[why-netapp-storagegrid-for-tiered-storage]]
 == Warum NetApp StorageGRID für Tiered Storage?
 
 StorageGRID ist eine branchenführende Objektspeicherplattform von NetApp.  StorageGRID ist eine softwaredefinierte, objektbasierte Speicherlösung, die branchenübliche Objekt-APIs unterstützt, einschließlich der Amazon Simple Storage Service (S3)-API.  StorageGRID speichert und verwaltet unstrukturierte Daten in großem Umfang, um einen sicheren, dauerhaften Objektspeicher bereitzustellen.  Inhalte werden zur richtigen Zeit am richtigen Ort und auf der richtigen Speicherebene platziert, wodurch Arbeitsabläufe optimiert und die Kosten für global verteilte Rich Media gesenkt werden.
@@ -43,6 +45,7 @@ Das größte Unterscheidungsmerkmal von StorageGRID ist die Policy-Engine für I
 
 
 
+[[enabling-confluent-tiered-storage]]
 == Aktivieren von Confluent Tiered Storage
 
 Die Grundidee des Tiered Storage besteht darin, die Aufgaben der Datenspeicherung von denen der Datenverarbeitung zu trennen.  Durch diese Trennung wird es für die Datenspeicherungsebene und die Datenverarbeitungsebene wesentlich einfacher, unabhängig voneinander zu skalieren.

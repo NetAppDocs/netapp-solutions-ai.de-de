@@ -18,12 +18,14 @@ In diesem Abschnitt werden die Aufgaben beschrieben, die ausgeführt werden müs
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebenen Schritte ausführen, gehen wir davon aus, dass Sie bereits eine Gast-VM-Vorlage erstellt haben, indem Sie die Anweisungen auf derlink:ai-nvaie-vmw-ngcsetup.html["Aufstellen"] Seite.
 
 
 
+[[create-guest-vm-from-template]]
 == Gast-VM aus Vorlage erstellen
 
 Zuerst müssen Sie eine neue Gast-VM aus der Vorlage erstellen, die Sie im vorherigen Abschnitt erstellt haben.  Um eine neue Gast-VM aus Ihrer Vorlage zu erstellen, melden Sie sich bei VMware vSphere an, klicken Sie mit der rechten Maustaste auf den Vorlagennamen, wählen Sie „Neue VM aus dieser Vorlage …“ und folgen Sie dann dem Assistenten.
@@ -32,6 +34,7 @@ image:nvaie-004.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schr
 
 
 
+[[create-and-mount-data-volume]]
 == Datenvolume erstellen und bereitstellen
 
 Als Nächstes müssen Sie ein neues Datenvolumen erstellen, auf dem Sie Ihren Trainingsdatensatz speichern.  Mit dem NetApp DataOps Toolkit können Sie schnell ein neues Datenvolumen erstellen.  Der folgende Beispielbefehl zeigt die Erstellung eines Volumes namens „imagenet“ mit einer Kapazität von 2 TB.
@@ -46,12 +49,14 @@ $ sudo -E netapp_dataops_cli.py mount vol -n imagenet -m ~/imagenet
 ....
 
 
+[[populate-data-volume]]
 == Datenvolumen auffüllen
 
 Nachdem das neue Volume bereitgestellt und gemountet wurde, kann der Trainingsdatensatz vom Quellspeicherort abgerufen und auf dem neuen Volume platziert werden.  Dies beinhaltet normalerweise das Abrufen der Daten aus einem S3- oder Hadoop-Datensee und manchmal die Unterstützung eines Dateningenieurs.
 
 
 
+[[execute-tensorflow-training-job]]
 == TensorFlow-Trainingsjob ausführen
 
 Jetzt können Sie Ihren TensorFlow-Trainingsjob ausführen.  Führen Sie die folgenden Aufgaben aus, um Ihren TensorFlow-Trainingsjob auszuführen.

@@ -18,6 +18,7 @@ Dieser Abschnitt enthält Beispiel-YAML-Code für die Vektordatenbanklösung fü
 
 
 
+[[appendix-d-docker-compose-yml]]
 == Anhang D: docker-compose.yml
 
 [source, yml]

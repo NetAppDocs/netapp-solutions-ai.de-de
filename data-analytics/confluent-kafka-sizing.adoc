@@ -18,6 +18,7 @@ Die Kafka-Dimensionierung kann mit vier Konfigurationsmodi durchgeführt werden:
 
 
 
+[[simple]]
 == Einfach
 
 Der einfache Modus eignet sich für Erstbenutzer von Apache Kafka oder Anwendungsfälle im Frühstadium.  Für diesen Modus geben Sie Anforderungen wie Durchsatz-MBps, Lese-Fanout, Aufbewahrung und den Prozentsatz der Ressourcennutzung an (60 % ist der Standard).  Sie geben auch die Umgebung ein, z. B. vor Ort (Bare-Metal, VMware, Kubernetes oder OpenStack) oder in der Cloud.  Basierend auf diesen Informationen liefert die Dimensionierung eines Kafka-Clusters die Anzahl der Server, die für den Broker, den Zookeeper, die Apache Kafka Connect Worker, das Schema-Register, einen REST-Proxy, ksqlDB und das Confluent-Kontrollzentrum erforderlich sind.
@@ -26,6 +27,7 @@ Berücksichtigen Sie bei mehrstufigem Speicher den granularen Konfigurationsmodu
 
 
 
+[[producers]]
 === Produzenten
 
 Um die Produzenten für Apache Kafka zu beschreiben (z. B. einen nativen Client, einen REST-Proxy oder einen Kafka-Connector), geben Sie die folgenden Informationen an:
@@ -81,6 +83,7 @@ Stream-Prozessoren müssen ihre Anwendungen oder Dienste beschreiben, die Daten 
 
 
 
+[[consumers]]
 === Verbraucher
 
 Beschreiben Sie Ihre Anwendungen oder Dienste, die Daten von Apache Kafka nutzen und nicht wieder in Apache Kafka produzieren; beispielsweise ein nativer Client oder Kafka Connector.
@@ -117,6 +120,7 @@ Zusätzlich zu den Anforderungen für Produzenten, Stream-Prozessoren und Konsum
 
 
 
+[[describe-your-environment]]
 === Beschreiben Sie Ihre Umgebung
 
 * *In welcher Umgebung wird Ihr Cluster ausgeführt?*  Amazon Web Services, Microsoft Azure, Google Cloud Platform, Bare-Metal vor Ort, VMware vor Ort, OpenStack vor Ort oder Kubernates vor Ort?

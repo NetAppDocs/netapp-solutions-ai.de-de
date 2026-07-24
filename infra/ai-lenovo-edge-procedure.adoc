@@ -18,6 +18,7 @@ In diesem Abschnitt werden die Testverfahren beschrieben, die zur Validierung di
 
 
 
+[[operating-system-and-ai-inference-setup]]
 == Betriebssystem und KI-Inferenz-Setup
 
 Für AFF C190 haben wir Ubuntu 18.04 mit NVIDIA -Treibern und Docker mit Unterstützung für NVIDIA -GPUs verwendet und MLPerf verwendet https://github.com/mlperf/inference_results_v0.7/tree/master/closed/Lenovo["Code"^] verfügbar als Teil der Lenovo-Einreichung zu MLPerf Inference v0.7.
@@ -52,6 +53,7 @@ make run_harness RUN_ARGS="--benchmarks=<BENCHMARKS> --scenarios=<SCENARIOS>"
 ....
 
 
+[[ai-inference-runs]]
 == KI-Inferenzläufe
 
 Es wurden drei Arten von Läufen durchgeführt:

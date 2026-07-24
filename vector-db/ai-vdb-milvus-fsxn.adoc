@@ -18,6 +18,7 @@ In diesem Abschnitt wird die Einrichtung des Milvus-Clusters mit Amazon FSx ONTA
 
 
 
+[[milvus-with-amazon-fsx-ontap-for-netapp-ontap-file-and-object-duality]]
 == Milvus mit Amazon FSx ONTAP für NetApp ONTAP – Datei- und Objektdualität
 
 In diesem Abschnitt erfahren Sie, warum wir die Vektordatenbank in der Cloud bereitstellen müssen, sowie die Schritte zum Bereitstellen der Vektordatenbank (Milvus Standalone) in Amazon FSx ONTAP für NetApp ONTAP innerhalb von Docker-Containern.

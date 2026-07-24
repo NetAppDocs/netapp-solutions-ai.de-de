@@ -18,10 +18,12 @@ Dieser Abschnitt konzentriert sich auf die Softwarekomponenten des NetApp AIPod 
 
 
 
+[[nvidia-software]]
 == NVIDIA -Software
 
 
 
+[[nvidia-base-command]]
 === NVIDIA Basisbefehl
 
 NVIDIA Base Command™ treibt jeden DGX BasePOD an und ermöglicht es Unternehmen, das Beste der NVIDIA -Softwareinnovation zu nutzen.  Unternehmen können das volle Potenzial ihrer Investition mit einer bewährten Plattform ausschöpfen, die Orchestrierung und Clusterverwaltung auf Unternehmensniveau, Bibliotheken zur Beschleunigung der Rechen-, Speicher- und Netzwerkinfrastruktur sowie ein für KI-Workloads optimiertes Betriebssystem (OS) umfasst.
@@ -32,6 +34,7 @@ image:aipod-nv-basecommand-new.png["Abbildung, die einen Eingabe-/Ausgabedialog 
 
 
 
+[[nvidia-gpu-cloud-ngc]]
 === NVIDIA GPU Cloud (NGC)
 
 NVIDIA NGC bietet Software, die den Anforderungen von Datenwissenschaftlern, Entwicklern und Forschern mit unterschiedlichem KI-Fachwissen gerecht wird.  Auf NGC gehostete Software wird auf einen aggregierten Satz gängiger Schwachstellen und Gefährdungen (CVEs), Kryptografie und privater Schlüssel geprüft.  Es ist für die Skalierung auf mehrere GPUs und in vielen Fällen auf mehrere Knoten getestet und konzipiert, um sicherzustellen, dass Benutzer ihre Investition in DGX-Systeme maximieren.
@@ -42,16 +45,19 @@ image:aipod-nv-ngc.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder s
 
 
 
+[[nvidia-ai-enterprise]]
 === NVIDIA AI Enterprise
 
 NVIDIA AI Enterprise ist die End-to-End-Softwareplattform, die generative KI für jedes Unternehmen erreichbar macht und die schnellste und effizienteste Laufzeit für generative KI-Basismodelle bietet, die für die Ausführung auf der NVIDIA DGX-Plattform optimiert sind.  Mit produktionsreifer Sicherheit, Stabilität und Verwaltbarkeit rationalisiert es die Entwicklung generativer KI-Lösungen.  NVIDIA AI Enterprise ist in DGX BasePOD enthalten, damit Unternehmensentwickler auf vortrainierte Modelle, optimierte Frameworks, Microservices, beschleunigte Bibliotheken und Unternehmenssupport zugreifen können.
 
 
 
+[[netapp-software]]
 == NetApp Software
 
 
 
+[[netapp-ontap]]
 === NetApp ONTAP
 
 ONTAP 9, die neueste Generation der Speicherverwaltungssoftware von NetApp, ermöglicht Unternehmen die Modernisierung ihrer Infrastruktur und den Übergang zu einem Cloud-fähigen Rechenzentrum.  Durch die Nutzung branchenführender Datenverwaltungsfunktionen ermöglicht ONTAP die Verwaltung und den Schutz von Daten mit einem einzigen Satz von Tools, unabhängig davon, wo sich diese Daten befinden.  Sie können Daten auch frei dorthin verschieben, wo sie benötigt werden: an den Rand, in den Kern oder in die Cloud.  ONTAP 9 umfasst zahlreiche Funktionen, die die Datenverwaltung vereinfachen, kritische Daten beschleunigen und schützen und Infrastrukturfunktionen der nächsten Generation in Hybrid-Cloud-Architekturen ermöglichen.
@@ -98,6 +104,7 @@ ONTAP unterstützt Sie mit den folgenden Funktionen bei der Erfüllung anspruchs
 
 
 
+[[netapp-dataops-toolkit]]
 === NetApp DataOps Toolkit
 
 Das NetApp DataOps Toolkit ist ein Python-basiertes Tool, das die Verwaltung von Entwicklungs-/Schulungsarbeitsbereichen und Inferenzservern vereinfacht, die durch leistungsstarken, skalierbaren NetApp -Speicher unterstützt werden.  Das DataOps Toolkit kann als eigenständiges Dienstprogramm betrieben werden und ist in Kubernetes-Umgebungen, in denen NetApp Trident zur Automatisierung von Speichervorgängen genutzt wird, noch effektiver.  Zu den wichtigsten Funktionen gehören:
@@ -111,6 +118,7 @@ Das NetApp DataOps Toolkit ist ein Python-basiertes Tool, das die Verwaltung von
 
 
 
+[[netapp-trident]]
 === NetApp Trident
 
 Trident ist ein vollständig unterstützter Open-Source-Speicherorchestrator für Container und Kubernetes-Distributionen, einschließlich Anthos. Trident funktioniert mit dem gesamten NetApp -Speicherportfolio, einschließlich NetApp ONTAP, und unterstützt auch NFS-, NVMe/TCP- und iSCSI-Verbindungen. Trident beschleunigt den DevOps-Workflow, indem es Endbenutzern ermöglicht, Speicher von ihren NetApp -Speichersystemen bereitzustellen und zu verwalten, ohne dass ein Speicheradministrator eingreifen muss.

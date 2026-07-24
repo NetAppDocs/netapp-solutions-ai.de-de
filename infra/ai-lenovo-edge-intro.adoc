@@ -20,12 +20,14 @@ Dieses Dokument beschreibt eine Rechen- und Speicherarchitektur zur Bereitstellu
 
 
 
+[[summary]]
 == Zusammenfassung
 
 Mehrere neue Anwendungsszenarien, wie beispielsweise fortschrittliche Fahrerassistenzsysteme (ADAS), Industrie 4.0, Smart Cities und das Internet der Dinge (IoT), erfordern die Verarbeitung kontinuierlicher Datenströme mit einer Latenz von nahezu null.  Dieses Dokument beschreibt eine Rechen- und Speicherarchitektur zur Bereitstellung von GPU-basierter künstlicher Intelligenz (KI)-Inferenz auf NetApp -Speichercontrollern und Lenovo ThinkSystem-Servern in einer Edge-Umgebung, die diese Anforderungen erfüllt.  Dieses Dokument enthält außerdem Leistungsdaten für den branchenüblichen MLPerf-Inferenz-Benchmark, der verschiedene Inferenzaufgaben auf Edge-Servern mit NVIDIA T4-GPUs bewertet.  Wir untersuchen die Leistung von Offline-, Single-Stream- und Multistream-Inferenzszenarien und zeigen, dass die Architektur mit einem kostengünstigen gemeinsam genutzten Netzwerkspeichersystem hochleistungsfähig ist und einen zentralen Punkt für die Daten- und Modellverwaltung für mehrere Edge-Server bietet.
 
 
 
+[[introduction]]
 == Einführung
 
 Unternehmen generieren zunehmend riesige Datenmengen am Netzwerkrand.  Um den maximalen Nutzen aus intelligenten Sensoren und IoT-Daten zu erzielen, suchen Unternehmen nach einer Echtzeit-Event-Streaming-Lösung, die Edge Computing ermöglicht.  Rechenintensive Aufgaben werden daher zunehmend am Rand, außerhalb von Rechenzentren, ausgeführt.  Einer der Treiber dieses Trends ist die KI-Inferenz.  Edge-Server bieten ausreichend Rechenleistung für diese Workloads, insbesondere bei Verwendung von Beschleunigern, aber begrenzter Speicherplatz ist oft ein Problem, insbesondere in Multiserver-Umgebungen.  In diesem Dokument zeigen wir, wie Sie ein gemeinsam genutztes Speichersystem in der Edge-Umgebung bereitstellen können und wie es KI-Inferenz-Workloads zugutekommt, ohne dass es zu Leistungseinbußen kommt.
@@ -36,6 +38,7 @@ Dieses Dokument behandelt das Testen und Validieren einer Rechen- und Speicherko
 
 
 
+[[target-audience]]
 === Zielgruppe
 
 Dieses Dokument richtet sich an folgende Zielgruppen:
@@ -49,6 +52,7 @@ Dieses Dokument richtet sich an folgende Zielgruppen:
 
 
 
+[[solution-architecture]]
 === Lösungsarchitektur
 
 Dieser Lenovo ThinkSystem-Server und die NetApp ONTAP oder NetApp SANtricity -Speicherlösung sind für die Verarbeitung von KI-Inferenzen auf großen Datensätzen konzipiert und nutzen dabei die Verarbeitungsleistung von GPUs neben herkömmlichen CPUs.  Diese Validierung demonstriert hohe Leistung und optimales Datenmanagement mit einer Architektur, die entweder einen oder mehrere Lenovo SR350-Edge-Server verwendet, die mit einem einzigen NetApp AFF Speichersystem verbunden sind, wie in den folgenden beiden Abbildungen dargestellt.
@@ -92,6 +96,7 @@ Diese Lösung von NetApp und Lenovo bietet die folgenden Hauptvorteile:
 
 
 
+[[how-to-use-this-architecture]]
 === So verwenden Sie diese Architektur
 
 Dieses Dokument validiert das Design und die Leistung der vorgeschlagenen Architektur.  Allerdings haben wir bestimmte Teile auf Softwareebene, wie etwa Container-, Workload- oder Modellverwaltung und Datensynchronisierung mit der Cloud oder dem Rechenzentrum vor Ort, nicht getestet, da sie spezifisch für ein Bereitstellungsszenario sind.  Hier gibt es mehrere Auswahlmöglichkeiten.
@@ -100,6 +105,7 @@ Auf der Ebene der Containerverwaltung ist die Kubernetes-Containerverwaltung ein
 
 
 
+[[solution-areas]]
 === Lösungsbereiche
 
 Der Hauptvorteil von KI-Inferenz und Edge Computing besteht in der Fähigkeit der Geräte, Daten mit hoher Qualität und ohne Latenz zu berechnen, zu verarbeiten und zu analysieren.  Es gibt viel zu viele Beispiele für Edge-Computing-Anwendungsfälle, um sie in diesem Dokument zu beschreiben, aber hier sind einige herausragende:

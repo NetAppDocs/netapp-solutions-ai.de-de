@@ -26,12 +26,14 @@ David Arnette, NetApp
 
 
 
+[[executive-summary]]
 == Zusammenfassung
 
 Mit der bewährten Rechenleistung von NVIDIA DGX SuperPOD in Kombination mit den branchenführenden Datensicherheits-, Datenverwaltungs- und Mandantenfähigkeitsfunktionen von NetApp können Kunden die effizienteste und agilste Infrastruktur für Workloads der nächsten Generation bereitstellen.  Dieses Dokument beschreibt die Architektur auf hoher Ebene und die wichtigsten Funktionen, die Kunden dabei helfen, eine schnellere Markteinführung und einen schnelleren Return on Investment für KI/ML-Initiativen zu erreichen.
 
 
 
+[[program-summary]]
 == Programmübersicht
 
 NVIDIA DGX SuperPOD bietet eine schlüsselfertige KI-Rechenzentrumslösung für Unternehmen, die nahtlos erstklassige Computerleistung, Softwaretools, Fachwissen und kontinuierliche Innovation bereitstellt.  DGX SuperPOD bietet alles, was Kunden benötigen, um KI/ML- und HPC-Workloads mit minimaler Einrichtungszeit und maximaler Produktivität bereitzustellen.  Abbildung 1 zeigt die High-Level-Komponenten von DGX SuperPOD.
@@ -49,6 +51,7 @@ DGX SuperPOD bietet die folgenden Vorteile:
 
 
 
+[[solution-overview]]
 == Lösungsübersicht
 
 Da Unternehmen Initiativen für künstliche Intelligenz (KI) und maschinelles Lernen (ML) ergreifen, war die Nachfrage nach robusten, skalierbaren und effizienten Infrastrukturlösungen noch nie so groß.  Im Mittelpunkt dieser Initiativen steht die Herausforderung, immer komplexere KI-Modelle zu verwalten und zu trainieren und gleichzeitig Datensicherheit, Zugänglichkeit und Ressourcenoptimierung zu gewährleisten.  Die Entwicklung der agentenbasierten KI und die anspruchsvollen Anforderungen an das Modelltraining haben beispiellose Anforderungen an die Rechen- und Speicherinfrastruktur geschaffen.  Unternehmen müssen heute riesige Datensätze verarbeiten, mehrere gleichzeitige Trainings-Workloads unterstützen und Hochleistungs-Computerumgebungen aufrechterhalten, während sie gleichzeitig den Datenschutz und die Einhaltung gesetzlicher Vorschriften gewährleisten.  Herkömmliche Infrastrukturlösungen können diese Anforderungen oft nicht erfüllen, was zu betrieblichen Ineffizienzen und einer verzögerten Wertschöpfung bei KI-Projekten führt.  Diese Lösung bietet die folgenden Hauptvorteile:
@@ -60,6 +63,7 @@ Da Unternehmen Initiativen für künstliche Intelligenz (KI) und maschinelles Le
 
 
 
+[[target-audience]]
 === Zielgruppe
 
 Diese Lösung ist für Organisationen mit HPC- und KI/ML-Workloads gedacht, die eine tiefere Integration in umfangreiche Datenbestände und traditionelle IT-Infrastrukturtools und -prozesse erfordern.
@@ -73,6 +77,7 @@ Zur Zielgruppe der Lösung zählen folgende Gruppen:
 
 
 
+[[solution-technology]]
 === Lösungstechnologie
 
 NVIDIA DGX SuperPOD umfasst die Server, Netzwerke und Speicher, die für die Bereitstellung bewährter Leistung für anspruchsvolle KI-Workloads erforderlich sind.  NVIDIA DGX™ H200- und NVIDIA DGX B200-Systeme bieten Rechenleistung der Weltklasse und NVIDIA Quantum- und Spectrum™ InfiniBand-Netzwerk-Switches bieten extrem niedrige Latenz und branchenführende Netzwerkleistung.  Durch die Ergänzung der branchenführenden Datenverwaltungs- und Leistungsfunktionen des NetApp ONTAP Speichers können Kunden KI/ML-Initiativen schneller und mit geringerem Datenmigrations- und Verwaltungsaufwand umsetzen.  In den folgenden Abschnitten werden die Speicherkomponenten des DGX SuperPOD mit AFF A90 Speichersystemen beschrieben.
@@ -120,6 +125,7 @@ NVIDIA Base Command Manager bietet eine schnelle Bereitstellung und End-to-End-V
 
 
 
+[[use-case-summary]]
 === Zusammenfassung des Anwendungsfalls
 
 NVIDIA DGX SuperPOD wurde entwickelt, um die Leistungsanforderungen der anspruchsvollsten Workloads im größten Maßstab zu erfüllen.
@@ -133,6 +139,7 @@ Diese Lösung gilt für die folgenden Anwendungsfälle:
 
 
 
+[[solution-architecture]]
 == Lösungsarchitektur
 
 DGX SuperPOD basiert auf dem Konzept einer skalierbaren Einheit (SU), die 32 DGX B200-Systeme und alle anderen Komponenten umfasst, die erforderlich sind, um die erforderliche Konnektivität bereitzustellen und Leistungsengpässe in der Infrastruktur zu beseitigen.  Kunden können mit einer oder mehreren SUs beginnen und nach Bedarf weitere SUs hinzufügen, um ihre Anforderungen zu erfüllen.  Dieses Dokument beschreibt die Speicherkonfiguration für eine einzelne SU und Tabelle 1 zeigt die für größere Konfigurationen erforderlichen Komponenten.
@@ -161,6 +168,7 @@ Diese Lösung nutzt mehrere Storage Virtual Machines (SVM), um Volumes sowohl f�
 
 
 
+[[solution-hardware-requirements]]
 === Hardwareanforderungen der Lösung
 
 Tabelle 1 listet die Speicherhardwarekomponenten auf, die zur Implementierung von einer, zwei, vier oder acht skalierbaren Einheiten erforderlich sind.  Detaillierte Hardwareanforderungen für Server und Netzwerke finden Sie in der https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-b200/latest/abstract.html["+++ NVIDIA DGX SuperPOD Referenzarchitektur+++"] .
@@ -191,6 +199,7 @@ ____
 
 
 
+[[software-requirements]]
 === Softwareanforderungen
 
 Tabelle 2 listet die Softwarekomponenten und Versionen auf, die zur Integration des AFF A90 Speichersystems mit DGX SuperPOD erforderlich sind.  DGX SuperPOD umfasst auch andere Softwarekomponenten, die hier nicht aufgeführt sind.  Bitte beachten Sie diehttps://docs.nvidia.com/dgx-superpod/release-notes/latest/10-24-11.html["+++DGX SuperPOD-Versionshinweise+++"] für vollständige Details.
@@ -218,6 +227,7 @@ Tabelle 2) Softwareanforderungen.
 |===
 
 
+[[solution-verification]]
 == Lösungsüberprüfung
 
 Diese Speicherlösung wurde in mehreren Phasen von NetApp und NVIDIA validiert, um sicherzustellen, dass Leistung und Skalierbarkeit den Anforderungen für NVIDIA DGX SuperPOD entsprechen.  Die Konfiguration wurde mithilfe einer Kombination aus synthetischen Workloads und realen ML/DL-Workloads validiert, um sowohl die maximale Leistung als auch die Anwendungsinteroperabilität zu überprüfen.  Tabelle 3 unten enthält Beispiele für typische Workloads und deren Datenanforderungen, die häufig bei DGX SuperPOD-Bereitstellungen auftreten.
@@ -256,12 +266,14 @@ Tabelle 4) DGX SuperPOD-Leistungsrichtlinien.
 |===
 
 
+[[conclusion]]
 == Abschluss
 
 Der NVIDIA DGX SuperPOD mit NetApp * AFF A90 -Speichersystemen* stellt einen bedeutenden Fortschritt bei KI-Infrastrukturlösungen dar.  Durch die Bewältigung zentraler Herausforderungen in den Bereichen Sicherheit, Datenverwaltung, Ressourcennutzung und Skalierbarkeit können Unternehmen ihre KI-Initiativen beschleunigen und gleichzeitig die Betriebseffizienz, den Datenschutz und die Zusammenarbeit aufrechterhalten.  Der integrierte Ansatz der Lösung beseitigt häufige Engpässe in KI-Entwicklungspipelines und ermöglicht es Datenwissenschaftlern und Ingenieuren, sich auf Innovationen statt auf die Infrastrukturverwaltung zu konzentrieren.
 
 
 
+[[where-to-find-additional-information]]
 == Wo Sie weitere Informationen finden
 
 Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:

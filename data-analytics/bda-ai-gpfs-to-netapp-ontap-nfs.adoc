@@ -20,6 +20,7 @@ image:bda-ai-005.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder sch
 
 
 
+[[gpfs-essentials]]
 == GPFS-Grundlagen
 
 Die folgenden Knotentypen werden in GPFS verwendet:
@@ -33,12 +34,14 @@ Die folgenden Knotentypen werden in GPFS verwendet:
 
 
 
+[[list-of-operations-for-gpfs-nfs-and-xcp]]
 == Liste der Vorgänge für GPFS, NFS und XCP
 
 Dieser Abschnitt enthält die Liste der Vorgänge zum Erstellen von GPFS, zum Exportieren von GPFS als NFS-Export und zum Übertragen der Daten mithilfe von XCP.
 
 
 
+[[create-gpfs]]
 === GPFS erstellen
 
 Führen Sie zum Erstellen von GPFS die folgenden Schritte aus:
@@ -62,6 +65,7 @@ Führen Sie zum Erstellen von GPFS die folgenden Schritte aus:
 
 
 
+[[export-gpfs-into-nfs]]
 === GPFS in NFS exportieren
 
 Führen Sie die folgenden Schritte aus, um GPFS in NFS zu exportieren:
@@ -74,6 +78,7 @@ Führen Sie die folgenden Schritte aus, um GPFS in NFS zu exportieren:
 
 
 
+[[configure-nfs-client]]
 === Konfigurieren des NFS-Clients
 
 Führen Sie zum Konfigurieren des NFS-Clients die folgenden Schritte aus:

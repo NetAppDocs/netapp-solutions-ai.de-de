@@ -18,6 +18,7 @@ Zur Funktionsvalidierung haben wir gezeigt, dass ein Kafka-Cluster mit einer NFS
 
 
 
+[[validation-setup]]
 == Validierungs-Setup
 
 Das Setup wird auf AWS ausgeführt.  Die folgende Tabelle zeigt die verschiedenen Plattformkomponenten und Umgebungskonfigurationen, die für die Validierung verwendet wurden.
@@ -47,6 +48,7 @@ image:kafka-nfs-001.png["Dieses Bild zeigt die AWS-Topologie mit einem VPC, das 
 
 
 
+[[architectural-flow]]
 == Architektonischer Fluss
 
 * *Berechnen.*  Wir haben einen Kafka-Cluster mit vier Knoten und einem Zookeeper-Ensemble mit drei Knoten verwendet, das auf dedizierten Servern ausgeführt wird.
@@ -59,6 +61,7 @@ Für alle Server wurden die Standardeigenschaften von Kafka gewählt.  Dasselbe 
 
 
 
+[[methodology-of-testing]]
 == Testmethodik
 
 . Aktualisieren `-is-preserve-unlink-enabled true` zum Kafka-Band, wie folgt:

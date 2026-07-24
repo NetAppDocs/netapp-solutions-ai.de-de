@@ -18,30 +18,35 @@ Die digitale Bildverarbeitung bietet zahlreiche Vorteile und ermöglicht vielen 
 
 
 
+[[environmental-intelligence]]
 == Umweltintelligenz
 
 Es gibt viele Möglichkeiten, wie die Industrie im Bereich Umweltgefahren von Geodatenanalysen profitieren kann.  Regierungen und das Ministerium für öffentliche Arbeiten können daraus umsetzbare Erkenntnisse zur öffentlichen Gesundheit und zu den Wetterbedingungen gewinnen, um die Öffentlichkeit während einer Pandemie oder einer Naturkatastrophe wie Waldbränden besser beraten zu können.  Sie können beispielsweise einen COVID-positiven Patienten in öffentlichen Räumen wie Flughäfen oder Krankenhäusern identifizieren, ohne die Privatsphäre der betroffenen Person zu verletzen, und die entsprechenden Behörden und die Öffentlichkeit in der Umgebung über die erforderlichen Sicherheitsmaßnahmen informieren.
 
 
 
+[[edge-device-wearables]]
 == Edge-Geräte-Wearables
 
 Beim Militär und auf Schlachtfeldern können Sie KI-Inferenz am Rande als tragbare Geräte nutzen, um den Gesundheitszustand von Soldaten zu verfolgen, das Verhalten von Fahrern zu überwachen und die Behörden auf die Sicherheit und die damit verbundenen Risiken bei der Annäherung an Militärfahrzeuge aufmerksam zu machen und gleichzeitig die Privatsphäre der Soldaten zu wahren und zu schützen.  Die Zukunft des Militärs wird Hightech mit dem Internet of Battlefield Things (IoBT) und dem Internet of Military Things (IoMT) für tragbare Kampfausrüstung, die Soldaten dabei hilft, Feinde zu identifizieren und im Kampf durch den Einsatz von schnellem Edge Computing bessere Leistungen zu erbringen.  Der Schutz und die Aufbewahrung visueller Daten, die von Edge-Geräten wie Drohnen und tragbaren Geräten erfasst werden, ist von entscheidender Bedeutung, um Hacker und Feinde in Schach zu halten.
 
 
 
+[[noncombatant-evacuation-operations]]
 == Evakuierungsoperationen für Nichtkombattanten
 
 Das US-Verteidigungsministerium führt Evakuierungsoperationen für Nichtkombattanten (NEOs) durch, um die Evakuierung von US-Bürgern und -Staatsangehörigen, zivilem Personal des Verteidigungsministeriums und bestimmten Personen (Staatsangehörige des Gastlandes (HN) und Drittstaatsangehörige (TCN)), deren Leben in Gefahr ist, in einen geeigneten sicheren Hafen zu unterstützen.  Die bestehenden Verwaltungskontrollen basieren größtenteils auf manuellen Überprüfungsprozessen für Evakuierte.  Die Genauigkeit, Sicherheit und Geschwindigkeit der Identifizierung und Verfolgung von Evakuierten sowie der Bedrohungsüberprüfung könnten jedoch möglicherweise durch den Einsatz hochautomatisierter KI/ML-Tools in Kombination mit KI/ML-Videoverschleierungstechnologien verbessert werden.
 
 
 
+[[healthcare-and-biomedical-research]]
 == Gesundheitswesen und biomedizinische Forschung
 
 Mittels Bildverarbeitung werden Pathologien für die Operationsplanung anhand von 3D-Bildern aus der Computertomographie (CT) oder Magnetresonanztomographie (MRT) diagnostiziert.  Die HIPAA-Datenschutzbestimmungen regeln, wie Organisationen alle personenbezogenen Daten und digitalen Bilder wie Fotos erfassen, verarbeiten und löschen müssen.  Damit Daten gemäß den HIPAA Safe Harbor-Bestimmungen als gemeinsam nutzbar gelten, müssen vollständige Gesichtsfotos und alle vergleichbaren Bilder entfernt werden.  Automatisierte Techniken wie De-Identifizierung oder Algorithmen zur Schädelentfernung, die zum Verbergen der Gesichtszüge einer Person auf strukturellen CT-/MR-Bildern verwendet werden, sind zu einem wesentlichen Bestandteil des Datenaustauschprozesses für biomedizinische Forschungseinrichtungen geworden.
 
 
 
+[[cloud-migration-of-aiml-analytics]]
 == Cloud-Migration von KI/ML-Analysen
 
 Unternehmenskunden haben KI/ML-Modelle traditionell vor Ort trainiert und bereitgestellt.  Aus Skalen- und Effizienzgründen expandieren diese Kunden, um KI-/ML-Funktionen in öffentliche, hybride oder Multi-Cloud-Bereitstellungen zu verlagern.  Sie sind jedoch daran gebunden, welche Daten anderen Infrastrukturen zugänglich gemacht werden können.  NetApp Lösungen adressieren eine breite Palette von Cybersicherheitsbedrohungen, die für https://www.netapp.com/data-protection/?internal_promo=mdw_aiml_ww_all_awareness-coas_blog["Datenschutz"^] und Sicherheitsbewertung und minimieren in Kombination mit der Protopia-Datentransformation die Risiken, die mit der Migration von KI/ML-Workloads zur Bildverarbeitung in die Cloud verbunden sind.

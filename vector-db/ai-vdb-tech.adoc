@@ -18,12 +18,14 @@ Dieser Abschnitt bietet einen Überblick über die Anforderungen für die NetApp
 
 
 
+[[technology-requirement]]
 == Technologieanforderungen
 
 Für die Mehrzahl der in diesem Dokument durchgeführten Validierungen wurden die unten beschriebenen Hardware- und Softwarekonfigurationen verwendet, mit Ausnahme der Leistung.  Diese Konfigurationen dienen als Richtlinie und helfen Ihnen beim Einrichten Ihrer Umgebung.  Bitte beachten Sie jedoch, dass die konkreten Komponenten je nach individuellen Kundenanforderungen variieren können.
 
 
 
+[[hardware-requirements]]
 == Hardwareanforderungen
 
 |===
@@ -43,6 +45,7 @@ Für die Mehrzahl der in diesem Dokument durchgeführten Validierungen wurden di
 |===
 
 
+[[software-requirements]]
 == Softwareanforderungen
 
 |===

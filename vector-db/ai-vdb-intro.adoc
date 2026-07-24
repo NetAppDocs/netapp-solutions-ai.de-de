@@ -18,6 +18,7 @@ Dieser Abschnitt bietet eine Einführung in die Vektordatenbanklösung für NetA
 
 
 
+[[introduction]]
 == Einführung
 
 Vektordatenbanken bewältigen effektiv die Herausforderungen, die für die Bewältigung der Komplexität der semantischen Suche in Large Language Models (LLMs) und generativer künstlicher Intelligenz (KI) entwickelt wurden.  Im Gegensatz zu herkömmlichen Datenverwaltungssystemen können Vektordatenbanken verschiedene Datentypen verarbeiten und durchsuchen, darunter Bilder, Videos, Text, Audio und andere Formen unstrukturierter Daten, indem sie den Inhalt der Daten selbst und nicht Beschriftungen oder Tags verwenden.

@@ -18,6 +18,7 @@ In diesem Abschnitt wird das Bereitstellungsverfahren für die Vektordatenbankl�
 
 
 
+[[deployment-procedure]]
 == Bereitstellungsverfahren
 
 In diesem Bereitstellungsabschnitt haben wir die Milvus-Vektordatenbank mit Kubernetes für die Laboreinrichtung wie unten beschrieben verwendet.
@@ -28,6 +29,7 @@ Der NetApp-Speicher stellt den Speicherplatz für den Cluster bereit, um Kundend
 
 
 
+[[netapp-storage-setup-ontap]]
 === NetApp -Speichereinrichtung – ONTAP
 
 * Initialisierung des Speichersystems
@@ -54,6 +56,7 @@ Bitte befolgen Sie die folgenden Schritte für NAS S3 (Network Attached Storage 
 
 
 
+[[netapp-storage-setup-storagegrid]]
 === NetApp -Speichereinrichtung – StorageGRID
 
 . Installieren Sie die storageGRID-Software.

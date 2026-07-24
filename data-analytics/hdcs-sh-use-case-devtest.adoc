@@ -18,12 +18,14 @@ In diesem Anwendungsfall besteht die Anforderung des Kunden darin, schnell und e
 
 
 
+[[scenario]]
 == Szenario
 
 In diesem Szenario werden mehrere Spark/Hadoop-Cluster aus einer großen Hadoop-Data-Lake-Implementierung vor Ort sowie an Disaster-Recovery-Standorten erstellt.
 
 
 
+[[requirements-and-challenges]]
 == Anforderungen und Herausforderungen
 
 Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfall gehören:
@@ -36,6 +38,7 @@ Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfal
 
 
 
+[[solution]]
 == Lösung
 
 Um die gerade beschriebenen Anforderungen zu erfüllen, wird die FlexClone -Technologie verwendet.  Die FlexClone -Technologie ist die Lese-/Schreibkopie einer Snapshot-Kopie.  Es liest die Daten aus den übergeordneten Snapshot-Kopiedaten und verbraucht nur zusätzlichen Speicherplatz für neue/geänderte Blöcke.  Es ist schnell und platzsparend.

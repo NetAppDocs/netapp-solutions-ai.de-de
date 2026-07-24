@@ -18,6 +18,7 @@ Dieser Abschnitt enthält ein Python-Beispielskript, das zur Validierung der Vek
 
 
 
+[[appendix-c-verifydatanetapp-py]]
 == Anhang C: verify_data_netapp.py
 
 [source, python]

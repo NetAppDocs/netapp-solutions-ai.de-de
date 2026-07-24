@@ -32,6 +32,7 @@ https://www.nvidia.com/en-us/data-center/products/ai-enterprise/["https://www.nv
 
 
 
+[[acknowledgments]]
 == Danksagung
 
 * Bobby Oommen, Senior Manager, NetApp

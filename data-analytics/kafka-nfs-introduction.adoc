@@ -30,6 +30,7 @@ In diesem Dokument werden die folgenden Themen beschrieben:
 
 
 
+[[why-use-nfs-storage-for-kafka-workloads]]
 == Warum NFS-Speicher für Kafka-Workloads verwenden?
 
 Kafka-Workloads in Produktionsanwendungen können riesige Datenmengen zwischen Anwendungen streamen.  Diese Daten werden in den Kafka-Broker-Knoten im Kafka-Cluster gehalten und gespeichert.  Kafka ist außerdem für seine Verfügbarkeit und Parallelität bekannt, die es durch die Aufteilung von Themen in Partitionen und die anschließende Replikation dieser Partitionen im gesamten Cluster erreicht.  Dies bedeutet letztendlich, dass sich die enorme Datenmenge, die durch einen Kafka-Cluster fließt, im Allgemeinen vervielfacht.  NFS ermöglicht eine Neugewichtung der Daten bei Änderungen der Anzahl der Broker sehr schnell und einfach.  Bei großen Umgebungen ist die Neuverteilung der Daten über DAS bei einer Änderung der Brokeranzahl sehr zeitaufwändig, und in den meisten Kafka-Umgebungen ändert sich die Anzahl der Broker häufig.
@@ -45,6 +46,7 @@ Zu den weiteren Vorteilen zählen:
 
 
 
+[[why-netapp-for-kafka-workloads]]
 == Warum NetApp für Kafka-Workloads?
 
 Die NetApp NFS-Implementierung gilt als Goldstandard für das Protokoll und wird in zahllosen Enterprise-NAS-Umgebungen verwendet. Neben der Glaubwürdigkeit von NetApp bietet es auch die folgenden Vorteile:

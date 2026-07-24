@@ -21,6 +21,7 @@ NOTE: Es ist möglich, MLflow auf anderen Plattformen als Kubernetes bereitzuste
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
@@ -31,24 +32,28 @@ Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführe
 
 
 
+[[install-helm]]
 == Helm installieren
 
 MLflow wird mit Helm bereitgestellt, einem beliebten Paketmanager für Kubernetes.  Bevor Sie MLflow bereitstellen, müssen Sie Helm auf Ihrem Kubernetes-Steuerknoten installieren.  Um Helm zu installieren, folgen Sie den https://helm.sh/docs/intro/install/["Installationsanweisungen"^] in der offiziellen Helm-Dokumentation.
 
 
 
+[[set-default-kubernetes-storageclass]]
 == Standardmäßige Kubernetes-Speicherklasse festlegen
 
 Bevor Sie MLflow bereitstellen, müssen Sie eine Standard-StorageClass in Ihrem Kubernetes-Cluster festlegen.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, folgen Sie den Anweisungen imlink:ai-osmlops-kubeflow-deploy.html["Kubeflow-Bereitstellung"] Abschnitt.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
 
 
 
+[[deploy-mlflow]]
 == MLflow bereitstellen
 
 Sobald die Voraussetzungen erfüllt sind, können Sie mit der MLflow-Bereitstellung mithilfe des Helm-Diagramms beginnen.
 
 
 
+[[configure-mlflow-helm-chart-deployment]]
 === Konfigurieren Sie die Bereitstellung des MLflow Helm-Diagramms.
 
 Bevor wir MLflow mithilfe des Helm-Diagramms bereitstellen, können wir die Bereitstellung so konfigurieren, dass die NetApp Trident Storage Class verwendet wird, und mithilfe einer *config.yaml*-Datei andere Parameter an unsere Anforderungen anpassen.  Ein Beispiel für eine *config.yaml*-Datei finden Sie unter: https://github.com/bitnami/charts/blob/main/bitnami/mlflow/values.yaml[]
@@ -58,6 +63,7 @@ NOTE: Sie können die Trident -Speicherklasse unter dem Parameter *global.defaul
 
 
 
+[[installing-the-helm-chart]]
 === Installieren des Helm-Diagramms
 
 Das Helm-Diagramm kann mit der benutzerdefinierten Datei *config.yaml* für MLflow mithilfe des folgenden Befehls installiert werden:
@@ -71,6 +77,7 @@ NOTE: Der Befehl stellt MLflow über die bereitgestellte Datei *config.yaml* in 
 
 
 
+[[check-deployment]]
 === Bereitstellung prüfen
 
 Nachdem die Bereitstellung des Helm-Diagramms abgeschlossen ist, können Sie mit folgendem Befehl überprüfen, ob auf den Dienst zugegriffen werden kann:
@@ -97,6 +104,7 @@ NOTE: Wir haben die Datei config.yaml bearbeitet, um den NodePort-Dienst für de
 
 
 
+[[access-mlflow]]
 === Zugriff auf MLflow
 
 Sobald alle mit MLflow verbundenen Dienste betriebsbereit sind, können Sie über die angegebene NodePort- oder LoadBalancer-IP-Adresse darauf zugreifen (z. B. `http://10.61.181.109:30002` )

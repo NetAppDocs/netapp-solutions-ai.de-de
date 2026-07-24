@@ -18,6 +18,7 @@ Dieser Abschnitt konzentriert sich auf die Lösungsvalidierung und Größenricht
 
 
 
+[[solution-validation]]
 == Lösungsvalidierung
 
 Die Speicherkonfiguration in dieser Lösung wurde mithilfe einer Reihe synthetischer Workloads unter Verwendung des Open-Source-Tools FIO validiert.  Diese Tests umfassen Lese- und Schreib-E/A-Muster, die die Speicherarbeitslast simulieren sollen, die von DGX-Systemen generiert wird, die Deep-Learning-Trainingsjobs ausführen.  Die Speicherkonfiguration wurde mithilfe eines Clusters aus 2-Sockel-CPU-Servern validiert, auf denen die FIO-Workloads gleichzeitig ausgeführt wurden, um einen Cluster aus DGX-Systemen zu simulieren.  Jeder Client wurde mit der gleichen Netzwerkkonfiguration wie zuvor beschrieben konfiguriert, wobei die folgenden Details hinzugefügt wurden.
@@ -66,6 +67,7 @@ Das Speichersystem wurde wie beschrieben mit zwei A900 HA-Paaren (4 Controller) 
 
 
 
+[[storage-system-sizing-guidance]]
 == Leitfaden zur Größenbestimmung von Speichersystemen
 
 NetApp hat die DGX BasePOD-Zertifizierung erfolgreich abgeschlossen und die beiden getesteten A90 HA-Paare können problemlos einen Cluster aus sechzehn DGX H100-Systemen unterstützen.  Für größere Bereitstellungen mit höheren Anforderungen an die Speicherleistung können dem NetApp ONTAP -Cluster zusätzliche AFF -Systeme hinzugefügt werden, bis zu 12 HA-Paare (24 Knoten) in einem einzigen Cluster.  Mithilfe der in dieser Lösung beschriebenen FlexGroup -Technologie kann ein Cluster mit 24 Knoten über 79 PB und bis zu 552 GBps Durchsatz in einem einzigen Namespace bereitstellen.  Andere NetApp Speichersysteme wie AFF A400, A250 und C800 bieten Optionen mit geringerer Leistung und/oder höherer Kapazität für kleinere Bereitstellungen zu niedrigeren Kosten.  Da ONTAP 9 Cluster mit gemischten Modellen unterstützt, können Kunden mit einem kleineren anfänglichen Footprint beginnen und dem Cluster weitere oder größere Speichersysteme hinzufügen, wenn die Kapazitäts- und Leistungsanforderungen steigen.  Die folgende Tabelle zeigt eine grobe Schätzung der Anzahl der von jedem AFF Modell unterstützten A100- und H100-GPUs.

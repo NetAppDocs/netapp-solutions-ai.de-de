@@ -22,48 +22,56 @@ Dieses Dokument enthält außerdem Anwendungsfälle von Kunden zur Lösung von K
 
 
 
+[[customer-challenges]]
 == Kundenherausforderungen
 
 Dieser Abschnitt konzentriert sich auf die Herausforderungen für Kunden im Zusammenhang mit Big Data Analytics und KI/ML/DL in Datenwachstumsbranchen wie Einzelhandel, digitales Marketing, Bankwesen, diskrete Fertigung, Prozessfertigung, Behörden und professionelle Dienstleistungen.
 
 
 
+[[unpredictable-performance]]
 === Unvorhersehbare Leistung
 
 Bei herkömmlichen Hadoop-Bereitstellungen wird normalerweise Standardhardware verwendet.  Um die Leistung zu verbessern, müssen Sie das Netzwerk, das Betriebssystem, den Hadoop-Cluster, Ökosystemkomponenten wie Spark und die Hardware optimieren.  Selbst wenn Sie jede Ebene optimieren, kann es schwierig sein, das gewünschte Leistungsniveau zu erreichen, da Hadoop auf Standardhardware ausgeführt wird, die nicht für hohe Leistung in Ihrer Umgebung ausgelegt ist.
 
 
 
+[[media-and-node-failures]]
 === Medien- und Knotenfehler
 
 Selbst unter normalen Bedingungen ist Standardhardware anfällig für Ausfälle.  Wenn eine Festplatte auf einem Datenknoten ausfällt, betrachtet der Hadoop-Master diesen Knoten standardmäßig als fehlerhaft.  Anschließend werden bestimmte Daten von diesem Knoten über das Netzwerk von Replikaten auf einen fehlerfreien Knoten kopiert.  Dieser Prozess verlangsamt die Netzwerkpakete für alle Hadoop-Jobs.  Der Cluster muss die Daten dann erneut zurückkopieren und die überreplizierten Daten entfernen, wenn der fehlerhafte Knoten wieder in einen fehlerfreien Zustand zurückkehrt.
 
 
 
+[[hadoop-vendor-lock-in]]
 === Hadoop-Anbieterbindung
 
 Hadoop-Distributoren verfügen über ihre eigene Hadoop-Distribution mit eigener Versionierung, wodurch der Kunde an diese Distributionen gebunden ist.  Viele Kunden benötigen jedoch Unterstützung für In-Memory-Analysen, die den Kunden nicht an bestimmte Hadoop-Distributionen bindet.  Sie müssen die Freiheit haben, die Verteilung zu ändern und trotzdem ihre Analysen mitzunehmen.
 
 
 
+[[lack-of-support-for-more-than-one-language]]
 === Fehlende Unterstützung für mehr als eine Sprache
 
 Kunden benötigen zur Ausführung ihrer Aufgaben häufig zusätzlich zu MapReduce-Java-Programmen Unterstützung für mehrere Sprachen.  Optionen wie SQL und Skripte bieten mehr Flexibilität beim Erhalten von Antworten, mehr Optionen zum Organisieren und Abrufen von Daten und schnellere Möglichkeiten zum Verschieben von Daten in ein Analyseframework.
 
 
 
+[[difficulty-of-use]]
 === Schwierigkeit der Verwendung
 
 Seit einiger Zeit beschweren sich Leute, dass Hadoop schwierig zu verwenden sei.  Obwohl Hadoop mit jeder neuen Version einfacher und leistungsfähiger geworden ist, hält sich diese Kritik hartnäckig.  Hadoop erfordert, dass Sie die Programmiermuster von Java und MapReduce verstehen, was für Datenbankadministratoren und Personen mit herkömmlichen Skriptkenntnissen eine Herausforderung darstellt.
 
 
 
+[[complicated-frameworks-and-tools]]
 === Komplizierte Frameworks und Tools
 
 KI-Teams in Unternehmen stehen vor zahlreichen Herausforderungen.  Selbst mit Expertenwissen im Bereich Data Science lassen sich Tools und Frameworks für unterschiedliche Bereitstellungsökosysteme und Anwendungen möglicherweise nicht einfach von einem zum anderen übertragen.  Eine Data-Science-Plattform sollte sich nahtlos in entsprechende Big-Data-Plattformen integrieren lassen, die auf Spark basieren, und dabei einfache Datenbewegungen, wiederverwendbare Modelle, sofort einsatzbereiten Code und Tools bieten, die Best Practices für das Prototyping, Validieren, Versionieren, Teilen, Wiederverwenden und schnelle Bereitstellen von Modellen in der Produktion unterstützen.
 
 
 
+[[why-choose-netapp]]
 == Warum NetApp?
 
 NetApp kann Ihr Spark-Erlebnis auf folgende Weise verbessern:
@@ -101,6 +109,7 @@ In den folgenden Abschnitten werden Speicherfunktionen beschrieben, die für Spa
 
 
 
+[[storage-tiering]]
 === Speicher-Tiering
 
 Mit Hadoop Storage Tiering können Sie Dateien gemäß einer Speicherrichtlinie in verschiedenen Speichertypen speichern.  Zu den Speichertypen gehören `hot` , `cold` , `warm` , `all_ssd` , `one_ssd` , Und `lazy_persist` .
@@ -120,6 +129,7 @@ image:apache-spark-002.png["Zeit, 1 TB Daten zu sortieren."]
 
 
 
+[[performance-scaling-scale-out]]
 === Leistungsskalierung – Scale-Out
 
 Wenn Sie mehr Rechenleistung von einem Hadoop-Cluster in einer AFF Lösung benötigen, können Sie Datenknoten mit einer entsprechenden Anzahl von Speichercontrollern hinzufügen.  NetApp empfiehlt, mit vier Datenknoten pro Speichercontroller-Array zu beginnen und die Anzahl je nach Arbeitslastmerkmalen auf acht Datenknoten pro Speichercontroller zu erhöhen.
@@ -128,18 +138,21 @@ AFF und FAS eignen sich perfekt für In-Place-Analysen.  Basierend auf den Reche
 
 
 
+[[performance-scaling-scale-up]]
 === Leistungsskalierung – Hochskalieren
 
 Mithilfe der Scale-up-Funktionen können Sie Festplattenlaufwerke zu AFF, FAS und E-Series-Systemen hinzufügen, wenn Sie zusätzliche Speicherkapazität benötigen.  Mit Cloud Volumes ONTAP ist die Skalierung des Speichers auf PB-Ebene eine Kombination aus zwei Faktoren: der Auslagerung selten verwendeter Daten aus dem Blockspeicher in den Objektspeicher und dem Stapeln von Cloud Volumes ONTAP -Lizenzen ohne zusätzliche Rechenleistung.
 
 
 
+[[multiple-protocols]]
 === Mehrere Protokolle
 
 NetApp -Systeme unterstützen die meisten Protokolle für Hadoop-Bereitstellungen, einschließlich SAS, iSCSI, FCP, InfiniBand und NFS.
 
 
 
+[[operational-and-supported-solutions]]
 === Operative und unterstützte Lösungen
 
 Die in diesem Dokument beschriebenen Hadoop-Lösungen werden von NetApp unterstützt.  Diese Lösungen sind auch bei den wichtigsten Hadoop-Distributoren zertifiziert.  Weitere Informationen finden Sie im http://hortonworks.com/partner/netapp/["Hortonworks"^] Site und die Cloudera http://www.cloudera.com/partners/partners-listing.html?q=netapp["Zertifizierung"^] Und http://www.cloudera.com/partners/solutions/netapp.html["Partner"^] Websites.

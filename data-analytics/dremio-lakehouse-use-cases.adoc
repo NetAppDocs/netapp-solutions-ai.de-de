@@ -15,6 +15,7 @@ summary: Dieser Abschnitt behandelt die Anwendungsfalldetails von Dremio mit Net
 
 
 
+[[netapp-activeiq-use-case]]
 == NetApp ActiveIQ Anwendungsfall
 
 image:activeiqold.png["Alte ActiveIQ-Architektur"]
@@ -31,6 +32,7 @@ Als Ersatz für die Hadoop/Hive-Infrastruktur bot Dremio über die semantische E
 
 
 
+[[auto-parts-sales-customer-use-case]]
 == Anwendungsfall für Kunden im Autoteileverkauf.
 
 *Herausforderungen*: In diesem globalen Autoteilevertriebsunternehmen konnten sich die für die Finanzplanung und -analyse zuständigen Führungs- und Unternehmensgruppen keinen konsolidierten Überblick über die Verkaufsberichte verschaffen und waren gezwungen, die Verkaufskennzahlenberichte der einzelnen Geschäftsbereiche zu lesen und zu versuchen, diese zu konsolidieren.  Dies führte dazu, dass Kunden Entscheidungen auf der Grundlage von Daten trafen, die mindestens einen Tag alt waren.  Die Vorlaufzeiten für neue Analyseerkenntnisse betragen in der Regel mehr als vier Wochen.  Die Fehlerbehebung bei Datenpipelines würde noch mehr Zeit in Anspruch nehmen und den ohnehin schon langen Zeitplan um weitere drei Tage oder mehr verlängern.  Der langsame Berichtsentwicklungsprozess und die langsame Berichtsleistung zwangen die Analysten dazu, ständig auf die Verarbeitung oder das Laden der Daten zu warten, anstatt neue Geschäftseinblicke zu gewinnen und neues Geschäftsverhalten zu fördern.  Diese problematischen Umgebungen bestanden aus zahlreichen unterschiedlichen Datenbanken für unterschiedliche Geschäftsbereiche, was zu zahlreichen Datensilos führte.  Die langsame und fragmentierte Umgebung erschwerte die Datenverwaltung, da es für Analysten zu viele Möglichkeiten gab, ihre eigene Version der Wahrheit zu entwickeln, anstatt nur auf eine einzige Quelle der Wahrheit zurückgreifen zu müssen.  Der Ansatz kostete über 1,9 Millionen US-Dollar an Datenplattform- und Personalkosten.  Für die Wartung der alten Plattform und die Bearbeitung von Datenanfragen waren sieben technische Außendiensttechniker (Vollzeitäquivalente) pro Jahr erforderlich.  Angesichts der zunehmenden Datenanforderungen konnte das Data-Intelligence-Team die bestehende Umgebung nicht skalieren, um zukünftige Anforderungen zu erfüllen.

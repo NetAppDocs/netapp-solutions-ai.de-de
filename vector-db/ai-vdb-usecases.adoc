@@ -18,12 +18,14 @@ Dieser Abschnitt bietet einen Überblick über die Anwendungsfälle für die Net
 
 
 
+[[vector-database-use-cases]]
 == Anwendungsfälle für Vektordatenbanken
 
 In diesem Abschnitt besprechen wir zwei Anwendungsfälle, nämlich Retrieval Augmented Generation mit großen Sprachmodellen und NetApp IT-Chatbot.
 
 
 
+[[retrieval-augmented-generation-rag-with-large-language-models-llms]]
 === Retrieval Augmented Generation (RAG) mit großen Sprachmodellen (LLMs)
 
 ....
@@ -40,6 +42,7 @@ image:rag-nvidia-nemo.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt ode
 
 
 
+[[netapp-it-chatbot-use-case]]
 === Anwendungsfall für den NetApp IT-Chatbot
 
 Der Chatbot von NetApp dient als weiterer Echtzeit-Anwendungsfall für die Vektordatenbank.  In diesem Fall bietet die NetApp Private OpenAI Sandbox eine effektive, sichere und effiziente Plattform für die Verwaltung von Abfragen interner NetApp-Benutzer.  Durch die Integration strenger Sicherheitsprotokolle, effizienter Datenverwaltungssysteme und ausgefeilter KI-Verarbeitungsfunktionen werden den Benutzern über die SSO-Authentifizierung qualitativ hochwertige und präzise Antworten basierend auf ihren Rollen und Verantwortlichkeiten in der Organisation garantiert.  Diese Architektur unterstreicht das Potenzial der Zusammenführung fortschrittlicher Technologien zur Schaffung benutzerorientierter, intelligenter Systeme.

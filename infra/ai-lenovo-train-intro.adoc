@@ -22,6 +22,7 @@ Dieses Dokument behandelt das Testen und Validieren einer Rechen- und Speicherko
 
 
 
+[[target-audience]]
 == Zielgruppe
 
 Dieses Dokument richtet sich an folgende Zielgruppen:
@@ -34,6 +35,7 @@ Dieses Dokument richtet sich an folgende Zielgruppen:
 
 
 
+[[solution-architecture]]
 == Lösungsarchitektur
 
 Diese Lösung mit Lenovo ThinkSystem-Servern und NetApp ONTAP mit AFF -Speicher ist für das KI-Training großer Datensätze konzipiert und nutzt dabei die Verarbeitungsleistung von GPUs neben herkömmlichen CPUs.  Diese Validierung demonstriert hohe Leistung und optimales Datenmanagement mit einer Scale-Out-Architektur, die entweder einen, zwei oder vier Lenovo SR670 V2-Server neben einem einzelnen NetApp AFF A400 -Speichersystem verwendet.  Die folgende Abbildung bietet einen Überblick über die Architektur.

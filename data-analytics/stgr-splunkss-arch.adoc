@@ -18,6 +18,7 @@ In diesem Abschnitt wird die Splunk-Architektur beschrieben, einschließlich wic
 
 
 
+[[key-definitions]]
 == Wichtige Definitionen
 
 In den nächsten beiden Tabellen sind die Splunk- und NetApp Komponenten aufgeführt, die in der verteilten Splunk-Bereitstellung verwendet werden.
@@ -76,6 +77,7 @@ Diese Tabelle listet die Komponenten der Splunk-Speicherarchitektur auf.
 |===
 
 
+[[splunk-distributed-deployments]]
 == Verteilte Splunk-Bereitstellungen
 
 Um größere Umgebungen zu unterstützen, in denen die Daten von vielen Maschinen stammen, müssen Sie große Datenmengen verarbeiten.  Wenn viele Benutzer die Daten durchsuchen müssen, können Sie die Bereitstellung skalieren, indem Sie Splunk Enterprise-Instanzen auf mehrere Maschinen verteilen.  Dies wird als verteilte Bereitstellung bezeichnet.
@@ -125,6 +127,7 @@ Entdecken Sie die folgenden Vorteile der verteilten Bereitstellungen von Splunk 
 
 
 
+[[splunk-smartstore]]
 == Splunk SmartStore
 
 SmartStore ist eine Indexerfunktion, die es Remote-Objektspeichern wie Amazon S3 ermöglicht, indizierte Daten zu speichern.  Wenn das Datenvolumen einer Bereitstellung zunimmt, übersteigt der Bedarf an Speicher in der Regel den Bedarf an Rechenressourcen.  Mit SmartStore können Sie Ihren Indexerspeicher und Ihre Rechenressourcen kostengünstig verwalten, indem Sie diese Ressourcen separat skalieren.
@@ -135,6 +138,7 @@ Mit SmartStore können Sie den Speicherbedarf des Indexers auf ein Minimum reduz
 
 
 
+[[splunk-smartstore-data-flow]]
 == Splunk SmartStore-Datenfluss
 
 Wenn eingehende Daten aus verschiedenen Quellen die Indexer erreichen, werden die Daten indiziert und lokal in einem Hot Bucket gespeichert.  Der Indexer repliziert außerdem die Hot-Bucket-Daten auf Zielindexer.  Bisher ist der Datenfluss identisch mit dem Datenfluss für Nicht-SmartStore-Indizes.
@@ -151,6 +155,7 @@ Die Aufgabe des Cache-Managers besteht darin, die Nutzung des verfügbaren Cache
 
 
 
+[[software-requirements]]
 == Softwareanforderungen
 
 In der folgenden Tabelle sind die Softwarekomponenten aufgeführt, die zur Implementierung der Lösung erforderlich sind.  Die bei der Implementierung der Lösung verwendeten Softwarekomponenten können je nach Kundenanforderungen variieren.
@@ -169,6 +174,7 @@ In der folgenden Tabelle sind die Softwarekomponenten aufgeführt, die zur Imple
 |===
 
 
+[[single-and-multisite-requirements]]
 == Anforderungen für Einzel- und Multisite-Standorte
 
 In einer Enterprise-Splunk-Umgebung (mittlere und große Bereitstellungen), in der die Daten von vielen Maschinen stammen und viele Benutzer die Daten durchsuchen müssen, können Sie Ihre Bereitstellung skalieren, indem Sie Splunk Enterprise-Instanzen auf einzelne und mehrere Standorte verteilen.
@@ -210,6 +216,7 @@ image:stgr-splunkss-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[hardware-requirements]]
 == Hardwareanforderungen
 
 In den folgenden Tabellen ist die Mindestanzahl an Hardwarekomponenten aufgeführt, die zur Implementierung der Lösung erforderlich sind.  Die in bestimmten Implementierungen der Lösung verwendeten Hardwarekomponenten können je nach Kundenanforderungen variieren.
@@ -241,6 +248,7 @@ In dieser Tabelle ist die für eine Multisite-Konfiguration verwendete Hardware 
 |===
 
 
+[[netapp-storagegrid-load-balancer-sg1000]]
 === NetApp StorageGRID Load Balancer: SG1000
 
 Für die Objektspeicherung ist die Verwendung eines Lastenausgleichs erforderlich, um den Cloud-Speicher-Namespace darzustellen.  StorageGRID unterstützt Load Balancer von Drittanbietern führender Anbieter wie F5 und Citrix, viele Kunden entscheiden sich jedoch aufgrund seiner Einfachheit, Ausfallsicherheit und hohen Leistung für den StorageGRID -Balancer der Enterprise-Klasse.  Der StorageGRID Load Balancer ist als VM, Container oder speziell entwickeltes Gerät verfügbar.
@@ -262,6 +270,7 @@ image:stgr-splunkss-008.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[sg6060]]
 === SG6060
 
 Das StorageGRID SG6060-Gerät umfasst einen Compute Controller (SG6060) und ein Storage Controller Shelf (E-Series E2860), das zwei Storage Controller und 60 Laufwerke enthält.  Dieses Gerät bietet die folgenden Funktionen:
@@ -280,6 +289,7 @@ image:stgr-splunkss-009.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[splunk-design]]
 == Splunk-Design
 
 Die folgende Tabelle listet die Splunk-Konfiguration für eine einzelne Site auf.

@@ -18,6 +18,7 @@ In diesem Abschnitt wird die Einrichtung des Milvus-Clusters für die Vector-Dat
 
 
 
+[[milvus-cluster-setup-with-kubernetes-in-on-premises]]
 == Milvus-Cluster-Setup mit Kubernetes vor Ort
 
 Kunden stehen vor der Herausforderung, Speicher und Rechenleistung unabhängig zu skalieren und eine effektive Infrastruktur- und Datenverwaltung zu gewährleisten. Kubernetes und Vektordatenbanken bilden zusammen eine leistungsstarke, skalierbare Lösung für die Verwaltung großer Datenvorgänge.  Kubernetes optimiert Ressourcen und verwaltet Container, während Vektordatenbanken hochdimensionale Daten und Ähnlichkeitssuchen effizient verarbeiten.  Diese Kombination ermöglicht die schnelle Verarbeitung komplexer Abfragen großer Datensätze und lässt sich nahtlos mit wachsenden Datenmengen skalieren, was sie ideal für Big-Data-Anwendungen und KI-Workloads macht.

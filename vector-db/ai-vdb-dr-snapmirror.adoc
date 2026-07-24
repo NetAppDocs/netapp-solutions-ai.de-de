@@ -18,6 +18,7 @@ In diesem Abschnitt wird DR (Disaster Recovery) mit SnapMirror für die Vektorda
 
 
 
+[[disaster-recovery-using-netapp-snapmirror]]
 == Disaster Recovery mit NetApp SnapMirror
 
 image:vector-database-dr-fsxn-gcnv.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder schriftlichen Inhalt darstellt"]

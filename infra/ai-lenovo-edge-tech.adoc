@@ -18,6 +18,7 @@ In diesem Abschnitt werden die technologischen Grundlagen dieser KI-Lösung besc
 
 
 
+[[netapp-aff-systems]]
 == NetApp AFF -Systeme
 
 Hochmoderne NetApp AFF Speichersysteme ermöglichen die Bereitstellung von KI-Inferenz am Edge, um die Speicheranforderungen von Unternehmen mit branchenführender Leistung, überragender Flexibilität, Cloud-Integration und erstklassigem Datenmanagement zu erfüllen.  NetApp AFF -Systeme wurden speziell für Flash entwickelt und helfen bei der Beschleunigung, Verwaltung und dem Schutz geschäftskritischer Daten.
@@ -46,6 +47,7 @@ NOTE: Für NAS-Workloads unterstützt ein einzelnes AFF C190 System der Einstieg
 
 
 
+[[netapp-aff-a220]]
 == NetApp AFF A220
 
 NetApp bietet auch andere Speichersysteme der Einstiegsklasse an, die eine höhere Leistung und Skalierbarkeit für größere Bereitstellungen bieten.  Für NAS-Workloads unterstützt ein einzelnes AFF A220 System der Einstiegsklasse:
@@ -58,6 +60,7 @@ NetApp bietet auch andere Speichersysteme der Einstiegsklasse an, die eine höhe
 
 
 
+[[netapp-aff-a250]]
 == NetApp AFF A250
 
 * Die maximale effektive Kapazität beträgt 35 PB mit maximaler Skalierung von 2–24 Knoten (12 HA-Paare).
@@ -69,6 +72,7 @@ NetApp bietet auch andere Speichersysteme der Einstiegsklasse an, die eine höhe
 
 
 
+[[netapp-e-series-ef-systems]]
 == NetApp E-Serie EF-Systeme
 
 Die EF-Serie ist eine Familie von All-Flash-SAN-Speicher-Arrays der Einstiegs- und Mittelklasse, die den Zugriff auf Ihre Daten beschleunigen und Ihnen mithilfe der NetApp SANtricity -Software dabei helfen können, schneller einen Nutzen daraus zu ziehen.  Diese Systeme bieten sowohl SAS- als auch NVMe-Flash-Speicher und bieten Ihnen erschwingliche bis extreme IOPS, Reaktionszeiten unter 100 Mikrosekunden und eine Bandbreite von bis zu 44 GBps – und sind damit ideal für gemischte Workloads und anspruchsvolle Anwendungen wie KI-Inferenz und High-Performance Computing (HPC).
@@ -79,6 +83,7 @@ image:ai-edge-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder sc
 
 
 
+[[netapp-ef280]]
 == NetApp EF280
 
 * 32 Gb/16 Gb FC, 25 Gb/10 Gb iSCSI und 12 Gb SAS-Unterstützung
@@ -90,6 +95,7 @@ image:ai-edge-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder sc
 
 
 
+[[netapp-ef300]]
 == NetApp EF300
 
 * 24x NVMe-SSD-Laufwerke für eine Gesamtkapazität von 367 TB
@@ -106,12 +112,14 @@ NOTE: Weitere Informationen finden Sie im https://www.netapp.com/pdf.html?item=/
 
 
 
+[[netapp-ontap-9]]
 == NetApp ONTAP 9
 
 ONTAP 9.8.1, die neueste Generation der Speicherverwaltungssoftware von NetApp, ermöglicht Unternehmen die Modernisierung ihrer Infrastruktur und den Übergang zu einem Cloud-fähigen Rechenzentrum.  Durch die Nutzung branchenführender Datenverwaltungsfunktionen ermöglicht ONTAP die Verwaltung und den Schutz von Daten mit einem einzigen Satz von Tools, unabhängig davon, wo sich diese Daten befinden.  Sie können Daten auch frei dorthin verschieben, wo sie benötigt werden: an den Rand, in den Kern oder in die Cloud.  ONTAP 9.8.1 umfasst zahlreiche Funktionen, die das Datenmanagement vereinfachen, kritische Daten beschleunigen und schützen und Infrastrukturfunktionen der nächsten Generation in Hybrid-Cloud-Architekturen ermöglichen.
 
 
 
+[[simplify-data-management]]
 === Vereinfachen Sie die Datenverwaltung
 
 Das Datenmanagement ist für den IT-Betrieb in Unternehmen von entscheidender Bedeutung, damit für Anwendungen und Datensätze die richtigen Ressourcen verwendet werden.  ONTAP umfasst die folgenden Funktionen zur Rationalisierung und Vereinfachung des Betriebs und zur Senkung der Gesamtbetriebskosten:
@@ -123,6 +131,7 @@ Das Datenmanagement ist für den IT-Betrieb in Unternehmen von entscheidender Be
 
 
 
+[[accelerate-and-protect-data]]
 === Beschleunigen und schützen Sie Daten
 
 ONTAP 9 bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese Funktionen auf folgende Weise:
@@ -135,6 +144,7 @@ ONTAP 9 bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese F
 
 
 
+[[future-proof-infrastructure]]
 === Zukunftssichere Infrastruktur
 
 ONTAP 9 unterstützt Sie mit den folgenden Funktionen dabei, anspruchsvolle und sich ständig ändernde Geschäftsanforderungen zu erfüllen:
@@ -146,42 +156,49 @@ ONTAP 9 unterstützt Sie mit den folgenden Funktionen dabei, anspruchsvolle und 
 
 
 
+[[netapp-santricity]]
 == NetApp SANtricity
 
 NetApp SANtricity wurde entwickelt, um branchenführende Leistung, Zuverlässigkeit und Einfachheit für Hybrid-Flash-Arrays der E-Serie und All-Flash-Arrays der EF-Serie bereitzustellen.  Erreichen Sie maximale Leistung und Auslastung Ihrer Hybrid-Flash- und All-Flash-Arrays der E-Serie und der EF-Serie für Anwendungen mit hoher Arbeitslast, einschließlich Datenanalyse, Videoüberwachung sowie Sicherung und Wiederherstellung.  Mit SANtricity können Konfigurationsoptimierungen, Wartungsarbeiten, Kapazitätserweiterungen und andere Aufgaben durchgeführt werden, während der Speicher online bleibt.  SANtricity bietet außerdem hervorragenden Datenschutz, proaktive Überwachung und zertifizierte Sicherheit – alles zugänglich über die benutzerfreundliche, integrierte System Manager-Schnittstelle.  Weitere Informationen finden Sie im https://www.netapp.com/pdf.html?item=/media/7676-ds-3891.pdf["Datenblatt zur NetApp E-Series SANtricity Software"^] .
 
 
 
+[[performance-optimized]]
 === Leistungsoptimiert
 
 Die leistungsoptimierte SANtricity -Software liefert Daten – mit hohen IOPs, hohem Durchsatz und geringer Latenz – an alle Ihre Datenanalyse-, Videoüberwachungs- und Backup-Apps.  Beschleunigen Sie die Leistung für Anwendungen mit hohem IOPS, geringer Latenz und hoher Bandbreite und hohem Durchsatz.
 
 
 
+[[maximize-uptime]]
 === Maximieren Sie die Betriebszeit
 
 Erledigen Sie alle Ihre Verwaltungsaufgaben, während der Speicher online bleibt.  Optimieren Sie Konfigurationen, führen Sie Wartungsarbeiten durch oder erweitern Sie die Kapazität, ohne den E/A-Betrieb zu unterbrechen.  Erreichen Sie erstklassige Zuverlässigkeit mit automatisierten Funktionen, Online-Konfiguration, modernster Dynamic Disk Pools (DPP)-Technologie und mehr.
 
 
 
+[[rest-easy]]
 === Ruhe dich aus
 
 Die SANtricity -Software bietet überlegenen Datenschutz, proaktive Überwachung und zertifizierte Sicherheit – alles über die benutzerfreundliche, integrierte System Manager-Schnittstelle.  Vereinfachen Sie die Speicherverwaltungsaufgaben.  Gewinnen Sie die Flexibilität, die Sie für die erweiterte Optimierung aller Speichersysteme der E-Serie benötigen.  Verwalten Sie Ihr NetApp E-Series-System – jederzeit und überall.  Unsere integrierte, webbasierte Schnittstelle optimiert Ihren Verwaltungsworkflow.
 
 
 
+[[netapp-trident]]
 == NetApp Trident
 
 https://netapp.io/persistent-storage-provisioner-for-kubernetes/["Trident"^]von NetApp ist ein Open-Source-Orchestrator für dynamischen Speicher für Docker und Kubernetes, der die Erstellung, Verwaltung und Nutzung von persistentem Speicher vereinfacht.  Trident, eine native Kubernetes-Anwendung, läuft direkt in einem Kubernetes-Cluster.  Trident ermöglicht Kunden die nahtlose Bereitstellung von DL-Container-Images auf NetApp Speicher und bietet eine unternehmenstaugliche Erfahrung für die Bereitstellung von KI-Containern.  Kubernetes-Benutzer (wie etwa ML-Entwickler und Datenwissenschaftler) können Orchestrierung und Klonen erstellen, verwalten und automatisieren, um die erweiterten Datenverwaltungsfunktionen von NetApp auf Basis der NetApp -Technologie zu nutzen.
 
 
 
+[[netapp-bluexp-copy-and-sync]]
 == NetApp BlueXP Kopieren und Synchronisieren
 
 https://docs.netapp.com/us-en/occm/concept_cloud_sync.html["BlueXP Kopieren und Synchronisieren"^]ist ein NetApp -Dienst für die schnelle und sichere Datensynchronisierung.  Unabhängig davon, ob Sie Dateien zwischen lokalen NFS- oder SMB-Dateifreigaben, NetApp StorageGRID, NetApp ONTAP S3, Google Cloud NetApp Volumes, Azure NetApp Files, Amazon Simple Storage Service (Amazon S3), Amazon Elastic File System (Amazon EFS), Azure Blob, Google Cloud Storage oder IBM Cloud Object Storage übertragen müssen, verschiebt BlueXP Copy and Sync die Dateien schnell und sicher dorthin, wo Sie sie benötigen.  Nachdem Ihre Daten übertragen wurden, stehen sie sowohl auf der Quelle als auch auf dem Ziel vollständig zur Verwendung zur Verfügung.  BlueXP Copy and Sync synchronisiert die Daten kontinuierlich basierend auf Ihrem vordefinierten Zeitplan und verschiebt nur die Deltas, sodass der Zeit- und Kostenaufwand für die Datenreplikation minimiert wird.  BlueXP Copy and Sync ist ein Software-as-a-Service-Tool (SaaS), das extrem einfach einzurichten und zu verwenden ist.  Datenübertragungen, die durch BlueXP Copy and Sync ausgelöst werden, werden von Datenbrokern durchgeführt.  Sie können BlueXP Copy and Sync-Datenbroker in AWS, Azure, Google Cloud Platform oder vor Ort bereitstellen.
 
 
 
+[[lenovo-thinksystem-servers]]
 === Lenovo ThinkSystem-Server
 
 Lenovo ThinkSystem-Server verfügen über innovative Hardware, Software und Services, die die Herausforderungen der Kunden von heute lösen und einen evolutionären, zweckmäßigen und modularen Designansatz bieten, um die Herausforderungen von morgen zu bewältigen.  Diese Server nutzen branchenführende Technologien nach Industriestandard in Verbindung mit differenzierten Innovationen von Lenovo, um die größtmögliche Flexibilität bei x86-Servern zu bieten.
@@ -197,6 +214,7 @@ Im KI-Bereich verfolgt Lenovo einen praktischen Ansatz, um Unternehmen dabei zu 
 
 
 
+[[lenovo-thinksystem-se350-edge-server]]
 === Lenovo ThinkSystem SE350 Edge-Server
 
 Edge Computing ermöglicht die Analyse von Daten von IoT-Geräten am Rand des Netzwerks, bevor sie an das Rechenzentrum oder die Cloud gesendet werden.  Das Lenovo ThinkSystem SE350, wie in der Abbildung unten dargestellt, ist für die einzigartigen Anforderungen der Bereitstellung am Rand konzipiert, wobei der Schwerpunkt auf Flexibilität, Konnektivität, Sicherheit und Fernverwaltung in einem kompakten, robusten und umgebungsbeständigen Formfaktor liegt.

@@ -18,6 +18,7 @@ Wir haben die Überprüfung mit Confluent Platform für Tiered Storage auf NetAp
 
 
 
+[[confluent-setup]]
 == Confluent-Setup
 
 Für das Setup haben wir drei Zookeeper, fünf Broker und fünf Testserver mit 256 GB RAM und 16 CPUs verwendet.  Für den NetApp -Speicher haben wir ONTAP mit einem AFF A900 HA-Paar verwendet.  Der Speicher und die Broker wurden über 100-GbE-Verbindungen verbunden.
@@ -30,6 +31,7 @@ Die Tool-Server fungieren als Anwendungsclients, die Ereignisse an Confluent-Kno
 
 
 
+[[confluent-tiered-storage-configuration]]
 == Confluent-Tiered-Storage-Konfiguration
 
 Wir haben die folgenden Testparameter verwendet:
@@ -69,6 +71,7 @@ Zur Überprüfung haben wir ONTAP mit dem HTTP-Protokoll verwendet, aber auch HT
 
 
 
+[[netapp-storage-controller-ontap]]
 == NetApp Speichercontroller – ONTAP
 
 Zur Überprüfung haben wir eine einzelne HA-Paarkonfiguration in ONTAP konfiguriert.
@@ -77,36 +80,42 @@ image:kafka-sc-008.png["Diese Grafik zeigt, wie die Umgebung zur Überprüfung a
 
 
 
+[[verification-results]]
 == Verifizierungsergebnisse
 
 Zur Verifizierung haben wir die folgenden fünf Testfälle durchgeführt.  Bei den ersten beiden handelte es sich um Funktionstests und bei den restlichen drei um Leistungstests.
 
 
 
+[[object-store-correctness-test]]
 === Korrektheitstest des Objektspeichers
 
 Dieser Test führt mithilfe von API-Aufrufen grundlegende Vorgänge wie „Get“, „Put“ und „Delete“ im Objektspeicher aus, der für den mehrstufigen Speicher verwendet wird.
 
 
 
+[[tiering-functionality-correctness-test]]
 === Korrektheitstest der Tiering-Funktionalität
 
 Dieser Test überprüft die End-to-End-Funktionalität des Objektspeichers.  Es erstellt ein Thema, erzeugt einen Ereignisstrom zum neu erstellten Thema, wartet darauf, dass die Broker die Segmente im Objektspeicher archivieren, verbraucht den Ereignisstrom und überprüft, ob der verbrauchte Strom mit dem erzeugten Strom übereinstimmt.  Wir haben diesen Test mit und ohne Fehlerinjektion im Objektspeicher durchgeführt.  Wir haben einen Knotenausfall simuliert, indem wir den Service Manager-Dienst in einem der Knoten in ONTAP gestoppt und überprüft haben, ob die End-to-End-Funktionalität mit dem Objektspeicher funktioniert.
 
 
 
+[[tier-fetch-benchmark]]
 === Benchmark für den Tier-Abruf
 
 Dieser Test validierte die Leseleistung des mehrstufigen Objektspeichers und überprüfte die Range-Fetch-Leseanforderungen unter hoher Last von Segmenten, die durch den Benchmark generiert wurden.  In diesem Benchmark hat Confluent benutzerdefinierte Clients entwickelt, um die Tier-Fetch-Anfragen zu erfüllen.
 
 
 
+[[produce-consume-workload-generator]]
 === Arbeitslastgenerator zum Produzieren und Konsumieren
 
 Dieser Test erzeugt durch die Archivierung von Segmenten indirekt Schreibarbeitslast im Objektspeicher.  Die Lesearbeitslast (gelesene Segmente) wurde aus dem Objektspeicher generiert, als Verbrauchergruppen die Segmente abgerufen haben.  Diese Arbeitslast wurde durch ein TOCC-Skript generiert.  Dieser Test überprüfte die Leistung beim Lesen und Schreiben im Objektspeicher in parallelen Threads.  Wir haben mit und ohne Fehlerinjektion im Objektspeicher getestet, wie wir es für den Korrektheitstest der Tiering-Funktionalität getan haben.
 
 
 
+[[retention-workload-generator]]
 === Generator für die Aufbewahrungsarbeitslast
 
 Dieser Test prüfte die Löschleistung eines Objektspeichers unter einer hohen Themenaufbewahrungsarbeitslast.  Der Aufbewahrungsaufwand wurde mithilfe eines TOCC-Skripts generiert, das viele Nachrichten parallel zu einem Testthema produziert.  Das Testthema war die Konfiguration mit einer aggressiven größen- und zeitbasierten Aufbewahrungseinstellung, die dazu führte, dass der Ereignisstrom kontinuierlich aus dem Objektspeicher gelöscht wurde.  Anschließend wurden die Segmente archiviert.  Dies führte zu zahlreichen Löschungen im Objektspeicher durch den Broker und zur Erfassung der Leistung der Löschvorgänge im Objektspeicher.

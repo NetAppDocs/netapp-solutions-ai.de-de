@@ -18,12 +18,14 @@ Ein Kafka-Cluster mit der auf NetApp NFS montierten Speicherschicht wurde hinsic
 
 
 
+[[kafka-in-aws-cloud-with-netapp-cloud-volumes-ontap-high-availability-pair-and-single-node]]
 == Kafka in der AWS-Cloud mit NetApp Cloud Volumes ONTAP (Hochverfügbarkeitspaar und Einzelknoten)
 
 Ein Kafka-Cluster mit NetApp Cloud Volumes ONTAP (HA-Paar) wurde hinsichtlich seiner Leistung in der AWS-Cloud getestet.  Dieses Benchmarking wird in den folgenden Abschnitten beschrieben.
 
 
 
+[[architectural-setup]]
 === Architektonischer Aufbau
 
 Die folgende Tabelle zeigt die Umgebungskonfiguration für einen Kafka-Cluster mit NAS.
@@ -48,6 +50,7 @@ Die folgende Tabelle zeigt die Umgebungskonfiguration für einen Kafka-Cluster m
 |===
 
 
+[[netapp-cluster-volume-ontap-setup]]
 === NetApp Cluster Volume ONTAP Setup
 
 . Für das Cloud Volumes ONTAP HA-Paar haben wir zwei Aggregate mit jeweils drei Volumes auf jedem Aggregat auf jedem Speichercontroller erstellt.  Für den einzelnen Cloud Volumes ONTAP -Knoten erstellen wir sechs Volumes in einem Aggregat.
@@ -103,6 +106,7 @@ image:kafka-nfs-029.png["Diese Abbildung zeigt die Architektur eines NAS-basiert
 
 
 
+[[openmessage-benchmarking-configurations]]
 === OpenMessage Benchmarking-Konfigurationen
 
 . Für eine bessere NFS-Leistung benötigen wir mehr Netzwerkverbindungen zwischen dem NFS-Server und dem NFS-Client, die mit nconnect erstellt werden können.  Mounten Sie die NFS-Volumes auf den Broker-Knoten mit der Option „nconnect“, indem Sie den folgenden Befehl ausführen:
@@ -325,6 +329,7 @@ consumerConfig: |
 
 
 
+[[methodology-of-testing]]
 == Testmethodik
 
 . Ein Kafka-Cluster wurde gemäß der oben beschriebenen Spezifikation mit Terraform und Ansible bereitgestellt.  Terraform wird verwendet, um die Infrastruktur mithilfe von AWS-Instanzen für den Kafka-Cluster aufzubauen, und Ansible baut den Kafka-Cluster darauf auf.
@@ -342,6 +347,7 @@ sudo bin/benchmark –drivers driver-kafka/kafka-throughput.yaml workloads/1-top
 
 
 
+[[observation]]
 == Beobachtung
 
 Zum Generieren von Workloads wurden zwei verschiedene Treibertypen verwendet, um die Leistung einer auf NFS laufenden Kafka-Instanz zu vergleichen.  Der Unterschied zwischen den Treibern liegt in der Log-Flush-Eigenschaft.

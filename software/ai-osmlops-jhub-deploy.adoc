@@ -21,6 +21,7 @@ NOTE: Es ist möglich, JupyterHub auf anderen Plattformen als Kubernetes bereitz
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
@@ -31,24 +32,28 @@ Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführe
 
 
 
+[[install-helm]]
 == Helm installieren
 
 JupyterHub wird mit Helm bereitgestellt, einem beliebten Paketmanager für Kubernetes.  Bevor Sie JupyterHub bereitstellen, müssen Sie Helm auf Ihrem Kubernetes-Steuerknoten installieren.  Um Helm zu installieren, folgen Sie den https://helm.sh/docs/intro/install/["Installationsanweisungen"^] in der offiziellen Helm-Dokumentation.
 
 
 
+[[set-default-kubernetes-storageclass]]
 == Standardmäßige Kubernetes-Speicherklasse festlegen
 
 Bevor Sie JupyterHub bereitstellen, müssen Sie eine Standard-StorageClass in Ihrem Kubernetes-Cluster festlegen.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, folgen Sie den Anweisungen imlink:ai-osmlops-kubeflow-deploy.html["Kubeflow-Bereitstellung"] Abschnitt.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
 
 
 
+[[deploy-jupyterhub]]
 == JupyterHub bereitstellen
 
 Nachdem Sie die oben genannten Schritte abgeschlossen haben, können Sie JupyterHub nun bereitstellen.  Für die Bereitstellung von JupyterHub sind die folgenden Schritte erforderlich:
 
 
 
+[[configure-jupyterhub-deployment]]
 === JupyterHub-Bereitstellung konfigurieren
 
 Vor der Bereitstellung empfiehlt es sich, die JupyterHub-Bereitstellung für Ihre jeweilige Umgebung zu optimieren.  Sie können eine *config.yaml*-Datei erstellen und sie während der Bereitstellung mithilfe des Helm-Diagramms verwenden.
@@ -60,6 +65,7 @@ NOTE: In dieser config.yaml-Datei können Sie den Parameter *(singleuser.storage
 
 
 
+[[adding-shared-volumes]]
 === Hinzufügen freigegebener Volumes
 
 Wenn Sie ein gemeinsames Volume für alle JupyterHub-Benutzer verwenden möchten, können Sie Ihre *config.yaml* entsprechend anpassen.  Wenn Sie beispielsweise über einen freigegebenen PersistentVolumeClaim namens „jupyterhub-shared-volume“ verfügen, können Sie ihn in allen Benutzer-Pods wie folgt als /home/shared mounten:
@@ -81,6 +87,7 @@ NOTE: Dies ist ein optionaler Schritt. Sie können diese Parameter an Ihre Bedü
 
 
 
+[[deploy-jupyterhub-with-helm-chart]]
 === JupyterHub mit Helm Chart bereitstellen
 
 Machen Sie Helm auf das JupyterHub Helm-Diagramm-Repository aufmerksam.
@@ -117,6 +124,7 @@ NOTE: In diesem Beispiel:
 
 
 
+[[check-deployment]]
 === Bereitstellung prüfen
 
 Während Schritt 2 ausgeführt wird, können Sie sehen, wie die Pods mit dem folgenden Befehl erstellt werden:
@@ -135,6 +143,7 @@ proxy-7cb9bc4cc-9bdlp   1/1       Running   0          37s
 ----
 
 
+[[access-jupyterhub]]
 === Zugriff auf JupyterHub
 
 Suchen Sie die IP, die wir für den Zugriff auf den JupyterHub verwenden können.  Führen Sie den folgenden Befehl aus, bis die EXTERNE IP des öffentlichen Proxy-Dienstes wie in der Beispielausgabe verfügbar ist.

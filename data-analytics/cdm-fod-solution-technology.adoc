@@ -29,6 +29,7 @@ image:cdm-fod-001.png["Diese Abbildung zeigt die technischen Komponenten der Lö
 
 
 
+[[use-case-summary]]
 == Zusammenfassung des Anwendungsfalls
 
 Ein potenzieller Anwendungsfall für den Dualprotokollzugriff von NFS und S3 liegt in den Bereichen maschinelles Lernen und Datenwissenschaft.  Beispielsweise könnte ein Team von Datenwissenschaftlern an einem Machine-Learning-Projekt mit AWS SageMaker arbeiten, das Zugriff auf im NFS-Format gespeicherte Daten erfordert.  Möglicherweise müssen die Daten jedoch auch über S3-Buckets abgerufen und freigegeben werden, um mit anderen Teammitgliedern zusammenzuarbeiten oder sie in andere Anwendungen zu integrieren, die S3 verwenden.

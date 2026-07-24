@@ -24,6 +24,7 @@ image:stgr-splunkss-011.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[configuration]]
 == Konfiguration
 
 In dieser Tabelle ist die für die Leistungsvalidierung von SmartStorage verwendete Hardware aufgeführt.
@@ -51,6 +52,7 @@ In dieser Tabelle ist die für die Leistungsvalidierung von SmartStorage verwend
 |===
 
 
+[[smartstore-remote-store-performance-validation]]
 == SmartStore Remote Store-Leistungsvalidierung
 
 Bei dieser Leistungsvalidierung haben wir den SmartStore-Cache im lokalen Speicher auf allen Indexern für 10 Tage Daten konfiguriert.  Wir haben die `maxDataSize=auto` (750 MB Bucket-Größe) im Splunk-Cluster-Manager und habe die Änderungen an alle Indexer gesendet.  Um die Upload-Leistung zu messen, haben wir 10 Tage lang täglich 10 TB aufgenommen und alle Hot Buckets gleichzeitig auf Warm übertragen. Außerdem haben wir den Spitzen- und Durchschnittsdurchsatz pro Instanz und Bereitstellung über das Dashboard der SmartStore Monitoring Console erfasst.
@@ -152,6 +154,7 @@ image:stgr-splunkss-015.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[storagegrid-performance]]
 == StorageGRID -Leistung
 
 Die Leistung von SmartStore basiert auf der Suche nach bestimmten Mustern und Zeichenfolgen in großen Datenmengen.  Bei dieser Validierung werden die Ereignisse generiert mit https://github.com/splunk/eventgen["Eventgen"^] auf einem bestimmten Splunk-Index (eventgen-test) über den Suchkopf, und die Anfrage geht für die meisten Abfragen an StorageGRID .  Das folgende Bild zeigt die Treffer und Fehlschläge der Abfragedaten.  Die Trefferdaten stammen von der lokalen Festplatte und die Fehlerdaten vom StorageGRID Controller.
@@ -167,6 +170,7 @@ image:stgr-splunkss-017.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[storagegrid-hardware-usage]]
 == StorageGRID Hardwarenutzung
 
 Die StorageGRID Instanz verfügt über einen Load Balancer und drei StorageGRID Controller.  Die CPU-Auslastung für alle drei Controller liegt zwischen 75 % und 100 %.
@@ -175,6 +179,7 @@ image:stgr-splunkss-018.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[smartstore-with-netapp-storage-controller-benefits-for-the-customer]]
 == SmartStore mit NetApp Storage Controller – Vorteile für den Kunden
 
 * *Entkopplung von Rechenleistung und Speicher.*  Der Splunk SmartStore entkoppelt Rechenleistung und Speicher, sodass Sie diese unabhängig voneinander skalieren können.

@@ -18,6 +18,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[business-use-case-readiness]]
 == Geschäfts- und Anwendungsfallbereitschaft
 
 * Ist die Lösung auf die Geschäftsergebnisse der einzelnen Geschäftsbereiche ausgerichtet (z. B. Produktivität, Kundenservice, Legal, Healthcare, Manufacturing, Public Sector)?
@@ -29,6 +30,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[technical-infrastructure-requirements]]
 == Technische und infrastrukturelle Anforderungen
 
 * Ist Ihre Datenpipeline bereit (Datenaufbereitung, ETL, sichere Aufnahme in die Vektor-Datenbank)?
@@ -41,6 +43,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[software-ecosystem-alignment]]
 == Software- und Ökosystemausrichtung
 
 * Sind Ihre containerisierten Apps mit den bereitgestellten Kubernetes- & Helm-Charts kompatibel?
@@ -52,6 +55,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[data-governance-security]]
 == Data Governance & Sicherheit
 
 * Haben Sie rollenbasierte Zugriffssteuerung (RBAC) in Kubernetes aktiviert?
@@ -62,6 +66,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[operational-support-considerations]]
 == Betriebs- und Support-Überlegungen
 
 * Sind Administratoren in Kubernetes, Trident CSI und OPEA-Stack-Bereitstellung geschult/befähigt?
@@ -72,6 +77,7 @@ Dieses Dokument enthält eine umfassende Checkliste zur Vorbereitung der Infrast
 
 
 
+[[commercial-gtm-alignment]]
 == Kommerzielle & GTM-Ausrichtung
 
 * Gibt es einen gestaffelten Fahrplan (Abteilung → unternehmensweite KI-Ausweitung)?

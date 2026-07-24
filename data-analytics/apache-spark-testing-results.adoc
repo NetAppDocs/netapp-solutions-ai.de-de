@@ -75,6 +75,7 @@ In der folgenden Tabelle sind die Softwareanforderungen aufgeführt.
 |===
 
 
+[[financial-sentiment-analysis]]
 == Finanzstimmungsanalyse
 
 Wir veröffentlichtenlink:https://www.netapp.com/pdf.html?item=/media/17123-tr4910pdf.pdf["TR-4910: Stimmungsanalyse aus der Kundenkommunikation mit NetApp AI"^] , in dem eine End-to-End-Konversations-KI-Pipeline mithilfe der https://github.com/NetApp/netapp-dataops-toolkit["NetApp DataOps Toolkit"^] , AFF -Speicher und NVIDIA DGX-System.  Die Pipeline führt Batch-Audiosignalverarbeitung, automatische Spracherkennung (ASR), Transferlernen und Stimmungsanalyse durch und nutzt dabei das DataOps Toolkit. https://developer.nvidia.com/riva["NVIDIA Riva SDK"^] und die https://developer.nvidia.com/tao["Tao-Rahmen"^] .  Wir haben den Anwendungsfall der Stimmungsanalyse auf die Finanzdienstleistungsbranche ausgeweitet, einen SparkNLP-Workflow erstellt, drei BERT-Modelle für verschiedene NLP-Aufgaben wie die Erkennung benannter Entitäten geladen und die Stimmung auf Satzebene für die vierteljährlichen Gewinnaufrufe der Top 10-Unternehmen des NASDAQ ermittelt.
@@ -160,6 +161,7 @@ image:apache-spark-011.png["Spark NLP-Sentimentanalyse – End-to-End-Workflow-L
 
 
 
+[[distributed-training-with-horovod-performance]]
 == Verteiltes Training mit Horovod-Leistung
 
 Der folgende Befehl erzeugte Laufzeitinformationen und eine Protokolldatei in unserem Spark-Cluster unter Verwendung eines einzigen `master` Knoten mit 160 Executoren mit jeweils einem Kern.  Der Executor-Speicher wurde auf 5 GB begrenzt, um Speicherfehler zu vermeiden.  Siehe den Abschnittlink:spark-python-scripts.html["Python-Skripte für jeden wichtigen Anwendungsfall"] Weitere Einzelheiten zur Datenverarbeitung, zum Modelltraining und zur Berechnung der Modellgenauigkeit in `keras_spark_horovod_rossmann_estimator.py` .
@@ -236,6 +238,7 @@ image:apache-spark-012.png["Horovod Spark Workflow-Laufzeit."]
 
 
 
+[[deep-learning-models-for-ctr-prediction-performance]]
 == Deep-Learning-Modelle für die CTR-Vorhersageleistung
 
 Für Empfehlungssysteme, die auf die Maximierung der Klickrate ausgelegt sind, müssen Sie die komplexen Funktionsinteraktionen hinter dem Benutzerverhalten erlernen, die sich mathematisch von der niedrigsten bis zur höchsten Ordnung berechnen lassen.  Für ein gutes Deep-Learning-Modell sollten sowohl Merkmalsinteraktionen niedriger als auch höherer Ordnung gleichermaßen wichtig sein, ohne dass das eine oder das andere bevorzugt wird.  Deep Factorization Machine (DeepFM), ein auf Faktorisierungsmaschinen basierendes neuronales Netzwerk, kombiniert Faktorisierungsmaschinen für Empfehlungen und Deep Learning für das Merkmalslernen in einer neuen neuronalen Netzwerkarchitektur.

@@ -18,12 +18,14 @@ Dieser Anwendungsfall ist für einen Cloud-Service-Partner relevant, der die Auf
 
 
 
+[[scenario]]
 == Szenario
 
 In diesem Szenario werden IoT-Daten, die in AWS aus verschiedenen Quellen empfangen werden, an einem zentralen Ort in NPS gespeichert.  Der NPS-Speicher ist mit Spark/Hadoop-Clustern in AWS und Azure verbunden, sodass Big Data-Analyseanwendungen in mehreren Clouds ausgeführt werden können und auf dieselben Daten zugreifen.
 
 
 
+[[requirements-and-challenges]]
 == Anforderungen und Herausforderungen
 
 Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfall gehören:
@@ -36,6 +38,7 @@ Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfal
 
 
 
+[[solution]]
 == Lösung
 
 Dieses Bild veranschaulicht die Lösung für Datenschutz und Multicloud-Konnektivität.

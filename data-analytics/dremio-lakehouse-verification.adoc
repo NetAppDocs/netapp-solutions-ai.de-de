@@ -18,6 +18,7 @@ In diesem Abschnitt haben wir SQL-Testabfragen aus mehreren Quellen ausgeführt,
 
 
 
+[[sql-query-on-object-storage]]
 === SQL-Abfrage im Objektspeicher
 
 . Stellen Sie den Speicher in dremio.env auf 250 GB pro Server ein

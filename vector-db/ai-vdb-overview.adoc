@@ -18,12 +18,14 @@ Dieser Abschnitt bietet einen Überblick über die NetApp Vector-Datenbanklösun
 
 
 
+[[solution-overview]]
 == Lösungsübersicht
 
 Diese Lösung demonstriert die besonderen Vorteile und Fähigkeiten, die NetApp mitbringt, um die Herausforderungen zu bewältigen, vor denen Kunden von Vektordatenbanken stehen.  Durch die Nutzung von NetApp ONTAP, StorageGRID, den Cloud-Lösungen von NetApp und SnapCenter können Kunden ihren Geschäftsbetrieb erheblich aufwerten.  Diese Tools lösen nicht nur bestehende Probleme, sondern steigern auch die Effizienz und Produktivität und tragen so zum allgemeinen Unternehmenswachstum bei.
 
 
 
+[[why-netapp]]
 === Warum NetApp?
 
 * Die Angebote von NetApp, wie ONTAP und StorageGRID, ermöglichen die Trennung von Speicher und Rechenleistung und ermöglichen so eine optimale Ressourcennutzung basierend auf spezifischen Anforderungen.  Diese Flexibilität ermöglicht es Kunden, ihren Speicher mithilfe von NetApp Speicherlösungen unabhängig zu skalieren.

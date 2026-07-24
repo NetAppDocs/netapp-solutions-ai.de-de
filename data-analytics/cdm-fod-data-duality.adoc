@@ -18,12 +18,14 @@ Die Daten sind in NFS verfügbar und können über S3 von AWS SageMaker abgerufe
 
 
 
+[[technology-requirements]]
 == Technologieanforderungen
 
 Sie benötigen NetApp BlueXP, NetApp Cloud Volumes ONTAP und AWS SageMaker Notebooks für den Anwendungsfall der Datendualität.
 
 
 
+[[software-requirements]]
 === Softwareanforderungen
 
 In der folgenden Tabelle sind die Softwarekomponenten aufgelistet, die zur Umsetzung des Anwendungsfalls erforderlich sind.
@@ -42,6 +44,7 @@ In der folgenden Tabelle sind die Softwarekomponenten aufgelistet, die zur Umset
 |===
 
 
+[[deployment-procedures]]
 == Bereitstellungsverfahren
 
 Die Bereitstellung der Datendualitätslösung umfasst die folgenden Aufgaben:
@@ -55,6 +58,7 @@ Die Bereitstellung der Datendualitätslösung umfasst die folgenden Aufgaben:
 
 
 
+[[bluexp-connector]]
 === BlueXP -Anschluss
 
 Bei dieser Validierung haben wir AWS verwendet.  Es ist auch für Azure und Google Cloud anwendbar.  Führen Sie die folgenden Schritte aus, um einen BlueXP Connector in AWS zu erstellen:
@@ -71,6 +75,7 @@ Bei dieser Validierung haben wir AWS verwendet.  Es ist auch für Azure und Goog
 
 
 
+[[netapp-cloud-volumes-ontap]]
 === NetApp Cloud Volumes ONTAP
 
 Führen Sie die folgenden Schritte aus, um eine Cloud Volumes ONTAP Instanz in BlueXP zu erstellen:
@@ -244,6 +249,7 @@ sagemaker_cvo_sn1::*>
 
 
 
+[[aws-sagemaker]]
 === AWS SageMaker
 
 Führen Sie die folgenden Schritte aus, um ein AWS-Notebook aus AWS SageMaker zu erstellen:
@@ -318,6 +324,7 @@ sh-4.2$
 
 
 
+[[data-for-machine-learning]]
 === Daten für maschinelles Lernen
 
 Bei dieser Validierung haben wir einen Datensatz von DBpedia verwendet, einem Crowdsourcing-Community-Projekt, um strukturierte Inhalte aus den in verschiedenen Wikimedia-Projekten erstellten Informationen zu extrahieren.
@@ -443,6 +450,7 @@ sh-4.2$
 
 
 
+[[validate-machine-learning-from-jupyter-notebooks]]
 == Validieren Sie maschinelles Lernen aus Jupyter Notebooks
 
 Die folgende Validierung ermöglicht das Erstellen, Trainieren und Bereitstellen von Modellen für maschinelles Lernen durch Textklassifizierung unter Verwendung des folgenden SageMaker BlazingText-Beispiels:

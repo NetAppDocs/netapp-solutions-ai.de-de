@@ -18,12 +18,14 @@ Dieser Artikel bietet eine Anleitung zum Erstellen einer MLOps-Pipeline mit AWS-
 
 
 
+[[introduction]]
 == Einführung
 
 In diesem Tutorial erfahren Sie, wie Sie verschiedene AWS-Dienste nutzen, um eine einfache MLOps-Pipeline zu erstellen, die Continuous Integration (CI), Continuous Training (CT) und Continuous Deployment (CD) umfasst.  Im Gegensatz zu herkömmlichen DevOps-Pipelines erfordert MLOps zusätzliche Überlegungen, um den Betriebszyklus abzuschließen.  In diesem Tutorial erhalten Sie Einblicke in die Integration von CT in die MLOps-Schleife, wodurch ein kontinuierliches Training Ihrer Modelle und eine nahtlose Bereitstellung für die Inferenz ermöglicht wird.  Das Tutorial führt Sie durch den Prozess der Nutzung von AWS-Diensten zum Einrichten dieser End-to-End-MLOps-Pipeline.
 
 
 
+[[manifest]]
 == Manifest
 
 |===
@@ -52,6 +54,7 @@ In diesem Tutorial erfahren Sie, wie Sie verschiedene AWS-Dienste nutzen, um ein
 |===
 
 
+[[prerequisite]]
 == Voraussetzung
 
 * Ein vorkonfiguriertes FSx ONTAP Dateisystem.  Dieses Tutorial verwendet für den Trainingsprozess in FSx ONTAP gespeicherte Daten.
@@ -62,6 +65,7 @@ In diesem Tutorial erfahren Sie, wie Sie verschiedene AWS-Dienste nutzen, um ein
 
 
 
+[[architecture]]
 == Architektur
 
 image:mlops-fsxn-cictcd-012.png["Architektur"]
@@ -70,10 +74,12 @@ Diese MLOps-Pipeline ist eine praktische Implementierung, die einen Cron-Job ver
 
 
 
+[[step-by-step-configuration]]
 == Schritt-für-Schritt-Konfiguration
 
 
 
+[[lifecycle-configurations]]
 === Lebenszykluskonfigurationen
 
 Um die Lebenszyklus-Rückruffunktion für die AWS SageMaker Notebook-Instanz zu konfigurieren, verwenden Sie *Lebenszykluskonfigurationen*.  Mit diesem Dienst können Sie die erforderlichen Aktionen definieren, die beim Hochfahren der Notebook-Instanz ausgeführt werden sollen.  Insbesondere kann innerhalb der *Lebenszykluskonfigurationen* ein Shell-Skript implementiert werden, um die Notebook-Instanz automatisch herunterzufahren, sobald die Trainings- und Bereitstellungsprozesse abgeschlossen sind.  Dies ist eine erforderliche Konfiguration, da die Kosten einer der wichtigsten Aspekte bei MLOps sind.
@@ -126,6 +132,7 @@ image:mlops-fsxn-cictcd-005.png["Aktualisieren der Lebenszykluskonfiguration des
 
 
 
+[[aws-lambda-serverless-function]]
 === Serverlose AWS Lambda-Funktion
 
 Wie bereits erwähnt, ist die *AWS Lambda-Funktion* für das Hochfahren der *AWS SageMaker Notebook-Instanz* verantwortlich.

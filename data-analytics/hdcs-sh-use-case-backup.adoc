@@ -18,6 +18,7 @@ In diesem Szenario verfügt der Kunde über ein großes lokales Hadoop-Repositor
 
 
 
+[[requirements-and-challenges]]
 == Anforderungen und Herausforderungen
 
 Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfall gehören:
@@ -35,6 +36,7 @@ Zu den wichtigsten Anforderungen und Herausforderungen für diesen Anwendungsfal
 
 
 
+[[customers-existing-backup-solutionx]]
 == Vorhandene Backup-Lösung des Kundenx
 
 Die folgende Abbildung zeigt die ursprüngliche native Hadoop-Backup-Lösung.
@@ -63,12 +65,14 @@ Zu den Nachteilen der ursprünglichen nativen Hadoop-Backup-Lösung gehören:
 
 
 
+[[backup-solutions]]
 == Backup-Lösungen
 
 Basierend auf diesen Herausforderungen und Anforderungen und unter Berücksichtigung des vorhandenen Backup-Systems wurden drei mögliche Backup-Lösungen vorgeschlagen.  In den folgenden Unterabschnitten werden die drei verschiedenen Sicherungslösungen mit den Bezeichnungen Lösung A bis Lösung C beschrieben.
 
 
 
+[[solution-a]]
 === Lösung A
 
 In Lösung A sendet der Hadoop-Backup-Cluster die sekundären Backups an NetApp NFS-Speichersysteme, wodurch die Bandanforderung entfällt, wie in der folgenden Abbildung dargestellt.
@@ -114,6 +118,7 @@ Bei dieser Lösung können SAN-Festplatten von ONTAP anstelle von JBOD verwendet
 
 
 
+[[solution-b]]
 === Lösung B
 
 Lösung B fügt dem Produktions-Hadoop-Cluster ein NFS-Volume hinzu, wodurch der Backup-Hadoop-Cluster überflüssig wird, wie in der folgenden Abbildung gezeigt.
@@ -141,6 +146,7 @@ Der Nachteil dieser Lösung besteht darin, dass sie im Produktionscluster implem
 
 
 
+[[solution-c]]
 === Lösung C
 
 In Lösung C werden die NetApp SAN-Volumes direkt für den Hadoop-Produktionscluster zur HDFS-Speicherung bereitgestellt, wie in der folgenden Abbildung dargestellt.

@@ -18,6 +18,7 @@ In diesem Abschnitt werden die Hauptkomponenten dieser Lösung ausführlicher vo
 
 
 
+[[netapp-aff-systems]]
 == NetApp AFF -Systeme
 
 Mit NetApp AFF -Speichersystemen können Unternehmen ihre Speicheranforderungen mit branchenführender Leistung, überragender Flexibilität, Cloud-Integration und erstklassigem Datenmanagement erfüllen.  AFF -Systeme wurden speziell für Flash entwickelt und helfen bei der Beschleunigung, Verwaltung und dem Schutz geschäftskritischer Daten.
@@ -56,12 +57,14 @@ NetApp bietet auch andere Speichersysteme wie AFF A800 und AFF A700 an, die eine
 
 
 
+[[netapp-ontap]]
 == NetApp ONTAP
 
 ONTAP 9, die neueste Generation der Speicherverwaltungssoftware von NetApp, ermöglicht Unternehmen die Modernisierung ihrer Infrastruktur und den Übergang zu einem Cloud-fähigen Rechenzentrum.  Durch die Nutzung branchenführender Datenverwaltungsfunktionen ermöglicht ONTAP die Verwaltung und den Schutz von Daten mit einem einzigen Satz von Tools, unabhängig davon, wo sich diese Daten befinden.  Daten können außerdem frei dorthin verschoben werden, wo sie benötigt werden: an den Rand, in den Kern oder in die Cloud.  ONTAP 9 umfasst zahlreiche Funktionen, die das Datenmanagement vereinfachen, kritische Daten beschleunigen und schützen und die Infrastruktur in Hybrid-Cloud-Architekturen zukunftssicher machen.
 
 
 
+[[simplify-data-management]]
 === Vereinfachen Sie die Datenverwaltung
 
 Das Datenmanagement ist für den IT-Betrieb in Unternehmen von entscheidender Bedeutung, damit für Anwendungen und Datensätze die richtigen Ressourcen verwendet werden.  ONTAP umfasst die folgenden Funktionen zur Rationalisierung und Vereinfachung des Betriebs und zur Senkung der Gesamtbetriebskosten:
@@ -73,6 +76,7 @@ Das Datenmanagement ist für den IT-Betrieb in Unternehmen von entscheidender Be
 
 
 
+[[accelerate-and-protect-data]]
 === Beschleunigen und schützen Sie Daten
 
 ONTAP bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese Funktionen auf folgende Weise:
@@ -84,6 +88,7 @@ ONTAP bietet ein Höchstmaß an Leistung und Datenschutz und erweitert diese Fun
 
 
 
+[[future-proof-infrastructure]]
 === Zukunftssichere Infrastruktur
 
 ONTAP 9 hilft dabei, anspruchsvolle und sich ständig ändernde Geschäftsanforderungen zu erfüllen:
@@ -95,6 +100,7 @@ ONTAP 9 hilft dabei, anspruchsvolle und sich ständig ändernde Geschäftsanford
 
 
 
+[[netapp-flexgroup-volumes]]
 == NetApp FlexGroup Volumes
 
 Trainingsdatensätze sind normalerweise eine Sammlung von potenziell Milliarden von Dateien.  Dateien können Text, Audio, Video und andere Formen unstrukturierter Daten enthalten, die gespeichert und verarbeitet werden müssen, um parallel gelesen werden zu können.  Das Speichersystem muss viele kleine Dateien speichern und diese Dateien für sequenzielle und zufällige E/A parallel lesen.
@@ -110,6 +116,7 @@ image:a400-thinksystem-005.png["Dieses Bild zeigt ein HA-Paar von Speichercontro
 
 
 
+[[lenovo-thinksystem-portfolio]]
 == Lenovo ThinkSystem Portfolio
 
 Lenovo ThinkSystem-Server verfügen über innovative Hardware, Software und Services, die die Herausforderungen der Kunden von heute lösen und einen evolutionären, zweckmäßigen und modularen Designansatz bieten, um die Herausforderungen von morgen zu bewältigen.  Diese Server nutzen branchenführende Technologien nach Industriestandard in Verbindung mit differenzierten Innovationen von Lenovo, um die größtmögliche Flexibilität bei x86-Servern zu bieten.
@@ -125,6 +132,7 @@ Im KI-Bereich verfolgt Lenovo einen praktischen Ansatz, um Unternehmen dabei zu 
 
 
 
+[[lenovo-sr670-v2]]
 === Lenovo SR670 V2
 
 Der Lenovo ThinkSystem SR670 V2 Rack-Server bietet optimale Leistung für beschleunigte KI und High-Performance-Computing (HPC).  Der SR670 V2 unterstützt bis zu acht GPUs und ist für die rechenintensiven Arbeitsanforderungen von ML, DL und Inferenz geeignet.
@@ -145,6 +153,7 @@ Weitere Funktionen sind:
 
 
 
+[[mlperf]]
 == MLPerf
 
 MLPerf ist die branchenführende Benchmark-Suite zur Bewertung der KI-Leistung.  Bei dieser Validierung haben wir den Bildklassifizierungs-Benchmark mit MXNet verwendet, einem der beliebtesten KI-Frameworks.  Das Trainingsskript MXNet_benchmarks wurde zum Durchführen des KI-Trainings verwendet.  Das Skript enthält Implementierungen mehrerer beliebter konventioneller Modelle und ist auf größtmögliche Geschwindigkeit ausgelegt.  Es kann auf einer einzelnen Maschine oder im verteilten Modus auf mehreren Hosts ausgeführt werden.

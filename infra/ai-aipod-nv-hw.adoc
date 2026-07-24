@@ -18,12 +18,14 @@ Dieser Abschnitt konzentriert sich auf die Hardwarekomponenten für den NetApp A
 
 
 
+[[netapp-aff-storage-systems]]
 == NetApp AFF -Speichersysteme
 
 Mit den hochmodernen AFF -Speichersystemen von NetApp können IT-Abteilungen die Speicheranforderungen von Unternehmen mit branchenführender Leistung, überragender Flexibilität, Cloud-Integration und erstklassigem Datenmanagement erfüllen.  AFF -Systeme wurden speziell für Flash entwickelt und helfen bei der Beschleunigung, Verwaltung und dem Schutz geschäftskritischer Daten.
 
 
 
+[[aff-a90-storage-systems]]
 === AFF A90 Speichersysteme
 
 Der NetApp AFF A90 mit der Datenverwaltungssoftware NetApp ONTAP bietet integrierten Datenschutz, optionale Anti-Ransomware-Funktionen sowie die hohe Leistung und Ausfallsicherheit, die zur Unterstützung der kritischsten Geschäfts-Workloads erforderlich sind.  Es verhindert Störungen unternehmenskritischer Vorgänge, minimiert die Leistungsoptimierung und schützt Ihre Daten vor Ransomware-Angriffen.  Es bietet: • Branchenführende Leistung • Kompromisslose Datensicherheit • Vereinfachte, unterbrechungsfreie Upgrades
@@ -54,6 +56,7 @@ Für die größten Bereitstellungen bieten AFF A1K -Systeme die höchsten Leistu
 
 
 
+[[nvidia-dgx-basepod]]
 == NVIDIA DGX BasePOD
 
 NVIDIA DGX BasePOD ist eine integrierte Lösung, die aus NVIDIA -Hardware- und Softwarekomponenten, MLOps-Lösungen und Speicher von Drittanbietern besteht.  Durch die Nutzung bewährter Methoden des Scale-Out-Systemdesigns mit NVIDIA Produkten und validierten Partnerlösungen können Kunden eine effiziente und verwaltbare Plattform für die KI-Entwicklung implementieren.  Abbildung 1 zeigt die verschiedenen Komponenten von NVIDIA DGX BasePOD.
@@ -64,6 +67,7 @@ image:aipod-nv-basepod-layers.png["Abbildung, die einen Eingabe-/Ausgabedialog z
 
 
 
+[[nvidia-dgx-h100-systems]]
 === NVIDIA DGX H100-Systeme
 
 Das NVIDIA DGX H100™-System ist das KI-Kraftpaket, das durch die bahnbrechende Leistung der NVIDIA H100 Tensor Core GPU beschleunigt wird.
@@ -80,6 +84,7 @@ image:aipod-nv-h100-rear.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt 
 
 
 
+[[nvidia-networking]]
 === NVIDIA Netzwerk
 
 

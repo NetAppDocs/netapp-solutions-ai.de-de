@@ -18,6 +18,7 @@ Die wichtigsten Anwendungsfälle und Methoden für KI, ML und DL können in die 
 
 
 
+[[spark-nlp-pipelines-and-tensorflow-distributed-inferencing]]
 == Spark NLP-Pipelines und verteilte TensorFlow-Inferenz
 
 Die folgende Liste enthält die beliebtesten Open-Source-NLP-Bibliotheken, die von der Data-Science-Community in unterschiedlichen Entwicklungsstufen übernommen wurden:
@@ -40,6 +41,7 @@ Die zugrunde liegende Deep-Learning-Engine für Spark NLP ist TensorFlow, eine d
 
 
 
+[[horovod-distributed-training]]
 == Horovod verteiltes Training
 
 Die zentrale Hadoop-Validierung für die MapReduce-bezogene Leistung wird mit TeraGen, TeraSort, TeraValidate und DFSIO (Lesen und Schreiben) durchgeführt.  Die Validierungsergebnisse von TeraGen und TeraSort werden in https://www.netapp.com/pdf.html?item=/media/16420-tr-3969pdf.pdf["NetApp E-Series-Lösung für Hadoop"] und im Abschnitt „Storage Tiering“ für AFF.
@@ -61,6 +63,7 @@ Siehe den Abschnittlink:apache-spark-use-cases-summary.html#machine-learning["Ma
 
 
 
+[[multi-worker-deep-learning-using-keras-for-ctr-prediction]]
 == Multi-Worker-Deep-Learning mit Keras zur CTR-Vorhersage
 
 Angesichts der jüngsten Fortschritte bei ML-Plattformen und -Anwendungen richtet sich der Fokus nun stark auf das Lernen im großen Maßstab.  Die Klickrate (Click-Through-Rate, CTR) ist definiert als die durchschnittliche Anzahl von Klicks pro hundert Online-Anzeigenimpressionen (ausgedrückt als Prozentsatz).  Es wird in zahlreichen Branchen und Anwendungsfällen, darunter digitales Marketing, Einzelhandel, E-Commerce und Dienstleister, als Schlüsselkennzahl eingesetzt.  Weitere Einzelheiten zu den Anwendungen von CTR und verteilten Trainingsleistungsergebnissen finden Sie imlink:apache-spark-testing-results.html#deep-learning-models-for-ctr-prediction-performance["Deep-Learning-Modelle für die CTR-Vorhersageleistung"] Abschnitt.
@@ -89,6 +92,7 @@ Zusätzlich zu DCN haben wir auch andere beliebte Deep-Learning-Modelle zur CTR-
 
 
 
+[[architectures-used-for-validation]]
 == Zur Validierung verwendete Architekturen
 
 Für diese Validierung haben wir vier Worker-Knoten und einen Master-Knoten mit einem AFF-A800-HA-Paar verwendet.  Alle Clustermitglieder waren über 10GbE-Netzwerk-Switches verbunden.

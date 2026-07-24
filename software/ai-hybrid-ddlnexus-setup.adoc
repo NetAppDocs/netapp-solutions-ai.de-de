@@ -18,6 +18,7 @@ In diesem Abschnitt werden die anfänglichen Einrichtungsaufgaben beschrieben, d
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebenen Schritte ausführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
@@ -33,6 +34,7 @@ Bevor Sie die in diesem Abschnitt beschriebenen Schritte ausführen, gehen wir d
 
 
 
+[[install-the-domino-enterprise-ai-platform-in-aws]]
 == Installieren Sie die Domino Enterprise AI Platform in AWS
 
 Um die Domino Enterprise MLOps-Plattform in AWS zu installieren, folgen Sie den Anweisungen inlink:https://docs.dominodatalab.com/en/latest/admin_guide/c1eec3/deploy-domino/["Domino-Administratorhandbuch"] .  Sie müssen Domino im selben Amazon EKS-Cluster bereitstellen, den Sie zuvor bereitgestellt haben.  Darüber hinaus muss NetApp Trident bereits in diesem EKS-Cluster installiert und konfiguriert sein, und Sie müssen in Ihrer Installationskonfigurationsdatei domino.yml eine von Trident verwaltete Speicherklasse als gemeinsam genutzte Speicherklasse angeben.
@@ -45,12 +47,14 @@ NOTE: link:https://www.netapp.com/media/79922-tr-4952.pdf["Technischer Bericht T
 
 
 
+[[enable-domino-nexus]]
 == Domino Nexus aktivieren
 
 Als Nächstes müssen Sie Domino Nexus aktivieren. Weitere Informationen finden Sie imlink:https://docs.dominodatalab.com/en/latest/admin_guide/c65074/nexus-hybrid-architecture/["Domino-Administratorhandbuch"] für Details.
 
 
 
+[[deploy-a-domino-data-plane-in-your-on-premises-data-center]]
 == Stellen Sie eine Domino-Datenebene in Ihrem lokalen Rechenzentrum bereit
 
 Als Nächstes müssen Sie eine Domino-Datenebene in Ihrem lokalen Rechenzentrum bereitstellen.  Sie müssen diese Datenebene im lokalen Kubernetes-Cluster bereitstellen, den Sie zuvor bereitgestellt haben.  Darüber hinaus muss NetApp Trident in diesem Kubernetes-Cluster bereits installiert und konfiguriert sein. Weitere Informationen finden Sie imlink:https://docs.dominodatalab.com/en/latest/admin_guide/5781ea/data-planes/["Domino-Administratorhandbuch"] für Details.

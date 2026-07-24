@@ -13,18 +13,21 @@ Die Nachfrage nach generativer künstlicher Intelligenz (KI) führt zu Umbrüche
 
 
 
+[[abstract]]
 == Abstrakt
 
 Viele Organisationen nutzen generative KI, um neue Produktfunktionen zu entwickeln, die Produktivität der Ingenieure zu steigern und Prototypen KI-gestützter Anwendungen zu erstellen, die bessere Ergebnisse und ein besseres Kundenerlebnis bieten.  Generative KI wie Generative Pre-trained Transformers (GPT) verwenden neuronale Netzwerke, um neue Inhalte zu erstellen, die so unterschiedlich sind wie Text, Audio und Video.  Angesichts des extremen Umfangs und der enormen Datensätze, die mit großen Sprachmodellen (LLMs) verbunden sind, ist es von entscheidender Bedeutung, eine robuste KI-Infrastruktur zu entwickeln, die die überzeugenden Datenspeicherfunktionen von On-Premises-, Hybrid- und Multi-Cloud-Bereitstellungsoptionen nutzt und die mit Datenmobilität, Datenschutz und Governance verbundenen Risiken reduziert, bevor Unternehmen KI-Lösungen entwickeln können.  In diesem Dokument werden diese Überlegungen und die entsprechenden NetApp KI-Funktionen beschrieben, die eine nahtlose Datenverwaltung und Datenbewegung über die KI-Datenpipeline zum Trainieren, Umtrainieren, Feinabstimmen und Inferenzieren generativer KI-Modelle ermöglichen.
 
 
 
+[[executive-summary]]
 == Zusammenfassung
 
 Zuletzt haben nach der Einführung von ChatGPT, einem Spin-off von GPT-3 im November 2022, neue KI-Tools, die zur Generierung von Text, Code, Bildern oder sogar therapeutischen Proteinen als Reaktion auf Benutzeraufforderungen verwendet werden, erhebliche Bekanntheit erlangt.  Dies bedeutet, dass Benutzer eine Anfrage in natürlicher Sprache stellen können und die KI Text interpretiert und generiert, beispielsweise Nachrichtenartikel oder Produktbeschreibungen, die die Benutzeranfrage widerspiegeln, oder Code, Musik, Sprache, visuelle Effekte und 3D-Assets mithilfe von Algorithmen erstellt, die auf bereits vorhandenen Daten trainiert wurden.  Infolgedessen tauchen bei der Entwicklung von KI-Systemen immer häufiger Begriffe wie „Stabile Diffusion“, „Halluzinationen“, „Prompt Engineering“ und „Wertausrichtung“ auf.  Diese selbstüberwachten oder halbüberwachten Modelle des maschinellen Lernens (ML) werden als vortrainierte Basismodelle (FM) über Cloud-Service-Provider und andere Anbieter von KI-Unternehmen immer häufiger verfügbar und von verschiedenen Unternehmen branchenübergreifend für eine breite Palette nachgelagerter NLP-Aufgaben (Natural Language Processing) übernommen.  Wie Marktforschungsunternehmen wie McKinsey behaupten: „Die Auswirkungen der generativen KI auf die Produktivität könnten der Weltwirtschaft einen Mehrwert von Billionen Dollar verleihen.“  Während Unternehmen KI als Denkpartner des Menschen neu konzipieren und FMs gleichzeitig ihre Möglichkeiten für Unternehmen und Institutionen mit generativer KI erweitern, werden die Möglichkeiten zur Verwaltung riesiger Datenmengen weiter zunehmen.  Dieses Dokument enthält einführende Informationen zur generativen KI und den Designkonzepten in Bezug auf NetApp -Funktionen, die NetApp Kunden sowohl vor Ort als auch in Hybrid- oder Multicloud-Umgebungen einen Mehrwert bieten.
 
 
 
+[[so-whats-in-it-for-customers-to-use-netapp-in-their-ai-environments]]
 === *Welchen Vorteil bietet es den Kunden, NetApp in ihren KI-Umgebungen einzusetzen?*
 
 NetApp unterstützt Unternehmen dabei, die Komplexität zu bewältigen, die durch schnelles Daten- und Cloud-Wachstum, Multi-Cloud-Management und die Einführung von Technologien der nächsten Generation wie KI entsteht. NetApp hat verschiedene Funktionen in intelligenter Datenverwaltungssoftware und Speicherinfrastruktur kombiniert, die gut ausbalanciert und mit hoher Leistung für KI-Workloads optimiert sind. Generative KI-Lösungen wie LLMs müssen ihre Quelldatensätze mehrmals aus dem Speicher in den Arbeitsspeicher lesen und verarbeiten, um die Intelligenz zu fördern.
@@ -35,12 +38,14 @@ Als Datenexperte für Hybrid- und Multi-Cloud engagiert sich NetApp für den Auf
 
 
 
+[[what-is-generative-ai]]
 == Was ist generative KI?
 
 Generative KI verändert die Art und Weise, wie wir Inhalte erstellen, neue Designkonzepte entwickeln und neuartige Kompositionen erkunden.  Es veranschaulicht neuronale Netzwerk-Frameworks wie Generative Adversarial Network (GAN), Variational Autoencoders (VAE) und Generative Pre-Trained Transformers (GPT), die neue Inhalte wie Text, Code, Bilder, Audio, Video und synthetische Daten generieren können.  Transformer-basierte Modelle wie Chat-GPT von OpenAI, Bard von Google, BLOOM von Hugging Face und LLaMA von Meta haben sich als grundlegende Technologie herausgestellt, die vielen Fortschritten bei großen Sprachmodellen zugrunde liegt.  Ebenso sind Dall-E von OpenAI, CM3leon von Meta und Imagen von Google Beispiele für Text-zu-Bild-Diffusionsmodelle, die den Kunden einen beispiellosen Grad an Fotorealismus bieten, um neue, komplexe Bilder von Grund auf neu zu erstellen oder vorhandene Bilder zu bearbeiten, um mithilfe von Datensatzerweiterung und Text-zu-Bild-Synthese, die textuelle und visuelle Semantik verknüpft, qualitativ hochwertige kontextsensitive Bilder zu erzeugen.  Digitale Künstler beginnen, eine Kombination aus Rendering-Technologien wie NeRF (Neural Radiance Field) mit generativer KI anzuwenden, um statische 2D-Bilder in immersive 3D-Szenen umzuwandeln.  Im Allgemeinen werden LLMs grob durch vier Parameter charakterisiert: (1) Größe des Modells (normalerweise in Milliarden von Parametern); (2) Größe des Trainingsdatensatzes; (3) Trainingskosten und (4) Modellleistung nach dem Training.  LLMs lassen sich auch hauptsächlich in drei Transformatorarchitekturen unterteilen.  (i) Nur-Encoder-Modelle.  Z. B. BERT (Google, 2018); (ii) Encoder-Decoder, z. B. BART (Meta, 2020) und (iii) Nur-Decoder-Modelle.  Z. B. LLaMA (Meta, 2023), PaLM-E (Google, 2023).  Abhängig von den Geschäftsanforderungen und unabhängig davon, welche Architektur ein Unternehmen wählt, bestimmen im Allgemeinen die Anzahl der Modellparameter (N) und die Anzahl der Token (D) im Trainingsdatensatz die Grundkosten für das Training (Vortraining) oder die Feinabstimmung eines LLM.
 
 
 
+[[enterprise-use-cases-and-downstream-nlp-tasks]]
 === Unternehmensanwendungsfälle und nachgelagerte NLP-Aufgaben
 
 Unternehmen aller Branchen entdecken immer mehr Potenzial für KI, um aus vorhandenen Daten neue Wertschöpfungsformen für Geschäftsabläufe, Vertrieb, Marketing und Rechtsdienstleistungen zu extrahieren und zu produzieren.  Laut Marktinformationen von IDC (International Data Corporation) zu globalen Anwendungsfällen und Investitionen in generative KI wird das Wissensmanagement in der Softwareentwicklung und im Produktdesign am stärksten betroffen sein, gefolgt von der Storyline-Erstellung für das Marketing und der Codegenerierung für Entwickler.  Im Gesundheitswesen betreten klinische Forschungsorganisationen Neuland in der Medizin.  Vortrainierte Modelle wie ProteinBERT enthalten Gene Ontology (GO)-Anmerkungen, um schnell Proteinstrukturen für Medikamente zu entwerfen, was einen bedeutenden Meilenstein in der Arzneimittelforschung, Bioinformatik und Molekularbiologie darstellt.  Biotech-Unternehmen haben Versuche am Menschen mit einem mithilfe generativer KI entdeckten Medikament eingeleitet, das auf die Behandlung von Krankheiten wie der Lungenfibrose (IPF) abzielt, einer Lungenerkrankung, die zu einer irreversiblen Vernarbung des Lungengewebes führt.
@@ -57,12 +62,14 @@ image:gen-ai-003.png["Abbildung 2: Quelle: McKinsey  Company"]
 
 
 
+[[role-of-storage-in-generative-ai]]
 === Rolle des Speichers in der generativen KI
 
 LLMs basieren weitgehend auf Deep Learning, GPUs und Computern.  Wenn der GPU-Puffer jedoch voll ist, müssen die Daten schnell in den Speicher geschrieben werden.  Während einige KI-Modelle klein genug sind, um im Speicher ausgeführt zu werden, erfordern LLMs hohe IOPS und einen Speicher mit hohem Durchsatz, um einen schnellen Zugriff auf große Datensätze zu ermöglichen, insbesondere wenn es sich um Milliarden von Token oder Millionen von Bildern handelt.  Bei einem typischen GPU-Speicherbedarf eines LLM könnte der zum Trainieren eines Modells mit 1 Milliarde Parametern benötigte Speicher bis zu 80 GB bei voller 32-Bit-Präzision betragen.  In diesem Fall benötigt Metas LLaMA 2, eine Familie von LLMs mit einer Größenordnung von 7 bis 70 Milliarden Parametern, möglicherweise 70 x 80, also ca. 5600 GB oder 5,6 TB GPU-RAM.  Darüber hinaus ist die benötigte Speichermenge direkt proportional zur maximalen Anzahl der Token, die Sie generieren möchten.  Wenn Sie beispielsweise Ausgaben von bis zu 512 Token (ca. 380 Wörter) generieren möchten, benötigen Sielink:https://github.com/ray-project/llm-numbers#1-mb-gpu-memory-required-for-1-token-of-output-with-a-13b-parameter-model["512 MB"] .  Dies mag unbedeutend erscheinen, aber wenn Sie größere Chargen verarbeiten möchten, summiert es sich.  Daher ist es für Unternehmen sehr kostspielig, LLMs im Speicher zu trainieren oder zu optimieren, sodass die Speicherung zu einem Eckpfeiler der generativen KI wird.
 
 
 
+[[three-primary-approaches-to-llms]]
 === Drei Hauptansätze für LLMs
 
 Basierend auf den aktuellen Trends lässt sich der Ansatz zur Bereitstellung von LLMs für die meisten Unternehmen auf drei grundlegende Szenarien reduzieren.  Wie in einer kürzlich erschienenenlink:https://hbr.org/2023/07/how-to-train-generative-ai-using-your-companys-data["Harvard Business Review"] Artikel: (1) Training (Vortraining) eines LLM von Grund auf – kostspielig und erfordert Expertenkenntnisse im Bereich KI/ML; (2) Feinabstimmung eines Basismodells mit Unternehmensdaten – komplex, aber machbar; (3) Verwendung von Retrieval-Augmented Generation (RAG) zum Abfragen von Dokument-Repositories, APIs und Vektordatenbanken, die Unternehmensdaten enthalten.  Bei jeder dieser Methoden gibt es Kompromisse zwischen Aufwand, Iterationsgeschwindigkeit, Kosteneffizienz und Modellgenauigkeit in ihren Implementierungen, die zur Lösung unterschiedlicher Arten von Problemen verwendet werden (Diagramm unten).
@@ -73,12 +80,14 @@ image:gen-ai-004.png["Abbildung 3: Problemtypen"]
 
 
 
+[[foundation-models]]
 === Stiftungsmodelle
 
 Ein Foundation-Modell (FM), auch Basismodell genannt, ist ein großes KI-Modell (LLM), das anhand großer Mengen nicht gekennzeichneter Daten trainiert wird, Selbstüberwachung im großen Maßstab nutzt und im Allgemeinen für eine breite Palette nachgelagerter NLP-Aufgaben angepasst ist.  Da die Trainingsdaten nicht von Menschen beschriftet werden, entsteht das Modell, anstatt explizit kodiert zu werden.  Dies bedeutet, dass das Modell eigene Geschichten oder Erzählungen generieren kann, ohne explizit dazu programmiert zu sein.  Daher ist die Homogenisierung ein wichtiges Merkmal von FM, was bedeutet, dass in vielen Bereichen dieselbe Methode verwendet wird.  Dank Personalisierungs- und Feinabstimmungstechniken eignen sich FMs, die heutzutage in neue Produkte integriert werden, jedoch nicht nur gut zum Generieren von Text, zur Umwandlung von Text in Bilder und von Text in Code, sondern auch zum Erklären domänenspezifischer Aufgaben oder zum Debuggen von Code.  Beispielsweise können FMs wie Codex von OpenAI oder Code Llama von Meta Code in mehreren Programmiersprachen basierend auf natürlichsprachlichen Beschreibungen einer Programmieraufgabe generieren.  Diese Modelle beherrschen über ein Dutzend Programmiersprachen, darunter Python, C#, JavaScript, Perl, Ruby und SQL.  Sie verstehen die Absicht des Benutzers und generieren spezifischen Code, der die gewünschte Aufgabe erfüllt und für die Softwareentwicklung, Codeoptimierung und Automatisierung von Programmieraufgaben nützlich ist.
 
 
 
+[[fine-tuning-domain-specificity-and-retraining]]
 === Feinabstimmung, Domänenspezifität und Umschulung
 
 Eine der gängigen Vorgehensweisen bei der LLM-Bereitstellung nach der Datenvorbereitung und -vorverarbeitung besteht darin, ein vortrainiertes Modell auszuwählen, das anhand eines großen und vielfältigen Datensatzes trainiert wurde. Im Kontext der Feinabstimmung kann dies ein Open-Source-Sprachmodell für große Systeme sein, wie zum Beispiellink:https://ai.meta.com/llama/["Metas Lama 2"] trainiert mit 70 Milliarden Parametern und 2 Billionen Token. Sobald das vortrainierte Modell ausgewählt ist, besteht der nächste Schritt darin, es anhand der domänenspezifischen Daten zu optimieren. Dabei werden die Parameter des Modells angepasst und es anhand der neuen Daten trainiert, um es an eine bestimmte Domäne und Aufgabe anzupassen. Beispielsweise BloombergGPT, ein proprietärer LLM, der auf eine breite Palette von Finanzdaten für die Finanzbranche spezialisiert ist.
@@ -95,24 +104,28 @@ image:gen-ai-005.png["Quelle: Microsoft Azure"]
 
 
 
+[[prompt-engineering-and-inferencing]]
 === Prompte Entwicklung und Inferencing
 
 Prompt Engineering bezieht sich auf die effektiven Methoden zur Kommunikation mit LLMs, um gewünschte Aufgaben auszuführen, ohne die Modellgewichte zu aktualisieren.  So wichtig das Training und die Feinabstimmung von KI-Modellen für NLP-Anwendungen ist, so wichtig ist auch das Inferenzieren, bei dem die trainierten Modelle auf Benutzereingaben reagieren.  Die Systemanforderungen für die Inferenz hängen im Allgemeinen viel stärker von der Leseleistung des KI-Speichersystems ab, das Daten von LLMs an die GPUs überträgt, da es in der Lage sein muss, Milliarden gespeicherter Modellparameter anzuwenden, um die beste Antwort zu erzielen.
 
 
 
+[[llmops-model-monitoring-and-vectorstores]]
 === LLMOps, Modellüberwachung und Vectorstores
 
 Wie herkömmliche Machine Learning Ops (MLOps) erfordern auch Large Language Model Operations (LLMOps) die Zusammenarbeit von Datenwissenschaftlern und DevOps-Ingenieuren mit Tools und Best Practices für die Verwaltung von LLMs in Produktionsumgebungen.  Allerdings können der Arbeitsablauf und der Technologie-Stack für LLMs in gewisser Weise variieren.  Beispielsweise reihen LLM-Pipelines, die mit Frameworks wie LangChain erstellt wurden, mehrere LLM-API-Aufrufe an externe Einbettungsendpunkte wie Vektorspeicher oder Vektordatenbanken aneinander.  Die Verwendung eines Einbettungsendpunkts und eines Vektorspeichers für nachgelagerte Konnektoren (z. B. zu einer Vektordatenbank) stellt eine bedeutende Weiterentwicklung in der Art und Weise dar, wie Daten gespeichert und abgerufen werden.  Im Gegensatz zu herkömmlichen ML-Modellen, die von Grund auf neu entwickelt werden, basieren LLMs häufig auf Transferlernen, da diese Modelle mit FMs beginnen, die mit neuen Daten feinabgestimmt werden, um die Leistung in einem spezifischeren Bereich zu verbessern.  Daher ist es von entscheidender Bedeutung, dass LLMOps die Funktionen des Risikomanagements und der Überwachung des Modellverfalls bereitstellt.
 
 
 
+[[risks-and-ethics-in-the-age-of-generative-ai]]
 === Risiken und Ethik im Zeitalter der Generativen KI
 
 „ChatGPT – Es ist schick, aber es verbreitet trotzdem Unsinn.“ – MIT Tech Review.  „Garbage in – Garbage out“ war schon immer eine Herausforderung bei der Datenverarbeitung.  Der einzige Unterschied bei generativer KI besteht darin, dass sie den Müll hervorragend glaubwürdig erscheinen lässt, was zu ungenauen Ergebnissen führt.  LLMs neigen dazu, Fakten zu erfinden, die zu der Erzählung passen, die sie aufbauen.  Daher müssen Unternehmen, die in generativer KI eine großartige Möglichkeit sehen, ihre Kosten mit KI-Äquivalenten zu senken, Deep Fakes effizient erkennen, Voreingenommenheit reduzieren und Risiken senken, um die Ehrlichkeit und Ethik der Systeme zu gewährleisten.  Eine frei fließende Datenpipeline mit einer robusten KI-Infrastruktur, die Datenmobilität, Datenqualität, Datenverwaltung und Datenschutz durch End-to-End-Verschlüsselung und KI-Leitplanken unterstützt, ist für die Entwicklung verantwortungsvoller und erklärbarer generativer KI-Modelle von entscheidender Bedeutung.
 
 
 
+[[customer-scenario-and-netapp]]
 == Kundenszenario und NetApp
 
 Abbildung 3: Workflow für maschinelles Lernen/große Sprachmodelle
@@ -125,6 +138,7 @@ NetApp als Unternehmen integriert KI intern in seine Arbeitskultur und in seinen
 
 
 
+[[netapp-capabilities]]
 == NetApp -Funktionen
 
 Die Bewegung und Verwaltung von Daten in generativen KI-Anwendungen wie Chatbot, Codegenerierung, Bildgenerierung oder Genommodellausdruck kann sich über das Edge-, private Rechenzentrums- und hybride Multicloud-Ökosystem erstrecken.  Beispielsweise kann ein Echtzeit-KI-Bot, der einem Passagier dabei hilft, sein Flugticket über eine Endbenutzer-App, die über APIs vortrainierter Modelle wie ChatGPT verfügbar ist, auf die Business Class upzugraden, diese Aufgabe nicht alleine bewältigen, da die Passagierinformationen nicht öffentlich im Internet verfügbar sind.  Die API erfordert Zugriff auf die persönlichen Daten des Passagiers und die Ticketinformationen der Fluggesellschaft, die in einem Hybrid- oder Multicloud-Ökosystem vorhanden sein können.  Ein ähnliches Szenario könnte für Wissenschaftler gelten, die ein Arzneimittelmolekül und Patientendaten über eine Endbenutzeranwendung austauschen, die LLMs verwendet, um klinische Studien im Rahmen der Arzneimittelforschung durchzuführen, an denen eine oder mehrere biomedizinische Forschungseinrichtungen beteiligt sind.  Zu den sensiblen Daten, die an FMs oder LLMs weitergegeben werden, können personenbezogene Daten, Finanzinformationen, Gesundheitsinformationen, biometrische Daten, Standortdaten, Kommunikationsdaten, Daten zum Online-Verhalten und rechtliche Informationen gehören.  Bei einem solchen Fall von Echtzeit-Rendering, sofortiger Ausführung und Edge-Inferenz werden Daten von der Endbenutzer-App über Open Source- oder proprietäre LLM-Modelle zu Speicherendpunkten in ein Rechenzentrum vor Ort oder auf öffentliche Cloud-Plattformen verschoben.  In all diesen Szenarien sind Datenmobilität und Datenschutz für die KI-Operationen mit LLMs von entscheidender Bedeutung, die auf großen Trainingsdatensätzen und der Bewegung solcher Daten beruhen.
@@ -163,24 +177,28 @@ Der * NetApp Cloud Sync*-Dienst bietet eine einfache und sichere Möglichkeit, D
 
 
 
+[[ontap-ai-with-dgx-basepod]]
 === * ONTAP AI mit DGX BasePOD*
 
 Die NetApp ONTAP AI-Referenzarchitektur mit NVIDIA DGX BasePOD ist eine skalierbare Architektur für Workloads im Bereich maschinelles Lernen (ML) und künstliche Intelligenz (KI).  Für die kritische Trainingsphase von LLMs werden Daten typischerweise in regelmäßigen Abständen aus dem Datenspeicher in den Trainingscluster kopiert.  Die in dieser Phase eingesetzten Server nutzen GPUs zur Parallelisierung von Berechnungen, wodurch ein enormer Datenhunger entsteht.  Um eine hohe GPU-Auslastung aufrechtzuerhalten, ist es entscheidend, den Bedarf an Roh-E/A-Bandbreite zu decken.
 
 
 
+[[ontap-ai-with-nvidia-ai-enterprise]]
 === * ONTAP AI mit NVIDIA AI Enterprise*
 
 NVIDIA AI Enterprise ist eine durchgängige, Cloud-native Suite von KI- und Datenanalysesoftware, die von NVIDIA für die Ausführung auf VMware vSphere mit NVIDIA-zertifizierten Systemen optimiert, zertifiziert und unterstützt wird.  Diese Software ermöglicht die einfache und schnelle Bereitstellung, Verwaltung und Skalierung von KI-Workloads in der modernen Hybrid-Cloud-Umgebung.  NVIDIA AI Enterprise, unterstützt von NetApp und VMware, bietet KI-Workload- und Datenmanagement der Enterprise-Klasse in einem vereinfachten, vertrauten Paket.
 
 
 
+[[1p-cloud-platforms]]
 === *1P Cloud-Plattformen*
 
 Vollständig verwaltete Cloud-Speicherangebote sind nativ auf Microsoft Azure als Azure NetApp Files (ANF), auf AWS als Amazon FSx for NetApp ONTAP (FSx ONTAP) und auf Google als Google Cloud NetApp Volumes (GNCV) verfügbar.  1P ist ein verwaltetes, leistungsstarkes Dateisystem, das es Kunden ermöglicht, hochverfügbare KI-Workloads mit verbesserter Datensicherheit in öffentlichen Clouds auszuführen, um LLMs/FMs mit Cloud-nativen ML-Plattformen wie AWS SageMaker, Azure-OpenAI Services und Googles Vertex AI zu optimieren.
 
 
 
+[[netapp-partner-solution-suite]]
 == NetApp Partner Solution Suite
 
 Zusätzlich zu seinen Kerndatenprodukten, -technologien und -funktionen arbeitet NetApp auch eng mit einem robusten Netzwerk von KI-Partnern zusammen, um den Kunden einen Mehrwert zu bieten.
@@ -195,6 +213,7 @@ Zusätzlich zu seinen Kerndatenprodukten, -technologien und -funktionen arbeitet
 
 
 
+[[conclusion]]
 == Abschluss
 
 Generative KI kann nur dann effektive Ergebnisse erzielen, wenn das Modell anhand großer Mengen hochwertiger Daten trainiert wird.  Obwohl LLMs bemerkenswerte Meilensteine erreicht haben, ist es wichtig, ihre Grenzen, Designherausforderungen und Risiken im Zusammenhang mit Datenmobilität und Datenqualität zu erkennen.  LLMs basieren auf großen und unterschiedlichen Trainingsdatensätzen aus heterogenen Datenquellen.  Ungenaue oder verzerrte Ergebnisse der Modelle können sowohl Unternehmen als auch Verbraucher gefährden.  Diese Risiken können Einschränkungen für LLMs entsprechen, die möglicherweise aus Herausforderungen im Datenmanagement im Zusammenhang mit Datenqualität, Datensicherheit und Datenmobilität entstehen.  NetApp unterstützt Unternehmen dabei, die Komplexität zu bewältigen, die durch schnelles Datenwachstum, Datenmobilität, Multi-Cloud-Management und die Einführung von KI entsteht.  Eine maßstabsgetreue KI-Infrastruktur und ein effizientes Datenmanagement sind entscheidend für den Erfolg von KI-Anwendungen wie generativer KI.  Für die Kunden ist es entscheidend, alle Bereitstellungsszenarien abzudecken, ohne Kompromisse bei der Expansionsfähigkeit einzugehen, die die Unternehmen benötigen, und gleichzeitig Kosteneffizienz, Datenverwaltung und ethische KI-Praktiken unter Kontrolle zu halten.  NetApp arbeitet ständig daran, Kunden dabei zu unterstützen, ihre KI-Bereitstellungen zu vereinfachen und zu beschleunigen.

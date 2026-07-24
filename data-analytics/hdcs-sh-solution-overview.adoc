@@ -33,6 +33,7 @@ Dieses Dokument beschreibt Hybrid-Cloud-Datenlösungen mit NetApp AFF und FAS Sp
 
 
 
+[[why-hadoop-data-protection]]
 == Warum Hadoop-Datenschutz?
 
 In einer Hadoop- und Spark-Umgebung müssen die folgenden Aspekte berücksichtigt werden:
@@ -44,6 +45,7 @@ In einer Hadoop- und Spark-Umgebung müssen die folgenden Aspekte berücksichtig
 
 
 
+[[data-protection-challenges-for-hadoop-and-spark-customers]]
 == Datenschutzherausforderungen für Hadoop- und Spark-Kunden
 
 Eine häufige Herausforderung für Hadoop- und Spark-Kunden besteht darin, die Sicherungszeit zu verkürzen und die Zuverlässigkeit der Sicherung zu erhöhen, ohne die Leistung des Produktionsclusters während der Datensicherung negativ zu beeinflussen.

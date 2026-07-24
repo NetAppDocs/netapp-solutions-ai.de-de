@@ -35,6 +35,7 @@ Für diese Lösung verwenden wir den Face Detection Data Set and Benchmark (FDDB
 
 
 
+[[target-audience]]
 == Zielgruppe
 
 Dieser technische Bericht richtet sich an folgende Zielgruppen:
@@ -48,6 +49,7 @@ Dieser technische Bericht richtet sich an folgende Zielgruppen:
 
 
 
+[[solution-architecture]]
 == Lösungsarchitektur
 
 Diese Lösung ist für die Verarbeitung von KI-Workloads mit Echtzeit- und Batch-Inferenz auf großen Datensätzen konzipiert, indem sie die Verarbeitungsleistung von GPUs neben herkömmlichen CPUs nutzt.  Diese Validierung demonstriert die datenschutzkonforme Schlussfolgerung für ML und optimales Datenmanagement, die für Organisationen erforderlich sind, die verantwortungsvolle KI-Bereitstellungen anstreben.  Diese Lösung bietet eine Architektur, die für eine Kubernetes-Plattform mit einem oder mehreren Knoten für Edge- und Cloud-Computing geeignet ist, die mit NetApp ONTAP AI im Kern vor Ort, NetApp DataOps Toolkit und Protopia-Verschleierungssoftware unter Verwendung von Jupyter Lab und CLI-Schnittstellen verbunden ist.  Die folgende Abbildung zeigt die Übersicht über die logische Architektur des Data Fabric, das von NetApp mit DataOps Toolkit und Protopia betrieben wird.

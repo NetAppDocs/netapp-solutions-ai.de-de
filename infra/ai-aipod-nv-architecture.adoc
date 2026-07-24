@@ -18,6 +18,7 @@ Dieser Abschnitt konzentriert sich auf die Architektur für den NetApp AIPod mit
 
 
 
+[[netapp-aipod-with-dgx-systems]]
 == NetApp AIPod mit DGX-Systemen
 
 Diese Referenzarchitektur nutzt separate Fabrics für die Verbindung von Rechenclustern und den Speicherzugriff mit 400 Gb/s InfiniBand (IB)-Konnektivität zwischen Rechenknoten.  Die folgende Zeichnung zeigt die Gesamtlösungstopologie von NetApp AIPod mit DGX H100-Systemen.
@@ -28,6 +29,7 @@ image:aipod-nv-a90-topo.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt o
 
 
 
+[[network-design]]
 == Netzwerkdesign
 
 In dieser Konfiguration verwendet das Compute-Cluster-Fabric ein Paar QM9700 400Gb/s IB-Switches, die für eine hohe Verfügbarkeit miteinander verbunden sind.  Jedes DGX H100-System ist über acht Verbindungen mit den Switches verbunden, wobei die Ports mit geraden Nummern mit einem Switch und die Ports mit ungeraden Nummern mit dem anderen Switch verbunden sind.
@@ -38,6 +40,7 @@ Zusätzlich zur Computerverbindung und den Hochgeschwindigkeits-Ethernet-Netzwer
 
 
 
+[[storage-access-overview-for-dgx-h100-systems]]
 == Speicherzugriffsübersicht für DGX H100-Systeme
 
 Jedes DGX H100-System ist mit zwei ConnectX-7-Adaptern mit zwei Ports für Verwaltungs- und Speicherverkehr ausgestattet und für diese Lösung sind beide Ports auf jeder Karte mit demselben Switch verbunden.  Ein Port von jeder Karte wird dann in eine LACP MLAG-Verbindung konfiguriert, wobei ein Port mit jedem Switch verbunden ist, und VLANs für In-Band-Management, Clientzugriff und Speicherzugriff auf Benutzerebene werden auf dieser Verbindung gehostet.
@@ -48,6 +51,7 @@ Weitere Einzelheiten zur Konnektivität des DGX H100-Systems finden Sie in derli
 
 
 
+[[storage-system-design]]
 == Speichersystemdesign
 
 Jedes AFF A90 Speichersystem ist über sechs 200-GbE-Ports von jedem Controller aus verbunden.  Vier Ports von jedem Controller werden für den Workload-Datenzugriff von den DGX-Systemen verwendet und zwei Ports von jedem Controller sind als LACP-Schnittstellengruppe konfiguriert, um den Zugriff von den Management-Plane-Servern auf Cluster-Management-Artefakte und Benutzer-Home-Verzeichnisse zu unterstützen.  Der gesamte Datenzugriff vom Speichersystem erfolgt über NFS, wobei eine Storage Virtual Machine (SVM) für den Zugriff auf KI-Workloads und eine separate SVM für Clusterverwaltungszwecke vorgesehen ist.
@@ -60,6 +64,7 @@ image:aipod-nv-a90-logical.png["Abbildung, die einen Eingabe-/Ausgabedialog zeig
 
 
 
+[[management-plane-servers]]
 == Management-Plane-Server
 
 Diese Referenzarchitektur umfasst außerdem fünf CPU-basierte Server für den Einsatz auf Verwaltungsebene.  Zwei dieser Systeme werden als Hauptknoten für NVIDIA Base Command Manager zur Clusterbereitstellung und -verwaltung verwendet.  Die anderen drei Systeme werden verwendet, um zusätzliche Clusterdienste wie Kubernetes-Masterknoten oder Anmeldeknoten für Bereitstellungen bereitzustellen, die Slurm für die Jobplanung verwenden.  Bereitstellungen mit Kubernetes können den NetApp Trident CSI-Treiber nutzen, um automatisierte Bereitstellungs- und Datendienste mit persistentem Speicher für Management- und KI-Workloads auf dem AFF A900 Speichersystem bereitzustellen.

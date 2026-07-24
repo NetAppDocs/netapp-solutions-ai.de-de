@@ -18,6 +18,7 @@ In diesem Abschnitt wird die in dieser Lösung verwendete Technologie beschriebe
 
 
 
+[[netapp-ontap-storage-controller]]
 == NetApp ONTAP Speichercontroller
 
 NetApp ONTAP ist ein leistungsstarkes Speicherbetriebssystem der Enterprise-Klasse.
@@ -32,12 +33,14 @@ image:kafka-sc-004.png["Diese Grafik zeigt die Anwendung beim Zugriff auf einen 
 
 
 
+[[primary-use-cases]]
 == Primäre Anwendungsfälle
 
 Der Hauptzweck der Unterstützung von S3-APIs besteht darin, Objektzugriff auf ONTAP bereitzustellen.  Die einheitliche Speicherarchitektur von ONTAP unterstützt jetzt Dateien (NFS und SMB), Blöcke (FC und iSCSI) und Objekte (S3).
 
 
 
+[[native-s3-applications]]
 == Native S3-Anwendungen
 
 Immer mehr Anwendungen können die ONTAP Unterstützung für den Objektzugriff mit S3 nutzen.  Obwohl sie für Archivierungs-Workloads mit hoher Kapazität gut geeignet sind, wächst der Bedarf an hoher Leistung in nativen S3-Anwendungen schnell und umfasst:
@@ -52,6 +55,7 @@ Kunden können jetzt vertraute Verwaltungstools wie ONTAP System Manager verwend
 
 
 
+[[fabricpool-endpoints]]
 == FabricPool -Endpunkte
 
 Ab ONTAP 9.8 unterstützt FabricPool die Tiering-Funktion für Buckets in ONTAP und ermöglicht so ONTAP-zu- ONTAP -Tiering.  Dies ist eine hervorragende Option für Kunden, die ihre vorhandene FAS Infrastruktur als Objektspeicher-Endpunkt umfunktionieren möchten.
@@ -66,6 +70,7 @@ ONTAP S3 ist geeignet, wenn Sie S3-Funktionen auf vorhandenen Clustern ohne zus�
 
 
 
+[[netapp-ontap-for-confluent-tiered-storage]]
 === NetApp ONTAP für Confluent Tiered Storage
 
 In jedem Rechenzentrum müssen geschäftskritische Anwendungen ausgeführt werden und wichtige Daten verfügbar und sicher sein.  Das neue NetApp AFF A900 -System basiert auf der Software ONTAP Enterprise Edition und verfügt über ein hoch belastbares Design.  Unser neues blitzschnelles NVMe-Speichersystem verhindert Störungen unternehmenskritischer Vorgänge, minimiert die Leistungsoptimierung und schützt Ihre Daten vor Ransomware-Angriffen.
@@ -78,6 +83,7 @@ Ein ONTAP S3-Server basiert auf den ausgereiften Scale-Out-Speicherfunktionen vo
 
 
 
+[[simple-management-with-ontap-system-manager]]
 === Einfache Verwaltung mit ONTAP System Manager
 
 ONTAP System Manager ist eine browserbasierte grafische Benutzeroberfläche, mit der Sie Ihren ONTAP -Speichercontroller an weltweit verteilten Standorten in einer einzigen Konsole konfigurieren, verwalten und überwachen können.
@@ -104,18 +110,21 @@ Wenn Sie angeben möchten, welche Aggregate für Buckets verwendet werden, könn
 
 
 
+[[confluent]]
 == Zusammenfließend
 
 Confluent Platform ist eine umfassende Daten-Streaming-Plattform, die Ihnen den einfachen Zugriff auf Daten sowie deren Speicherung und Verwaltung als kontinuierliche Echtzeit-Streams ermöglicht.  Confluent wurde von den ursprünglichen Entwicklern von Apache Kafka entwickelt und erweitert die Vorteile von Kafka um Funktionen auf Unternehmensniveau, während es gleichzeitig den Aufwand für die Verwaltung oder Überwachung von Kafka verringert.  Heute nutzen über 80 % der Fortune 100-Unternehmen Datenstreaming-Technologie und die meisten davon verwenden Confluent.
 
 
 
+[[why-confluent]]
 === Warum Confluent?
 
 Durch die Integration historischer und Echtzeitdaten in eine einzige, zentrale Quelle der Wahrheit erleichtert Confluent den Aufbau einer völlig neuen Kategorie moderner, ereignisgesteuerter Anwendungen, den Aufbau einer universellen Datenpipeline und die Erschließung leistungsstarker neuer Anwendungsfälle mit voller Skalierbarkeit, Leistung und Zuverlässigkeit.
 
 
 
+[[what-is-confluent-used-for]]
 === Wofür wird Confluent verwendet?
 
 Mit der Confluent Platform können Sie sich darauf konzentrieren, wie Sie aus Ihren Daten geschäftlichen Nutzen ziehen, anstatt sich um die zugrunde liegenden Mechanismen zu kümmern, beispielsweise darum, wie Daten zwischen unterschiedlichen Systemen transportiert oder integriert werden.  Insbesondere vereinfacht die Confluent Platform die Verbindung von Datenquellen mit Kafka, die Erstellung von Streaming-Anwendungen sowie die Sicherung, Überwachung und Verwaltung Ihrer Kafka-Infrastruktur.  Heute wird die Confluent Platform für eine breite Palette von Anwendungsfällen in zahlreichen Branchen eingesetzt, von Finanzdienstleistungen, Omnichannel-Einzelhandel und autonomen Autos bis hin zu Betrugserkennung, Microservices und IoT.
@@ -126,6 +135,7 @@ image:kafka-sc-006.png["Diese Grafik zeigt die Komponenten der Confluent Platfor
 
 
 
+[[overview-of-confluent-event-streaming-technology]]
 === Übersicht über die Confluent Event-Streaming-Technologie
 
 Der Kern der Confluent Platform ist https://kafka.apache.org/["Kafka"^] , die beliebteste Open-Source-Plattform für verteiltes Streaming.  Zu den wichtigsten Funktionen von Kafka gehören die folgenden:
@@ -139,6 +149,7 @@ Die Confluent Platform umfasst standardmäßig auch Schema Registry, REST Proxy,
 
 
 
+[[overview-of-confluent-platform-enterprise-features]]
 === Übersicht über die Enterprise-Funktionen der Confluent-Plattform
 
 * *Confluent-Kontrollzentrum.*  Ein UI-basiertes System zur Verwaltung und Überwachung von Kafka.  Es ermöglicht Ihnen die einfache Verwaltung von Kafka Connect und das Erstellen, Bearbeiten und Verwalten von Verbindungen zu anderen Systemen.

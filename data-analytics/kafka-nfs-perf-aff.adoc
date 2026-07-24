@@ -22,12 +22,14 @@ image:kafka-nfs-032.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder 
 
 
 
+[[storage-configuration]]
 == Storage-Konfiguration
 
 Wir haben NetApp FlexGroups-Instanzen verwendet, um einen einzigen Namespace für Protokollverzeichnisse bereitzustellen und so die Wiederherstellung und Konfiguration zu vereinfachen.  Wir haben NFSv4.1 und pNFS verwendet, um einen direkten Pfadzugriff auf die Daten des Protokollsegments zu ermöglichen.
 
 
 
+[[client-tuning]]
 == Client-Tuning
 
 Jeder Client hat die FlexGroup -Instanz mit dem folgenden Befehl gemountet.
@@ -39,6 +41,7 @@ Darüber hinaus erhöhten wir die `max_session_slots`` von der Standardeinstellu
 
 
 
+[[kafka-broker-tuning]]
 == Kafka-Broker-Tuning
 
 Um den Durchsatz im Testsystem zu maximieren, haben wir die Standardparameter für bestimmte wichtige Thread-Pools deutlich erhöht.  Wir empfehlen, für die meisten Konfigurationen die Best Practices von Confluent Kafka zu befolgen.  Diese Optimierung wurde verwendet, um die Parallelität ausstehender E/A-Vorgänge zum Speicher zu maximieren.  Diese Parameter können angepasst werden, um den Rechenressourcen und Speicherattributen Ihres Brokers zu entsprechen.
@@ -53,6 +56,7 @@ queued.max.requests=2000
 ....
 
 
+[[workload-generator-testing-methodology]]
 == Testmethodik für Workload-Generatoren
 
 Wir haben für den Durchsatztreiber und die Themenkonfiguration dieselben OMB-Konfigurationen wie für Cloud-Tests verwendet.
@@ -115,6 +119,7 @@ sudo bin/benchmark --drivers driver-kafka/kafka-throughput.yaml workloads/1-topi
 
 
 
+[[steady-state-performance]]
 === Steady-State-Leistung
 
 Wir haben die AFF A900 mithilfe des OpenMessaging Benchmarks bewertet, um einen ähnlichen Vergleich wie für Cloud Volumes ONTAP in AWS und DAS in AWS zu ermöglichen.  Alle Leistungswerte stellen den Durchsatz des Kafka-Clusters auf Produzenten- und Verbraucherebene dar.
@@ -129,6 +134,7 @@ image:kafka-nfs-034.png["Dieses Diagramm zeigt den Broker-Netzwerkdurchsatz."]
 
 
 
+[[extreme-performance-and-exploring-storage-limits]]
 == Extreme Leistung und Ausloten der Speichergrenzen
 
 Für AFF haben wir auch mit OMB unter Verwendung der Backlog-Funktion getestet.  Die Backlog-Funktion pausiert Verbraucherabonnements, während sich im Kafka-Cluster ein Rückstand an Ereignissen aufbaut.  Während dieser Phase tritt nur Produzentenverkehr auf, der Ereignisse generiert, die in Protokollen festgehalten werden.  Dies emuliert am ehesten die Stapelverarbeitung oder Offline-Analyse-Workflows. In diesen Workflows werden Verbraucherabonnements gestartet und müssen historische Daten lesen, die bereits aus dem Broker-Cache entfernt wurden.
@@ -155,6 +161,7 @@ Nachdem OMB das Auffüllen des Eventbacklogs abgeschlossen hatte, wurde der Verb
 
 
 
+[[sizing-guidance]]
 == Größenberatung
 
 Amazon Web Services bietet eine https://aws.amazon.com/blogs/big-data/best-practices-for-right-sizing-your-apache-kafka-clusters-to-optimize-performance-and-cost/["Größentabelle"^] zur Größenbestimmung und Skalierung von Kafka-Clustern.

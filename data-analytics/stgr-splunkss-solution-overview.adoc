@@ -18,6 +18,7 @@ Auf dieser Seite werden die Komponenten beschrieben, die zur Vervollständigung 
 
 
 
+[[netapp-storagegrid]]
 == NetApp StorageGRID
 
 NetApp StorageGRID ist eine leistungsstarke und kostengünstige Objektspeicherplattform.  Es bietet intelligentes, richtliniengesteuertes globales Datenmanagement mithilfe einer verteilten, knotenbasierten Grid-Architektur.  Es vereinfacht die Verwaltung von Petabytes unstrukturierter Daten und Milliarden von Objekten durch seinen allgegenwärtigen globalen Objekt-Namespace in Kombination mit ausgefeilten Datenverwaltungsfunktionen.  Der Objektzugriff mit einem einzigen Aufruf erstreckt sich über mehrere Standorte und vereinfacht Hochverfügbarkeitsarchitekturen, während gleichzeitig ein kontinuierlicher Objektzugriff unabhängig von Standort- oder Infrastrukturausfällen gewährleistet wird.
@@ -28,6 +29,7 @@ SmartStore nutzt StorageGRID als Remote-Speicherebene und ermöglicht Kunden die
 
 
 
+[[splunk-enterprise]]
 == Splunk Enterprise
 
 Splunk, ein führendes Unternehmen im Bereich der Erfassung und Analyse maschinengenerierter Daten, trägt durch seine operativen Analysefunktionen zur Vereinfachung und Modernisierung der IT bei.  Darüber hinaus wird es auf Anwendungsfälle in den Bereichen Geschäftsanalyse, Sicherheit und IoT ausgeweitet.  Speicher ist ein entscheidender Faktor für die erfolgreiche Bereitstellung der Splunk-Software.
@@ -36,6 +38,7 @@ Maschinengenerierte Daten sind die am schnellsten wachsende Art von Big Data.  D
 
 
 
+[[splunk-smartstore]]
 == Splunk SmartStore
 
 Splunk SmartStore ist eine Indexerfunktion, die Objektspeicher (auch als Remote-Speicher oder Remote-Speicherebenen bezeichnet) wie StorageGRID verwendet, um warme Daten mithilfe des S3-Protokolls zu speichern.

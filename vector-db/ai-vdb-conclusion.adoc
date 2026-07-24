@@ -18,6 +18,7 @@ Dieser Abschnitt schließt die Vektordatenbanklösung für NetApp ab.
 
 
 
+[[conclusion]]
 == Abschluss
 
 Zusammenfassend bietet dieses Dokument einen umfassenden Überblick über die Bereitstellung und Verwaltung von Vektordatenbanken wie Milvus und pgvector auf NetApp -Speicherlösungen.  Wir haben die Infrastrukturrichtlinien für die Nutzung von NetApp ONTAP und StorageGRID Objektspeicher besprochen und die Milvus-Datenbank in AWS FSx ONTAP über Datei- und Objektspeicher validiert.
@@ -30,6 +31,7 @@ Abschließend haben wir zwei Anwendungsfälle für generative KI besprochen: RAG
 
 
 
+[[acknowledgments]]
 === Danksagung
 
 Der Autor möchte den unten aufgeführten Mitwirkenden und anderen Personen, die durch ihr Feedback und ihre Kommentare dazu beigetragen haben, dass dieses Dokument für NetApp Kunden und NetApp Bereiche wertvoll ist, herzlich danken.
@@ -44,6 +46,7 @@ Der Autor möchte den unten aufgeführten Mitwirkenden und anderen Personen, die
 
 
 
+[[where-to-find-additional-information]]
 === Wo Sie weitere Informationen finden
 
 Weitere Informationen zu den in diesem Dokument beschriebenen Informationen finden Sie in den folgenden Dokumenten und/oder auf den folgenden Websites:
@@ -56,6 +59,7 @@ Weitere Informationen zu den in diesem Dokument beschriebenen Informationen find
 
 
 
+[[version-history]]
 === Versionsverlauf
 
 |===

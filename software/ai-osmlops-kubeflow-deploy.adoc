@@ -18,6 +18,7 @@ In diesem Abschnitt werden die Aufgaben beschrieben, die Sie ausführen müssen,
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
@@ -28,6 +29,7 @@ Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführe
 
 
 
+[[set-default-kubernetes-storageclass]]
 == Standardmäßige Kubernetes-Speicherklasse festlegen
 
 Bevor Sie Kubeflow bereitstellen, empfehlen wir, eine Standard-StorageClass in Ihrem Kubernetes-Cluster festzulegen.  Der Kubeflow-Bereitstellungsprozess versucht möglicherweise, neue persistente Volumes mithilfe der Standard-StorageClass bereitzustellen.  Wenn keine StorageClass als Standard-StorageClass festgelegt ist, kann die Bereitstellung fehlschlagen.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, führen Sie die folgende Aufgabe vom Bereitstellungs-Jump-Host aus.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
@@ -56,6 +58,7 @@ ontap-ai-flexvols-retain (default)   csi.trident.netapp.io   54s
 ....
 
 
+[[kubeflow-deployment-options]]
 == Kubeflow-Bereitstellungsoptionen
 
 Es gibt viele verschiedene Optionen für die Bereitstellung von Kubeflow.  Weitere Informationen finden Sie imlink:https://www.kubeflow.org/docs/started/installing-kubeflow/["offizielle Kubeflow-Dokumentation"] Klicken Sie auf „Weiter“, um eine Liste der Bereitstellungsoptionen anzuzeigen, und wählen Sie die Option aus, die Ihren Anforderungen am besten entspricht.

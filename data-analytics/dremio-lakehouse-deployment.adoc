@@ -18,6 +18,7 @@ Bei dieser Referenzarchitekturvalidierung verwendeten wir eine Dremio-Konfigurat
 
 
 
+[[netapp-setup]]
 === NetApp -Setup
 
 * Initialisierung des Speichersystems
@@ -42,12 +43,14 @@ Bitte befolgen Sie die folgenden Schritte für S3 (Simple Storage Service):
 
 
 
+[[zookeeper-setup]]
 === Zookeeper-Setup
 
 Sie können die von Dremio bereitgestellte Zookeeper-Konfiguration verwenden.  Bei dieser Validierung haben wir einen separaten Zookeeper verwendet. Wir haben die in diesem Weblink genannten Schritte befolgt https://medium.com/@ahmetfurkandemir/distributed-hadoop-cluster-1-spark-with-all-dependincies-03c8ec616166[]
 
 
 
+[[dremio-setup]]
 === Dremio-Einrichtung
 
 Wir sind diesem Weblink gefolgt, um Dremio per Tarball zu installieren.
@@ -237,6 +240,7 @@ NOTE: NetApp empfiehlt StorageGRID als primäre Objektspeicherlösung für Datal
 
 
 
+[[multiple-sources-setup]]
 === Einrichtung mehrerer Quellen
 
 . Konfigurieren Sie ONTAP S3 und storageGRID als S3-Quelle in Dremio.

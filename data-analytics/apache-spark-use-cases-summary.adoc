@@ -18,6 +18,7 @@ Auf dieser Seite werden die verschiedenen Bereiche beschrieben, in denen diese L
 
 
 
+[[streaming-data]]
 == Streaming-Daten
 
 Apache Spark kann Streaming-Daten verarbeiten, die für Streaming-Extract-, Transform- und Load-Prozesse (ETL), Datenanreicherung, Auslösen von Ereigniserkennung und komplexe Sitzungsanalysen verwendet werden:
@@ -32,12 +33,14 @@ Weitere Informationen zur Konfiguration von Streaming-Daten, zur Confluent Kafka
 
 
 
+[[machine-learning]]
 == Maschinelles Lernen
 
 Das integrierte Spark-Framework unterstützt Sie beim Ausführen wiederholter Abfragen von Datensätzen mithilfe der Machine Learning-Bibliothek (MLlib).  MLlib wird in Bereichen wie Clustering, Klassifizierung und Dimensionsreduktion für einige gängige Big-Data-Funktionen wie Predictive Intelligence, Kundensegmentierung für Marketingzwecke und Stimmungsanalyse verwendet.  MLlib wird in der Netzwerksicherheit verwendet, um Datenpakete in Echtzeit auf Anzeichen böswilliger Aktivitäten zu überprüfen.  Es hilft Sicherheitsanbietern, sich über neue Bedrohungen zu informieren, Hackern immer einen Schritt voraus zu sein und gleichzeitig ihre Kunden in Echtzeit zu schützen.
 
 
 
+[[deep-learning]]
 == Tiefes Lernen
 
 TensorFlow ist ein beliebtes Deep-Learning-Framework, das in der gesamten Branche verwendet wird.  TensorFlow unterstützt das verteilte Training auf einem CPU- oder GPU-Cluster.  Dieses verteilte Training ermöglicht es Benutzern, es auf einer großen Datenmenge mit vielen tiefen Schichten auszuführen.
@@ -48,12 +51,14 @@ DataFrames und RDD in früheren Spark-Versionen waren für Deep Learning nicht g
 
 
 
+[[interactive-analysis]]
 == Interaktive Analyse
 
 Apache Spark ist schnell genug, um explorative Abfragen ohne Sampling mit anderen Entwicklungssprachen als Spark durchzuführen, darunter SQL, R und Python.  Spark verwendet Visualisierungstools, um komplexe Daten zu verarbeiten und interaktiv zu visualisieren.  Spark mit strukturiertem Streaming führt interaktive Abfragen für Livedaten in der Webanalyse durch, die es Ihnen ermöglichen, interaktive Abfragen für die aktuelle Sitzung eines Webbesuchers auszuführen.
 
 
 
+[[recommender-system]]
 == Empfehlungssystem
 
 Im Laufe der Jahre haben Empfehlungssysteme enorme Veränderungen in unser Leben gebracht, da Unternehmen und Verbraucher auf dramatische Veränderungen beim Online-Shopping, der Online-Unterhaltung und vielen anderen Branchen reagiert haben.  Tatsächlich gehören diese Systeme zu den offensichtlichsten Erfolgsgeschichten der KI in der Produktion.  In vielen praktischen Anwendungsfällen werden Empfehlungssysteme mit Konversations-KI oder Chatbots kombiniert, die mit einem NLP-Backend verbunden sind, um relevante Informationen zu erhalten und nützliche Schlussfolgerungen zu ziehen.
@@ -64,6 +69,7 @@ Es gibt mehrere gängige Techniken zum Bereitstellen von Empfehlungen, darunter 
 
 
 
+[[natural-language-processing]]
 == Verarbeitung natürlicher Sprache
 
 Konversations-KI, die durch die Verarbeitung natürlicher Sprache (NLP) ermöglicht wird, ist der Zweig der KI, der Computern bei der Kommunikation mit Menschen hilft.  NLP ist in allen Branchen und vielen Anwendungsfällen weit verbreitet, von intelligenten Assistenten und Chatbots bis hin zur Google-Suche und Textvorhersage.  Laut einer https://www.forbes.com/sites/forbestechcouncil/2021/05/07/nice-chatbot-ing-with-you/?sh=7011eff571f4["Gartner"^] Prognosen zufolge werden bis 2022 70 % der Menschen täglich mit Konversations-KI-Plattformen interagieren.  Für eine qualitativ hochwertige Konversation zwischen Mensch und Maschine müssen die Antworten schnell, intelligent und natürlich klingen.

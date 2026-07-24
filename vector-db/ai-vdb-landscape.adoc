@@ -18,6 +18,7 @@ Dieser Abschnitt behandelt die Definition und Verwendung einer Vektordatenbank i
 
 
 
+[[vector-database]]
 == Vektordatenbank
 
 Eine Vektordatenbank ist ein spezialisierter Datenbanktyp, der für die Verarbeitung, Indizierung und Suche unstrukturierter Daten mithilfe von Einbettungen aus Modellen des maschinellen Lernens konzipiert ist.  Anstatt Daten in einem herkömmlichen Tabellenformat zu organisieren, werden sie als hochdimensionale Vektoren angeordnet, die auch als Vektoreinbettungen bezeichnet werden.  Diese einzigartige Struktur ermöglicht es der Datenbank, komplexe, mehrdimensionale Daten effizienter und genauer zu verarbeiten.
@@ -28,6 +29,7 @@ Darüber hinaus eignen sich Vektordatenbanken gut für die Verarbeitung zeitlich
 
 
 
+[[advantages-of-vector-database-for-ml-and-ai]]
 === Vorteile der Vektordatenbank für ML und KI:
 
 * Hochdimensionale Suche: Vektordatenbanken eignen sich hervorragend zum Verwalten und Abrufen hochdimensionaler Daten, die häufig in KI- und ML-Anwendungen generiert werden.
@@ -39,6 +41,7 @@ Darüber hinaus eignen sich Vektordatenbanken gut für die Verarbeitung zeitlich
 
 
 
+[[vector-databases-and-use-cases]]
 === Vektordatenbanken und Anwendungsfälle.
 
 Dieser Abschnitt enthält verschiedene Vektordatenbanken und Einzelheiten zu ihren Anwendungsfällen.

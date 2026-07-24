@@ -21,6 +21,7 @@ NOTE: Es ist möglich, Airflow auf anderen Plattformen als Kubernetes bereitzust
 
 
 
+[[prerequisites]]
 == Voraussetzungen
 
 Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführen, gehen wir davon aus, dass Sie die folgenden Aufgaben bereits ausgeführt haben:
@@ -31,18 +32,21 @@ Bevor Sie die in diesem Abschnitt beschriebene Bereitstellungsübung durchführe
 
 
 
+[[install-helm]]
 == Helm installieren
 
 Airflow wird mit Helm bereitgestellt, einem beliebten Paketmanager für Kubernetes.  Bevor Sie Airflow bereitstellen, müssen Sie Helm auf dem Bereitstellungs-Jump-Host installieren.  Um Helm auf dem Bereitstellungs-Jump-Host zu installieren, folgen Sie den https://helm.sh/docs/intro/install/["Installationsanweisungen"^] in der offiziellen Helm-Dokumentation.
 
 
 
+[[set-default-kubernetes-storageclass]]
 == Standardmäßige Kubernetes-Speicherklasse festlegen
 
 Bevor Sie Airflow bereitstellen, müssen Sie eine Standard-StorageClass in Ihrem Kubernetes-Cluster festlegen.  Der Airflow-Bereitstellungsprozess versucht, neue persistente Volumes mithilfe der Standard-StorageClass bereitzustellen.  Wenn keine StorageClass als Standard-StorageClass festgelegt ist, schlägt die Bereitstellung fehl.  Um eine Standard-StorageClass innerhalb Ihres Clusters festzulegen, folgen Sie den Anweisungen imlink:ai-osmlops-kubeflow-deploy.html["Kubeflow-Bereitstellung"] Abschnitt.  Wenn Sie in Ihrem Cluster bereits eine Standard-StorageClass festgelegt haben, können Sie diesen Schritt überspringen.
 
 
 
+[[use-helm-to-deploy-airflow]]
 == Verwenden Sie Helm, um Airflow bereitzustellen
 
 Um Airflow mithilfe von Helm in Ihrem Kubernetes-Cluster bereitzustellen, führen Sie die folgenden Aufgaben vom Bereitstellungs-Jump-Host aus:
