@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-intro.html 
+keywords: Lustre, NetApp E-Series, EF80, HPC, AI, parallel file system, NVMe-oF, high-performance storage 
+summary: Lustre mit NetApp E-Series Storage bietet ein validiertes, skalierbares paralleles Dateisystem für KI- und HPC-Workloads unter Verwendung einer wiederholbaren Bausteinarchitektur mit NetApp E-Series All-Flash-Arrays. 
+---
+= Lustre mit NetApp E-Series Storage – Einführung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lustre mit NetApp E-Series Storage ist eine validierte parallele Dateisystemlösung für KI- und HPC-Workloads, die aus wiederverwendbaren Bausteinen von HA-Serverpaaren und E-Series All-Flash-Arrays besteht.
+
+
+
+[[solution-overview]]
+== Lösungsübersicht
+
+Lustre mit NetApp E-Series Storage kombiniert das Open-Source-Paralleldateisystem Lustre mit NetApp E-Series Blockspeicher und bietet eine skalierbare, leistungsstarke Grundlage für datenintensive Workloads. Jeder Baustein kombiniert zwei für Hochverfügbarkeit (HA) konfigurierte OSS/MDS-Serverknoten mit zwei E-Series All-Flash-Arrays. Die Backend-NVMe-oF-Konnektivität überträgt die Block-I/O an die Arrays, und ein separates LNet-Fabric verbindet Clients und OSS/MDS-Serverknoten für den parallelen Zugriff auf das Dateisystem.
+
+Ein Baustein beherbergt den Management-Server (MGS) sowie die initialen Metadatenziele (MDTs) und Objektspeicherziele (OSTs). Zusätzliche Bausteine registrieren sich beim Basis-MGS, um die Metadatenkapazität, die Datenkapazität und den Gesamtdurchsatz mit steigenden Arbeitslastanforderungen zu skalieren.
+
+Die folgende Abbildung zeigt ein Beispiel für eine Bereitstellung mit mehreren Bausteinen und Lustre Clients, die über LNet verbunden sind.
+
+.Lustre mit NetApp E-Series Speicherlösung Übersicht
+image:eseries-lustre-overview-diagram.png["Lustre mit NetApp E-Series Storage-Lösung Übersicht mit Bausteinen und Clients"]

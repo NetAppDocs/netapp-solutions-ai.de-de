@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-deploy-prepare.html 
+keywords: Lustre, NetApp E-Series, Ansible control node, EF80, deployment 
+summary: Die EF80 Arrays, die Lustre Server und den Ansible Control Node für die Bereitstellung vorbereiten. 
+---
+= Die Lustre-Bereitstellungsumgebung vorbereiten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Netzwerkzugriff und die Basiseinstellungen werden auf jedem EF80 Array und Lustre Server konfiguriert, anschließend wird ein Ansible Kontrollknoten für die Bereitstellung der Lösung vorbereitet.
+
+
+
+[[prepare-e-series-arrays]]
+== E-Series Arrays vorbereiten
+
+.Schritte
+. Die Managementoberfläche auf jedem Controller wird konfiguriert und es wird überprüft, ob SANtricity System Manager erreichbar ist.
+. Legen Sie den Array-Namen und die administrativen Anmeldeinformationen fest, die das Ansible-Inventar verwendet.
+. Bestätigen Sie, dass sich das Array in einem optimalen Zustand befindet und dass alle Laufwerke vorhanden sind und korrekt melden.
+
+
+Anweisungen zur Konfiguration der Managementverbindung sind im link:https://docs.netapp.com/us-en/e-series/["E-Series Dokumentation"^] zu finden.
+
+
+
+[[prepare-lustre-servers]]
+== Lustre-Server vorbereiten
+
+.Schritte
+. Der Baseboard Management Controller (BMC) wird auf jedem Server für den Out-of-Band-Zugriff konfiguriert, und die UEFI-Systemeinstellungen werden für maximale Leistung festgelegt.
+. Ein unterstütztes Betriebssystem (RHEL oder Rocky Linux) wird installiert, anschließend werden der Hostname und der Managementnetzwerkport konfiguriert.
+. Alle Firmware- und Softwarepakete werden so vorbereitet, dass sie die Anforderungen für die *E-Series Lustre* Lösung erfüllen, wie in link:ai-eseries-lustre-sw.html["Softwarekomponenten"] beschrieben.
+
+
+
+
+[[prepare-the-ansible-control-node]]
+== Den Ansible-Kontrollknoten vorbereiten
+
+Ein virtuelles oder physisches Linux-System mit Managementnetzwerkzugriff auf alle Lustre-Server und E-Series-Arrays wird als Ansible-Kontrollknoten verwendet.
+
+Die folgenden Schritte beziehen sich auf Ubuntu 24.04. Anweisungen für eine andere Linux-Distribution finden sich im link:https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html["Ansible Installationsdokumentation"^].
+
+.Schritte
+. Python, pip und das Python Virtual Environment-Paket installieren:
++
+[source, console]
+----
+sudo apt-get install python3 python3-pip python3-setuptools python3-venv
+----
+. Erstellen und Aktivieren einer virtuellen Python-Umgebung:
++
+[source, console]
+----
+python3 -m venv ~/pyenv
+source ~/pyenv/bin/activate
+----
+. Ansible und die erforderlichen Python-Pakete werden in der aktivierten virtuellen Umgebung installiert:
++
+[source, console]
+----
+pip install "ansible-core>=2.19" cryptography jinja2 ipaddr netaddr \
+  passlib pyyaml resolvelib
+----
+. Die NetApp E-Series Lustre Ansible Collection wird installiert. Mit der Installation der Collection werden auch die abhängigen Collections, einschließlich der SANtricity und Host Collections, installiert:
++
+[source, console]
+----
+ansible-galaxy collection install netapp_eseries.lustre
+----
+. Die installierten Versionen von Ansible, Python und der Collection können überprüft werden:
++
+[source, console]
+----
+ansible --version
+python3 --version
+ansible-galaxy collection list netapp_eseries.lustre
+----
+. Passwortloses SSH wird vom Kontrollknoten zu jedem Lustre Server konfiguriert.  `<ip_or_hostname>` ist durch die Management-IP-Adresse oder den Hostnamen eines Servers zu ersetzen:
++
+[source, console]
+----
+ssh-keygen
+ssh-copy-id <ip_or_hostname>
+----
++
+Wiederholen  `ssh-copy-id` für jeden Lustre Server.
+
+
+
+
+NOTE: Passwortloses SSH sollte für die E-Series-Arrays nicht konfiguriert werden. Die Verwaltung der Arrays durch Ansible erfolgt über die SANtricity Web Services API unter Verwendung der im Inventar definierten Anmeldeinformationen.
+
+
+
+[[after-you-finish]]
+== Nachdem Sie fertig sind
+
+link:ai-eseries-lustre-deploy-inventory.html["Das Ansible Inventar anpassen"].

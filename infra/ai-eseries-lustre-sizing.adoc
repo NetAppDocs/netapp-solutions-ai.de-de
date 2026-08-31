@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-sizing.html 
+keywords: Lustre, NetApp E-Series, EF80, sizing, scaling, building block, validation, performance, capacity 
+summary: Lustre mit NetApp E-Series Storage Bausteinen nach Kapazitäts- und Metadatenanforderungen dimensionieren, den richtigen Zeitpunkt für die Skalierung bestimmen und die Faktoren prüfen, die die Performance beeinflussen. 
+---
+= Lustre mit NetApp E-Series Storage – Größenempfehlungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lustre mit NetApp E-Series Storage Bausteinen nach Kapazitäts- und Metadatenbedarf dimensionieren, den Zeitpunkt für die Erweiterung der Kapazität bestimmen und die Faktoren betrachten, die die Leistung beeinflussen.
+
+
+
+[[capacity-sizing]]
+== Kapazitätsauslegung
+
+Ein Baustein mit zwei EF80-Arrays bietet das folgende Lustre-Target-Layout. Bevorzugte Target-Platzierung und NVMe-oF-Pfade sind in link:ai-eseries-lustre-hw.html#_primary_building_block_volume_distribution["Primäre Baustein-Volume-Verteilung"] in link:ai-eseries-lustre-hw.html["Hardwarekomponenten"] dargestellt.
+
+|===
+| Komponente | Anzahl | Typische Volumengröße (pro Ziel) 
+
+
+| MGS | 1 | 5-10 GiB 
+
+
+| MDT | 8 | Die Größe variiert je nach Laufwerkskapazität und RAID-Layout 
+
+
+| OST | 32 | Die Größe variiert je nach Laufwerkskapazität und RAID-Layout 
+|===
+Jedes EF80 Array verwendet vierundzwanzig NVMe-Laufwerke. Unterstützte Kapazitäten sind 3,84 TB, 7,68 TB und 15,3 TB mit herkömmlichen Volume-Gruppen (RAID 1 für MGS/MDT und RAID 6 für OST) oder DDP sowie 30,7 TB oder 61,4 TB Capacity Flash (QLC) Laufwerke ausschließlich mit DDP. 1,92 TB Laufwerke werden für diese Lösung derzeit nicht empfohlen. Für Informationen zur Laufwerkssteckplatzbelegung und Poolauswahl siehe link:ai-eseries-lustre-hw.html["Hardwarekomponenten"].
+
+Die folgende Tabelle zeigt die ungefähre nutzbare Kapazität eines EF80 Bausteins (zwei Arrays, 48 Laufwerke). Die nutzbare Kapazität des Arrays entspricht nicht der endgültigen nutzbaren Kapazität des Lustre-Dateisystems. MDT-Inode-Zuweisung, Journale, Überprovisionierung und der Anteil des Inventarvolumens reduzieren die für Anwendungen verfügbare Kapazität.
+
+[cols="2,4,2"]
+|===
+| Laufwerkskapazität | Layout (pro Array) | Ungefähr nutzbare Kapazität (Baustein) 
+
+
+| 3,84 TB | RAID 1 (2+2) + RAID 6 (10) + RAID 6 (10) | 138,08 TB 
+
+
+| 3,84 TB | DDP (24 Laufwerke, 2 reserviert) | 133,63 TB 
+
+
+| 7,68 TB | RAID 1 (2+2) + RAID 6 (10) + RAID 6 (10) | 276,35 TB 
+
+
+| 7,68 TB | DDP (24) | 267,47 TB 
+
+
+| 15,3 TB | RAID 1 (2+2) + RAID 6 (10) + RAID 6 (10) | 552,88 TB 
+
+
+| 15,3 TB | DDP (24) | 535,15 TB 
+
+
+| 30,7 TB | Nur DDP | 1.070,35 TB 
+
+
+| 61,4 TB | Nur DDP | 2.162,70 TB 
+|===
+Metadaten und Daten separat dimensionieren, anschließend die Volume-Größen im Ansible-Inventar festlegen. Die Bereitstellungsvorlagen formatieren Ziele mit ldiskfs; MDT verwendet das standardmäßige Inode-Verhältnis von Lustre, und OST-Vorlagen setzen  `-i 4096`.
+
+* *Metadaten (MDT):* MDTs anhand der erwarteten Dateianzahl dimensionieren. Für das Wachstum etwa die doppelte erwartete Dateianzahl einplanen. Ein zu klein dimensioniertes MDT kann die Erstellung neuer Dateien verhindern, selbst wenn noch OST-Kapazität vorhanden ist.
+* *Daten (OST):* OSTs werden anhand der nutzbaren Kapazität und des Durchsatzbedarfs dimensioniert.
+* *MGS:* Ein kleines Management-Target (5-10 GiB) sollte ausschließlich für die Dateisystemkonfiguration verwendet werden.
+
+
+Passen Sie die MDT- und OST-Volumegrößen im Inventar an die ausgewählte Laufwerkskapazität an. Eine Änderung von  `format_options.mkfsoptions` in  `eseries_lustre_filesystem_mdt` oder  `eseries_lustre_filesystem_ost` erfolgt nur, wenn ein Standort ein anderes Inode-Verhältnis benötigt. Hintergrundinformationen zu Inode-Verhältnissen stehen im link:https://wiki.lustre.org/Lustre_Tuning["Lustre Wiki: Lustre Tuning"^] zur Verfügung. Hinweise dazu, wann Bausteine hinzugefügt werden sollten, finden sich unter <<Skalierung>>.
+
+
+
+[[scaling]]
+== Skalierung
+
+Bausteine können hinzugefügt werden, wenn die Kapazität oder die Metadatenlast dies erfordert:
+
+* *Nur OST:* Dateianzahl und Metadatenlast liegen innerhalb der vorhandenen MDT-Kapazität, und es wird mehr Datenkapazität oder ein höherer Gesamtdurchsatz benötigt. 32 OSTs und zwei OSS/MDS-Serverknoten werden hinzugefügt.
+* *MDT+OST:* Die Anzahl der Dateien oder die Metadatenrate nähert sich der MDT-Kapazität, oder es wird sowohl ein höherer Metadatendurchsatz als auch eine höhere Datenkapazität benötigt. Es werden 8 MDTs und 32 OSTs hinzugefügt.
+
+
+Mit  `mdt.*.md_stats` auf bestehenden MDTs lässt sich bestätigen, ob die Metadaten ausgelastet sind. Jeder Pacemaker/Corosync Cluster ist auf fünf Bausteine (zehn OSS/MDS Serverknoten) zu begrenzen. Bei größeren Bereitstellungen werden die Bausteine gleichmäßig auf mehrere HA-Cluster verteilt. Siehe link:ai-eseries-lustre-architecture.html["Lösungsarchitektur"] für Skalierungsregeln.
+
+Das folgende Beispiel zeigt ein Dateisystem mit einem Basis-Baustein plus einem reinen OST-Baustein in einem HA Cluster.
+
+|===
+| Baustein | Typ | Server | Arrays | MGS | MDT | OST 
+
+
+| BB1 | Basis | 2 | 2 | 1 | 8 | 32 
+
+
+| BB2 | nur OST | 2 | 2 | 0 | 0 | 32 
+
+
+| Gesamt |  | 4 | 4 | 1 | 8 | 64 
+|===
+BB2 registriert seine OST-Ziele beim MGS in BB1 mithilfe von  `mgsnode=`. Die OST-Indizes für BB2 werden global zugewiesen (zum Beispiel OST0032 bis OST0063), sodass kein Index mit BB1 in Konflikt steht.
+
+
+
+[[performance]]
+== Performance
+
+Die formale Validierung nutzt IOR, mdtest und fio von Lustre Clients, um den relativen Durchsatz, die IOPS und das Metadatenverhalten zu charakterisieren und HA Failover zu validieren. Diese Tests veröffentlichen keine garantierten Leistungswerte. Synthetische Benchmarks messen das optimale Verhalten und spiegeln möglicherweise nicht die tatsächliche Anwendungsleistung wider.
+
+Die Leistung skaliert annähernd mit der Anzahl der Bausteine. Die erzielten Ergebnisse hängen vom Laufwerkstyp und Pool-Layout, der Anzahl der NVMe-oF-Pfade, der LNet-Fabric und der Anzahl der Clients sowie vom Verhältnis von Daten- zu Metadaten-I/O ab.
+
+Wenden Sie sich an Ihr NetApp Account-Team, um Empfehlungen zur Dimensionierung und Leistung speziell für Ihre Arbeitslast zu erhalten.
+
+Informationen zum Laufwerkslayout und zur Anzahl der Volumes finden sich unter link:ai-eseries-lustre-hw.html["Hardwarekomponenten"]. Die Bereitstellungsschritte sind unter link:ai-eseries-lustre-deploy.html["Die Lösung bereitstellen"] aufgeführt. Hinweise zur Bestandsaufnahme auf Feldebene finden sich unter link:ai-eseries-lustre-deploy-inventory.html["Das Lustre Ansible-Inventar anpassen"].

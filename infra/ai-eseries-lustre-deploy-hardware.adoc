@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-deploy-hardware.html 
+keywords: Lustre, NetApp E-Series, EF80, hardware deployment, NVMe-oF, LNet 
+summary: Server, EF80 Arrays, Backend NVMe-oF Netzwerk und Frontend LNet Fabric für einen Lustre Baustein verkabeln und einbauen. 
+---
+= Rack und Kabel Lustre Hardware
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Lustre-Server und NetApp EF80 Arrays werden in Racks montiert, anschließend werden die Backend-NVMe-oF- und Frontend-LNet-Fabrics für jeden Baustein verkabelt.
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+Die HCA-Anzahl, die PCIe-Steckplatzanforderungen, die Pfadanforderungen und die MTU-Richtlinien in link:ai-eseries-lustre-hw.html["Hardwarekomponenten"] sollten geprüft werden.
+
+.Schritte
+. Alle Lustre-Server und E-Series-Speicherarrays werden gemäß der Baustein-Topologie installiert und verkabelt.
++
+image:eseries-lustre-building-block-labeled.png["Beschrifteter Lustre Baustein, bestückt mit zwei OSS/MDS Servern und zwei EF80 Arrays"]
+
+. Für jedes EF80 Array wird Controller A Port 4a mit Controller B Port 4a und Controller A Port 4b mit Controller B Port 4b verbunden. Diese dedizierten Verbindungen ermöglichen die Inter-Controller-Spiegelung und werden nicht für den Host-Datenverkehr verwendet. Siehe link:https://docs.netapp.com/us-en/e-series/install-hw-ef50-ef80/install-cable.html#step-1-cable-the-inter-controller-mirroring-connections["Die Inter-Controller-Spiegelungsverbindungen EF50 und EF80 verkabeln"^].
+. Das Backend NVMe-oF Netzwerk zwischen Servern und Arrays wird gemäß der EF80 sechs-HCA-Topologie verkabelt.
++
+.EF80 sechs-HCA Backend-Verkabelung (RoCE oder InfiniBand)
+image:eseries-lustre-ef80-6hca-cabling.png["EF80 sechs-HCA Backend-NVMe-oF-Verkabelung zwischen zwei OSS/MDS-Serverknoten und zwei EF80 Arrays"]
+
+. Die vier Frontend-LNet-Schnittstellen (die i1 und i4 HCAs) auf jedem Lustre Server sowie die Lustre Clients werden mit dem dedizierten InfiniBand oder RoCE Switch Fabric verbunden.
+. Bei Verwendung von RoCE wird das Fabric für verlustfreien Betrieb mit priorisierter Flusssteuerung (PFC) konfiguriert. Die Ansible Playbooks konfigurieren verlustfreies RoCE auf allen Schnittstellen im Baustein.
+
+
+
+
+[[after-you-finish]]
+== Nachdem Sie fertig sind
+
+link:ai-eseries-lustre-deploy-prepare.html["Vorbereitung der Server, Arrays und des Ansible-Kontrollknotens"].

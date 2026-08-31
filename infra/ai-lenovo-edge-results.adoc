@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: infra/ai-lenovo-edge-results.html 
 keywords: test, results, aff, offline, single-stream, ef 
-summary: 'Um die Leistung der vorgeschlagenen Architektur zu bewerten, wurden zahlreiche Tests durchgeführt.  Es gibt sechs verschiedene Workloads (Bildklassifizierung, Objekterkennung [klein], Objekterkennung [groß], medizinische Bildgebung, Sprache-zu-Text und natürliche Sprachverarbeitung [NLP]), die Sie in drei verschiedenen Szenarien ausführen können – offline, Single-Stream und Multistream.' 
+summary: 'Um die Leistungsfähigkeit der vorgeschlagenen Architektur zu evaluieren, wurden zahlreiche Tests durchgeführt. Es gibt sechs verschiedene Arbeitslasten wie Bildklassifizierung, Objekterkennung klein, Objekterkennung groß, medizinische Bildgebung, Speech-to-Text und Natural Language Processing NLP, die in drei verschiedenen Szenarien ausgeführt werden können: offline, Single Stream und Multistream.' 
 ---
 = Testergebnisse
 :hardbreaks:

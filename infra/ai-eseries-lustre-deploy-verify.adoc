@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-deploy-verify.html 
+keywords: Lustre, NetApp E-Series, deployment verification, Pacemaker, scaling 
+summary: Der Zustand, die Mounts und die Kapazität des Lustre-Clusters können überprüft und das Dateisystem mit zusätzlichen Bausteinen erweitert werden. 
+---
+= Lustre Bereitstellung überprüfen und erweitern
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vor dem Produktiveinsatz sind der Zustand des Clusters, die Lustre-Mounts und die Dateisystemkapazität zu bestätigen, anschließend kann dasselbe Inventar verwendet werden, um bei Bedarf Bausteine hinzuzufügen.
+
+
+
+[[verify-the-deployment]]
+== Die Bereitstellung überprüfen
+
+.Schritte
+. Von einem Lustre-Server aus lässt sich bestätigen, dass alle Pacemaker-Ressourcen auf den erwarteten Knoten gestartet sind:
++
+[source, cli]
+----
+pcs status
+----
+. Von einem Lustre-Client aus lässt sich bestätigen, dass das Lustre-Dateisystem eingebunden ist:
++
+[source, cli]
+----
+mount -t lustre
+----
+. Von einem Lustre-Client aus lässt sich die Dateisystemkapazität sowie die Sichtbarkeit der MDT- und OST-Ziele bestätigen:
++
+[source, cli]
+----
+lfs df -h
+----
+
+
+Zur Leistungsvalidierung mit IOR, mdtest und fio siehe link:ai-eseries-lustre-sizing.html["Größenberatung"].
+
+Für kontrollierte Zielmigrationen oder HA-Failover-Tests sind die Verfahren in der link:https://github.com/NetApp/ansible-lustre/blob/release/1.0.0/roles/lustre/docs/ha_user_guide.md["HA Administrationshandbuch"^] zu befolgen.
+
+
+
+[[expand-the-file-system]]
+== Dateisystem erweitern
+
+Um die Kapazität oder die Metadatenleistung zu erhöhen, wird das bestehende Inventar um einen zusätzlichen Baustein erweitert. Für den neuen Baustein wird kein separates Inventar erstellt. Das Playbook weist automatisch eindeutige MDT- und OST-Indizes zu und registriert die neuen Ziele beim bestehenden MGS.
+
+.Schritte
+. Fügen Sie die neuen Bausteinhosts, Arrays und Ressourcengruppen (MDT+OST oder nur OST) demselben Inventar sowie den  `host_vars` und  `group_vars` Dateien hinzu, die für die ursprüngliche Bereitstellung verwendet wurden.
+. Das Hauptbereitstellungs-Playbook wird erneut für das aktualisierte Inventar ausgeführt.
+
+
+Siehe link:ai-eseries-lustre-architecture.html["Lösungsarchitektur"]für Skalierungsregeln und link:ai-eseries-lustre-sizing.html["Größenberatung"]für Hinweise, wann welcher Baustein hinzugefügt werden sollte.

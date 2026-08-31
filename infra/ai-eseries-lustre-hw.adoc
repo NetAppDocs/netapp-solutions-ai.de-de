@@ -1,0 +1,282 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-eseries-lustre-hw.html 
+keywords: Lustre, NetApp E-Series, EF80, hardware, servers, storage, network, NVMe-oF, BYOS 
+summary: Server-, E-Series-Array-, Storage-Layout- und Netzwerkanforderungen für Lustre mit NetApp E-Series Storage werden betrachtet. 
+---
+= Lustre mit NetApp E-Series Storage - Hardwarekomponenten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Diese Hardwareanforderungen für Server, NetApp E-Series Arrays, Storage-Layout und Netzwerk sind bei der Dimensionierung und Bestellung von Lustre mit NetApp E-Series Storage zu berücksichtigen. Für Softwarekomponenten siehe link:ai-eseries-lustre-sw.html["Softwarekomponenten"].
+
+
+
+[[server-requirements]]
+== Serveranforderungen
+
+Die Lösung basiert auf einem Bring-Your-Own-Server (BYOS) Modell. Jeder Baustein benötigt zwei OSS/MDS Serverknoten, die die folgenden Spezifikationen erfüllen oder übertreffen.
+
+
+
+[[node-specifications]]
+=== Knotenspezifikationen
+
+Die folgende Tabelle listet die minimalen Serveranforderungen pro OSS/MDS-Knoten auf.
+
+|===
+| Komponente | Anforderung 
+
+
+| Menge | 2 Knoten pro Baustein 
+
+
+| CPU | AMD EPYC oder Intel Xeon, 32 Kerne oder höher 
+
+
+| Erinnerung | 256 GB DDR5 (Minimum) 
+
+
+| Netzwerk HCAs | 6 Dual-Port 200Gb HCAs (siehe <<platform-connectivity,HCA Konnektivität>>) 
+
+
+| PCIe-Steckplätze | 2× PCIe Gen5 x16 und 4× PCIe Gen5 x8 (siehe <<pcie-slots,PCIe-Steckplatzanforderungen>>) 
+
+
+| Bootlaufwerke | 2× Laufwerke in RAID 1 (Software- oder Hardware-RAID empfohlen) 
+|===
+NetApp validierte die Lösung mit Lenovo ThinkSystem SR665 V3 Servern. Entsprechende Server anderer Hersteller werden unterstützt, sofern sie diese Anforderungen erfüllen.
+
+
+
+[[hca-connectivity]]
+[[platform-connectivity]]
+=== HCA Konnektivität
+
+Die folgende Tabelle listet die Anforderungen an HCA, LNet-Frontend-Port und NVMe-oF-Pfad pro OSS/MDS-Serverknoten auf.
+
+|===
+| HCAs pro Knoten | LNet Ports pro Lustre Knoten | NVMe-oF-Pfade pro Lustre Node | Beispiel HCA 
+
+
+| 6 (12 Anschlüsse) | 4 | 8 insgesamt (4 pro Array) | MCX755106AS-HEAT (Dual port 200Gb PCIe gen5 Karte) 
+|===
+NetApp empfiehlt sechs HCAs pro Knoten, um die Bandbreite der EF80 Storage-Arrays zu maximieren.
+
+
+
+[[pcie-slot-requirements]]
+[[pcie-slots]]
+=== PCIe-Steckplatzanforderungen
+
+Jeder OSS/MDS-Serverknoten in einem EF80 Baustein verfügt über sechs Dual-Port-HCAs: zwei für LNet und vier für NVMe-oF. Die Steckplatzbreite bestimmt die für jede HCA verfügbare Bandbreite, daher ist die elektrische Breite jedes Steckplatzes und Risers zu prüfen und nicht nur die Breite der Karte allein. Eine Gen5 x16 Karte, die in einem Gen5 x8 Steckplatz installiert ist, läuft mit x8.
+
+* *LNet HCAs:* In PCIe Gen5 x16 Steckplätzen installieren, um den vollen Frontend-Durchsatz zu erreichen.
+* *NVMe-oF HCAs:* In PCIe Gen5 x8 oder PCIe Gen5 x16 Steckplätzen installieren.
+* *NUMA-Balance:* Die HCAs gleichmäßig auf die beiden NUMA-Zonen aufteilen, sodass jede Zone zwei LNet-Schnittstellen und vier NVMe-oF-Schnittstellen umfasst.
+
+
+Die folgende Tabelle listet die Mindestanzahl an Steckplätzen für jeden OSS/MDS-Serverknoten in einem EF80 Baustein.
+
+|===
+| Verkehrsart | HCAs pro Knoten | Mindestschlitzbreite | Slots pro NUMA-Zone 
+
+
+| LNet | 2 | PCIe Gen5 x16 | 1 
+
+
+| NVMe-oF | 4 | PCIe Gen5 x8 | 2 
+|===
+Optional ist eine Aufteilung der Ports eines Dual-Port-HCA möglich, sodass ein Port LNet-Datenverkehr und der andere NVMe-oF-Datenverkehr verarbeitet. Alle vier dieser HCAs werden in PCIe Gen5 x16-Steckplätzen installiert, sodass jeder LNet-Port die volle Durchsatzleistung erreicht. Anschließend werden zwei weitere HCAs in Gen5 x8- oder Gen5 x16-Steckplätzen für die verbleibenden NVMe-oF-Ports hinzugefügt.
+
+.Beispielhafte Riser-Konfigurationen für Lenovo ThinkSystem SR665 V3
+[%collapsible]
+====
+Beide der folgenden Steigleitungskombinationen erfüllen die Anforderungen an die Steckplätze für einen EF80 Baustein.
+
+*Mindeststeckplatzbreiten*
+
+Eine BPQU-Riserkarte in den Riser-Positionen 1 und 2 installieren. Jede BPQU-Riserkarte bietet einen PCIe Gen5 x16 Slot und zwei PCIe Gen5 x8 Slots. Zusammen bieten die Riserkarten zwei Gen5 x16 Slots für LNet und vier Gen5 x8 Slots für NVMe-oF, gleichmäßig auf die NUMA-Zonen verteilt.
+
+image:eseries-lustre-sr665v3-bpqu-6hca-layout.png["Lenovo ThinkSystem SR665 V3 Rückansicht mit BPQU-Riserkarten in den Positionen 1 und 2, wobei ein PCIe Gen5 x16-Steckplatz und zwei PCIe Gen5 x8-Steckplätze pro NUMA-Zone zu sehen sind"]
+
+*Alle Gen5 x16 Steckplätze*
+
+Eine BPQV Riserkarte ist in den Riser-Positionen 1 und 2 zu installieren und eine BLL9 Riserkarte in Riser-Position 3. Jede BPQV Riserkarte stellt zwei PCIe Gen5 x16-Steckplätze bereit. Die BLL9 Riserkarte stellt Steckplatz 7 in NUMA-Zone 0 und Steckplatz 8 in NUMA-Zone 1 bereit, beide PCIe Gen5 x16. Diese Kombination stellt sechs Gen5 x16-Steckplätze bereit, drei pro NUMA-Zone, und unterstützt die Aufteilung des LNet- und NVMe-oF-Datenverkehrs auf die Ports derselben HCA.
+
+image:eseries-lustre-sr665v3-bpqv-6hca-layout.png["Lenovo ThinkSystem SR665 V3 Rückansicht mit BPQV-Risern an den Positionen 1 und 2 und einem BLL9-Riser an Position 3, wobei sechs PCIe Gen5 x16-Steckplätze über zwei NUMA-Zonen verteilt sind"]
+
+====
+
+
+[[ef80-standard-building-block]]
+== EF80 Baustein
+
+Die EF80 ist die validierte Standardplattform für diese Lösungsversion.
+
+
+
+[[array-specifications]]
+=== Array-Spezifikationen
+
+Die folgende Tabelle enthält die EF80 Array-Spezifikationen für einen Baustein (zwei Arrays).
+
+|===
+| Komponente | Spezifikation 
+
+
+| Modell | NetApp EF80 
+
+
+| Formfaktor | 2U Basisgehäuse, 24 interne NVMe SSD-Steckplätze 
+
+
+| Controller | Dual Controller (A und B) 
+
+
+| Laufwerke | 24× NVMe SSDs pro Array 
+
+
+| E/A-Konnektivität | 8 × 200Gb NVMe/IB oder NVMe/RoCE Host-Ports pro Array im validierten Lustre Design 
+|===
+Die EF80 Plattform unterstützt bis zu zwölf Host-Ports pro Array, wenn in jedem Controller drei Zwei-Port-Host-I/O-Module installiert sind. Das validierte Lustre Design verwendet Host-I/O-Module in den Steckplätzen 1 und 2 für acht Host-Ports pro Array.
+
+Jedes EF80 Array nutzt außerdem das dedizierte I/O-Modul in Steckplatz 4 für die Inter-Controller-Spiegelung. Controller A Port 4a wird mit Controller B Port 4a verbunden, und Controller A Port 4b mit Controller B Port 4b. Diese Verbindungen dienen der Cache-Spiegelung und dem I/O-Transport und werden nicht für den Host-NVMe-oF-Datenverkehr verwendet. Siehe link:https://docs.netapp.com/us-en/e-series/install-hw-ef50-ef80/install-cable.html#step-1-cable-the-inter-controller-mirroring-connections["Die Inter-Controller-Spiegelungsverbindungen EF50 und EF80 verkabeln"^].
+
+Die vollständigen technischen Daten der EF-Series für alle Modelle sind im link:https://www.netapp.com/pdf.html?item=/media/14036-ds-4082.pdf["NetApp EF-Series All-Flash-Array Datenblatt"^] zu finden.
+
+
+
+[[drive-layout-24-drives-per-array]]
+=== Laufwerksanordnung (24 Laufwerke pro Array)
+
+Jedes EF80 Array in einem Baustein nutzt alle vierundzwanzig NVMe-Laufwerkssteckplätze:
+
+* 4 Laufwerke im RAID 1 Verbund für MGS/MDT Storage (gemeinsame Volume-Gruppe oder DDP-Zuordnung)
+* 10× Laufwerke in RAID 6 für OST-Speicher (erster OST-Pool)
+* 10 Laufwerke in RAID 6 für OST-Speicher (zweiter OST-Pool)
+
+
+Dieses Layout gilt, wenn 3,84-TB-, 7,68-TB- oder 15,3-TB-Laufwerke mit herkömmlichen Volume-Gruppen verwendet werden. Bei Verwendung von 30,7-TB- oder 61,4-TB Capacity Flash (QLC) Laufwerken wird ein einzelner Dynamic Disk Pool über alle 24 Laufwerke bereitgestellt und innerhalb dieses Pools werden RAID 1 Volumes für MGS- und MDT-Volumes erstellt, während für OSTs standardmäßig RAID 6 Volumes verwendet werden.
+
+
+NOTE: Für diese Lösung werden derzeit keine Festplatten mit 1,92 TB Speicherkapazität empfohlen. Es sollte eine der oben aufgeführten validierten Festplattenkapazitäten verwendet werden.
+
+image:eseries-lustre-ef80-driveslots.png["Lustre Laufwerkslayout mit 24 NVMe-Laufwerken pro EF80 Array"]
+
+
+
+[[volume-and-target-counts-base-building-block]]
+=== Volume- und Zielanzahl (Basis-Baustein)
+
+Die folgende Tabelle listet die MGS-, MDT- und OST-Zähler für einen Basis-Baustein auf.
+
+|===
+| Zieltyp | Anzahl pro BB | RAID / Pool | Hinweise 
+
+
+| MGS | 1 | RAID 1 | Nur Basisbaustein; Array 1 
+
+
+| MDT | 8 | RAID 1 | 4 pro Array 
+
+
+| OST | 32 | RAID 6 (TLC) oder DDP (QLC) | 16 pro Array 
+|===
+Die folgenden Richtlinien zur Volumendimensionierung dienen als Ausgangspunkt in der Ansible-Inventur.
+
+|===
+| Volumen | Empfohlene Größe | Hinweise 
+
+
+| MGS | 5–10 GiB | Nur Konfigurationsdaten 
+
+
+| MDT | RAID 1 Kapazität ÷ MDT-Anzahl | Jeweils etwa 1–2 TiB (typisch) 
+
+
+| OST | RAID 6 oder DDP Kapazität ÷ OST-Anzahl pro Pool | Skaliert mit der Laufwerkskapazität; siehe link:ai-eseries-lustre-sizing.html["Größenberatung"] 
+|===
+
+
+[[primary-building-block-volume-distribution]]
+=== Primäre Baustein-Volume-Verteilung
+
+Die folgende Abbildung zeigt die bevorzugte Platzierung der Lustre-Ziele und die NVMe-oF-Konnektivität zwischen den OSS/MDS-Serverknoten und E-Series Arrays in einem EF80 Baustein. Das Diagramm kennzeichnet das Management-Ziel als *MGT* (management target); ein MGT hostet den MGS (management server) Dienst, der an anderer Stelle in diesem Dokument erwähnt wird.
+
+.Verteilung des Basisbausteins (EF80)
+image:eseries-lustre-target-distribution.png["Lustre-Zielverteilung und NVMe-oF-Pfade über OSS/MDS-Serverknoten und E-Series-Arrays in einem EF80 Baustein"]
+
+Die folgende Tabelle zeigt, wie die Volumes auf die beiden Arrays verteilt sind und welchen Server jedes Ziel bevorzugt.
+
+[cols="1,1,1,1,1,2"]
+|===
+| Zieltyp | Array 1 | Array 2 | Server 1 | Server 2 | Hinweise 
+
+
+| MGS | 1 | 0 | 1 | 0 | Nur Basisbaustein 
+
+
+| MDT | 4 | 4 | 4 | 4 | Jeder Server bevorzugt 2 MDTs aus jedem Array 
+
+
+| OST | 16 | 16 | 16 | 16 | 8 pro RAID 6 Pool × 2 Pools pro Array oder äquivalente DDP-Zuweisung 
+
+
+| *Gesamtvolumen* | *21* | *20* | *21* | *20* |  
+|===
+
+
+[[storage-pool-selection-tlc-vs-qlc]]
+== Auswahl des Speicherpools: TLC vs QLC
+
+Wählen Sie den E-Series Pooltyp anhand der NVMe-Laufwerkskapazität in den Arrays:
+
+* *3,84-TB-, 7,68-TB- und 15,3-TB-Laufwerke:* Für OST-Volumes werden *RAID 6 Volume-Gruppen* und für MGS- sowie MDT-Volumes *RAID 1 Volume-Gruppen* verwendet, alternativ kann DDP für den gemeinsam genutzten Laufwerkspool eingesetzt werden.
+* *30,7-TB- und 61,4-TB-Kapazität Flash (QLC)-Laufwerke:* Es ist ausschließlich die Verwendung von *Dynamic Disk Pools (DDP)* vorgesehen. RAID 1-Volumes sind innerhalb des DDP für MGS- und MDT-Speicher zu erstellen. RAID 6-Volumes für OST-Speicher werden aus dem DDP erstellt.
+
+
+Für Schätzungen der nutzbaren Kapazität pro Baustein nach Laufwerksgröße und -anordnung siehe link:ai-eseries-lustre-sizing.html["Größenberatung"].
+
+
+
+[[network-requirements]]
+== Netzwerkanforderungen
+
+
+
+[[backend-nvme-of]]
+=== Backend (NVMe-oF)
+
+* NVMe/InfiniBand oder NVMe/RoCE zwischen jedem OSS/MDS-Knoten und jedem E-Series-Array
+* MTU 9000 auf NVMe/RoCE Backend-Schnittstellen (typisch)
+* Acht Pfade von jedem Lustre-Knoten zu den Speicherarrays (vier zu jedem Array)
+* EF80 verwendet sechs HCAs pro Knoten (i2, i3, i5 und i6 für NVMe-oF; i1 und i4 für LNet). Knoten A wird mit Controller-Ports verkabelt, deren Bezeichnungen auf  `a` enden, wie zum Beispiel  `1a` und  `2a`. Knoten B wird mit Controller-Ports verkabelt, deren Bezeichnungen auf  `b` enden, wie zum Beispiel  `1b` und  `2b`. Siehe link:ai-eseries-lustre-deploy-hardware.html["EF80 Six-HCA-Backend-Verkabelung"].
+
+
+
+
+[[frontend-lnet]]
+=== Frontend (LNet)
+
+* IPoIB oder RoCE für LNet (`@o2ib` Netzwerktyp)
+* MTU 9000 auf RoCE Frontend-Schnittstellen (typisch)
+* Multi-rail LNet wird empfohlen, wenn vier Frontend-Ports verfügbar sind (EF80: i1 und i4 HCAs, beide Ports)
+* Dedizierte InfiniBand oder RoCE Switch-Fabric zur Verbindung der OSS/MDS-Serverknoten und Lustre-Clients
+* Verlustfreies RoCE (PFC) wird für RoCE-Fabrics empfohlen.
+
+
+
+
+[[management]]
+=== Management
+
+* Out-of-band-Managementnetzwerk für Server-BMCs und Array-Management-Ports
+* Dediziertes Corosync Netzwerk oder gemeinsam genutzte Frontend Infrastruktur (standortabhängig)
+
