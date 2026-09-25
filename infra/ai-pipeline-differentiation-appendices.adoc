@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-differentiation-appendices.html 
+keywords:  
+summary:  
+---
+= 11. NetApp Differenzierung und Wettbewerbspositionierung, Anhänge
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+Dieser kombinierte Abschnitt stellt die Architektur gängigen Alternativen gegenüber und bietet Betreibern und Prüfern das gemeinsame Referenzmaterial. Der entscheidende Unterschied liegt nicht in einem einzelnen Speicherendpunkt, sondern in der richtliniengesteuerten Kombination aus StorageGRID, ONTAP NAS, ONTAP S3, LustreFS, XCP und Airflow, durch die jede Phase des KI-Lebenszyklus die jeweils passende Speicherebene nutzen kann, ohne den Workflow neu aufbauen zu müssen.
+
+
+
+[[11-1-netapp-differentiation-and-competitive-positioning]]
+== 11.1 NetApp Differenzierung und Wettbewerbspositionierung
+
+Dieser Vergleich stellt die Architektur gängigen Alternativen gegenüber. Ihr Alleinstellungsmerkmal ist nicht ein einzelner Speicherendpunkt, sondern die richtliniengesteuerte Kombination aus StorageGRID, ONTAP NAS, ONTAP S3, LustreFS, XCP und Airflow, die es jeder Phase des KI-Lebenszyklus ermöglicht, eine geeignete Ebene zu nutzen, ohne den Workflow neu aufbauen zu müssen.
+
+[cols="34%,33%,33%"]
+|===
+| Alternativer Ansatz | Einschränkung | NetApp Solution Advantage 
+
+
+| Pipelines, die ausschließlich nativ in der Cloud ausgeführt werden | An ein einziges Speicherparadigma gebunden | Austausch von S3/LustreFS über die Konfiguration 
+
+
+| Selbst erstellte skriptbasierte Pipelines | Kein Wiederholungsversuch, kein Prüfpunkt, keine Herkunftsverfolgung | Airflow Orchestrierung {plus} Checkpoint/Fortsetzen nativ 
+
+
+| Einstufige Speicherarchitekturen | Ein Leistungs-/Kostenprofil für alle Workloads | Auswahl der Tiering-Ebene pro Durchlauf über `xcp++_++copy++_++destination` 
+
+
+| Vollständiges Neutraining bei jedem Update | Hohe wiederkehrende Rechenkosten | Inkrementelle Feinabstimmung über `partial++_++fit` 
+|===
+
+
+[[11-2-appendices]]
+== 11.2 Anhänge
+
+Die Anhänge bieten gemeinsame Terminologie und Kontext zur Dokumentenkontrolle für Leser, die diese NVA betreiben, überprüfen oder anpassen. Die Revisionshistorie ist aktuell zu halten, wenn dokumentiertes Verhalten, Parameter, Speicherlayouts oder Validierungsnachweise geändert werden.
+
+
+
+[[11-2-1-glossary]]
+=== 11.2.1 Glossar
+
+Diese Definitionen legen einheitliche Bedeutungen für die Speicher-, Orchestrierungs- und Herkunftsbegriffe der Architektur fest.
+
+[cols="50%,50%"]
+|===
+| Begriff | Definition 
+
+
+| XCP | NetApps Hochgeschwindigkeits-Tool für parallele Datenkopie/-migration 
+
+
+| ONTAP S3 | NetApps S3-kompatibler Objektspeicherdienst auf ONTAP 
+
+
+| LustreFS | Hochleistungsfähiges paralleles verteiltes Dateisystem 
+
+
+| DAG | Gerichteter azyklischer Graph, Workflow-Definition von Airflow 
+
+
+| XCom | Airflows Mechanismus für die Übergabe von Daten zwischen Aufgaben 
+
+
+| run++_++stamp | Eindeutiger Zeitstempel-Identifikator pro Ausführung zur Bestimmung der Herkunft 
+
+
+| Manifest | JSON-Datensatz, der die Eingaben, Ausgaben und die Konfiguration einer Stufe beschreibt 
+|===
+
+
+[[11-2-2-revision-history]]
+=== 11.2.2 Revisionshistorie
+
+Jede veröffentlichte Änderung sollte protokolliert werden, um den Prüf- und Genehmigungsverlauf des Dokuments zu erhalten.
+
+[cols="25%,25%,25%,25%"]
+|===
+| Version | Datum | Autor | Ändern 
+
+
+| 1,0 | 25. September 2026 | Team für Lösungsarchitektur | Erste publikationsreife NVA mit vollständigen Parametertabellen und Diagrammen 
+|===
+
+
+[[11-2-3-contact-us-and-software-requests]]
+=== 11.2.3 Kontakt und Softwareanfragen
+
+Zur Anforderung des Softwarepakets, der Automatisierungs-DAGs, der Bereitstellungsskripte oder der Validierungsartefakte für die Bereitstellung und Validierung dieser Architektur sowie für Feedback und technische Anfragen können Sie das NetApp AI & Data Mobility Team kontaktieren:
+
+* *E-Mail:* ng-data-mobility-in-ai-pipeline@netapp.com
+* *Zweck:* Softwarepaketanfragen, Bereitstellungshinweise, Unterstützung bei der Architekturvalidierung und technisches Feedback.
+

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-architecture.html 
+keywords:  
+summary:  
+---
+= 3. Architekturübersicht
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+Dieser Abschnitt beschreibt den logischen Workflow, die Interaktionen der Komponenten, die physische Bereitstellung und die Datenherkunft der validierten KI-Pipeline. Die Diagramme zeigen zusammen, wie Apache Airflow die Datenübertragung von StorageGRID über ONTAP NAS orchestriert, optional NetApp XCP verwendet, um Daten zur Modellausführung auf ONTAP S3 oder LustreFS zu platzieren, und die verwalteten Ergebnisse an den StorageGRID Archivspeicher zurückgibt.
+
+
+
+[[3-1-high-level-three-tier-ai-storage-architecture]]
+== 3.1 Hochrangige dreistufige KI-Speicherarchitektur
+
+Die NetApp AI Speicherarchitektur platziert Daten auf der Speicherebene, die am besten zu der jeweiligen Lebenszyklusphase passt. StorageGRID wird für skalierbare, kostenoptimierte Rohdatenaufnahme und kontrollierte Archivierung verwendet. ONTAP NAS und ONTAP S3 werden für die aktive Datenaufbereitung, das Datenmobilität Staging und objektbasierte Trainingsworkflows verwendet. E-Series mit LustreFS wird verwendet, wenn ein hoher Durchsatz und parallele Training I/O erforderlich sind. Apache Airflow orchestriert den Lebenszyklus, während NetApp XCP aufbereitete Daten von der ONTAP NAS Ebene in die ausgewählte aktive Trainingsebene verschiebt.
+
+image::ai-pipeline-three-tier-storage-arch.png[Dreistufige KI-Speicherarchitektur auf hoher Ebene]
+
+
+
+[[3-2-high-level-solution-architecture]]
+== 3.2 Übergeordnete Lösungsarchitektur
+
+Dieses Workflow-Diagramm veranschaulicht den von Airflow gesteuerten Lebenszyklus von den StorageGRID Rohdaten über die Aufbereitung, optionale XCP-Datenmobilität, Modellausführung, Checkpointing und Archivierung.  `enable++_++xcp`Dabei wird festgelegt, ob aufbereitete Daten vor dem Training vom ONTAP NAS Bucket nach ONTAP S3 oder LustreFS kopiert werden. Die Archivierungszweige sind unabhängig:  `manual++_++archive++_++stage=model++_++training`Der eine archiviert die Baseline unmittelbar nach dem Training, während  `manual++_++archive++_++stage=inferencing`der andere das vollständige Ergebnis nach der Generierung von Vorhersagen archiviert.
+
+image::ai-pipeline-overview.png[Lösungsarchitektur auf hoher Ebene]
+
+
+
+[[3-3-component-interaction-diagram]]
+== 3.3 Komponenteninteraktionsdiagramm
+
+Dieses Sequenzdiagramm zeigt, welche Plattformkomponente welchen Datenaustausch durchführt. Airflow liest Rohdatenobjekte aus StorageGRID und schreibt aufbereitete Daten in den ONTAP NAS Bucket; anschließend ruft es XCP über SSH auf. XCP liest den ONTAP NAS NFS Export und schreibt die Daten in die konfigurierte Trainingsschicht. Der letzte Bedingungsblock zeigt, dass archivierte Inhalte in StorageGRID von der ausgewählten manuellen Archivierungsstufe abhängen.
+
+image::ai-pipeline-component-interaction.png[Komponenten-Interaktionsdiagramm]
+
+
+
+[[3-4-physical-deployment-architecture]]
+== 3.4 Physische / Bereitstellungsarchitektur
+
+Dieses Bereitstellungsdiagramm zeigt die erforderlichen Hosts, Speicherendpunkte und Netzwerkschnittstellen. Der Airflow Host nutzt S3 APIs für StorageGRID, den ONTAP NAS Bucket und das ausgewählte ONTAP S3 Ziel und verwendet SSH, um den XCP Host zu steuern. Der XCP Host greift über NFS auf die vorbereitete Datenquelle zu und schreibt entweder in ONTAP S3 oder in den LustreFS Mount; wenn LustreFS ausgewählt ist, muss der Airflow Host diesen ebenfalls einbinden, um Trainingsdaten zu lesen und Artefakte zu materialisieren.
+
+image::ai-pipeline-physical-deployment.png[Physische / Bereitstellungsarchitektur]
+
+
+
+[[3-5-data-flow-overview]]
+== 3.5 Datenflussübersicht
+
+Dieser kompakte Ablauf fasst die Herkunft von Daten und Artefakten zusammen. Jeder Durchlauf erhält eine eindeutige `run++_++stamp`ID, die aufbereitete Daten, XCP-Ausgabe, Modellartefakte, Vorhersagen und archivierte Objekte derselben Ausführung zuordnet. Die Auswahl des XCP-Ziels steuert die Ebene für Trainingsdaten und Modellartefakte, während `manual++_++archive++_++stage` festlegt, ob StorageGRID das Basistrainingspaket oder das vollständige Inferenzpaket empfängt.
+
+image::ai-pipeline-data-flow.png[Datenflussübersicht]

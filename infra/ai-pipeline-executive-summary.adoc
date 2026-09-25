@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-executive-summary.html 
+keywords:  
+summary:  
+---
+= 1. Zusammenfassung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+
+
+[[1-1-purpose-of-this-document]]
+== 1.1 Zweck dieses Dokuments
+
+Diese NetApp Validated Architecture (NVA) dokumentiert eine produktionsreife KI-Datenpipeline, die Rohdaten erfasst, sie für maschinelles Lernen vorbereitet, sie mit hoher Geschwindigkeit mithilfe von NetApp XCP zwischen Storage Tiers verschiebt, Modelle trainiert und inkrementell optimiert, Vorhersagen generiert und die Ergebnisse für Governance und Reproduzierbarkeit archiviert. Sie dient als Leitfaden für Architekten und Infrastrukturteams in Bezug auf Designbegründung, Bereitstellung, Konfiguration und Betrieb.
+
+
+
+[[1-2-audience]]
+== 1.2 Zielgruppe
+
+Lösungsarchitekten, Speicher-/Infrastrukturingenieure, Datenplattformingenieure, ML-Ingenieure und IT-Entscheidungsträger, die NetApp Speicher- und Datenmobilitätstechnologie für KI/ML-Workloads evaluieren.
+
+
+
+[[1-3-business-challenge-overview]]
+== 1.3 Überblick über die geschäftlichen Herausforderungen
+
+KI-Teams benötigen Daten, die im Objektspeicher landen, um zuverlässig transformiert und anschließend an die Rechen- und Speicherebene übertragen zu werden, die das Training am besten unterstützt, beispielsweise an elastisches S3 für allgemeine Workloads oder an leistungsstarke parallele Dateisysteme (LustreFS) für E/A-intensive Trainings. Ohne eine kontrollierte Datenmobilität und Orchestrierungsschicht sind Teams auf fehleranfällige, spezialisierte Skripte angewiesen, denen Wiederholungsversuche, Checkpointing, Speicherflexibilität und Audit-Trails fehlen.
+
+KI-Programme in Unternehmen stagnieren, nicht aufgrund von Modell- oder Rechenleistungsbeschränkungen, sondern weil herkömmliche Speichersysteme nicht für KI ausgelegt sind. Das Verschieben massiver Datensätze, die kontinuierliche Auslastung der GPUs während des Trainings, die Verwaltung des Checkpoint-Overheads und die Kontrolle der Speicherkosten erfordern mehr Aufwand als die eigentliche KI-Arbeit. Einstufige Architekturen erzwingen einen Kompromiss zwischen Leistung und Kosten, der sich mit zunehmender Größe von Modellen und Datensätzen noch verstärkt.
+
+
+
+[[1-4-netapp-solution-summary]]
+== 1.4 NetApp Lösungsübersicht
+
+Die Lösung orchestriert Datenerfassung, -aufbereitung, Datenmobilität, Training, Feinabstimmung, Inferenz und Archivierung als Apache Airflow DAG (Directed Acyclic Graph). StorageGRID bildet die Basis für die Rohdaten- und Langzeitarchivierungs-Objekt-Tiers. Die Datenaufbereitung schreibt mit einem Laufzeitstempel versehene Datensätze und Manifeste in einen ONTAP NAS Bucket, der über NFS als XCP Quelle bereitgestellt wird. NetApp XCP verschiebt die aufbereiteten Daten dann in ein zur Laufzeit auswählbares Trainingsziel, NetApp ONTAP S3 oder LustreFS, ohne dass zum Wechseln der Tiers Codeänderungen erforderlich sind.
+
+[NOTE]
+====
+In diesem Design wird der ONTAP NAS Bucket primär aus Gründen der XCP-Unterstützung und -Validierung verwendet, da er eine konsistente NFS-Quelle für den Mobilitäts-Workflow bereitstellt. In realen Produktionsumgebungen können dieselben aktiven Daten auch direkt über leistungsstarke RDMA-fähige Pfade bereitgestellt werden, sodass die ONTAP NAS Schicht eher als betrieblich komfortables und supportfähiges Staging-Muster als als einzige Zugriffsmethode zur Laufzeit zu betrachten ist.
+
+====
+Diese Pipeline ist eine konkrete Implementierung der umfassenderen *NetApp AI Storage Architecture* , eines speziell entwickelten, dreistufigen Speicherframeworks, das Leistung und Kosten auf jede Phase der KI-Workload abstimmt:
+
+* *E-Series (LustreFS):* Paralleler Speicher mit extrem hohem Durchsatz für GPU-intensives Modelltraining und Checkpointing.
+* *ONTAP (AFF/AFX):* Hochleistungsfähiger aktiver Speicher für Training, Feinabstimmung, Inferenz, Vektor-/RAG-Workloads und ausgewählte Anwendungsfälle der Datenaufbereitung mit FAS und NAS Bucket Unterstützung.
+* *StorageGRID:* Skalierbarer, S3-kompatibler Objektspeicher für Datenerfassung, Governance und Langzeitaufbewahrung.
+
+
+Die Datenverschiebung zwischen den Ebenen wird vollständig über Apache Airflow und NetApp XCP automatisiert, sodass manuelle Vorgänge vollständig aus dem kritischen Pfad entfallen.
+
+Die NetApp Speicherarchitektur unterstützt Unternehmen bei der verteilten Datenaufbereitung, dem Modelltraining, der Feinabstimmung, der Inferenz und der Lebenszyklusverwaltung, ohne alle Daten in einem einzigen zentralen Data Lake zusammenführen zu müssen. Durch die Reduzierung unnötiger Datenbewegungen eignet sie sich ideal für hybride KI-Workflows.
+
+
+
+[[1-5-why-netapp]]
+== 1.5 Warum NetApp
+
+[cols="34%,33%,33%"]
+|===
+| Dimension | Konventioneller Ansatz | NetApp AI Speicherarchitektur 
+
+
+| GPU Produktivität | Storage-Engpässe führen zu teuren Leerlaufzeiten bei Rechenressourcen | GPUDirect Storage über RDMA trägt dazu bei, dass GPU Cluster voll ausgelastet bleiben 
+
+
+| Datenmobilität | Manuelle Skripte verzögern Pipelines | Automatisierte Bewegung zwischen den Ebenen über Airflow {plus} XCP 
+
+
+| Kostenkontrolle | Alle Daten auf teurem Flash-Speicher | FabricPool stuft selten genutzte Daten automatisch in kostengünstigen Objektspeicher herab 
+
+
+| Mandantenfähigkeit | Gemeinsame Namensräume bergen das Risiko von Datenlecks | Dedizierte ONTAP SVMs gewährleisten eine strikte Mandantentrennung 
+
+
+| Workload-Breite | Separate Stacks für Training und Inferenz | Eine einzige einheitliche Architektur, die den gesamten KI-Lebenszyklus abdeckt 
+|===
+
+
+[[1-6-the-business-case]]
+== 1.6 Der Business Case
+
+GPU-Rechenleistung ist typischerweise der größte Kostenfaktor im Budget einer KI-Infrastruktur. Jede Stunde, die ein Cluster im Leerlauf auf Daten wartet, bedeutet einen direkten, messbaren finanziellen Verlust. NetApp stellt sicher, dass die richtigen Daten zur richtigen Zeit auf der richtigen Ebene verfügbar sind, automatisch, und ermöglicht so einen höheren KI-Durchsatz, niedrigere Gesamtbetriebskosten und eine Architektur, die sich ohne Neugestaltung vom Proof of Concept bis zur produktiven Unternehmensumgebung skalieren lässt.
+
+
+
+[[1-7-key-benefits-at-a-glance]]
+== 1.7 Die wichtigsten Vorteile auf einen Blick
+
+[cols="50%,50%"]
+|===
+| Nutzen | Beschreibung 
+
+
+| Einheitliche Orchestrierung | Eine einzelne DAG umfasst ingest → archive 
+
+
+| Flexibilität der Storage-Ebene | S3 oder LustreFS wird pro Lauf über die Konfiguration ausgewählt 
+
+
+| Reduzierte Kosten für die Neuschulung | Inkrementelle Feinabstimmung über `partial++_++fit` 
+
+
+| Schnellere Wiederherstellung | Fortsetzen des checkpointbasierten Trainings 
+
+
+| Vollständige Abstammung | Manifeste, effective-config Protokolle, Archivdatensätze 
+
+
+| Keine Speicherbindung | Multiprotokoll: NFS, S3, Lustre 
+
+
+| GPU-Auslastung | Gestufter Storage versorgt die Rechenleistung, sodass Kosten durch inaktive GPUs vermieden werden. 
+
+
+| Kostenoptimierte Aufbewahrung | FabricPool stuft selten genutzte Daten automatisch in Objektspeicher aus 
+|===

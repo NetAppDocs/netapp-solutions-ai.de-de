@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-data-mobility.html 
+keywords:  
+summary:  
+---
+= 6. Datenmobilität mit NetApp XCP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+NetApp XCP stellt den kontrollierten Übertragungspfad zwischen der vorbereiteten Datenebene von ONTAP NAS und der aktiven Trainingsebene bereit. Airflow führt die Vorabprüfung durch und initiiert den Kopiervorgang über den XCP Host; `xcp++_++copy++_++destination` für jeden Durchlauf wird ONTAP S3 oder LustreFS ausgewählt. Dasselbe ausgewählte Ziel wird vom Modelltraining, der Feinabstimmung und der Inferenz verwendet, um Daten und Artefakte auf einer konsistenten Ebene zu halten.
+
+
+
+[[6-1-why-netapp-xcp]]
+== 6.1 Warum NetApp XCP
+
+XCP ist eine parallele, Multithreading-fähige Kopier-Engine, die die von dieser Architektur verwendeten NFS-Quellen sowie ONTAP S3- und LustreFS-Ziele unterstützt. Die Option  `-newid ++<++run++_++stamp++>++` ordnet jede Übertragung der Pipeline-Ausführung zu und unterstützt so die Nachverfolgbarkeit über vorbereitete Daten, Trainingseingaben und Speicherorte von Modellartefakten hinweg.
+
+
+
+[[6-2-xcp-preflight-validation-flow]]
+== 6.2 XCP Preflight Validierungsablauf
+
+Die Vorabprüfung wird vor einem XCP Kopiervorgang ausgeführt. Dabei wird überprüft, ob Airflow den XCP Host über SSH erreichen kann und ob der konfigurierte ONTAP NAS NFS Quellpfad für XCP sichtbar ist. Die expliziten Abbruchbedingungen stoppen die Pipeline, bevor ein Kopiervorgang beginnt, wenn die Konnektivität oder die Sichtbarkeit der Quelle nicht korrekt ist.
+
+image::ai-pipeline-xcp-preflight-validation.png[XCP Preflight Validierungsablauf]
+
+
+
+[[6-3-xcp-copy-to-s3-command-template]]
+== 6.3 XCP Kopieren nach S3 - Befehlsvorlage
+
+Dieser Pfad ist zu verwenden, wenn `xcp++_++copy++_++destination=s3`. XCP liest die vorbereiteten, mit einem Laufstempel versehenen Daten aus dem ONTAP NAS NFS Export und schreibt sie in den konfigurierten ONTAP S3 Bucket und das zugehörige Präfix. Das benannte XCP S3 Profil stellt die Zielanmeldeinformationen auf dem XCP Host bereit; die Modellphasen erkennen dann sowohl Daten als auch Artefakte über `xcp++_++s3++_++training++_++prefix`.
+
+[source, bash]
+----
+xcp copy -newid <run_stamp> \
+  -s3.profile <xcp_s3_profile> \
+  -s3.endpoint <xcp_s3_endpoint> \
+  <xcp_nfs_source_ip>:<xcp_nfs_source_path> \
+  s3://<xcp_s3_bucket>/<xcp_s3_dest_prefix>
+----
+*Beispiel: Der vorbereitete ONTAP NAS Datensatz wird in den ONTAP S3 Trainings-Bucket kopiert.*
+
+[source, bash]
+----
+/usr/src/xcp/linux/xcp copy -newid 20260901_120000 \
+    -s3.profile ontaps3 \
+    -s3.endpoint http://10.63.150.161 \
+    10.63.150.159:/prepnasbucket/example_ai_pipeline \
+    s3://trainingbucket/example_ai_pipeline
+----
+Dieses Beispiel verwendet `20260901++_++120000` als die XCP Jobidentität. Die Trainingsaufgabe findet die kopierten Dateien unter dem konfigurierten `xcp++_++s3++_++training++_++prefix`, z. B. `example++_++ai++_++pipeline/formatted/20260901++_++120000/data/`.
+
+
+
+[[6-4-xcp-copy-to-lustrefs-command-template]]
+== 6.4 XCP Copy to LustreFS - Befehlsvorlage
+
+Dieser Pfad wird verwendet, wenn `xcp++_++copy++_++destination=lustrefs`. XCP kopiert vorbereitete Daten von der eingebundenen ONTAP NAS Quelle zum eingebundenen LustreFS Ziel. Beide Einbindungen müssen auf dem XCP Host verfügbar sein, und LustreFS muss auch auf dem Airflow Worker eingebunden sein, der Modelltraining, Feinabstimmung und Inferenz durchführt.
+
+[source, bash]
+----
+findmnt -T <xcp_lustrefs_source_path> -o FSTYPE,TARGET -n | grep -E '^nfs[0-9]* '  # source mount type
+findmnt -T <xcp_lustrefs_dest_path> -o FSTYPE,TARGET -n | grep -E '^lustre '   # destination mount type
+xcp copy -newid <run_stamp> \
+  file://<xcp_lustrefs_source_path> \
+  file://<xcp_lustrefs_dest_path>
+----
+*Beispiel: Kopieren des vorbereiteten ONTAP NAS-Datensatzes auf das LustreFS-Trainingsmount*
+
+[source, bash]
+----
+findmnt -T /prepnasbucket/example_ai_pipeline -o FSTYPE,TARGET -n | grep -E '^nfs[0-9]* '
+findmnt -T /mnt/lustre/client -o FSTYPE,TARGET -n | grep -E '^lustre '
+
+/usr/src/xcp/linux/xcp copy -newid 20260901_120000 \
+    file:///prepnasbucket/example_ai_pipeline \
+    file:///mnt/lustre/client
+----
+Die beiden `findmnt`Befehle überprüfen, ob der Quellpfad über NFS und der Zielpfad über LustreFS auf dem XCP-Host eingebunden sind, bevor der Kopiervorgang beginnt. Mit `xcp++_++lustrefs++_++training++_++subpath=example++_++ai++_++pipeline` liest `training` die mit einem Laufstempel versehenen Daten unter `/mnt/lustre/client/example++_++ai++_++pipeline/formatted/20260901++_++120000/data/`.
+
+
+
+[[6-5-xcp-destination-decision-flow]]
+== 6.5 XCP Zielentscheidungsablauf
+
+Dieses Entscheidungsdiagramm zeigt, wie ein Laufzeitparameter das Kopierziel und den Lesepfad für das Training bestimmt. Für das ONTAP S3 Objektziel wird  `s3` ausgewählt und für das parallele Dateisystemziel  `lustrefs`. Nachgelagerte Stufen verwenden automatisch die passende Quelle, sodass bei Änderungen der Speicherplatzierung keine Anpassungen am Modellcode erforderlich sind.
+
+image::ai-pipeline-xcp-destination-decision.png[Entscheidungsablauf für das XCP Ziel]
+
+
+
+[[6-6-xcp-failure-handling-and-guardrails]]
+== 6.6 XCP Fehlerbehandlung und Schutzmaßnahmen
+
+Diese Schutzmechanismen machen Konfigurations- und Infrastrukturfehler zum frühestmöglichen praktikablen Zeitpunkt erkennbar. Fehler bei der Vorabprüfung verhindern eine ungültige Übertragung, Dateisystemtypprüfungen validieren die ONTAP NAS und LustreFS Mounts, und die Validierung der S3-Anmeldedaten gilt nur, wenn ONTAP S3 als ausgewähltes XCP Ziel verwendet wird.
+
+[cols="50%,50%"]
+|===
+| Zustand | Guard-Verhalten 
+
+
+| Nicht unterstützter `xcp++_++copy++_++destination` Wert | Die Pipeline lehnt den Wert ab, bevor Daten verschoben werden. 
+
+
+| LustreFS Mount nicht vorhanden | Die Validierung des Dateisystemtyps ist fehlgeschlagen; der Kopiervorgang wurde vor der Datenverschiebung angehalten. 
+
+
+| SSH nicht erreichbar | Preflight wird mit Code 1 beendet, bevor ein Kopiervorgang erfolgt. 
+
+
+| NFS Pfad nicht sichtbar | Preflight wird mit Code 2 beendet, bevor ein Kopiervorgang erfolgt. 
+
+
+| Fehlende XCP S3 Anmeldeinformationen (nur S3 Modus) | `model++_++training`/artifact sync löst explizite Fehler aus `ValueError` 
+|===

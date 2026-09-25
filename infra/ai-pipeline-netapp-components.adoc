@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-netapp-components.html 
+keywords:  
+summary:  
+---
+= 4. NetApp, Technologiekomponenten von Drittanbietern und Open Source
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+[cols="50%,50%"]
+|===
+| Komponente | Rolle in der Lösung 
+
+
+| NetApp StorageGRID | S3-kompatible Ebenen für Rohdatenerfassung und Archivierung von Objektspeicher 
+
+
+| NetApp ONTAP NAS Bucket / NFS | Ebene der vorbereiteten Daten; NFS-Quellexport wird vor der Datenübertragung durch XCP Preflight validiert 
+
+
+| NetApp ONTAP S3 | Optionales Ziel für XCP Trainingsdaten und Modellartefakte 
+
+
+| NetApp XCP | Datenmobilitäts-Engine mit hohem Durchsatz; kopiert nach S3 oder LustreFS 
+
+
+| NetApp FabricPool | Optionales Tiering für ONTAP NAS aufbereitete Daten und archivnahe Daten zur Kostenoptimierung 
+
+
+| LustreFS (NetApp integriert) | Paralleles Hochleistungs-Dateisystem für die Trainingsschicht 
+
+
+| NetApp Console (optional) | Erweiterte Überwachung/Beobachtbarkeit für ONTAP und XCP Ressourcen 
+
+
+| ONTAP Snapshot/Backup | Zeitpunktbezogener Schutz für vorbereitete Daten in der ONTAP NAS-Ebene, unabhängig von der Pipeline 
+|===
+
+
+[[4-1-netapp-xcp-core-value]]
+== 4.1 NetApp XCP - Kernwert
+
+XCP ist die Mobilitätsschicht, die den Datenspeicherort vom Rechenstandort entkoppelt. Ein einziger Konfigurationsschalter (`xcp++_++copy++_++destination`) legt fest, ob aufbereitete Daten und Modellartefakte in NetApp ONTAP S3 oder in einer LustreFS Hochleistungsebene landen, wobei `model++_++training`, `fine++_++tuning`, und `inferencing` automatisch aus demselben Ziel lesen und in dasselbe Ziel schreiben.
+
+
+
+[[4-2-third-party-and-open-source-technology-components]]
+== 4.2 Technologiekomponenten von Drittanbietern und Open Source
+
+[cols="50%,50%"]
+|===
+| Komponente | Zweck 
+
+
+| Apache Airflow | DAG Orchestrierung, Wiederholungsversuche, XCom Task-Kommunikation, Terminplanung 
+
+
+| Apache Spark | Optionale verteilte Transformations-Engine für `data++_++prep` 
+
+
+| Delta Lake / Apache Iceberg | Optionale Lakehouse-Tabellenformate für vorbereitete tabellarische Daten 
+
+
+| scikit-learn | `LinearRegression` (tabellarisch) und `SGDClassifier` (textlich, inkrementell) 
+
+
+| Airbyte/Apache NiFi | Optionale Erfassungs-Connectors vor `data++_++prep` 
+
+
+| boto3 | AWS S3-kompatibles SDK für StorageGRID, ONTAP NAS Bucket und ONTAP S3 Interaktionen 
+|===

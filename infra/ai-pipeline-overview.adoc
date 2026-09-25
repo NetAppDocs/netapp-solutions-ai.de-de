@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: infra/ai-pipeline-overview.html 
+keywords:  
+summary:  
+---
+= Optimierung der KI-Pipeline über NetApp Speicherplattformen hinweg (StorageGRID, ONTAP und E-Series)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+Karthikeyan Nagalingam, NetApp
+
+Diese validierte Architektur präsentiert eine gesteuerte, speicherebenenbewusste KI-Datenpipeline, die durch Apache Airflow orchestriert wird. Die Lösung erfasst tabellarische Rohdaten und Textdaten aus NetApp StorageGRID, erstellt deterministische Datensätze und Manifeste in einem ONTAP NAS Bucket und verwendet NetApp XCP, um aufbereitete Daten je nach Laufzeitkonfiguration entweder nach NetApp ONTAP S3 oder LustreFS zu verschieben. Anschließend trainiert und optimiert sie scikit-learn-Modelle inkrementell, generiert Vorhersagen, speichert erfolgreiche Trainingsergebnisse als Checkpoints und archiviert Modelle, Metriken, Manifeste und Vorhersagenachweise in StorageGRID. Die Architektur bietet reproduzierbare Ausführung, konfigurierbare Speicherplatzierung, Schutzmechanismen bei Fehlern, checkpointbasierte Wiederherstellung und nachvollziehbare Datenherkunft über den gesamten KI-Lebenszyklus hinweg. Sie ist für Architekten, Dateningenieure, ML-Ingenieure und Infrastrukturteams vorgesehen, die ein wiederholbares Bereitstellungs- und Validierungsmuster für KI-Pipelines über NetApp Speicherebenen hinweg benötigen.
+
+'''
+
+
+[[table-of-contents]]
+=== Inhaltsverzeichnis
+
+. link:ai-pipeline-executive-summary.html["Zusammenfassung"]
+. link:ai-pipeline-solution-overview.html["Lösungsübersicht, Geschäftswert und Kundenvorteile"]
+. link:ai-pipeline-architecture.html["Architekturübersicht"]
+. link:ai-pipeline-netapp-components.html["NetApp, Drittanbieter- und Open Source-Technologiekomponenten"]
+. link:ai-pipeline-solution-design-and-storage-architecture.html["Details zu Lösungsdesign und Speicherarchitektur"]
+. link:ai-pipeline-data-mobility.html["Datenmobilität mit NetApp XCP"]
+. link:ai-pipeline-deployment-architecture.html["Bereitstellungsarchitektur"]
+. link:ai-pipeline-configuration-reference.html["Konfigurationsreferenz"]
+. link:ai-pipeline-operational-guide.html["Betriebsanleitung"]
+. link:ai-pipeline-security-considerations-validation-testing.html["Sicherheitsaspekte, Validierung und Tests"]
+. link:ai-pipeline-differentiation-appendices.html["NetApp Differenzierung und Wettbewerbspositionierung, Anhänge"]
+
