@@ -48,7 +48,7 @@ Wir empfehlen die Verwendung von BlueXP zum Erstellen des FlexCache -Volumes.  U
 
 Wenn Sie BlueXP nicht verwenden möchten, können Sie zum Erstellen des FlexCache Volumes ONTAP System Manager oder die ONTAP CLI verwenden.  Um ein FlexCache Volume mit System Manager zu erstellen, befolgen Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_nas_flexcache.html["ONTAP-Dokumentation"] .  Informationen zum Erstellen eines FlexCache Volumes mit der ONTAP CLI finden Sie in den Anweisungen imlink:https://docs.netapp.com/us-en/ontap/flexcache/index.html["ONTAP-Dokumentation"] .
 
-Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+Wenn Sie diesen Prozess automatisieren möchten, können Sie die link:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"], die link:https://docs.netapp.com/us-en/ontap-restapi/index.html["ONTAP REST API"] oder die link:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] verwenden.
 
 
 NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
@@ -92,7 +92,7 @@ Wir empfehlen die Verwendung von BlueXP zum Erstellen der SnapMirror -Beziehung.
 
 Wenn Sie BlueXP nicht verwenden möchten, können Sie die SnapMirror -Beziehung mit dem ONTAP System Manager oder der ONTAP CLI erstellen.  Um eine SnapMirror -Beziehung mit System Manager zu erstellen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_dp_configure_mirror.html["ONTAP-Dokumentation"] .  Um eine SnapMirror -Beziehung mit der ONTAP CLI zu erstellen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-replication-workflow-concept.html["ONTAP-Dokumentation"] .
 
-Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+Wenn Sie diesen Prozess automatisieren möchten, können Sie die link:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"], die link:https://docs.netapp.com/us-en/ontap-restapi/index.html["ONTAP REST API"] oder die link:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] verwenden.
 
 
 NOTE: System Manager ist in Amazon FSx ONTAP nicht verfügbar.
@@ -111,7 +111,7 @@ Wir empfehlen die Verwendung von BlueXP , um die SnapMirror -Beziehung zu unterb
 
 Wenn Sie BlueXP nicht verwenden möchten, können Sie die SnapMirror -Beziehung mit dem ONTAP System Manager oder der ONTAP CLI aufheben.  Um eine SnapMirror -Beziehung mit System Manager zu beenden, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/task_dp_serve_data_from_destination.html["ONTAP-Dokumentation"] .  Um eine SnapMirror -Beziehung mit der ONTAP CLI zu unterbrechen, beachten Sie die Anweisungen imlink:https://docs.netapp.com/us-en/ontap/data-protection/make-destination-volume-writeable-task.html["ONTAP-Dokumentation"] .
 
-Wenn Sie diesen Prozess automatisieren möchten, können Sie dielink:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"] , Dielink:https://devnet.netapp.com/restapi.php["ONTAP REST API"] oder dielink:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] .
+Wenn Sie diesen Prozess automatisieren möchten, können Sie die link:https://docs.netapp.com/us-en/bluexp-automation/["BlueXP -API"], die link:https://docs.netapp.com/us-en/ontap-restapi/index.html["ONTAP REST API"] oder die link:https://docs.ansible.com/ansible/latest/collections/netapp/ontap/index.html["ONTAP Ansible-Sammlung"] verwenden.
 
 
 

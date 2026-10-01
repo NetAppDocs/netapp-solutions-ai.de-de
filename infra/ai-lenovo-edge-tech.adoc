@@ -108,7 +108,7 @@ image:ai-edge-007.png["Abbildung, die einen Eingabe-/Ausgabedialog zeigt oder sc
 
 
 
-NOTE: Weitere Informationen finden Sie im https://www.netapp.com/pdf.html?item=/media/19339-DS-4082.pdf["NetApp EF-Serie – Datenblatt zu den All-Flash-Arrays der NetApp EF-Serie EF600, F300, EF570 und EF280"^] .
+NOTE: Weitere Informationen finden Sie unter https://www.netapp.com/pdf.html?item=/media/19339-ds-4082.pdf["NetApp EF-Serie – Datenblatt zu den All-Flash-Arrays der NetApp EF-Serie EF600, F300, EF570 und EF280"^].
 
 
 

@@ -149,7 +149,7 @@ Die EF80 Plattform unterstützt bis zu zwölf Host-Ports pro Array, wenn in jede
 
 Jedes EF80 Array nutzt außerdem das dedizierte I/O-Modul in Steckplatz 4 für die Inter-Controller-Spiegelung. Controller A Port 4a wird mit Controller B Port 4a verbunden, und Controller A Port 4b mit Controller B Port 4b. Diese Verbindungen dienen der Cache-Spiegelung und dem I/O-Transport und werden nicht für den Host-NVMe-oF-Datenverkehr verwendet. Siehe link:https://docs.netapp.com/us-en/e-series/install-hw-ef50-ef80/install-cable.html#step-1-cable-the-inter-controller-mirroring-connections["Die Inter-Controller-Spiegelungsverbindungen EF50 und EF80 verkabeln"^].
 
-Die vollständigen technischen Daten der EF-Series für alle Modelle sind im link:https://www.netapp.com/pdf.html?item=/media/14036-ds-4082.pdf["NetApp EF-Series All-Flash-Array Datenblatt"^] zu finden.
+Die vollständigen technischen Daten der EF-Series für alle Modelle sind im link:https://www.netapp.com/pdf.html?item=/media/19339-ds-4082.pdf["NetApp EF-Series All-Flash-Array Datenblatt"^] zu finden.
 
 
 
