@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Dieser Abschnitt definiert die Infrastrukturplatzierung, die Softwareabhängigkeiten und die Netzwerkkonnektivität, die für den Betrieb der Pipeline erforderlich sind. Die Bereitstellung trennt die Airflow Orchestrierung vom XCP Datenmobilitätshost und verbindet beide Komponenten mit StorageGRID, ONTAP NAS und dem ausgewählten ONTAP S3 oder LustreFS Trainingsziel.
 
 

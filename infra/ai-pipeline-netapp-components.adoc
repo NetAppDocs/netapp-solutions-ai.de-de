@@ -15,6 +15,9 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
+Die KI-Datenpipeline-Lösung verwendet Komponenten von NetApp, Drittanbietern und Open-Source-Komponenten.
+
 [cols="50%,50%"]
 |===
 | Komponente | Rolle in der Lösung 

@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Dieser Leitfaden behandelt die routinemäßige Ausführung, Überwachung, Störungstriage, Wiederherstellung des Trainings, Archivprüfung, Kapazitätsoptimierung und Datensicherung. Er ist zusammen mit den Konfigurationsszenarien in Abschnitt 8 zu verwenden, damit dieselbe Pipeline über die Trainingsmodi lokal, ONTAP S3 und LustreFS hinweg konsistent betrieben wird.
 
 

@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Dieser Abschnitt beschreibt den logischen Workflow, die Interaktionen der Komponenten, die physische Bereitstellung und die Datenherkunft der validierten KI-Pipeline. Die Diagramme zeigen zusammen, wie Apache Airflow die Datenübertragung von StorageGRID über ONTAP NAS orchestriert, optional NetApp XCP verwendet, um Daten zur Modellausführung auf ONTAP S3 oder LustreFS zu platzieren, und die verwalteten Ergebnisse an den StorageGRID Archivspeicher zurückgibt.
 
 

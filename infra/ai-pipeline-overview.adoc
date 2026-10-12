@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Diese validierte Architektur präsentiert eine gesteuerte, speicherebenenbewusste KI-Datenpipeline, die durch Apache Airflow orchestriert wird. Die Lösung erfasst tabellarische Rohdaten und Textdaten aus NetApp StorageGRID, erstellt deterministische Datensätze und Manifeste in einem ONTAP NAS Bucket und verwendet NetApp XCP, um aufbereitete Daten je nach Laufzeitkonfiguration entweder nach NetApp ONTAP S3 oder LustreFS zu verschieben. Anschließend trainiert und optimiert sie scikit-learn-Modelle inkrementell, generiert Vorhersagen, speichert erfolgreiche Trainingsergebnisse als Checkpoints und archiviert Modelle, Metriken, Manifeste und Vorhersagenachweise in StorageGRID. Die Architektur bietet reproduzierbare Ausführung, konfigurierbare Speicherplatzierung, Schutzmechanismen bei Fehlern, checkpointbasierte Wiederherstellung und nachvollziehbare Datenherkunft über den gesamten KI-Lebenszyklus hinweg. Sie ist für Architekten, Dateningenieure, ML-Ingenieure und Infrastrukturteams vorgesehen, die ein wiederholbares Bereitstellungs- und Validierungsmuster für KI-Pipelines über NetApp Speicherebenen hinweg benötigen.
 
 '''

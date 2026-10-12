@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Dieser kombinierte Abschnitt behandelt die erforderlichen Kontrollmechanismen für den sicheren Betrieb der KI-Pipeline sowie die Validierungsaktivitäten, mit denen nachgewiesen wird, dass sich das Design in repräsentativen Umgebungen wie erwartet verhält. Dieselbe Trennung der Storage-Tiers, das Zugriffsmodell mit minimalen Berechtigungen, die Prüfpunktlogik und die laufbezogene Datenherkunft, die in der Pipeline verwendet werden, fließen auch in den Validierungsplan und die betrieblichen Leitplanken ein.
 
 

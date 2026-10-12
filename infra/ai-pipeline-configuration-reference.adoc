@@ -15,6 +15,7 @@ summary:
 
 Karthikeyan Nagalingam, NetApp
 
+[role="lead"]
 Die Konfigurationsreferenz beschreibt die Laufzeitparameter, die die Datenerfassung, Datenaufbereitung, XCP Datenmobilität, das Training, Checkpointing und die Archivierung steuern. Der ONTAP NAS Bucket wird in erster Linie als Staging-Schicht für aufbereitete Daten und XCP verwendet, um Supportfähigkeit und Portabilität zu gewährleisten. Im Echtzeit-Produktionsbetrieb können dieselben aufbereiteten Daten auch über direkte RDMA-fähige Zugriffspfade genutzt werden, wenn dies besser den Anforderungen an Workload und Latenz entspricht.
 
 '''
