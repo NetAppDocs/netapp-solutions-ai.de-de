@@ -17,11 +17,11 @@ summary: Ein potenzieller Anwendungsfall für den Dualprotokollzugriff von NFS u
 Diese Lösung nutzt die folgenden Technologien:
 
 * *AWS SageMaker-Notizbuch.*  Bietet Entwicklern und Datenwissenschaftlern Machine-Learning-Funktionen zum effizienten Erstellen, Trainieren und Bereitstellen hochwertiger ML-Modelle.
-* * NetApp BlueXP.*  Ermöglicht die Erkennung, Bereitstellung und den Betrieb von Speicher vor Ort sowie auf AWS, Azure und Google Cloud.  Es bietet Datenschutz vor Datenverlust, Cyberbedrohungen und ungeplanten Ausfällen und optimiert die Datenspeicherung und Infrastruktur.
+* *NetApp Console.* Bietet eine zentrale Kontrollebene für das Erkennen, das Deployment und den Betrieb von Storage on-premises sowie auf AWS, Azure und Google Cloud. Sie bietet Datenschutz vor Datenverlust, Cyberbedrohungen und ungeplanten Ausfällen und optimiert Datenspeicher sowie Infrastruktur.
 * * NetApp Cloud Volumes ONTAP.*  Bietet Speichervolumes der Unternehmensklasse mit NFS-, SMB/CIFS-, iSCSI- und S3-Protokollen auf AWS, Azure und Google Cloud und bietet Benutzern so mehr Flexibilität beim Zugriff auf und der Verwaltung ihrer Daten in der Cloud.
 
 
-Aus BlueXP erstelltes NetApp Cloud Volumes ONTAP zum Speichern von ML-Daten.
+NetApp Cloud Volumes ONTAP, das über NetApp Console erstellt wurde, um ML-Daten zu speichern.
 
 Die folgende Abbildung zeigt die technischen Komponenten der Lösung.
 
