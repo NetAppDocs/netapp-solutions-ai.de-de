@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/mongodb-ontap-summary.html 
+keywords: mongodb, ontap, summary, conclusion 
+summary: Diese Seite fasst die für MongoDB auf NetApp ONTAP validierten Vorteile zusammen. 
+---
+= Zusammenfassung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Diese Referenzarchitektur bietet eine End-to-End-Lösung für das effiziente Deployment einer virtualisierten, Scale-out-MongoDB-NoSQL-Datenbank auf der intelligenten Dateninfrastruktur von NetApp. In der getesteten Architektur, die NetApp Storage-Technologie mit VMware vSphere kombinierte, wurden die MongoDB-VMs und -Datenbanken auf einem Scale-out-NetApp AFF Array gehostet. NetApp SnapCenter verwaltet die Backups, und SnapMirror repliziert sie zur Disaster-Recovery nach Amazon FSx for NetApp ONTAP in AWS.
+
+Diese Lösung bestätigte die folgenden wesentlichen Vorteile:
+
+* Vorhersehbare, hohe Performance bei konstant niedriger Latenz, was den anspruchsvollsten MongoDB basierten Analyseapplikationen sehr schnelle Reaktionszeiten bietet.
+* Inline-Deduplizierung und Komprimierung, die MongoDB auf Flash-Storage kostengünstig machen.
+* Sofortiges, platzsparendes Datenbankklonen, das die Einrichtung von Entwicklung/Test- und QA-Umgebungen beschleunigt, ohne neuen Storage zu erfordern.
+* Backup und Recovery basieren auf platzsparenden NetApp Snapshot Kopien und Remote-Replikation in die Cloud.
+
+
+Über die Validierungsergebnisse hinaus ergänzt NetApp AFF MongoDB um die folgenden Schlüsselfunktionen:
+
+* Ein Scale-up- und Scale-out-All-Flash-Array, das eine modulare Skalierung von Storage mit MongoDB ermöglicht.
+* Unterbrechungsfreie Abläufe, die maximale Betriebszeit und hohe Verfügbarkeit bieten.
+
+
+Bei YCSB Performance-Tests lieferte NetApp AFF hervorragende Ergebnisse und demonstrierte damit ein leistungsstarkes, kostengünstiges All-Flash-Array für die horizontale Skalierung von MongoDB Deployments.
+
+Dieser Bericht beschreibt außerdem zwei Anwendungsfälle von Kunden: die Bereitstellung von Digital Advisor aus MongoDB Atlas sowie Enterprise-Backup und Recovery mit MongoDB Ops Manager. Für Ops Manager enthält er Designempfehlungen, die noch evaluiert werden müssen, für das Hinzufügen von NetApp SnapCenter für Snapshot-Kopien auf Storage-Level, schnelle Wiederherstellung und Disaster Recovery.

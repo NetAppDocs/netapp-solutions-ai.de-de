@@ -1,0 +1,272 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/mongodb-ontap-use-cases.html 
+keywords: mongodb, atlas, ops manager, digital advisor, snapcenter, use cases 
+summary: 'Diese Seite beschreibt zwei Anwendungsfälle von Kunden: die Bereitstellung von Digital Advisor aus MongoDB Atlas sowie MongoDB Backup und Recovery für Unternehmen mit Ops Manager und NetApp SnapCenter.' 
+---
+= Kundenanwendungsfälle
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Diese Seite beschreibt zwei Anwendungsfälle, die zeigen, wie das MongoDB- und NetApp-Muster in diesem Bericht in der Praxis angewendet wird. Der erste zeigt, wie MongoDB einen NetApp Service unterstützt. Der zweite zeigt, wie MongoDB Ops Manager MongoDB-Datenbanken schützt und wo sich NetApp Storage hinter seinen Snapshot Stores befinden kann. Beide sind als verallgemeinerte Muster beschrieben. Größen, Zeitpläne, Identitäten und Produktversionen sind absichtlich ausgelassen.
+
+
+
+[[serving-netapp-digital-advisor-aiq-from-mongodb-atlas]]
+== Bereitstellung von NetApp Digital Advisor (AIQ) aus MongoDB Atlas
+
+
+
+[[overview]]
+=== Überblick
+
+Digital Advisor bietet Kunden, Partnern und NetApp Mitarbeitern Empfehlungen zu Risiken, Kapazität und Upgrades aus MongoDB Atlas auf AWS. Da Atlas vorkonfigurierte Dokumente mit den jeweiligen Zugriffsregeln enthält, werden Seiten ohne Wartezeit auf Analysen geladen, jede Zielgruppe sieht nur ihre eigenen Daten, und Benutzeraktionen bleiben auch bei einem Knotenausfall erhalten.
+
+
+
+[[why-mongodb]]
+=== Warum MongoDB
+
+[cols="40%,60%"]
+|===
+| MongoDB Funktionalität | Welche Daten Digital Advisor erhält 
+
+
+| Flexible Dokumente mit Indizes | Schnelle Lesevorgänge, die Systeme, Volumes und Risiken in einer einzigen Abfrage verknüpfen. 
+
+
+| Upserts in eine Sammlung aus vielen Jobs | Für jede Quelle gilt ein eigener Aktualisierungszeitplan. 
+
+
+| Zugriff auf Felder in jedem Dokument | Eine auf jede Zielgruppe zugeschnittene Sichtweise. 
+
+
+| Mehrheitsschreibvorgänge und zeitpunktgenaue Recovery | Bestätigungen und Abhilfemaßnahmen bleiben auch nach einem Failover bestehen. 
+|===
+
+
+[[solution]]
+=== Lösung
+
+.AIQ Serving-Layer-Architektur
+image:mongodb-ontap-025.png["Architektur der Digital Advisor Serving-Schicht auf MongoDB Atlas, von der AutoSupport-Telemetrie über den lokalen Data Lake und Aktualisierungsjobs bis hin zu den Atlas-Collections und der API-Schicht."]
+
+Die Daten durchlaufen die folgenden Schritte:
+
+. Installierte Systeme laden AutoSupport Telemetriedaten zu NetApp hoch.
+. Ein lokaler Data Lake bereitet die Daten auf und stellt sie als virtuelle Datensätze bereit.
+. Geplante Aktualisierungsaufträge fügen jedes Dataset per Bulk-Upsert in eine Atlas Collection mit Write Concern „majority“ ein.
+. Eine API-Schicht auf AWS liest Atlas, fügt jeder Abfrage den Zugriffsfilter hinzu und stellt die Daten den Benutzern von Digital Advisor bereit.
+. Ein separater Autorisierungsdienst liest lediglich die Rollen-, Benutzer- und Token-Sammlungen, um das Benutzerprofil zu erstellen.
+
+
+
+
+[[best-practices]]
+=== Best Practices
+
+* Für jeden Writer werden *Mehrheits- und wiederholbare Schreibvorgänge* verwendet.
+* *Jeder Index muss im Code deklariert werden.* Manuell hinzugefügte Indizes können beim nächsten Deployment gelöscht werden.
+* *Es sollten nur die Blattpfade festgelegt werden, die Ihnen gehören.* Das Festlegen eines übergeordneten Objekts löscht Felder, die anderen Jobs gehören.
+* *Paging nach Schlüssel, nicht nach Offset,* und Projektion nur der benötigten Felder.
+* *Sicherung dessen, was nicht neu erstellt werden kann,* Bestätigung, dass die zeitpunktgenaue Recovery den Benutzerstatus abdeckt, und Test einer Wiederherstellung einer einzelnen Sammlung.
+
+
+
+
+[[enterprise-mongodb-backup-and-recovery-with-ops-manager]]
+== Enterprise MongoDB Backup und Recovery mit Ops Manager
+
+
+
+[[overview]]
+=== Überblick
+
+Organisationen, die MongoDB als Service auf Kubernetes und virtuellen Maschinen betreiben, benötigen eine Möglichkeit, jede Datenbank einzusetzen, zu überwachen, zu sichern und wiederherzustellen. MongoDB Ops Manager und der MongoDB Enterprise Operator bieten diese Möglichkeit. Dieser Anwendungsfall beschreibt, wie sie zusammenarbeiten und wo NetApp Storage hinter den Snapshot-Speichern eingesetzt werden kann.
+
+
+
+[[problem-and-requirements]]
+=== Problemstellung und Anforderungen
+
+[cols="31%,35%,34%"]
+|===
+| Herausforderung | Anforderung | Nutzen für den Kunden 
+
+
+| *Backups sind unerlässlich.* Jede Produktionsdatenbank benötigt eine wiederherstellbare Kopie. | *Sicheres Echtzeit-Backup* über eine einzige Schnittstelle. | Wiederherstellung nach Datenverlust oder Datenbeschädigung ohne benutzerdefinierte Skripte. 
+
+
+| *Gemischte Plattformen.* Datenbanken laufen auf Kubernetes und auf VMs. | *Ein einziges Tool* zum Einsetzen, Überwachen, Aktualisieren, Sichern und Skalieren beider. | Ein Betriebsmodell für jede Datenbank. 
+
+
+| *Manuelle Provisionierung.* Handgefertigte Replika-Sets driften ab. | *Deklaratives Deployment* anhand eines kurzen Manifests. | Jedes Mal identische Datenbanken. 
+
+
+| *Transparenz.* Der Backup-Systemstatus ist schwer einzusehen. | *Überwachung* mit einer REST-API zur Automatisierung. | Probleme zeigen sich, bevor eine Wiederherstellung erforderlich ist. 
+
+
+| *Auswahl des Storage.* Snapshot-Größe und Aufbewahrungsdauer variieren je nach Datenbank. | *Anschließbare Snapshot-Speicher:* Blockspeicher, S3 oder Dateisystem. | Kosten und Wiederherstellungsanforderungen pro Datenbank abgestimmt. 
+|===
+
+
+[[solution]]
+=== Lösung
+
+.Backup- und Restore-Architektur mit MongoDB Ops Manager
+image:mongodb-ontap-026.png["Architekturdarstellung mit dem MongoDB Enterprise Operator, Ops Manager, dem Backup-Agent sowie Blockstore, S3 und Dateisystem-Snapshot-Speichern."]
+
+*Deployment.* Der Enterprise Operator überwacht ein Replica-Set-Manifest und erstellt die Mitglieder. Eine Projektkonfiguration und ein Secret für Anmeldedaten verbinden diese mit Ops Manager.
+
+*Backup.* Ops Manager wählt den Snapshot-Node aus. Der Backup-Agent öffnet ein `$backupCursor`, kopiert die Datendateien und sendet sie an Ops Manager. Ops Manager schreibt sie in den Blockstore, den S3-Store oder den Dateisystem-Store.
+
+*Wiederherstellung.* Der Benutzer fordert einen Snapshot-Link an, und Ops Manager erstellt einen Wiederherstellungsauftrag. Der Snapshot streamt vom Speicher zum Zielserver. Ein Wiederherstellungsprogramm startet eine temporäre Datenbank, ruft das oplog ab und wendet es auf den Snapshot an.
+
+*NetApp Eignung.* Drei NetApp Optionen werden für die Ops Manager Komponenten vorgeschlagen. Es handelt sich dabei um Designrichtlinien, die zu bewerten sind und in diesem Bericht nicht validiert werden:
+
+[cols="31%,35%,34%"]
+|===
+| Ops Manager Komponente | NetApp Option | Gründe, dies in Betracht zu ziehen 
+
+
+| S3 Speicher | NetApp StorageGRID (S3) | Object Storage mit richtlinienbasierter Datenplatzierung. 
+
+
+| Dateisystemspeicher | NetApp ONTAP (NFS) | ONTAP Datenmanagement. SnapCenter erstellt Snapshot-Kopien des Volumes, und SnapMirror repliziert diese an einen zweiten Standort oder in die Cloud. 
+
+
+| Applikations- und Backup-Datenbanken | NetApp ONTAP (NFS oder iSCSI) mit SnapCenter | Snapshot-Kopien ermöglichen der Backup-Plattform selbst eine schnelle Recovery nach einem Ausfall. 
+|===
+
+
+[[use-netapp-snapcenter-with-ops-manager]]
+=== Verwendung von NetApp SnapCenter mit Ops Manager
+
+Ops Manager schützt MongoDB auf Applikations-Level. NetApp SnapCenter fügt auf Storage-Level mit ONTAP Snapshot, SnapRestore, SnapMirror und FlexClone Technologie eine zweite Schicht hinzu. Die Schichten ergänzen sich, und das empfohlene Design nutzt beide, wie die folgende Abbildung zeigt.
+
+
+NOTE: Dieser Abschnitt enthält Designrichtlinien, die bewertet werden müssen. Es verwendet denselben Workflow für Snapshot, SnapMirror und FlexClone wie die SnapCenter Verfahren in xref:mongodb-ontap-solution-validation.html[Lösungsvalidierung].
+
+.Mehrstufiger Schutz mit Ops Manager und NetApp SnapCenter
+image:mongodb-ontap-027.png["Mehrschichtiges Schutzkonzept mit Ops Manager, der Backups auf Applikationsebene bereitstellt, sowie SnapCenter, das Snapshot-Kopien und Replikation auf Storage-Ebene bereitstellt."]
+
+Die folgende Tabelle teilt die Arbeit zwischen den beiden Ebenen auf.
+
+[cols="22%,39%,39%"]
+|===
+| Fähigkeit | Ops Manager | SnapCenter 
+
+
+| Backup-Einheit | Eine Momentaufnahme des Replikatsatzes aus einem Backup-Cursor sowie eine fortlaufende Kopie des oplog. | Eine Snapshot Kopie der ONTAP Volumes, die die Datendateien und das Journal enthalten. 
+
+
+| Zeitpunktgenaue Wiederherstellung | Ja. Ein Snapshot kann wiederhergestellt und das Oplog bis zu einem ausgewählten Zeitpunkt erneut abgespielt werden. | Zum Zeitpunkt der Snapshot-Kopie. In Kombination mit der oplog-Wiedergabe aus Ops Manager ist eine präzisere Wiederherstellung möglich. 
+
+
+| Wiederherstellungsgeschwindigkeit | Der Snapshot wird vom Speicher zum Zielserver gestreamt. | SnapRestore stellt das Volume wieder her, ohne die Daten zu kopieren. Eine Messung des Ergebnisses mit Ihren eigenen Daten ist möglich. 
+
+
+| Zeitplan und Aufbewahrung | Für jedes Projekt und jede Datenbank festgelegt. | Für jedes ONTAP Volume per Richtlinie festgelegt. 
+
+
+| Klonen | Wiederherstellung auf einem neuen Server. | FlexClone Volumes bei Bedarf, die sich Blöcke mit der Snapshot-Kopie teilen. 
+
+
+| Katastrophenwiederherstellung | Wiederherstellung aus replizierten oder Remote-Snapshot-Stores. | SnapMirror zu einem zweiten Standort oder zu Amazon FSx for NetApp ONTAP in der Cloud. 
+
+
+| Umfang | Datenbanken auf Kubernetes und VMs, die Ops Manager verwaltet. | Volumes auf ONTAP. Persistente Kubernetes-Volumes benötigen NetApp Trident protect. 
+|===
+Die folgende Tabelle beschreibt drei Möglichkeiten zum Einsatz von SnapCenter. Ausgangspunkt ist Muster A; nach dem Üben der Wiederherstellung erfolgt der Wechsel zu Muster C.
+
+[cols="24%,39%,37%"]
+|===
+| Muster | Was SnapCenter schützt | Verwendung für 
+
+
+| A. Schutz der Ops Manager Datenlandschaft (hier beginnen) | Das Dateisystem-Store-Volume, die Ops Manager Applikation Datenbank, die Backup-Datenbank und der Oplog-Store. | Schnelle Wiederherstellung der Backup-Plattform selbst sowie SnapMirror der Datenspeicher zu einem zweiten Standort oder in die Cloud. 
+
+
+| B. Schutz der MongoDB-Daten-Volumes | Die Daten- und Journalvolumes eines versteckten sekundären Mitglieds auf ONTAP, wie z. B. VM-Datenspeicher oder NFS-, iSCSI- oder FC-Volumes. | Wiederherstellung ohne Streaming eines vollständigen Snapshots und sofortige FlexClone Kopien für Entwicklung/Test und Qualitätssicherung. 
+
+
+| C. Kombiniert (empfohlenes Ziel) | Muster B für schnelle Wiederherstellung und Klonen, wobei Ops Manager weiterhin Oplog-basiertes zeitpunktgenaues Recovery und Richtlinien für Kubernetes und VMs bereitstellt. | Produktionsdatenbanken, die eine Wiederherstellungsabfolge benötigen: zuerst SnapRestore, dann der zeitpunktgenaue Restore mit Ops Manager, dann SnapMirror Failover. 
+|===
+*Applikationskonsistenz.* WiredTiger schreibt ein Journal, sodass eine Snapshot Kopie eines Volumes, das die Datendateien und das Journal zusammen enthält, absturzkonsistent ist und `mongod` sie beim Start wiederherstellt. Wenn sie sich auf unterschiedlichen Volumes befinden, sind die Snapshot Kopien als eine Konsistenzgruppe zu erstellen, oder die Datenbank ist zunächst mit `fsyncLock` in den Ruhezustand zu versetzen und anschließend wieder freizugeben. Die Befehle, die als Vor- und Nachbefehle angepasst werden können, sind unter xref:mongodb-ontap-appendix.html#quiesce-and-balancer-commands[Anhang: Befehle für Quiesce und balancer] beschrieben.
+
+*Wo soll der Snapshot erstellt werden?* Die SnapCenter Sicherung wird auf einem ausgeblendeten sekundären Mitglied (Priorität 0) ausgeführt, damit die Snapshot Kopie nicht mit dem Applikationsdatenverkehr konkurriert. Die Planung sollte so erfolgen, dass sie sich nicht mit der Ops Manager Sicherung auf demselben Mitglied überschneidet.
+
+*Backup.* SnapCenter führt bei Bedarf den Pre-Befehl aus und erstellt gemäß Richtlinie eine Snapshot Kopie der Daten- und Journal-Volumes. Anschließend führt es den Post-Befehl aus und startet ein SnapMirror Update auf den zweiten Standort oder auf Amazon FSx for NetApp ONTAP in der Cloud. Ops Manager setzt sein eigenes Backup des Replica Sets und des Oplogs fort.
+
+*Wiederherstellung.* Vor Verwendung dieses Verfahrens ist zu prüfen, dass das ONTAP Volume dem Zielmitglied dediziert ist und keine anderen VMs oder Mitglieds-Festplatten enthält. Bei einem gemeinsam genutzten Datastore ist nicht das gesamte Volume mit diesem Verfahren für ein einzelnes Mitglied wiederherzustellen; stattdessen ist eine mitgliedsspezifische Festplattenwiederherstellung von einem FlexClone oder eine koordinierte Recovery aller betroffenen Consumer zu planen. Auf dem Zielmitglied ist  `mongod` zu stoppen, und mit SnapRestore ist dessen Volume aus der ausgewählten Snapshot Kopie wiederherzustellen. Es kann auch zuerst ein FlexClone Volume eingebunden werden, um die Daten zu prüfen.  `mongod` ist zu starten, und das Mitglied kann dem Replikatsatz wieder beitreten. Für eine zeitpunktgenaue Recovery ist die Snapshot Kopie auf einem eigenständigen Server wiederherzustellen, und das Oplog aus Ops Manager ist bis zum ausgewählten Zeitpunkt anzuwenden. Wenn die Snapshot Kopie älter als das Oplog-Fenster ist, benötigt das Mitglied eine initiale Synchronisierung vom primären Server.
+
+*Wiederherstellungspfad.* Für ein ausgefallenes Mitglied erfolgt die Wiederherstellung seines Volume mit SnapRestore, danach kann es vom intakten Replikatsatz aufholen. Bei logischem Datenverlust oder bei Beschädigung logischer Daten, die bereits auf andere Mitglieder repliziert wurden, kommt eine isolierte Wiederherstellung oder eine zeitpunktgenaue Recovery mit Ops Manager zum Einsatz; das erneute Hinzufügen eines wiederhergestellten Mitglieds zum aktiven Replikatsatz führt zur Wiederholung der unerwünschten Operationen. Bei Standortausfall kommt das vorbereitete SnapMirror Failover-Verfahren zum Einsatz.
+
+*Wiederherstellungsziele.* Ein wiederhergestelltes Mitglied, das dem aktiven Replikatset wieder beitritt, holt zu seinem aktuellen Zustand auf; sein Wiederherstellungspunkt ist nicht der Zeitpunkt des Snapshot. Eine isolierte Snapshot Wiederherstellung stellt den erfassten Zustand wieder her, während ein zeitpunktgenauer Restore mit Ops Manager den Snapshot und das Oplog verwendet, um einen ausgewählten Zeitpunkt zu erreichen. SnapRestore vermeidet das Kopieren von Daten, während ein Restore mit Ops Manager den Snapshot streamt, sodass sich die Wiederherstellungszeiten unterscheiden. Dieser Bericht enthält keine Messwerte, daher ist eine Messung beider Wege mit den eigenen Daten erforderlich.
+
+*Einschränkungen.* SnapCenter schützt MongoDB über das von NetApp unterstützte MongoDB-Plug-in, wie in xref:mongodb-ontap-solution-overview.html#snapcenter[NetApp SnapCenter] beschrieben. Es ist zu bestätigen, dass Ihre MongoDB-Topologie und -Versionen unterstützt werden. Andernfalls sind dieselben Vorgänge über die ONTAP REST API zu skripten. SnapCenter schützt persistente Kubernetes-Volumes nicht direkt. Für diese ist NetApp Trident protect zu verwenden, und Ops Manager ist dafür als Backup-Pfad beizubehalten.
+
+
+
+[[benefits-to-the-customer]]
+=== Vorteile für den Kunden
+
+[cols="26%,74%"]
+|===
+| Nutzen | Was ändert sich für den Datenbankeigentümer 
+
+
+| *Schutz* | Sichere Backups in Echtzeit mit Wiederherstellung auf einen ausgewählten Snapshot sowie Oplog-Wiedergabe. 
+
+
+| *Konsistenz* | Dasselbe Manifest und dasselbe Tool setzen jedes Replica Set ein. 
+
+
+| *Geschwindigkeit* | Ein kurzes Manifest ersetzt die manuelle Einrichtung, und die Anforderung einer Wiederherstellung erfolgt über einen Link. 
+
+
+| *Flexibilität* | Drei Snapshot-Speicher ermöglichen es jedem Team, Kosten und Aufbewahrungsdauer selbst zu bestimmen. 
+
+
+| *Automatisierung* | Die REST-API ermöglicht es Orchestrierungstools, Bereitstellung, Backup und Wiederherstellung zu steuern. 
+|===
+
+
+[[netapp-values-in-this-design]]
+=== NetApp Werte in diesem Design
+
+* *Schutz geht vor.* Backup und Restore von Ops Manager sind vom ersten Manifest an integriert, und SnapCenter fügt darunter Snapshot Kopien auf Storage-Ebene hinzu.
+* *Auswahl des Storage.* Ops Manager Snapshots können über S3 auf StorageGRID oder auf einem ONTAP NFS Volume gespeichert werden, das auch durch SnapCenter geschützt werden kann.
+* *Vertrauenswürdige Abläufe.* Die Anmeldeinformationen befinden sich in einem Kubernetes-Secret, und jede Änderung ist im Code deklariert.
+* *Hybrid durch Design.* Das gleiche Muster funktioniert auf OpenShift, Kubernetes und VMs, On-Premises oder in der Cloud.
+* *Schnelle Wiederherstellung und Klonung.* SnapRestore stellt ein Mitglied-Volume aus einer Snapshot-Kopie wieder her, ohne die Daten zu streamen, und FlexClone erstellt Entwicklung/Test-Kopien, ohne sie zu kopieren.
+* *Notfallwiederherstellung.* SnapMirror repliziert die Snapshot-Kopien an einen zweiten Standort oder zu Amazon FSx for NetApp ONTAP in der Cloud.
+
+
+
+
+[[best-practices]]
+=== Best Practices
+
+* *Jedes Manifest verbleibt in der Versionskontrolle,* und für das Upgrade wird das Versionsfeld geändert.
+* *Drei Mitglieder* pro Replikatsatz, einschließlich der Ops Manager Applikation und der Backup-Datenbanken.
+* *Der API-Schlüssel wird in einem Secret gespeichert* und erhält nur den Zugriff, den er benötigt.
+* *Die Auswahl des Snapshot-Speichers richtet sich nach dem Wiederherstellungsbedarf,* anschließend folgt die Dimensionierung für die Aufbewahrung.
+* *Ein intakter Oplog-Speicher ist wichtig,* denn ein zeitpunktgenauer Restore erfordert ihn.
+* *Warnung bei veralteten Snapshots* durch Verwendung der Ops Manager Überwachung.
+* *Die Wiederherstellung nach einem Zeitplan üben* und die dafür benötigte Zeit messen.
+* *Eine Beschränkung des Personenkreises, der Snapshot-Links anfordern kann,* sowie eine vorherige Prüfung des freien Speicherplatzes auf dem Zielserver werden empfohlen.
+* *Automatisierung über die REST API* mit Audit-Protokollierung sowie Ops Manager und Agenten auf unterstützten Versionen halten.
+* Sie beginnen mit Muster A und wechseln zu Muster C, nachdem Sie die Wiederherstellung geübt haben.
+* Es werden SnapCenter Snapshot Kopien von einem versteckten sekundären Mitglied verwendet, die außerhalb des Backup-Fensters von Ops Manager verbleiben.
+* Es empfiehlt sich, die Datendateien und das Journal auf einem Volume zu speichern oder die Datenbank mit `fsyncLock` vor der Snapshot-Kopie anzuhalten und danach wieder freizugeben.
+* Die Snapshot-Kopien sollten aktuell genug sein, um innerhalb des Oplog-Fensters des Replikatsets zu liegen. Andernfalls benötigt das wiederhergestellte Mitglied eine initiale Synchronisierung.
+* Das SnapMirror Failover zum zweiten Standort sollte nach einem Zeitplan getestet werden, wobei erfasst wird, wie lange jeder Recovery-Pfad dauert.
+* Vor der Nutzung empfiehlt sich die Bestätigung, dass das SnapCenter Plug-in Ihre MongoDB-Version unterstützt; ONTAP REST API-Skripte sollten als Ausweichlösung verfügbar bleiben.
+

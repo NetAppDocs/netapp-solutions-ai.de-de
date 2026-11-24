@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/mongodb-ontap-appendix.html 
+keywords: mongodb, quiesce, balancer, sharding, commands, appendix 
+summary: Dieser Anhang listet die Befehle quiesce und balancer sowie die MongoDB Clusterbefehle auf, die bei der Validierung verwendet wurden. 
+---
+= Anhang
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Anhang listet die Befehle quiesce und balancer sowie die bei der Validierung verwendeten MongoDB-Befehle auf.
+
+
+
+[[quiesce-and-balancer-commands]]
+== Befehle für Quiesce und balancer
+
+Für die Validierung wurden Python 2.7-Skripte auf den MongoDB Applikationsservern als quiesce-, unquiesce- und pre-exit-Befehle verwendet; diese Skripte sind nicht enthalten. Zur Vermeidung dieser Abhängigkeit lassen sich die Hooks mit den `mongosh` Befehlen in xref:mongodb-ontap-solution-validation.html#snapcenter-backup[Sicherung mit SnapCenter] konfigurieren. Erforderlich ist die Installation von `mongosh` auf dem Host, auf dem die Befehle ausgeführt werden, zudem sind die Host-, Port- und Authentifizierungsoptionen an Ihr Deployment anzupassen. Für die Validierungsskripte wurde eine frühe PyMongo-Version verwendet, die die `Connection` Klasse bereitstellt; Python 2 und `Connection` werden nicht mehr unterstützt.
+
+[cols="35%,65%"]
+|===
+| Das zur Validierung verwendete Skript | Betrieb 
+
+
+| `wait-for-cleared-locks.py` | Nach dem Aufheben der Balancer-Sperre kann der Balancer gestoppt werden. In `mongosh` kann `sh.stopBalancer()` ausgeführt werden; dabei wird ebenfalls gewartet, bis eine laufende Balancer-Runde abgeschlossen ist. 
+
+
+| `start-balancer.py` | Ein Neustart des Balancers ist erforderlich. In `mongosh` erfolgt die Ausführung von `sh.startBalancer()`. 
+
+
+| `fsync-lock.py` | Schreibvorgänge auf die Festplatte schreiben und neue Schreibvorgänge blockieren, wenn für das Backup eine Unterbrechung erforderlich ist, einschließlich WiredTiger Daten und Journal auf separaten Volumes ohne Konsistenzgruppen-Snapshot. In `mongosh` erfolgt die Ausführung von `db.fsyncLock()` auf jedem zu sichernden Mitglied. 
+
+
+| `fsync-unlock.py` | Alle für die Sicherung erworbenen Schreibsperren sind freizugeben, auch nach einem Fehler. In `mongosh`wird `db.fsyncUnlock()`ausgeführt. 
+|===
+
+
+[[mongodb-operations]]
+== MongoDB Operationen
+
+Die folgenden Vorgänge konfigurieren das Sharded Cluster und fügen diesem zwei Shards hinzu. Die Befehle und die Ausgabe wurden mit MongoDB 3.0.7 und der Legacy- `mongo`Shell erfasst. Bei aktuellen MongoDB Versionen verwenden Sie  `mongosh`, setzen die Config-Server als Replikatset ein (starten Sie sie mit  `--configsvr` und  `--replSet`, und übergeben Sie den Namen des Replikatsets mit  `--configdb` an  `mongos`) und lassen die entfernte Option  `--rest` weg.
+
+. Die eingebundenen Partitionen für die MongoDB-Datenbank auf jedem Shard-Mitglied (`mdb-srv-1`, `mdb-srv-10`, `mdb-srv-11`, `mdb-srv-2`, `mdb-srv-20` und `mdb-srv-21`) sind zu überprüfen. Jedes Mitglied bindet ein XFS-Dateisystem auf `/data` ein:
++
+[listing]
+----
+[mongodb@mdb-srv-1 db_wt]$ df -h /data
+[mongodb@mdb-srv-1 db_wt]$ cat /etc/fstab | grep sdb
+/dev/sdb1 /data xfs defaults 0 0
+----
+. Auf jedem Shard-Mitglied sind die erforderlichen Ordner zu erstellen, Eigentumsverhältnisse und Berechtigungen festzulegen sowie `mongod` zu starten. Für den ersten Shard sind die Mitglieder `mdb-srv-1`, `mdb-srv-10` und `mdb-srv-11`. Zum Beispiel auf `mdb-srv-1`:
++
+[listing]
+----
+[root@mdb-srv-1 ~]# mkdir -p /mongodb/data
+[root@mdb-srv-1 ~]# mkdir -p /data/db_wt
+[root@mdb-srv-1 ~]# chown -R mongodb:mongodb /mongodb
+[root@mdb-srv-1 ~]# chown -R mongodb:mongodb /data
+[root@mdb-srv-1 ~]# chmod -R 700 /mongodb
+[mongodb@mdb-srv-1 ~]$ mongod --replSet shard1/mdb-srv-10,mdb-srv-11 --journal --rest --shardsvr --fork --storageEngine wiredTiger --dbpath /data/db_wt --logpath /mongodb/data/mongod.log --directoryperdb
+----
+. Die Konfigurationsserver (`mdb-cfg-1`, `mdb-cfg-2`, und `mdb-cfg-3`) starten auf Port 27019. Zunächst ist `/mongodb/data/configdb` mit `mongodb` als Eigentümer und Berechtigungen 700 zu erstellen:
++
+[listing]
+----
+[mongodb@mdb-cfg-3 ~]$ mongod --configsvr --dbpath /mongodb/data/configdb --port 27019 --fork --logpath /mongodb/data/arbiter.log
+----
+. Den  `mongos`Prozess auf jedem Applikationsserver (`mdb-ms-1` und `mdb-ms-2`), sowie prüfen, ob er auf Port 27017 lauscht:
++
+[listing]
+----
+[mongodb@mdb-ms-1 ~]$ mongos --configdb mdb-cfg-1:27019,mdb-cfg-2:27019,mdb-cfg-3:27019 --logpath /mongodb/data/mongos.log --fork --port 27017
+----
+. Vom Anwendungsserver aus erfolgt die Verbindung zum primären Shard (`mdb-srv-1` und die Initialisierung des Replikatsets mit  `rs.initiate(cfg)`:
++
+[listing]
+----
+[mongodb@mdb-ms-1 ~]$ mongo mdb-srv-1:27018/admin
+> var cfg = { _id: "shard1", members: [ { _id: 0, host: "mdb-srv-1:27018" }, { _id: 1, host: "mdb-srv-10:27018" }, { _id: 2, host: "mdb-srv-11:27018" } ] };
+> rs.initiate(cfg);
+----
+. Überprüfung des Replica-Set-Status vom Shard-Mitglied aus:
++
+[listing]
+----
+[mongodb@mdb-srv-1 ~]$ mongo --host mdb-srv-1 --port 27018
+shard1:PRIMARY> rs.printReplicationInfo()
+PRIMARY> rs.status()
+----
+. Das Hinzufügen des ersten Shards erfolgt über den Applikationsserver. Wenn derselbe Shard von einem anderen Applikationsserver erneut hinzugefügt wird, meldet MongoDB, dass der Shard bereits existiert:
++
+[listing]
+----
+[mongodb@mdb-ms-1 ~]$ mongo mdb-ms-1:27017/admin
+mongos> db.adminCommand( { addShard : "shard1/mdb-srv-1:27018,mdb-srv-10:27018,mdb-srv-11:27018" } )
+----
+. Der Sharding-Status kann wie folgt überprüft werden:
++
+[listing]
+----
+mongos> sh.status();
+----
+. Den zweiten Shard hinzufügen. Vorbereitung `mdb-srv-2`, `mdb-srv-20` und `mdb-srv-21` wie beim ersten Shard, Initialisierung des Replikatsets und Hinzufügen:
++
+[listing]
+----
+mongos> db.adminCommand( { addShard : "shard2/mdb-srv-2:27018,mdb-srv-20:27018,mdb-srv-21:27018" } )
+----
+. Durch erneutes Ausführen von `sh.status()` lässt sich bestätigen, dass beide Shards (`shard1` und `shard2`) aufgeführt sind. Das Hinzufügen von Shards verteilt die Daten einer Collection nicht automatisch. Bei der hier gezeigten MongoDB 3.0.7-Konfiguration wird das Sharding in der Datenbank mit `sh.enableSharding()` aktiviert, ein geeigneter Shard-Schlüssel ausgewählt, jeder erforderliche Index erstellt und jede vorgesehene Collection mit `sh.shardCollection()` geshardet.
+

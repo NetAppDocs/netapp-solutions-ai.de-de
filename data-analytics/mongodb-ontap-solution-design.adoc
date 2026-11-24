@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: data-analytics/mongodb-ontap-solution-design.html 
+keywords: mongodb, sharded cluster, mongos, config server, storage layout, aff-a30 
+summary: Diese Seite beschreibt die MongoDB Sharded-Cluster-Architektur, die validierte Architektur und das Storage-Layout auf NetApp AFF. 
+---
+= Lösungsdesign
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Diese Seite beschreibt die MongoDB-Architektur, einschließlich ihrer Komponenten und ihres Aufbaus, gefolgt von der validierten Architektur und der in dieser Lösung verwendeten Storage-Architektur.
+
+
+
+[[mongodb-architecture]]
+== MongoDB Architektur
+
+Sharding, auch horizontale Skalierung genannt, teilt einen Datensatz auf und verteilt ihn auf mehrere Server, sogenannte Shards. Jeder Shard ist eine unabhängige Datenbank, und zusammen bilden die Shards eine einzige logische Datenbank. Die folgende Abbildung veranschaulicht, wie die Shards einer Sammlung auf mehrere Server verteilt sein können.
+
+.Shards sind über mehrere Server verteilt
+image:mongodb-ontap-002.png["Diagramm, das eine in Shards unterteilte Sammlung zeigt, die über mehrere Server verteilt ist."]
+
+Shards speichern die Daten. In einem produktiven Sharded-Cluster ist jeder Shard ein Replikatsatz, der für hohe Verfügbarkeit und Datenkonsistenz sorgt.
+
+Query Router oder  `mongos` Instanzen dienen als Schnittstelle zu Client-Applikationen und leiten Operationen an den entsprechenden Shard oder die entsprechenden Shards weiter. Ein Client sendet Anfragen an einen  `mongos`, der die Operationen an die Shards weiterleitet und die Ergebnisse an den Client zurückgibt. Ein Sharded Cluster kann mehr als einen  `mongos` enthalten, um die Anfragelast der Clients zu verteilen, und die meisten Sharded Cluster enthalten mehr als einen.
+
+Konfigurationsserver (config servers) speichern die Metadaten des Clusters, welche die Datensätze des Clusters den Shards zuordnen. Der Abfragerouter verwendet diese Metadaten, um Operationen gezielt an bestimmte Shards zu richten, wie die folgende Abbildung zeigt.
+
+.Abfrage-Router (mongos Instanzen), die mithilfe von Metadaten Daten an Shards weiterleiten
+image:mongodb-ontap-003.png["Diagramm, das mongos Abfragerouter zeigt, die mithilfe von Metadaten des Konfigurationsservers Operationen an Shards weiterleiten."]
+
+
+NOTE: Ab MongoDB 3.2 können Konfigurationsserver für Sharded Cluster als Replikatsatz eingesetzt werden, der die WiredTiger Storage Engine ausführen muss. MongoDB 3.4 hat gespiegelte Konfigurationsserver entfernt, daher müssen Konfigurationsserver in aktuellen MongoDB Versionen als Replikatsatz eingesetzt werden.
+
+
+
+[[validated-architecture]]
+== Validierte Architektur
+
+Diese Lösung verwendet einen MongoDB-Sharded-Cluster, der auf VMware vSphere virtualisiert ist. Gemäß der MongoDB-Empfehlung für ein Produktions-Setup setzten wir während der Tests einen Sharded-Cluster mit zwei Shards ein. Jeder Shard enthält eine Teilmenge der Daten einer Collection, und jeder Shard ist ein Replikatset. Der Cluster verwendet außerdem drei Konfigurationsserver und zwei Query-Router (`mongos` Instanzen), und MongoDB ist mit der WiredTiger Storage Engine konfiguriert. WiredTiger verwaltet, wie Daten sowohl im Arbeitsspeicher als auch auf der Festplatte gespeichert werden, und erstellt die Datendateien am `--dbpath` oder `storage.dbPath` Speicherort.
+
+Weitere Informationen finden sich in der MongoDB-Dokumentation zu link:https://www.mongodb.com/docs/manual/core/wiredtiger/["WiredTiger Storage Engine"^] und link:https://docs.mongodb.org/manual/core/sharded-cluster-architectures-production/["Architektur des Produktionsclusters"^].
+
+
+
+[[storage-architecture]]
+== Storage-Architektur
+
+Sechs NFS-Datastores, bei denen es sich um über NFS Version 3 (NFSv3) bereitgestellte NetApp Volumes handelt, werden auf dem NetApp AFF-A30 All-Flash-Array bereitgestellt. Das NetApp SnapCenter Plug-in for VMware vSphere (SCV) wird zum Hosten der verschiedenen Komponenten der Architektur verwendet. In der folgenden Tabelle sind diese Komponenten aufgeführt.
+
+[cols="10%,35%,20%,15%,20%"]
+|===
+| Seriennummer | NetApp Volumen | MongoDB Rolle | Anzahl der Server mit dieser Rolle | Das bei der Validierung verwendete virtuelle Festplattenformat 
+
+
+| 1 | Betriebssystem-Image-Volumes (zum Beispiel, `vol_vmOS_01` und `vol_vmOS_02`), die von allen Betriebssystemen gemeinsam genutzt werden | Abfrage-/Router-Server | 2 | Eager Zeroed Thick (.vmdk) 
+
+
+| 2 | Betriebssystem-Image-Volumes (zum Beispiel, `vol_vmOS_01` und `vol_vmOS_02`), die von allen Betriebssystemen gemeinsam genutzt werden | Konfigurationsserver | 3 | Eager Zeroed Thick (.vmdk) 
+
+
+| 3 | Betriebssystem-Image-Volumes (zum Beispiel, `vol_vmOS_01` und `vol_vmOS_02`), die von allen Betriebssystemen gemeinsam genutzt werden | Primäre Shard-Server | 2 | Eager Zeroed Thick (.vmdk) 
+
+
+| 4 | Betriebssystem-Image-Volumes (zum Beispiel, `vol_vmOS_01` und `vol_vmOS_02`), die von allen Betriebssystemen gemeinsam genutzt werden | Sekundäre Shard-Server | 4 | Eager Zeroed Thick (.vmdk) 
+
+
+| 5 | Primäre Datenbankvolumes (zum Beispiel, `vol_mdbdata_p_01` und `vol_mdbdata_p_02`) | Primäre Shard-Datenbankserver | 2 | Eager Zeroed Thick (.vmdk) 
+
+
+| 6 | Sekundäre Datenbankvolumes (zum Beispiel `vol_mdbdata_s_01` für die ersten sekundären Sharding-Server und `vol_mdbdata_s_02` für die zweiten sekundären Sharding-Server) | Sekundäre Shard-Datenbankserver | 4 | Eager Zeroed Thick (.vmdk) 
+|===
+Bei der Validierung wurden Eager Zeroed Thick Virtual Disks verwendet, die beim Erstellen den gesamten Datenträger zuweisen und mit Nullen füllen, statt dies erst beim ersten Schreibvorgang zu tun. Dies vermeidet die Latenz beim ersten Schreibvorgang, während die MongoDB-Datendateien wachsen, und hält die Schreiblatenz konstant. Das Format ist keine Anforderung von MongoDB. Unter ONTAP hält die Storage-Effizienz die Speicherkosten für auf null gesetzte Blöcke niedrig, und Thin Provisioning lässt sich für Ihre Umgebung evaluieren.
+
+Die folgende Abbildung zeigt das Storage-Layout. Der Datenverkehr des NFS-Datastore läuft zur Redundanz über zwei Ethernet-Switches. Für neue Deployments wird ein 25-GbE-Netzwerk oder eine schnellere Netzwerkverbindung empfohlen.
+
+.Storage-Layout auf dem NetApp AFF-A30
+image:mongodb-ontap-004.png["Diagramm des Volume- und Datastore-Layouts für die MongoDB-VMs und -Datenbanken auf dem AFF-A30."]
